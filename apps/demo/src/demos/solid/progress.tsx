@@ -1,11 +1,11 @@
-import { Progress } from "@/registry/solid/ui/progress"
+import { Progress } from "@/registry/solid/ui/progress";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/solid/ui/card"
+} from "@/registry/solid/ui/card";
 
 export default function ProgressDemo() {
   return (
@@ -15,8 +15,8 @@ export default function ProgressDemo() {
           Region sync
         </CardTitle>
         <CardDescription>
-          The indicator uses a solid fill with a glassy overlay highlight to
-          feel consistent with buttons and inputs.
+          The indicator uses a solid fill with a glassy overlay highlight to feel consistent with
+          buttons and inputs.
         </CardDescription>
       </CardHeader>
       <CardContent class="flex flex-col gap-3">
@@ -27,5 +27,5 @@ export default function ProgressDemo() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

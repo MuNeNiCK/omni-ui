@@ -1,14 +1,10 @@
-import { createSignal } from "solid-js"
+import { createSignal } from "solid-js";
 
-import { Button } from "@/registry/solid/ui/button"
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/registry/solid/ui/input-otp"
+import { Button } from "@/registry/solid/ui/button";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/registry/solid/ui/input-otp";
 
 export default function InputOTPDemo() {
-  const [value, setValue] = createSignal("")
+  const [value, setValue] = createSignal("");
 
   return (
     <div class="flex flex-col items-center justify-center gap-6">
@@ -28,14 +24,10 @@ export default function InputOTPDemo() {
       </div>
 
       <div class="flex items-center gap-3">
-        <Button
-          variant="muted"
-          onClick={() => setValue("")}
-          disabled={!value()}
-        >
+        <Button variant="muted" onClick={() => setValue("")} disabled={!value()}>
           Clear
         </Button>
       </div>
     </div>
-  )
+  );
 }

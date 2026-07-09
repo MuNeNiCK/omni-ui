@@ -1,28 +1,28 @@
-import { createSignal, createMemo } from "solid-js"
+import { createSignal, createMemo } from "solid-js";
 
-import { Calendar } from "@/registry/solid/ui/calendar"
-import type { DateRange } from "@/registry/solid/ui/calendar"
-import { Button } from "@/registry/solid/ui/button"
+import { Calendar } from "@/registry/solid/ui/calendar";
+import type { DateRange } from "@/registry/solid/ui/calendar";
+import { Button } from "@/registry/solid/ui/button";
 
 function addDays(date: Date, days: number): Date {
-  const result = new Date(date)
-  result.setDate(result.getDate() + days)
-  return result
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
 }
 
 export default function CalendarDemo() {
-  const [date, setDate] = createSignal<Date | undefined>(new Date())
+  const [date, setDate] = createSignal<Date | undefined>(new Date());
   const [range, setRange] = createSignal<DateRange | undefined>({
     from: new Date(),
     to: addDays(new Date(), 4),
-  })
+  });
 
   const rangeSummary = createMemo(() => {
-    const r = range()
-    if (!r?.from) return "No range selected."
-    if (!r.to) return `Range starts ${r.from.toLocaleDateString()}.`
-    return `${r.from.toLocaleDateString()} -- ${r.to.toLocaleDateString()}`
-  })
+    const r = range();
+    if (!r?.from) return "No range selected.";
+    if (!r.to) return `Range starts ${r.from.toLocaleDateString()}.`;
+    return `${r.from.toLocaleDateString()} -- ${r.to.toLocaleDateString()}`;
+  });
 
   return (
     <div class="space-y-8">
@@ -39,9 +39,7 @@ export default function CalendarDemo() {
           />
         </div>
         <p class="text-sm text-muted-foreground">
-          {date()
-            ? `Selected: ${date()!.toLocaleDateString()}.`
-            : "Select a day."}
+          {date() ? `Selected: ${date()!.toLocaleDateString()}.` : "Select a day."}
         </p>
       </div>
 
@@ -71,5 +69,5 @@ export default function CalendarDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

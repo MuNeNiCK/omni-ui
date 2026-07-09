@@ -1,60 +1,61 @@
-"use client"
+"use client";
 
-import { useMemo, useState } from "react"
+import { useMemo, useState } from "react";
 
-import { Check, Clipboard } from "lucide-react"
+import { Check, Clipboard } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Button } from "@/registry/react/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/react/ui/tabs";
 
 interface InstallationCommandsProps {
-  packageName: string
-  className?: string
+  packageName: string;
+  className?: string;
 }
 
-const managers = ["pnpm", "npm", "yarn", "bun"] as const
+const managers = ["pnpm", "npm", "yarn", "bun"] as const;
 
 const commandFor = (manager: (typeof managers)[number], pkg: string) => {
-  const target = `@omni/${pkg}`
+  const target = `@omni/${pkg}`;
   switch (manager) {
     case "npm":
-      return `npx shadcn@latest add ${target}`
+      return `npx shadcn@latest add ${target}`;
     case "yarn":
-      return `yarn dlx shadcn@latest add ${target}`
+      return `yarn dlx shadcn@latest add ${target}`;
     case "bun":
-      return `bunx --bun shadcn@latest add ${target}`
+      return `bunx --bun shadcn@latest add ${target}`;
     default:
-      return `pnpm dlx shadcn@latest add ${target}`
+      return `pnpm dlx shadcn@latest add ${target}`;
   }
-}
+};
 
 export default function InstallationCommands({
   packageName,
   className,
 }: InstallationCommandsProps) {
-  const [activeManager, setActiveManager] = useState<(typeof managers)[number]>(
-    "pnpm"
-  )
-  const [copied, setCopied] = useState(false)
+  const [activeManager, setActiveManager] = useState<(typeof managers)[number]>("pnpm");
+  const [copied, setCopied] = useState(false);
 
   const command = useMemo(
     () => commandFor(activeManager, packageName),
-    [activeManager, packageName]
-  )
+    [activeManager, packageName],
+  );
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(command)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      await navigator.clipboard.writeText(command);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch (error) {
-      console.error("Failed to copy command", error)
+      console.error("Failed to copy command", error);
     }
-  }
+  };
 
   return (
     <div className={`overflow-hidden rounded-lg border ${className ?? ""}`}>
-      <Tabs value={activeManager} onValueChange={(value) => setActiveManager(value as typeof managers[number])}>
+      <Tabs
+        value={activeManager}
+        onValueChange={(value) => setActiveManager(value as (typeof managers)[number])}
+      >
         <TabsList className="flex w-full justify-between rounded-none border-b bg-background px-2">
           <div className="flex gap-1">
             {managers.map((manager) => (
@@ -83,5 +84,5 @@ export default function InstallationCommands({
         </TabsContent>
       </Tabs>
     </div>
-  )
+  );
 }

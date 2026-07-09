@@ -1,9 +1,5 @@
-import { Button } from "@/registry/react/ui/button"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/react/ui/popover"
+import { Button } from "@/registry/react/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/react/ui/popover";
 
 export default function PopoverDemo() {
   return (
@@ -26,5 +22,5 @@ export default function PopoverDemo() {
         </PopoverContent>
       </Popover>
     </div>
-  )
+  );
 }

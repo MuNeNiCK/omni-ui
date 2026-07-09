@@ -1,13 +1,10 @@
-import * as React from "react"
-import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
-import { cva } from "class-variance-authority"
-import { ChevronDownIcon } from "lucide-react"
+import * as React from "react";
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import { cva } from "class-variance-authority";
+import { ChevronDownIcon } from "lucide-react";
 
-import {
-  glassIndicatorSurfaceClass,
-  glassMenuSurfaceClass,
-} from "@/registry/react/lib/glass"
-import { cn, omniMonoText } from "@/registry/react/lib/utils"
+import { glassIndicatorSurfaceClass, glassMenuSurfaceClass } from "@/registry/react/lib/glass";
+import { cn, omniMonoText } from "@/registry/react/lib/utils";
 
 function NavigationMenu({
   className,
@@ -15,7 +12,7 @@ function NavigationMenu({
   viewport = true,
   ...props
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Root> & {
-  viewport?: boolean
+  viewport?: boolean;
 }) {
   return (
     <NavigationMenuPrimitive.Root
@@ -23,14 +20,14 @@ function NavigationMenu({
       data-viewport={viewport}
       className={cn(
         "group/navigation-menu relative flex max-w-max items-center justify-center",
-        className
+        className,
       )}
       {...props}
     >
       {children}
       {viewport && <NavigationMenuViewport />}
     </NavigationMenuPrimitive.Root>
-  )
+  );
 }
 
 function NavigationMenuList({
@@ -40,13 +37,10 @@ function NavigationMenuList({
   return (
     <NavigationMenuPrimitive.List
       data-slot="navigation-menu-list"
-      className={cn(
-        "group flex flex-1 list-none items-center justify-center gap-1",
-        className
-      )}
+      className={cn("group flex flex-1 list-none items-center justify-center gap-1", className)}
       {...props}
     />
-  )
+  );
 }
 
 function NavigationMenuItem({
@@ -59,15 +53,15 @@ function NavigationMenuItem({
       className={cn("relative", className)}
       {...props}
     />
-  )
+  );
 }
 
 const navigationMenuTriggerStyle = cva(
   cn(
     "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-3 py-1.5 text-muted-foreground transition-[color,background,border,box-shadow] focus-visible:outline-none",
-    omniMonoText.compact
-  )
-)
+    omniMonoText.compact,
+  ),
+);
 
 function NavigationMenuTrigger({
   className,
@@ -84,7 +78,7 @@ function NavigationMenuTrigger({
         "data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground",
         "disabled:pointer-events-none disabled:opacity-50",
         "group",
-        className
+        className,
       )}
       {...props}
     >
@@ -94,7 +88,7 @@ function NavigationMenuTrigger({
         aria-hidden="true"
       />
     </NavigationMenuPrimitive.Trigger>
-  )
+  );
 }
 
 function NavigationMenuContent({
@@ -111,11 +105,11 @@ function NavigationMenuContent({
         "group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95 group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95",
         "**:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none",
         "dark:group-data-[viewport=false]/navigation-menu:border-white/20",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function NavigationMenuViewport({
@@ -123,9 +117,7 @@ function NavigationMenuViewport({
   ...props
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
   return (
-    <div
-      className={cn("absolute top-full left-0 isolate z-50 flex justify-center")}
-    >
+    <div className={cn("absolute top-full left-0 isolate z-50 flex justify-center")}>
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
@@ -134,12 +126,12 @@ function NavigationMenuViewport({
           "data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0",
           "data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=closed]:fade-out-0",
           "dark:border-white/20",
-          className
+          className,
         )}
         {...props}
       />
     </div>
-  )
+  );
 }
 
 function NavigationMenuLink({
@@ -156,11 +148,11 @@ function NavigationMenuLink({
         "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "data-[active=true]:border-foreground data-[active=true]:bg-foreground data-[active=true]:text-background",
         "[&_svg:not([class*='text-'])]:text-muted-foreground/70 [&_svg:not([class*='size-'])]:size-3.5",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function NavigationMenuIndicator({
@@ -173,18 +165,13 @@ function NavigationMenuIndicator({
       className={cn(
         "top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
         "data-[state=visible]:animate-in data-[state=visible]:fade-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out",
-        className
+        className,
       )}
       {...props}
     >
-      <div
-        className={cn(
-          "relative top-[60%] h-2 w-2 rotate-45",
-          glassIndicatorSurfaceClass
-        )}
-      />
+      <div className={cn("relative top-[60%] h-2 w-2 rotate-45", glassIndicatorSurfaceClass)} />
     </NavigationMenuPrimitive.Indicator>
-  )
+  );
 }
 
 export {
@@ -197,4 +184,4 @@ export {
   NavigationMenuIndicator,
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
-}
+};

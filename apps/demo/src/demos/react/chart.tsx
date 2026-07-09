@@ -1,4 +1,4 @@
-import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 import {
   ChartContainer,
@@ -7,14 +7,14 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/registry/react/ui/chart"
+} from "@/registry/react/ui/chart";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/react/ui/card"
+} from "@/registry/react/ui/card";
 
 const trafficConfig = {
   requests: {
@@ -25,14 +25,14 @@ const trafficConfig = {
     label: "Errors",
     theme: { light: "#f97316", dark: "#fb923c" },
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 const trafficData = [
   { label: "00:00", requests: 4200, errors: 30 },
   { label: "06:00", requests: 5100, errors: 42 },
   { label: "12:00", requests: 6400, errors: 54 },
   { label: "18:00", requests: 7200, errors: 33 },
-]
+];
 
 const latencyConfig = {
   latency: {
@@ -40,14 +40,14 @@ const latencyConfig = {
     icon: undefined,
     theme: { light: "#22c55e", dark: "#34d399" },
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 const latencyData = [
   { label: "Tokyo", latency: 138 },
   { label: "Singapore", latency: 162 },
   { label: "Frankfurt", latency: 148 },
   { label: "Oregon", latency: 210 },
-]
+];
 
 export default function ChartDemo() {
   return (
@@ -70,8 +70,22 @@ export default function ChartDemo() {
                 <YAxis tickLine={false} axisLine={false} width={32} />
                 <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
                 <ChartLegend content={<ChartLegendContent />} />
-                <Area type="monotone" dataKey="requests" stroke="var(--color-requests)" fill="var(--color-requests)" fillOpacity={0.15} strokeWidth={2} />
-                <Area type="monotone" dataKey="errors" stroke="var(--color-errors)" fill="var(--color-errors)" fillOpacity={0.2} strokeWidth={2} />
+                <Area
+                  type="monotone"
+                  dataKey="requests"
+                  stroke="var(--color-requests)"
+                  fill="var(--color-requests)"
+                  fillOpacity={0.15}
+                  strokeWidth={2}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="errors"
+                  stroke="var(--color-errors)"
+                  fill="var(--color-errors)"
+                  fillOpacity={0.2}
+                  strokeWidth={2}
+                />
               </AreaChart>
             </ChartContainer>
           </div>
@@ -102,5 +116,5 @@ export default function ChartDemo() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

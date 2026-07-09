@@ -6,7 +6,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/solid/ui/breadcrumb"
+} from "@/registry/solid/ui/breadcrumb";
 
 export default function BreadcrumbDemo() {
   return (
@@ -47,5 +47,5 @@ export default function BreadcrumbDemo() {
         </BreadcrumbList>
       </Breadcrumb>
     </div>
-  )
+  );
 }

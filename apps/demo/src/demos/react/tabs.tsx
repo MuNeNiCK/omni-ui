@@ -1,16 +1,11 @@
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/react/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/react/ui/tabs";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/react/ui/card"
+} from "@/registry/react/ui/card";
 
 export default function TabsDemo() {
   return (
@@ -50,5 +45,5 @@ export default function TabsDemo() {
         </Tabs>
       </CardContent>
     </Card>
-  )
+  );
 }

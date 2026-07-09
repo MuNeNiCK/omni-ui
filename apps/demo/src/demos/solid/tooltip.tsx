@@ -1,9 +1,5 @@
-import { Button } from "@/registry/solid/ui/button"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/solid/ui/tooltip"
+import { Button } from "@/registry/solid/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/solid/ui/tooltip";
 
 export default function TooltipDemo() {
   return (
@@ -11,9 +7,7 @@ export default function TooltipDemo() {
       <TooltipTrigger as={Button} variant="muted">
         Hover me
       </TooltipTrigger>
-      <TooltipContent>
-        LAUNCH CONSOLE
-      </TooltipContent>
+      <TooltipContent>LAUNCH CONSOLE</TooltipContent>
     </Tooltip>
-  )
+  );
 }

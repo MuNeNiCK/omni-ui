@@ -5,9 +5,9 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/react/ui/input-group"
-import { Button } from "@/registry/react/ui/button"
-import { Badge } from "@/registry/react/ui/badge"
+} from "@/registry/react/ui/input-group";
+import { Button } from "@/registry/react/ui/button";
+import { Badge } from "@/registry/react/ui/badge";
 
 export default function InputGroupDemo() {
   return (
@@ -54,5 +54,5 @@ export default function InputGroupDemo() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  )
+  );
 }

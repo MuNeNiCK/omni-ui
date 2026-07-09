@@ -6,7 +6,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/registry/react/ui/pagination"
+} from "@/registry/react/ui/pagination";
 
 export default function PaginationDemo() {
   return (
@@ -37,5 +37,5 @@ export default function PaginationDemo() {
         </PaginationItem>
       </PaginationContent>
     </Pagination>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-import { Switch } from "@/registry/solid/ui/switch"
+import { Switch } from "@/registry/solid/ui/switch";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/solid/ui/card"
+} from "@/registry/solid/ui/card";
 
 export default function SwitchDemo() {
   return (
@@ -33,5 +33,5 @@ export default function SwitchDemo() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

@@ -1,12 +1,7 @@
-import { CheckCheck, InfoIcon, TriangleAlert } from "lucide-react"
+import { CheckCheck, InfoIcon, TriangleAlert } from "lucide-react";
 
-import {
-  Alert,
-  AlertActions,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/react/ui/alert"
-import { Button } from "@/registry/react/ui/button"
+import { Alert, AlertActions, AlertDescription, AlertTitle } from "@/registry/react/ui/alert";
+import { Button } from "@/registry/react/ui/button";
 
 export default function AlertDemo() {
   return (
@@ -15,8 +10,8 @@ export default function AlertDemo() {
         <InfoIcon />
         <AlertTitle>MAINTENANCE WINDOW</AlertTitle>
         <AlertDescription>
-          Control plane upgrades start at 02:00 JST. Instances remain online;
-          management APIs may respond slower for up to five minutes.
+          Control plane upgrades start at 02:00 JST. Instances remain online; management APIs may
+          respond slower for up to five minutes.
         </AlertDescription>
         <AlertActions>
           <Button variant="muted" size="sm">
@@ -29,8 +24,8 @@ export default function AlertDemo() {
         <CheckCheck />
         <AlertTitle>ROLLBACK COMPLETE</AlertTitle>
         <AlertDescription>
-          Traffic is routed back to the stable build. All regions are serving
-          requests without errors and latency is within SLO.
+          Traffic is routed back to the stable build. All regions are serving requests without
+          errors and latency is within SLO.
         </AlertDescription>
       </Alert>
 
@@ -38,8 +33,8 @@ export default function AlertDemo() {
         <TriangleAlert />
         <AlertTitle>QUOTA REACHED</AlertTitle>
         <AlertDescription>
-          You are nearing the workspace secret limit. Delete unused secrets or
-          request an increased quota to avoid deployment failures.
+          You are nearing the workspace secret limit. Delete unused secrets or request an increased
+          quota to avoid deployment failures.
         </AlertDescription>
       </Alert>
 
@@ -47,8 +42,8 @@ export default function AlertDemo() {
         <TriangleAlert />
         <AlertTitle>INCIDENT</AlertTitle>
         <AlertDescription>
-          Deployments in the Osaka region are paused while we investigate a
-          networking regression. Subscribe for updates in the status center.
+          Deployments in the Osaka region are paused while we investigate a networking regression.
+          Subscribe for updates in the status center.
         </AlertDescription>
         <AlertActions>
           <Button variant="muted" size="sm">
@@ -58,5 +53,5 @@ export default function AlertDemo() {
         </AlertActions>
       </Alert>
     </div>
-  )
+  );
 }

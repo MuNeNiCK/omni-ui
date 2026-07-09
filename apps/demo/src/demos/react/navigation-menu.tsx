@@ -5,7 +5,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/registry/react/ui/navigation-menu"
+} from "@/registry/react/ui/navigation-menu";
 
 export default function NavigationMenuDemo() {
   return (
@@ -20,8 +20,7 @@ export default function NavigationMenuDemo() {
                   Control Plane
                 </div>
                 <p className="mt-2 text-xs text-muted-foreground">
-                  Manage clusters, roll out deployments, and inspect
-                  environment health.
+                  Manage clusters, roll out deployments, and inspect environment health.
                 </p>
               </NavigationMenuLink>
               <NavigationMenuLink className="border border-border/60 bg-muted/40 p-3">
@@ -29,8 +28,7 @@ export default function NavigationMenuDemo() {
                   Observability
                 </div>
                 <p className="mt-2 text-xs text-muted-foreground">
-                  Dashboards, alert routing, and log tailing across all
-                  services.
+                  Dashboards, alert routing, and log tailing across all services.
                 </p>
               </NavigationMenuLink>
             </div>
@@ -61,5 +59,5 @@ export default function NavigationMenuDemo() {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  )
+  );
 }

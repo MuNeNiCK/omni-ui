@@ -1,9 +1,9 @@
-import { createSignal, For } from "solid-js"
-import type { SelectRootItemComponentProps } from "@kobalte/core/select"
-import { CheckCircle2 } from "lucide-solid"
+import { createSignal, For } from "solid-js";
+import type { SelectRootItemComponentProps } from "@kobalte/core/select";
+import { CheckCircle2 } from "lucide-solid";
 
-import { Badge } from "@/registry/solid/ui/badge"
-import { Button } from "@/registry/solid/ui/button"
+import { Badge } from "@/registry/solid/ui/badge";
+import { Button } from "@/registry/solid/ui/button";
 import {
   Field,
   FieldContent,
@@ -14,24 +14,24 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/registry/solid/ui/field"
-import { Input } from "@/registry/solid/ui/input"
-import { Label } from "@/registry/solid/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/registry/solid/ui/radio-group"
+} from "@/registry/solid/ui/field";
+import { Input } from "@/registry/solid/ui/input";
+import { Label } from "@/registry/solid/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/registry/solid/ui/radio-group";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/solid/ui/select"
-import { Switch } from "@/registry/solid/ui/switch"
+} from "@/registry/solid/ui/select";
+import { Switch } from "@/registry/solid/ui/switch";
 
 export default function FieldDemo() {
-  const [env, setEnv] = createSignal("staging")
-  const [notify, setNotify] = createSignal(true)
+  const [env, setEnv] = createSignal("staging");
+  const [notify, setNotify] = createSignal(true);
 
-  const owners = ["SRE", "Security", "Platform"]
+  const owners = ["SRE", "Security", "Platform"];
 
   return (
     <FieldSet>
@@ -59,15 +59,12 @@ export default function FieldDemo() {
             >
               <SelectTrigger id="owner" class="w-full">
                 <SelectValue<string>>
-                  {(state: { selectedOption: () => string | undefined }) =>
-                    state.selectedOption()}
+                  {(state: { selectedOption: () => string | undefined }) => state.selectedOption()}
                 </SelectValue>
               </SelectTrigger>
               <SelectContent />
             </Select>
-            <FieldDescription>
-              Used for escalation workflows and audit tagging.
-            </FieldDescription>
+            <FieldDescription>Used for escalation workflows and audit tagging.</FieldDescription>
           </FieldContent>
         </Field>
       </FieldGroup>
@@ -78,23 +75,21 @@ export default function FieldDemo() {
         <Field orientation="vertical">
           <FieldTitle>
             <span>Environment</span>
-            <Badge variant="outline" class="ml-2">{env()}</Badge>
+            <Badge variant="outline" class="ml-2">
+              {env()}
+            </Badge>
           </FieldTitle>
           <FieldContent>
-            <RadioGroup
-              value={env()}
-              onChange={setEnv}
-              class="grid gap-2"
-            >
-              <For each={[
-                { value: "staging", label: "Staging" },
-                { value: "production", label: "Production" },
-                { value: "failover", label: "Failover" },
-              ]}>
+            <RadioGroup value={env()} onChange={setEnv} class="grid gap-2">
+              <For
+                each={[
+                  { value: "staging", label: "Staging" },
+                  { value: "production", label: "Production" },
+                  { value: "failover", label: "Failover" },
+                ]}
+              >
                 {(option) => (
-                  <Label
-                    class="flex items-center gap-3 rounded-none border border-border/60 bg-muted/40 px-4 py-3"
-                  >
+                  <Label class="flex items-center gap-3 rounded-none border border-border/60 bg-muted/40 px-4 py-3">
                     <RadioGroupItem value={option.value} id={option.value} />
                     {option.label}
                   </Label>
@@ -117,9 +112,7 @@ export default function FieldDemo() {
               Toggle to notify the incident channel when metrics drift.
             </FieldDescription>
           </FieldContent>
-          <FieldError>
-            {!notify() && "Alerts are required for production rollouts."}
-          </FieldError>
+          <FieldError>{!notify() && "Alerts are required for production rollouts."}</FieldError>
         </Field>
       </FieldGroup>
 
@@ -135,5 +128,5 @@ export default function FieldDemo() {
         </Field>
       </FieldGroup>
     </FieldSet>
-  )
+  );
 }

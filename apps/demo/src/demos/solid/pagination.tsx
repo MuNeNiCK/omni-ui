@@ -6,7 +6,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/registry/solid/ui/pagination"
+} from "@/registry/solid/ui/pagination";
 
 export default function PaginationDemo() {
   return (
@@ -37,5 +37,5 @@ export default function PaginationDemo() {
         </PaginationItem>
       </PaginationContent>
     </Pagination>
-  )
+  );
 }

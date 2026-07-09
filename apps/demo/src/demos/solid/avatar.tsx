@@ -1,8 +1,5 @@
-import {
-  Avatar,
-  AvatarFallback,
-} from "@/registry/solid/ui/avatar"
-import { Badge } from "@/registry/solid/ui/badge"
+import { Avatar, AvatarFallback } from "@/registry/solid/ui/avatar";
+import { Badge } from "@/registry/solid/ui/badge";
 
 export default function AvatarDemo() {
   return (
@@ -35,5 +32,5 @@ export default function AvatarDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

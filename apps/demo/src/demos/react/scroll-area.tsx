@@ -1,7 +1,4 @@
-import {
-  ScrollArea,
-  ScrollBar,
-} from "@/registry/react/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/registry/react/ui/scroll-area";
 
 const regions = [
   "Tokyo",
@@ -15,7 +12,7 @@ const regions = [
   "Jakarta",
   "London",
   "Seoul",
-]
+];
 
 export default function ScrollAreaDemo() {
   return (
@@ -36,5 +33,5 @@ export default function ScrollAreaDemo() {
       <ScrollBar orientation="vertical" />
       <ScrollBar orientation="horizontal" />
     </ScrollArea>
-  )
+  );
 }

@@ -1,10 +1,10 @@
-import { splitProps, type ParentProps, type JSX } from "solid-js"
+import { splitProps, type ParentProps, type JSX } from "solid-js";
 
 function AspectRatio(
-  props: ParentProps<{ ratio?: number; class?: string } & JSX.HTMLAttributes<HTMLDivElement>>
+  props: ParentProps<{ ratio?: number; class?: string } & JSX.HTMLAttributes<HTMLDivElement>>,
 ) {
-  const [local, rest] = splitProps(props, ["ratio", "children", "class"])
-  const ratio = () => local.ratio ?? 1
+  const [local, rest] = splitProps(props, ["ratio", "children", "class"]);
+  const ratio = () => local.ratio ?? 1;
   return (
     <div
       data-slot="aspect-ratio"
@@ -25,7 +25,7 @@ function AspectRatio(
         {local.children}
       </div>
     </div>
-  )
+  );
 }
 
-export { AspectRatio }
+export { AspectRatio };

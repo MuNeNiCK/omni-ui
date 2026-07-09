@@ -1,14 +1,12 @@
-import { ArrowRight } from "lucide-solid"
+import { ArrowRight } from "lucide-solid";
 
-import { Button } from "@/registry/solid/ui/button"
+import { Button } from "@/registry/solid/ui/button";
 
 export default function ButtonDemo() {
   return (
     <div class="flex flex-col gap-8">
       <div class="flex flex-col items-center gap-3">
-        <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Variants
-        </p>
+        <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">Variants</p>
         <div class="flex flex-wrap items-center justify-center gap-3">
           <Button>Default</Button>
           <Button variant="secondary">Secondary</Button>
@@ -20,9 +18,7 @@ export default function ButtonDemo() {
         </div>
       </div>
       <div class="flex flex-col items-center gap-3">
-        <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Sizes
-        </p>
+        <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">Sizes</p>
         <div class="flex flex-wrap items-center justify-center gap-3">
           <Button size="sm">Small</Button>
           <Button size="default">Default</Button>
@@ -39,9 +35,7 @@ export default function ButtonDemo() {
         </div>
       </div>
       <div class="flex flex-col items-center gap-3">
-        <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          asChild
-        </p>
+        <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">asChild</p>
         <div class="flex flex-wrap items-center justify-center gap-3">
           <Button asChild>
             <a href="https://example.com" target="_blank" rel="noreferrer">
@@ -56,5 +50,5 @@ export default function ButtonDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

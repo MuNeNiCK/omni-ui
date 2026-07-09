@@ -1,8 +1,8 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 export const omniMonoText = {
@@ -11,4 +11,4 @@ export const omniMonoText = {
   wide: "font-mono text-[10px] uppercase tracking-[0.32em]",
   section: "font-mono text-xs uppercase tracking-[0.32em]",
   menu: "font-mono text-[11px] uppercase tracking-[0.28em]",
-} as const
+} as const;

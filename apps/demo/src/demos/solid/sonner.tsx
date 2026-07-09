@@ -1,8 +1,8 @@
-import { toast } from "solid-sonner"
+import { toast } from "solid-sonner";
 
-import { Button } from "@/registry/solid/ui/button"
-import { Toaster } from "@/registry/solid/ui/sonner"
-import { CheckCheck, Info, TriangleAlert } from "lucide-solid"
+import { Button } from "@/registry/solid/ui/button";
+import { Toaster } from "@/registry/solid/ui/sonner";
+import { CheckCheck, Info, TriangleAlert } from "lucide-solid";
 
 export default function SonnerDemo() {
   return (
@@ -61,5 +61,5 @@ export default function SonnerDemo() {
         </Button>
       </div>
     </div>
-  )
+  );
 }

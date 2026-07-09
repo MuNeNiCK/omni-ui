@@ -6,21 +6,21 @@ import {
   createSignal,
   createEffect,
   onCleanup,
-} from "solid-js"
+} from "solid-js";
 
-import { Toaster as Sonner } from "solid-sonner"
-import { CheckCheck, Info, TriangleAlert } from "lucide-solid"
+import { Toaster as Sonner } from "solid-sonner";
+import { CheckCheck, Info, TriangleAlert } from "lucide-solid";
 
-import { cn } from "@/registry/solid/lib/utils"
-import { toneVarDefaults, toneVarOverrides } from "@/registry/solid/lib/tone"
+import { cn } from "@/registry/solid/lib/utils";
+import { toneVarDefaults, toneVarOverrides } from "@/registry/solid/lib/tone";
 
-type ToasterProps = ComponentProps<typeof Sonner>
+type ToasterProps = ComponentProps<typeof Sonner>;
 
 const toastBaseClass = cn(
   toneVarDefaults,
   "group/toast relative grid min-w-[20rem] max-w-[420px] grid-cols-[auto_1fr] items-start gap-x-4 gap-y-3 overflow-hidden rounded-none border border-[color:var(--tone-border)] bg-[image:var(--tone-gradient)] bg-no-repeat bg-[length:100%_1px] bg-[position:0_0] px-6 py-5 text-sm text-[color:var(--tone-body)] shadow-[var(--glass-shadow-outline)] backdrop-blur-[12px] transition-colors",
   "before:absolute before:left-0 before:top-3 before:bottom-3 before:w-[3px] before:rounded-full before:bg-[color:var(--tone-bar)] before:content-['']",
-)
+);
 
 const toastVariants = {
   default: toneVarOverrides.default,
@@ -31,27 +31,27 @@ const toastVariants = {
   loading: toneVarOverrides.default,
   action: toneVarOverrides.default,
   normal: toneVarOverrides.default,
-}
+};
 
 const toastTitleClass = cn(
-  "col-start-2 font-mono text-[10px] uppercase tracking-[0.32em] text-[color:var(--tone-title)]"
-)
+  "col-start-2 font-mono text-[10px] uppercase tracking-[0.32em] text-[color:var(--tone-title)]",
+);
 
 const toastDescriptionClass = cn(
-  "col-start-2 grid justify-items-start gap-2 text-left text-sm text-[color:var(--tone-description)] [&_p]:leading-relaxed"
-)
+  "col-start-2 grid justify-items-start gap-2 text-left text-sm text-[color:var(--tone-description)] [&_p]:leading-relaxed",
+);
 
 const toastCloseButtonClass = cn(
-  "text-muted-foreground/70 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-)
+  "text-muted-foreground/70 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+);
 
 const toastCancelButtonClass = cn(
-  "rounded-none border border-border/60 bg-muted/40 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground/70 transition-colors hover:border-foreground/60 hover:text-foreground"
-)
+  "rounded-none border border-border/60 bg-muted/40 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground/70 transition-colors hover:border-foreground/60 hover:text-foreground",
+);
 
 const toastActionButtonClass = cn(
-  "rounded-none border border-foreground bg-foreground px-2 py-1 font-mono text-[10px] uppercase tracking-[0.28em] text-background transition-colors hover:bg-foreground/90"
-)
+  "rounded-none border border-foreground bg-foreground px-2 py-1 font-mono text-[10px] uppercase tracking-[0.28em] text-background transition-colors hover:bg-foreground/90",
+);
 
 const toastToneCSS = `
 [data-sonner-toaster] [data-sonner-toast][data-type] [data-description] {
@@ -86,55 +86,47 @@ const toastToneCSS = `
 [data-sonner-toaster] [data-sonner-toast] [data-button]:not([data-cancel]) {
   grid-column-start: 2;
 }
-`
+`;
 
 const toastIcons: Record<string, JSX.Element> = {
-  success: (<CheckCheck class="size-3.5" />),
-  info: (<Info class="size-3.5" />),
-  warning: (<TriangleAlert class="size-3.5" />),
-  error: (<TriangleAlert class="size-3.5" />),
-}
+  success: <CheckCheck class="size-3.5" />,
+  info: <Info class="size-3.5" />,
+  warning: <TriangleAlert class="size-3.5" />,
+  error: <TriangleAlert class="size-3.5" />,
+};
 
 function useResolvedTheme(): () => "light" | "dark" | "system" {
   const initial =
     typeof document !== "undefined"
       ? document.documentElement.classList.contains("dark")
-        ? "dark" as const
-        : "light" as const
-      : "system" as const
-  const [theme, setTheme] = createSignal<"light" | "dark" | "system">(initial)
+        ? ("dark" as const)
+        : ("light" as const)
+      : ("system" as const);
+  const [theme, setTheme] = createSignal<"light" | "dark" | "system">(initial);
 
   createEffect(() => {
-    if (typeof document === "undefined") return
+    if (typeof document === "undefined") return;
 
     const detect = () => {
-      setTheme(
-        document.documentElement.classList.contains("dark") ? "dark" : "light"
-      )
-    }
+      setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
+    };
 
-    const observer = new MutationObserver(detect)
+    const observer = new MutationObserver(detect);
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["class"],
-    })
-    onCleanup(() => observer.disconnect())
-  })
+    });
+    onCleanup(() => observer.disconnect());
+  });
 
-  return theme
+  return theme;
 }
 
 const Toaster: Component<ToasterProps> = (props) => {
-  const [local, rest] = splitProps(props, [
-    "theme",
-    "class",
-    "style",
-    "icons",
-    "toastOptions",
-  ])
-  const resolvedTheme = useResolvedTheme()
+  const [local, rest] = splitProps(props, ["theme", "class", "style", "icons", "toastOptions"]);
+  const resolvedTheme = useResolvedTheme();
 
-  const userClasses = () => local.toastOptions?.classes ?? {}
+  const userClasses = () => local.toastOptions?.classes ?? {};
 
   return (
     <>
@@ -174,7 +166,7 @@ const Toaster: Component<ToasterProps> = (props) => {
         {...rest}
       />
     </>
-  )
-}
+  );
+};
 
-export { Toaster }
+export { Toaster };

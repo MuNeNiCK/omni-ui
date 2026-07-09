@@ -1,14 +1,11 @@
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/registry/react/ui/toggle-group"
+import { ToggleGroup, ToggleGroupItem } from "@/registry/react/ui/toggle-group";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/react/ui/card"
+} from "@/registry/react/ui/card";
 
 export default function ToggleGroupDemo() {
   return (
@@ -34,5 +31,5 @@ export default function ToggleGroupDemo() {
         </ToggleGroup>
       </CardContent>
     </Card>
-  )
+  );
 }

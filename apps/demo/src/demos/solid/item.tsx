@@ -9,8 +9,8 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "@/registry/solid/ui/item"
-import { Button } from "@/registry/solid/ui/button"
+} from "@/registry/solid/ui/item";
+import { Button } from "@/registry/solid/ui/button";
 
 export default function ItemDemo() {
   return (
@@ -55,9 +55,7 @@ export default function ItemDemo() {
               </Button>
             </ItemActions>
           </ItemHeader>
-          <ItemDescription>
-            Columnar store powering dashboards and custom queries.
-          </ItemDescription>
+          <ItemDescription>Columnar store powering dashboards and custom queries.</ItemDescription>
         </ItemContent>
       </Item>
 
@@ -72,5 +70,5 @@ export default function ItemDemo() {
         </ItemContent>
       </Item>
     </ItemGroup>
-  )
+  );
 }

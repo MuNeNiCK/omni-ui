@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { useCallback, useState } from "react"
+import { useCallback, useState } from "react";
 
-import { Terminal } from "lucide-react"
+import { Terminal } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/react/ui/button";
 
 interface CopyCommandButtonProps {
-  command: string
-  copyCommand: string
-  className?: string
+  command: string;
+  copyCommand: string;
+  className?: string;
 }
 
 export default function CopyCommandButton({
@@ -17,19 +17,19 @@ export default function CopyCommandButton({
   copyCommand,
   className,
 }: CopyCommandButtonProps) {
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(false);
 
   const handleCopy = useCallback(async () => {
     try {
-      await navigator.clipboard.writeText(copyCommand)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      await navigator.clipboard.writeText(copyCommand);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch (error) {
-      console.error("Failed to copy command", error)
+      console.error("Failed to copy command", error);
     }
-  }, [copyCommand])
+  }, [copyCommand]);
 
-  const shortCommand = command.split(" ").slice(-1)[0]
+  const shortCommand = command.split(" ").slice(-1)[0];
 
   return (
     <Button
@@ -39,12 +39,8 @@ export default function CopyCommandButton({
       className={`font-mono text-xs md:text-sm gap-2 ${className ?? ""}`}
     >
       <Terminal className="size-3 md:size-4" />
-      <span className="hidden sm:block">
-        {copied ? "Copied!" : command}
-      </span>
-      <span className="block sm:hidden">
-        {copied ? "Copied!" : shortCommand}
-      </span>
+      <span className="hidden sm:block">{copied ? "Copied!" : command}</span>
+      <span className="block sm:hidden">{copied ? "Copied!" : shortCommand}</span>
     </Button>
-  )
+  );
 }

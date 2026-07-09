@@ -1,8 +1,8 @@
-import { useState } from "react"
-import { CheckCircle2, LayoutDashboard, Shield, Zap } from "lucide-react"
+import { useState } from "react";
+import { CheckCircle2, LayoutDashboard, Shield, Zap } from "lucide-react";
 
-import { Badge } from "@/registry/react/ui/badge"
-import { Button } from "@/registry/react/ui/button"
+import { Badge } from "@/registry/react/ui/badge";
+import { Button } from "@/registry/react/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -21,17 +21,17 @@ import {
   SidebarRail,
   SidebarSeparator,
   SidebarTrigger,
-} from "@/registry/react/ui/sidebar"
+} from "@/registry/react/ui/sidebar";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/react/ui/card"
+} from "@/registry/react/ui/card";
 
 export default function SidebarDemo() {
-  const [active, setActive] = useState("overview")
+  const [active, setActive] = useState("overview");
 
   return (
     <div className="overflow-hidden rounded-none border border-border/70">
@@ -104,19 +104,23 @@ export default function SidebarDemo() {
           <Card className="mt-6 border-border/70">
             <CardHeader>
               <CardTitle className="font-mono text-xs uppercase tracking-[0.32em] text-muted-foreground">
-                {active === "overview" ? "Control plane" : active === "security" ? "Security posture" : "Workflow automations"}
+                {active === "overview"
+                  ? "Control plane"
+                  : active === "security"
+                    ? "Security posture"
+                    : "Workflow automations"}
               </CardTitle>
               <CardDescription>
                 Content area demonstrates how the inset pairs with the sidebar.
               </CardDescription>
             </CardHeader>
             <CardContent className="text-sm text-muted-foreground">
-              This panel inherits the frosted backdrop while the sidebar keeps
-              its glass rail and uppercase markers.
+              This panel inherits the frosted backdrop while the sidebar keeps its glass rail and
+              uppercase markers.
             </CardContent>
           </Card>
         </SidebarInset>
       </SidebarProvider>
     </div>
-  )
+  );
 }

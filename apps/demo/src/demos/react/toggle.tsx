@@ -1,11 +1,11 @@
-import { Toggle } from "@/registry/react/ui/toggle"
+import { Toggle } from "@/registry/react/ui/toggle";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/react/ui/card"
+} from "@/registry/react/ui/card";
 
 export default function ToggleDemo() {
   return (
@@ -28,5 +28,5 @@ export default function ToggleDemo() {
         </Toggle>
       </CardContent>
     </Card>
-  )
+  );
 }

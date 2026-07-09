@@ -1,16 +1,11 @@
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/solid/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/solid/ui/tabs";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/solid/ui/card"
+} from "@/registry/solid/ui/card";
 
 export default function TabsDemo() {
   return (
@@ -50,5 +45,5 @@ export default function TabsDemo() {
         </Tabs>
       </CardContent>
     </Card>
-  )
+  );
 }

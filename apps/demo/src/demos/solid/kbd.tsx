@@ -1,4 +1,4 @@
-import { Kbd, KbdGroup } from "@/registry/solid/ui/kbd"
+import { Kbd, KbdGroup } from "@/registry/solid/ui/kbd";
 
 export default function KbdDemo() {
   return (
@@ -13,5 +13,5 @@ export default function KbdDemo() {
         <Kbd>F</Kbd>
       </KbdGroup>
     </div>
-  )
+  );
 }

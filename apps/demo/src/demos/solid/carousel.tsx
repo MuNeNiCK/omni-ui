@@ -1,4 +1,4 @@
-import { createSignal, For } from "solid-js"
+import { createSignal, For } from "solid-js";
 
 import {
   type CarouselApi,
@@ -7,8 +7,8 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/registry/solid/ui/carousel"
-import { Button } from "@/registry/solid/ui/button"
+} from "@/registry/solid/ui/carousel";
+import { Button } from "@/registry/solid/ui/button";
 
 const slides = [
   {
@@ -26,19 +26,19 @@ const slides = [
     description: "Osaka cluster warming standby nodes",
     status: "Warm",
   },
-]
+];
 
 export default function CarouselDemo() {
-  const [index, setIndex] = createSignal(0)
-  const [api, setApi] = createSignal<CarouselApi>()
+  const [index, setIndex] = createSignal(0);
+  const [api, setApi] = createSignal<CarouselApi>();
 
   return (
     <div class="relative">
       <Carousel
         class="w-full"
         setApi={(instance) => {
-          setApi(instance)
-          instance?.on("select", () => setIndex(instance.selectedScrollSnap()))
+          setApi(instance);
+          instance?.on("select", () => setIndex(instance.selectedScrollSnap()));
         }}
       >
         <CarouselContent class="-ml-6">
@@ -49,12 +49,8 @@ export default function CarouselDemo() {
                   <span class="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/80">
                     {slide.status}
                   </span>
-                  <h3 class="text-xl font-semibold uppercase tracking-[0.12em]">
-                    {slide.title}
-                  </h3>
-                  <p class="text-sm text-muted-foreground">
-                    {slide.description}
-                  </p>
+                  <h3 class="text-xl font-semibold uppercase tracking-[0.12em]">{slide.title}</h3>
+                  <p class="text-sm text-muted-foreground">{slide.description}</p>
                 </div>
               </CarouselItem>
             )}
@@ -71,8 +67,8 @@ export default function CarouselDemo() {
               size="icon-sm"
               class="size-8"
               onClick={() => {
-                api()?.scrollTo(slideIndex())
-                setIndex(slideIndex())
+                api()?.scrollTo(slideIndex());
+                setIndex(slideIndex());
               }}
             >
               <span class="sr-only">Go to slide {slideIndex() + 1}</span>
@@ -82,5 +78,5 @@ export default function CarouselDemo() {
         </For>
       </div>
     </div>
-  )
+  );
 }

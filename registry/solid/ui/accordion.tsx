@@ -1,12 +1,12 @@
-import { splitProps, type ComponentProps } from "solid-js"
-import * as AccordionPrimitive from "@kobalte/core/accordion"
-import { ChevronDownIcon } from "lucide-solid"
-import { cn } from "@/registry/solid/lib/utils"
+import { splitProps, type ComponentProps } from "solid-js";
+import * as AccordionPrimitive from "@kobalte/core/accordion";
+import { ChevronDownIcon } from "lucide-solid";
+import { cn } from "@/registry/solid/lib/utils";
 
-const containerStyles = "divide-y divide-border/60 text-muted-foreground/80 dark:text-foreground"
+const containerStyles = "divide-y divide-border/60 text-muted-foreground/80 dark:text-foreground";
 
 function Accordion(props: ComponentProps<typeof AccordionPrimitive.Root>) {
-  const [local, rest] = splitProps(props, ["class", "children"])
+  const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <AccordionPrimitive.Root
       data-slot="accordion"
@@ -15,11 +15,11 @@ function Accordion(props: ComponentProps<typeof AccordionPrimitive.Root>) {
     >
       {local.children}
     </AccordionPrimitive.Root>
-  )
+  );
 }
 
 function AccordionItem(props: ComponentProps<typeof AccordionPrimitive.Item>) {
-  const [local, rest] = splitProps(props, ["class", "children"])
+  const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
@@ -27,17 +27,17 @@ function AccordionItem(props: ComponentProps<typeof AccordionPrimitive.Item>) {
         "group relative overflow-hidden transition-colors",
         "before:absolute before:left-0 before:top-1.5 before:bottom-1.5 before:w-px before:origin-bottom before:scale-y-0 before:bg-primary/50 before:transition-transform before:duration-200 before:content-['']",
         "data-[expanded]:before:scale-y-100",
-        local.class
+        local.class,
       )}
       {...rest}
     >
       {local.children}
     </AccordionPrimitive.Item>
-  )
+  );
 }
 
 function AccordionTrigger(props: ComponentProps<typeof AccordionPrimitive.Trigger>) {
-  const [local, rest] = splitProps(props, ["class", "children"])
+  const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <AccordionPrimitive.Header class="relative">
       <AccordionPrimitive.Trigger
@@ -51,7 +51,7 @@ function AccordionTrigger(props: ComponentProps<typeof AccordionPrimitive.Trigge
           "data-[expanded]:text-foreground data-[expanded]:tracking-[0.34em]",
           "disabled:pointer-events-none disabled:opacity-40",
           "[&>[data-slot=accordion-chevron]]:transition-transform [&[data-expanded]>[data-slot=accordion-chevron]]:rotate-180",
-          local.class
+          local.class,
         )}
         {...rest}
       >
@@ -64,22 +64,27 @@ function AccordionTrigger(props: ComponentProps<typeof AccordionPrimitive.Trigge
         </span>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
-  )
+  );
 }
 
 function AccordionContent(props: ComponentProps<typeof AccordionPrimitive.Content>) {
-  const [local, rest] = splitProps(props, ["class", "children"])
+  const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
       class="overflow-hidden text-sm text-foreground/80 data-[closed]:animate-accordion-up data-[expanded]:animate-accordion-down"
       {...rest}
     >
-      <div class={cn("px-4 pb-4 pt-1.5 leading-relaxed text-muted-foreground/90 dark:text-foreground/80", local.class)}>
+      <div
+        class={cn(
+          "px-4 pb-4 pt-1.5 leading-relaxed text-muted-foreground/90 dark:text-foreground/80",
+          local.class,
+        )}
+      >
         {local.children}
       </div>
     </AccordionPrimitive.Content>
-  )
+  );
 }
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };

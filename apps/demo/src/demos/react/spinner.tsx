@@ -1,5 +1,5 @@
-import { Spinner } from "@/registry/react/ui/spinner"
-import { Button } from "@/registry/react/ui/button"
+import { Spinner } from "@/registry/react/ui/spinner";
+import { Button } from "@/registry/react/ui/button";
 
 export default function SpinnerDemo() {
   return (
@@ -13,5 +13,5 @@ export default function SpinnerDemo() {
         <span>Fetching cluster metrics...</span>
       </div>
     </div>
-  )
+  );
 }

@@ -2,15 +2,15 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/react/ui/collapsible"
-import { Button } from "@/registry/react/ui/button"
+} from "@/registry/react/ui/collapsible";
+import { Button } from "@/registry/react/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/react/ui/card"
+} from "@/registry/react/ui/card";
 
 export default function CollapsibleDemo() {
   return (
@@ -20,8 +20,7 @@ export default function CollapsibleDemo() {
           Build Step Summary
         </CardTitle>
         <CardDescription>
-          Toggle the collapsed region to reveal the raw build logs while the
-          summary stays visible.
+          Toggle the collapsed region to reveal the raw build logs while the summary stays visible.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -38,7 +37,7 @@ export default function CollapsibleDemo() {
           </div>
           <CollapsibleContent className="rounded-md border bg-muted/40 p-4 text-sm text-muted-foreground">
             <pre className="whitespace-pre-wrap">
-{`> pnpm install
+              {`> pnpm install
 > pnpm run build
 
 ✓ lint passed
@@ -49,5 +48,5 @@ export default function CollapsibleDemo() {
         </Collapsible>
       </CardContent>
     </Card>
-  )
+  );
 }

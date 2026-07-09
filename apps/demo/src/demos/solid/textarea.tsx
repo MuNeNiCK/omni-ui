@@ -1,13 +1,11 @@
-import { Label } from "@/registry/solid/ui/label"
-import { Textarea } from "@/registry/solid/ui/textarea"
+import { Label } from "@/registry/solid/ui/label";
+import { Textarea } from "@/registry/solid/ui/textarea";
 
 export default function TextareaDemo() {
   return (
     <div class="grid gap-6">
       <div class="grid gap-4">
-        <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Support Form
-        </p>
+        <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">Support Form</p>
         <div class="grid gap-2">
           <Label for="subject">Subject</Label>
           <Textarea id="subject" placeholder="Access issue on ap-tokyo-1" />
@@ -23,9 +21,7 @@ export default function TextareaDemo() {
       </div>
 
       <div class="grid gap-4">
-        <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Read-Only
-        </p>
+        <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">Read-Only</p>
         <div class="grid gap-2">
           <Label for="logs" class="opacity-70">
             Latest Logs
@@ -41,5 +37,5 @@ export default function TextareaDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

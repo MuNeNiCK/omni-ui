@@ -1,59 +1,45 @@
-import { splitProps, type ComponentProps, type JSX } from "solid-js"
-import * as ContextMenuPrimitive from "@kobalte/core/context-menu"
-import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-solid"
+import { splitProps, type ComponentProps, type JSX } from "solid-js";
+import * as ContextMenuPrimitive from "@kobalte/core/context-menu";
+import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-solid";
 
-import { glassSurfaceClass } from "@/registry/solid/lib/glass"
-import { cn, omniMonoText } from "@/registry/solid/lib/utils"
+import { glassSurfaceClass } from "@/registry/solid/lib/glass";
+import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
 function ContextMenu(props: ComponentProps<typeof ContextMenuPrimitive.Root>) {
-  return <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />
+  return <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />;
 }
 
 function ContextMenuTrigger(props: ComponentProps<typeof ContextMenuPrimitive.Trigger>) {
-  return (
-    <ContextMenuPrimitive.Trigger data-slot="context-menu-trigger" {...props} />
-  )
+  return <ContextMenuPrimitive.Trigger data-slot="context-menu-trigger" {...props} />;
 }
 
 function ContextMenuGroup(props: ComponentProps<typeof ContextMenuPrimitive.Group>) {
-  return (
-    <ContextMenuPrimitive.Group data-slot="context-menu-group" {...props} />
-  )
+  return <ContextMenuPrimitive.Group data-slot="context-menu-group" {...props} />;
 }
 
 function ContextMenuPortal(props: ComponentProps<typeof ContextMenuPrimitive.Portal>) {
-  return (
-    <ContextMenuPrimitive.Portal data-slot="context-menu-portal" {...props} />
-  )
+  return <ContextMenuPrimitive.Portal data-slot="context-menu-portal" {...props} />;
 }
 
 function ContextMenuSub(props: ComponentProps<typeof ContextMenuPrimitive.Sub>) {
-  return <ContextMenuPrimitive.Sub data-slot="context-menu-sub" {...props} />
+  return <ContextMenuPrimitive.Sub data-slot="context-menu-sub" {...props} />;
 }
 
-function ContextMenuRadioGroup(
-  props: ComponentProps<typeof ContextMenuPrimitive.RadioGroup>
-) {
-  return (
-    <ContextMenuPrimitive.RadioGroup
-      data-slot="context-menu-radio-group"
-      {...props}
-    />
-  )
+function ContextMenuRadioGroup(props: ComponentProps<typeof ContextMenuPrimitive.RadioGroup>) {
+  return <ContextMenuPrimitive.RadioGroup data-slot="context-menu-radio-group" {...props} />;
 }
 
-const itemBase =
-  cn(
-    "relative flex cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/80 outline-hidden transition-[background,color] data-[disabled]:pointer-events-none data-[disabled]:opacity-40 rounded-none",
-    omniMonoText.menu
-  )
+const itemBase = cn(
+  "relative flex cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/80 outline-hidden transition-[background,color] data-[disabled]:pointer-events-none data-[disabled]:opacity-40 rounded-none",
+  omniMonoText.menu,
+);
 
 function ContextMenuSubTrigger(
   props: ComponentProps<typeof ContextMenuPrimitive.SubTrigger> & {
-    inset?: boolean
-  }
+    inset?: boolean;
+  },
 ) {
-  const [local, rest] = splitProps(props, ["class", "inset", "children"])
+  const [local, rest] = splitProps(props, ["class", "inset", "children"]);
   return (
     <ContextMenuPrimitive.SubTrigger
       data-slot="context-menu-sub-trigger"
@@ -62,20 +48,18 @@ function ContextMenuSubTrigger(
         itemBase,
         "hover:bg-foreground hover:text-background",
         local.inset && "pl-9",
-        local.class
+        local.class,
       )}
       {...rest}
     >
       {local.children}
       <ChevronRightIcon class="ml-auto size-4" />
     </ContextMenuPrimitive.SubTrigger>
-  )
+  );
 }
 
-function ContextMenuSubContent(
-  props: ComponentProps<typeof ContextMenuPrimitive.SubContent>
-) {
-  const [local, rest] = splitProps(props, ["class"])
+function ContextMenuSubContent(props: ComponentProps<typeof ContextMenuPrimitive.SubContent>) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <ContextMenuPrimitive.SubContent
       data-slot="context-menu-sub-content"
@@ -83,17 +67,15 @@ function ContextMenuSubContent(
         "z-50 min-w-[10rem] origin-[var(--kb-menu-content-transform-origin)] overflow-hidden p-1",
         glassSurfaceClass,
         "data-[expanded]:animate-in data-[expanded]:fade-in-0 data-[expanded]:zoom-in-95 data-[closed]:animate-out data-[closed]:zoom-out-95",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
-function ContextMenuContent(
-  props: ComponentProps<typeof ContextMenuPrimitive.Content>
-) {
-  const [local, rest] = splitProps(props, ["class"])
+function ContextMenuContent(props: ComponentProps<typeof ContextMenuPrimitive.Content>) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <ContextMenuPrimitive.Portal>
       <ContextMenuPrimitive.Content
@@ -102,23 +84,23 @@ function ContextMenuContent(
           "z-50 max-h-[var(--kb-popper-content-available-height)] min-w-[10rem] origin-[var(--kb-menu-content-transform-origin)] overflow-hidden p-1",
           glassSurfaceClass,
           "data-[expanded]:animate-in data-[expanded]:fade-in-0 data-[expanded]:zoom-in-95 data-[closed]:animate-out data-[closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-          local.class
+          local.class,
         )}
         {...rest}
       />
     </ContextMenuPrimitive.Portal>
-  )
+  );
 }
 
 function ContextMenuItem(
   props: ComponentProps<typeof ContextMenuPrimitive.Item> & {
-    class?: string
-    inset?: boolean
-    variant?: "default" | "destructive"
-  }
+    class?: string;
+    inset?: boolean;
+    variant?: "default" | "destructive";
+  },
 ) {
-  const [local, rest] = splitProps(props, ["class", "inset", "variant"])
-  const variant = () => local.variant ?? "default"
+  const [local, rest] = splitProps(props, ["class", "inset", "variant"]);
+  const variant = () => local.variant ?? "default";
   return (
     <ContextMenuPrimitive.Item
       data-slot="context-menu-item"
@@ -130,17 +112,15 @@ function ContextMenuItem(
         variant() === "destructive" &&
           "text-destructive hover:bg-destructive hover:text-background",
         local.inset && "pl-9",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
-function ContextMenuCheckboxItem(
-  props: ComponentProps<typeof ContextMenuPrimitive.CheckboxItem>
-) {
-  const [local, rest] = splitProps(props, ["class", "children", "checked"])
+function ContextMenuCheckboxItem(props: ComponentProps<typeof ContextMenuPrimitive.CheckboxItem>) {
+  const [local, rest] = splitProps(props, ["class", "children", "checked"]);
   return (
     <ContextMenuPrimitive.CheckboxItem
       data-slot="context-menu-checkbox-item"
@@ -155,11 +135,11 @@ function ContextMenuCheckboxItem(
       </span>
       {local.children}
     </ContextMenuPrimitive.CheckboxItem>
-  )
+  );
 }
 
 function ContextMenuRadioItem(props: ComponentProps<typeof ContextMenuPrimitive.RadioItem>) {
-  const [local, rest] = splitProps(props, ["class", "children"])
+  const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <ContextMenuPrimitive.RadioItem
       data-slot="context-menu-radio-item"
@@ -173,13 +153,13 @@ function ContextMenuRadioItem(props: ComponentProps<typeof ContextMenuPrimitive.
       </span>
       {local.children}
     </ContextMenuPrimitive.RadioItem>
-  )
+  );
 }
 
 function ContextMenuLabel(
-  props: ParentProps<{ class?: string; inset?: boolean } & JSX.HTMLAttributes<HTMLDivElement>>
+  props: ParentProps<{ class?: string; inset?: boolean } & JSX.HTMLAttributes<HTMLDivElement>>,
 ) {
-  const [local, rest] = splitProps(props, ["class", "inset"])
+  const [local, rest] = splitProps(props, ["class", "inset"]);
   return (
     <div
       data-slot="context-menu-label"
@@ -188,44 +168,38 @@ function ContextMenuLabel(
         "px-3 py-2 text-muted-foreground/70",
         omniMonoText.wide,
         local.inset && "pl-9",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
-function ContextMenuSeparator(
-  props: ComponentProps<typeof ContextMenuPrimitive.Separator>
-) {
-  const [local, rest] = splitProps(props, ["class"])
+function ContextMenuSeparator(props: ComponentProps<typeof ContextMenuPrimitive.Separator>) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <ContextMenuPrimitive.Separator
       data-slot="context-menu-separator"
       class={cn(
         "pointer-events-none -mx-1 my-1 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 function ContextMenuShortcut(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLSpanElement>>
+  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLSpanElement>>,
 ) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <span
       data-slot="context-menu-shortcut"
-      class={cn(
-        "ml-auto text-muted-foreground/70",
-        omniMonoText.wide,
-        local.class
-      )}
+      class={cn("ml-auto text-muted-foreground/70", omniMonoText.wide, local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 export {
@@ -244,4 +218,4 @@ export {
   ContextMenuSubTrigger,
   ContextMenuSubContent,
   ContextMenuShortcut,
-}
+};

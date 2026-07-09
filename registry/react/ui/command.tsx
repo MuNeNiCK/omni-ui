@@ -1,34 +1,31 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Command as CommandPrimitive } from "cmdk"
-import { SearchIcon } from "lucide-react"
+import * as React from "react";
+import { Command as CommandPrimitive } from "cmdk";
+import { SearchIcon } from "lucide-react";
 
-import { glassInsetSurfaceClass } from "@/registry/react/lib/glass"
-import { cn } from "@/registry/react/lib/utils"
+import { glassInsetSurfaceClass } from "@/registry/react/lib/glass";
+import { cn } from "@/registry/react/lib/utils";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/registry/react/ui/dialog"
+} from "@/registry/react/ui/dialog";
 
-function Command({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive>) {
+function Command({ className, ...props }: React.ComponentProps<typeof CommandPrimitive>) {
   return (
     <CommandPrimitive
       data-slot="command"
       className={cn(
         "flex h-full w-full flex-col overflow-hidden text-foreground backdrop-blur-[10px]",
         glassInsetSurfaceClass,
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function CommandDialog({
@@ -39,10 +36,10 @@ function CommandDialog({
   showCloseButton = true,
   ...props
 }: React.ComponentProps<typeof Dialog> & {
-  title?: string
-  description?: string
-  className?: string
-  showCloseButton?: boolean
+  title?: string;
+  description?: string;
+  className?: string;
+  showCloseButton?: boolean;
 }) {
   return (
     <Dialog {...props}>
@@ -54,7 +51,7 @@ function CommandDialog({
         className={cn(
           "overflow-hidden border border-border/60 bg-muted/30 p-0 text-foreground shadow-[var(--glass-shadow-outline-heavy)] backdrop-blur-[12px]",
           "rounded-none",
-          className
+          className,
         )}
         showCloseButton={showCloseButton}
       >
@@ -63,7 +60,7 @@ function CommandDialog({
         </Command>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
 
 function CommandInput({
@@ -80,40 +77,32 @@ function CommandInput({
         data-slot="command-input"
         className={cn(
           "flex h-full w-full bg-transparent font-mono text-[11px] uppercase tracking-[0.28em] text-muted-foreground/80 outline-hidden placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-40",
-          className
+          className,
         )}
         {...props}
       />
     </div>
-  )
+  );
 }
 
-function CommandList({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.List>) {
+function CommandList({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.List>) {
   return (
     <CommandPrimitive.List
       data-slot="command-list"
-      className={cn(
-        "max-h-[320px] scroll-py-1 overflow-x-hidden overflow-y-auto",
-        className
-      )}
+      className={cn("max-h-[320px] scroll-py-1 overflow-x-hidden overflow-y-auto", className)}
       {...props}
     />
-  )
+  );
 }
 
-function CommandEmpty({
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.Empty>) {
+function CommandEmpty({ ...props }: React.ComponentProps<typeof CommandPrimitive.Empty>) {
   return (
     <CommandPrimitive.Empty
       data-slot="command-empty"
       className="py-6 text-center text-sm text-muted-foreground"
       {...props}
     />
-  )
+  );
 }
 
 function CommandGroup({
@@ -126,7 +115,7 @@ function CommandGroup({
       className={cn("overflow-hidden p-1 text-foreground", className)}
       {...props}
     />
-  )
+  );
 }
 
 function CommandSeparator({
@@ -138,17 +127,14 @@ function CommandSeparator({
       data-slot="command-separator"
       className={cn(
         "pointer-events-none -mx-1 my-1 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-function CommandItem({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.Item>) {
+function CommandItem({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Item>) {
   return (
     <CommandPrimitive.Item
       data-slot="command-item"
@@ -157,27 +143,24 @@ function CommandItem({
         "data-[selected=true]:bg-foreground data-[selected=true]:text-background",
         "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-40",
         "rounded-none",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-function CommandShortcut({
-  className,
-  ...props
-}: React.ComponentProps<"span">) {
+function CommandShortcut({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
       data-slot="command-shortcut"
       className={cn(
         "ml-auto font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/70",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 export {
@@ -190,4 +173,4 @@ export {
   CommandItem,
   CommandShortcut,
   CommandSeparator,
-}
+};

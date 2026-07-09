@@ -1,32 +1,28 @@
-import { defineConfig } from "astro/config"
-import react from "@astrojs/react"
-import solidJs from "@astrojs/solid-js"
-import { readFileSync, existsSync } from "fs"
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import solidJs from "@astrojs/solid-js";
+import { readFileSync, existsSync } from "fs";
 
-const root = new URL("../../", import.meta.url).pathname
+const root = new URL("../../", import.meta.url).pathname;
 
 /** Check if a package has a "solid" export condition in its package.json */
 function hasSolidExport(pkg) {
-  if (pkg.startsWith("solid-js") || pkg.startsWith("@astrojs/")) return false
-  const name = pkg.startsWith("@")
-    ? pkg.split("/").slice(0, 2).join("/")
-    : pkg.split("/")[0]
+  if (pkg.startsWith("solid-js") || pkg.startsWith("@astrojs/")) return false;
+  const name = pkg.startsWith("@") ? pkg.split("/").slice(0, 2).join("/") : pkg.split("/")[0];
   // Check both direct and pnpm hoisted locations
   const candidates = [
     root + "node_modules/" + name + "/package.json",
     root + "node_modules/.pnpm/node_modules/" + name + "/package.json",
-  ]
+  ];
   for (const p of candidates) {
     try {
-      if (!existsSync(p)) continue
-      return JSON.stringify(
-        JSON.parse(readFileSync(p, "utf8")).exports || {}
-      ).includes('"solid"')
+      if (!existsSync(p)) continue;
+      return JSON.stringify(JSON.parse(readFileSync(p, "utf8")).exports || {}).includes('"solid"');
     } catch {
-      continue
+      continue;
     }
   }
-  return false
+  return false;
 }
 
 /**
@@ -46,28 +42,26 @@ function fixKobaltePerf() {
     enforce: "post",
     configEnvironment(_name, config) {
       if (config.resolve?.conditions) {
-        config.resolve.conditions = config.resolve.conditions.filter(
-          (c) => c !== "solid"
-        )
+        config.resolve.conditions = config.resolve.conditions.filter((c) => c !== "solid");
       }
       if (config.optimizeDeps?.exclude) {
         config.optimizeDeps.exclude = config.optimizeDeps.exclude.filter(
-          (pkg) => !hasSolidExport(pkg)
-        )
+          (pkg) => !hasSolidExport(pkg),
+        );
       }
     },
     configResolved(config) {
-      const idx = config.resolve.conditions.indexOf("solid")
-      if (idx !== -1) config.resolve.conditions.splice(idx, 1)
+      const idx = config.resolve.conditions.indexOf("solid");
+      if (idx !== -1) config.resolve.conditions.splice(idx, 1);
       if (config.optimizeDeps?.exclude) {
         for (let i = config.optimizeDeps.exclude.length - 1; i >= 0; i--) {
           if (hasSolidExport(config.optimizeDeps.exclude[i])) {
-            config.optimizeDeps.exclude.splice(i, 1)
+            config.optimizeDeps.exclude.splice(i, 1);
           }
         }
       }
     },
-  }
+  };
 }
 
 export default defineConfig({
@@ -76,11 +70,7 @@ export default defineConfig({
   integrations: [
     react({ include: ["**/demos/react/**", "**/components/react-*"] }),
     solidJs({
-      include: [
-        "**/demos/solid/**",
-        "**/components/solid-*",
-        "**/registry/solid/**",
-      ],
+      include: ["**/demos/solid/**", "**/components/solid-*", "**/registry/solid/**"],
     }),
   ],
   vite: {
@@ -91,4 +81,4 @@ export default defineConfig({
       },
     },
   },
-})
+});

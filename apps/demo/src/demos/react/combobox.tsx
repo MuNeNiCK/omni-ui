@@ -1,7 +1,7 @@
-import { useMemo, useState } from "react"
+import { useMemo, useState } from "react";
 
-import { Badge } from "@/registry/react/ui/badge"
-import { Button } from "@/registry/react/ui/button"
+import { Badge } from "@/registry/react/ui/badge";
+import { Button } from "@/registry/react/ui/button";
 import {
   Combobox,
   ComboboxContent,
@@ -12,7 +12,7 @@ import {
   ComboboxSearch,
   ComboboxSeparator,
   ComboboxTrigger,
-} from "@/registry/react/ui/combobox"
+} from "@/registry/react/ui/combobox";
 
 const regions = [
   {
@@ -39,29 +39,23 @@ const regions = [
     badge: "Preview",
     description: "Pilot clusters for APAC partners.",
   },
-]
+];
 
 const teams = [
   { value: "observability", label: "Observability", hint: "SRE" },
   { value: "security", label: "Security", hint: "Security" },
   { value: "product", label: "Product", hint: "Product" },
   { value: "growth", label: "Growth", hint: "Operations" },
-]
+];
 
 export default function ComboboxDemo() {
-  const [openRegion, setOpenRegion] = useState(false)
-  const [region, setRegion] = useState<string | null>(null)
-  const [openTeam, setOpenTeam] = useState(false)
-  const [team, setTeam] = useState<string | null>("observability")
+  const [openRegion, setOpenRegion] = useState(false);
+  const [region, setRegion] = useState<string | null>(null);
+  const [openTeam, setOpenTeam] = useState(false);
+  const [team, setTeam] = useState<string | null>("observability");
 
-  const selectedRegion = useMemo(
-    () => regions.find((item) => item.value === region),
-    [region]
-  )
-  const selectedTeam = useMemo(
-    () => teams.find((item) => item.value === team),
-    [team]
-  )
+  const selectedRegion = useMemo(() => regions.find((item) => item.value === region), [region]);
+  const selectedTeam = useMemo(() => teams.find((item) => item.value === team), [team]);
 
   return (
     <div className="space-y-8">
@@ -70,10 +64,7 @@ export default function ComboboxDemo() {
           Region selector
         </h3>
         <Combobox open={openRegion} onOpenChange={setOpenRegion}>
-          <ComboboxTrigger
-            placeholder="Select a deployment region"
-            className="min-w-[18rem]"
-          >
+          <ComboboxTrigger placeholder="Select a deployment region" className="min-w-[18rem]">
             {selectedRegion ? (
               <span className="flex items-center gap-3">
                 <span>{selectedRegion.label}</span>
@@ -93,15 +84,13 @@ export default function ComboboxDemo() {
                     key={item.value}
                     value={item.value}
                     onSelect={(current) => {
-                      const next = current === region ? null : current
-                      setRegion(next)
-                      setOpenRegion(false)
+                      const next = current === region ? null : current;
+                      setRegion(next);
+                      setOpenRegion(false);
                     }}
                   >
                     <span className="flex flex-col">
-                      <span className="font-medium leading-none">
-                        {item.label}
-                      </span>
+                      <span className="font-medium leading-none">{item.label}</span>
                       <span className="text-muted-foreground/70 text-[11px]">
                         {item.description}
                       </span>
@@ -115,10 +104,8 @@ export default function ComboboxDemo() {
 
         {selectedRegion ? (
           <p className="text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">
-              {selectedRegion.label}
-            </span>{" "}
-            is mapped to the {selectedRegion.badge?.toLowerCase()} cluster.
+            <span className="font-semibold text-foreground">{selectedRegion.label}</span> is mapped
+            to the {selectedRegion.badge?.toLowerCase()} cluster.
           </p>
         ) : (
           <p className="text-sm text-muted-foreground">
@@ -133,11 +120,7 @@ export default function ComboboxDemo() {
         </h3>
         <div className="flex flex-wrap items-center gap-3">
           <Combobox open={openTeam} onOpenChange={setOpenTeam}>
-            <ComboboxTrigger
-              size="sm"
-              placeholder="Assign to..."
-              className="min-w-[12rem]"
-            >
+            <ComboboxTrigger size="sm" placeholder="Assign to..." className="min-w-[12rem]">
               {selectedTeam?.label}
             </ComboboxTrigger>
             <ComboboxContent align="end">
@@ -150,15 +133,13 @@ export default function ComboboxDemo() {
                       key={item.value}
                       value={item.value}
                       onSelect={(current) => {
-                        setTeam(current)
-                        setOpenTeam(false)
+                        setTeam(current);
+                        setOpenTeam(false);
                       }}
                     >
                       <span className="flex w-full items-center justify-between">
                         <span>{item.label}</span>
-                        <span className="text-muted-foreground/60 text-[11px]">
-                          {item.hint}
-                        </span>
+                        <span className="text-muted-foreground/60 text-[11px]">{item.hint}</span>
                       </span>
                     </ComboboxItem>
                   ))}
@@ -168,7 +149,7 @@ export default function ComboboxDemo() {
                   <ComboboxItem
                     value="new-team"
                     onSelect={() => {
-                      setOpenTeam(false)
+                      setOpenTeam(false);
                     }}
                   >
                     Create new team...
@@ -187,5 +168,5 @@ export default function ComboboxDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

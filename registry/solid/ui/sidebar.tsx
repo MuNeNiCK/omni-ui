@@ -13,70 +13,65 @@ import {
   type Accessor,
   type ComponentProps,
   type ValidComponent,
-} from "solid-js"
-import type { PolymorphicProps } from "@kobalte/core"
-import { Polymorphic } from "@kobalte/core"
-import { cva, type VariantProps } from "class-variance-authority"
-import { PanelLeftIcon } from "lucide-solid"
+} from "solid-js";
+import { Polymorphic } from "@kobalte/core";
+import { cva, type VariantProps } from "class-variance-authority";
+import { PanelLeftIcon } from "lucide-solid";
 
-import { useIsMobile } from "@/registry/solid/hooks/use-mobile"
-import { cn } from "@/registry/solid/lib/utils"
-import { Button } from "@/registry/solid/ui/button"
-import { Input } from "@/registry/solid/ui/input"
-import { Separator } from "@/registry/solid/ui/separator"
+import { useIsMobile } from "@/registry/solid/hooks/use-mobile";
+import { cn } from "@/registry/solid/lib/utils";
+import { Button } from "@/registry/solid/ui/button";
+import { Input } from "@/registry/solid/ui/input";
+import { Separator } from "@/registry/solid/ui/separator";
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@/registry/solid/ui/sheet"
-import { Skeleton } from "@/registry/solid/ui/skeleton"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/solid/ui/tooltip"
+} from "@/registry/solid/ui/sheet";
+import { Skeleton } from "@/registry/solid/ui/skeleton";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/solid/ui/tooltip";
 
-const SIDEBAR_COOKIE_NAME = "sidebar_state"
-const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
-const SIDEBAR_WIDTH = "16rem"
-const SIDEBAR_WIDTH_MOBILE = "18rem"
-const SIDEBAR_WIDTH_ICON = "3rem"
-const SIDEBAR_KEYBOARD_SHORTCUT = "b"
+const SIDEBAR_COOKIE_NAME = "sidebar_state";
+const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
+const SIDEBAR_WIDTH = "16rem";
+const SIDEBAR_WIDTH_MOBILE = "18rem";
+const SIDEBAR_WIDTH_ICON = "3rem";
+const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
 // --- Context ---
 
 type SidebarContextProps = {
-  state: Accessor<"expanded" | "collapsed">
-  open: Accessor<boolean>
-  setOpen: (open: boolean) => void
-  openMobile: Accessor<boolean>
-  setOpenMobile: (open: boolean) => void
-  isMobile: Accessor<boolean>
-  toggleSidebar: () => void
-}
+  state: Accessor<"expanded" | "collapsed">;
+  open: Accessor<boolean>;
+  setOpen: (open: boolean) => void;
+  openMobile: Accessor<boolean>;
+  setOpenMobile: (open: boolean) => void;
+  isMobile: Accessor<boolean>;
+  toggleSidebar: () => void;
+};
 
-const SidebarContext = createContext<SidebarContextProps>()
+const SidebarContext = createContext<SidebarContextProps>();
 
 function useSidebar() {
-  const context = useContext(SidebarContext)
-  if (!context) throw new Error("useSidebar must be used within a SidebarProvider.")
-  return context
+  const context = useContext(SidebarContext);
+  if (!context) throw new Error("useSidebar must be used within a SidebarProvider.");
+  return context;
 }
 
 // --- SidebarProvider ---
 
 type SidebarProviderProps = ParentProps<
   JSX.HTMLAttributes<HTMLDivElement> & {
-    defaultOpen?: boolean
-    open?: boolean
-    onOpenChange?: (open: boolean) => void
+    defaultOpen?: boolean;
+    open?: boolean;
+    onOpenChange?: (open: boolean) => void;
   }
->
+>;
 
 function SidebarProvider(props: SidebarProviderProps) {
-  const merged = mergeProps({ defaultOpen: true }, props)
+  const merged = mergeProps({ defaultOpen: true }, props);
   const [local, rest] = splitProps(merged, [
     "class",
     "style",
@@ -84,49 +79,44 @@ function SidebarProvider(props: SidebarProviderProps) {
     "defaultOpen",
     "open",
     "onOpenChange",
-  ])
+  ]);
 
-  const isMobile = useIsMobile()
-  const [openMobile, setOpenMobile] = createSignal(false)
-  const [internalOpen, setInternalOpen] = createSignal(local.defaultOpen!)
+  const isMobile = useIsMobile();
+  const [openMobile, setOpenMobile] = createSignal(false);
+  const [internalOpen, setInternalOpen] = createSignal(local.defaultOpen!);
 
-  const open = () => local.open !== undefined ? local.open! : internalOpen()
+  const open = () => (local.open !== undefined ? local.open! : internalOpen());
 
   const setOpen = (value: boolean) => {
     if (local.onOpenChange) {
-      local.onOpenChange(value)
+      local.onOpenChange(value);
     } else {
-      setInternalOpen(value)
+      setInternalOpen(value);
     }
-    document.cookie = `${SIDEBAR_COOKIE_NAME}=${value}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
-  }
+    document.cookie = `${SIDEBAR_COOKIE_NAME}=${value}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+  };
 
   const toggleSidebar = () => {
     if (isMobile()) {
-      setOpenMobile((prev) => !prev)
+      setOpenMobile((prev) => !prev);
     } else {
-      setOpen(!open())
+      setOpen(!open());
     }
-  }
+  };
 
   // Adds a keyboard shortcut to toggle the sidebar.
   createEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (
-        event.key === SIDEBAR_KEYBOARD_SHORTCUT &&
-        (event.metaKey || event.ctrlKey)
-      ) {
-        event.preventDefault()
-        toggleSidebar()
+      if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
+        toggleSidebar();
       }
-    }
-    window.addEventListener("keydown", handleKeyDown)
-    onCleanup(() => window.removeEventListener("keydown", handleKeyDown))
-  })
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    onCleanup(() => window.removeEventListener("keydown", handleKeyDown));
+  });
 
-  const state = createMemo<"expanded" | "collapsed">(() =>
-    open() ? "expanded" : "collapsed"
-  )
+  const state = createMemo<"expanded" | "collapsed">(() => (open() ? "expanded" : "collapsed"));
 
   return (
     <SidebarContext.Provider
@@ -149,40 +139,34 @@ function SidebarProvider(props: SidebarProviderProps) {
         }}
         class={cn(
           "group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full",
-          local.class
+          local.class,
         )}
         {...rest}
       >
         {local.children}
       </div>
     </SidebarContext.Provider>
-  )
+  );
 }
 
 // --- Sidebar ---
 
 type SidebarProps = ParentProps<
   JSX.HTMLAttributes<HTMLDivElement> & {
-    side?: "left" | "right"
-    variant?: "sidebar" | "floating" | "inset"
-    collapsible?: "offcanvas" | "icon" | "none"
+    side?: "left" | "right";
+    variant?: "sidebar" | "floating" | "inset";
+    collapsible?: "offcanvas" | "icon" | "none";
   }
->
+>;
 
 function Sidebar(props: SidebarProps) {
   const merged = mergeProps(
     { side: "left" as const, variant: "sidebar" as const, collapsible: "offcanvas" as const },
-    props
-  )
-  const [local, rest] = splitProps(merged, [
-    "class",
-    "children",
-    "side",
-    "variant",
-    "collapsible",
-  ])
+    props,
+  );
+  const [local, rest] = splitProps(merged, ["class", "children", "side", "variant", "collapsible"]);
 
-  const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
+  const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 
   return (
     <Show
@@ -192,7 +176,7 @@ function Sidebar(props: SidebarProps) {
           data-slot="sidebar"
           class={cn(
             "bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col",
-            local.class
+            local.class,
           )}
           {...rest}
         >
@@ -238,7 +222,7 @@ function Sidebar(props: SidebarProps) {
               "group-data-[side=right]:rotate-180",
               local.variant === "floating" || local.variant === "inset"
                 ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]"
-                : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
+                : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)",
             )}
           />
           <div
@@ -252,7 +236,7 @@ function Sidebar(props: SidebarProps) {
               local.variant === "floating" || local.variant === "inset"
                 ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]"
                 : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l",
-              local.class
+              local.class,
             )}
             {...rest}
           >
@@ -267,14 +251,14 @@ function Sidebar(props: SidebarProps) {
         </div>
       </Show>
     </Show>
-  )
+  );
 }
 
 // --- SidebarTrigger ---
 
 function SidebarTrigger(props: JSX.ButtonHTMLAttributes<HTMLButtonElement> & { class?: string }) {
-  const [local, rest] = splitProps(props, ["class", "onClick"])
-  const { toggleSidebar } = useSidebar()
+  const [local, rest] = splitProps(props, ["class", "onClick"]);
+  const { toggleSidebar } = useSidebar();
 
   return (
     <Button
@@ -284,22 +268,22 @@ function SidebarTrigger(props: JSX.ButtonHTMLAttributes<HTMLButtonElement> & { c
       size="icon"
       class={cn("size-7", local.class)}
       onClick={(event: MouseEvent) => {
-        local.onClick?.(event)
-        toggleSidebar()
+        local.onClick?.(event);
+        toggleSidebar();
       }}
       {...rest}
     >
       <PanelLeftIcon />
       <span class="sr-only">Toggle Sidebar</span>
     </Button>
-  )
+  );
 }
 
 // --- SidebarRail ---
 
 function SidebarRail(props: JSX.ButtonHTMLAttributes<HTMLButtonElement> & { class?: string }) {
-  const [local, rest] = splitProps(props, ["class"])
-  const { toggleSidebar } = useSidebar()
+  const [local, rest] = splitProps(props, ["class"]);
+  const { toggleSidebar } = useSidebar();
 
   return (
     <button
@@ -316,34 +300,34 @@ function SidebarRail(props: JSX.ButtonHTMLAttributes<HTMLButtonElement> & { clas
         "hover:group-data-[collapsible=offcanvas]:bg-sidebar group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full",
         "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2",
         "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarInset ---
 
 function SidebarInset(props: ParentProps<JSX.HTMLAttributes<HTMLElement> & { class?: string }>) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <main
       data-slot="sidebar-inset"
       class={cn(
         "bg-background relative flex w-full flex-1 flex-col",
         "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarInput ---
 
 function SidebarInput(props: JSX.InputHTMLAttributes<HTMLInputElement> & { class?: string }) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <Input
       data-slot="sidebar-input"
@@ -351,13 +335,15 @@ function SidebarInput(props: JSX.InputHTMLAttributes<HTMLInputElement> & { class
       class={cn("bg-background h-8 w-full shadow-none", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarHeader ---
 
-function SidebarHeader(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>) {
-  const [local, rest] = splitProps(props, ["class"])
+function SidebarHeader(
+  props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>,
+) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="sidebar-header"
@@ -365,13 +351,15 @@ function SidebarHeader(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & {
       class={cn("flex flex-col gap-2 p-2", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarFooter ---
 
-function SidebarFooter(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>) {
-  const [local, rest] = splitProps(props, ["class"])
+function SidebarFooter(
+  props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>,
+) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="sidebar-footer"
@@ -379,13 +367,13 @@ function SidebarFooter(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & {
       class={cn("flex flex-col gap-2 p-2", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarSeparator ---
 
 function SidebarSeparator(props: ComponentProps<typeof Separator>) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <Separator
       data-slot="sidebar-separator"
@@ -393,30 +381,32 @@ function SidebarSeparator(props: ComponentProps<typeof Separator>) {
       class={cn("bg-sidebar-border mx-2 w-auto", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarContent ---
 
-function SidebarContent(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>) {
-  const [local, rest] = splitProps(props, ["class"])
+function SidebarContent(
+  props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>,
+) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="sidebar-content"
       data-sidebar="content"
       class={cn(
         "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarGroup ---
 
 function SidebarGroup(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="sidebar-group"
@@ -424,20 +414,20 @@ function SidebarGroup(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { 
       class={cn("relative flex w-full min-w-0 flex-col p-2", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarGroupLabel ---
 
 type SidebarGroupLabelProps = ParentProps<
   JSX.HTMLAttributes<HTMLDivElement> & {
-    class?: string
-    as?: ValidComponent
+    class?: string;
+    as?: ValidComponent;
   }
->
+>;
 
 function SidebarGroupLabel(props: SidebarGroupLabelProps) {
-  const [local, rest] = splitProps(props, ["class", "as"])
+  const [local, rest] = splitProps(props, ["class", "as"]);
   return (
     <Polymorphic
       as={local.as ?? "div"}
@@ -446,24 +436,24 @@ function SidebarGroupLabel(props: SidebarGroupLabelProps) {
       class={cn(
         "text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarGroupAction ---
 
 type SidebarGroupActionProps = ParentProps<
   JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
-    class?: string
-    as?: ValidComponent
+    class?: string;
+    as?: ValidComponent;
   }
->
+>;
 
 function SidebarGroupAction(props: SidebarGroupActionProps) {
-  const [local, rest] = splitProps(props, ["class", "as"])
+  const [local, rest] = splitProps(props, ["class", "as"]);
   return (
     <Polymorphic
       as={local.as ?? "button"}
@@ -474,17 +464,19 @@ function SidebarGroupAction(props: SidebarGroupActionProps) {
         // Increases the hit area of the button on mobile.
         "after:absolute after:-inset-2 md:after:hidden",
         "group-data-[collapsible=icon]:hidden",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarGroupContent ---
 
-function SidebarGroupContent(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>) {
-  const [local, rest] = splitProps(props, ["class"])
+function SidebarGroupContent(
+  props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>,
+) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="sidebar-group-content"
@@ -492,13 +484,15 @@ function SidebarGroupContent(props: ParentProps<JSX.HTMLAttributes<HTMLDivElemen
       class={cn("w-full text-sm", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarMenu ---
 
-function SidebarMenu(props: ParentProps<JSX.HTMLAttributes<HTMLUListElement> & { class?: string }>) {
-  const [local, rest] = splitProps(props, ["class"])
+function SidebarMenu(
+  props: ParentProps<JSX.HTMLAttributes<HTMLUListElement> & { class?: string }>,
+) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <ul
       data-slot="sidebar-menu"
@@ -506,13 +500,15 @@ function SidebarMenu(props: ParentProps<JSX.HTMLAttributes<HTMLUListElement> & {
       class={cn("flex w-full min-w-0 flex-col gap-1", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarMenuItem ---
 
-function SidebarMenuItem(props: ParentProps<JSX.HTMLAttributes<HTMLLIElement> & { class?: string }>) {
-  const [local, rest] = splitProps(props, ["class"])
+function SidebarMenuItem(
+  props: ParentProps<JSX.HTMLAttributes<HTMLLIElement> & { class?: string }>,
+) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <li
       data-slot="sidebar-menu-item"
@@ -520,7 +516,7 @@ function SidebarMenuItem(props: ParentProps<JSX.HTMLAttributes<HTMLLIElement> & 
       class={cn("group/menu-item relative", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarMenuButton ---
@@ -544,17 +540,17 @@ const sidebarMenuButtonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
-)
+  },
+);
 
 type SidebarMenuButtonProps = ParentProps<
   JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
-    class?: string
-    as?: ValidComponent
-    isActive?: boolean
-    tooltip?: string | ComponentProps<typeof TooltipContent>
+    class?: string;
+    as?: ValidComponent;
+    isActive?: boolean;
+    tooltip?: string | ComponentProps<typeof TooltipContent>;
   } & VariantProps<typeof sidebarMenuButtonVariants>
->
+>;
 
 function SidebarMenuButton(props: SidebarMenuButtonProps) {
   const [local, rest] = splitProps(props, [
@@ -564,9 +560,9 @@ function SidebarMenuButton(props: SidebarMenuButtonProps) {
     "variant",
     "size",
     "tooltip",
-  ])
+  ]);
 
-  const { isMobile, state } = useSidebar()
+  const { isMobile, state } = useSidebar();
 
   const button = () => (
     <Polymorphic
@@ -575,44 +571,44 @@ function SidebarMenuButton(props: SidebarMenuButtonProps) {
       data-sidebar="menu-button"
       data-size={local.size}
       data-active={local.isActive}
-      class={cn(sidebarMenuButtonVariants({ variant: local.variant, size: local.size }), local.class)}
+      class={cn(
+        sidebarMenuButtonVariants({ variant: local.variant, size: local.size }),
+        local.class,
+      )}
       {...rest}
     />
-  )
+  );
 
   return (
     <Show when={local.tooltip} fallback={button()}>
       {(tip) => {
         const tooltipProps = () => {
-          const t = tip()
-          return typeof t === "string" ? { children: t } : t
-        }
+          const t = tip();
+          return typeof t === "string" ? { children: t } : t;
+        };
         return (
           <Tooltip>
             <TooltipTrigger as="span">{button()}</TooltipTrigger>
-            <TooltipContent
-              hidden={state() !== "collapsed" || isMobile()}
-              {...tooltipProps()}
-            />
+            <TooltipContent hidden={state() !== "collapsed" || isMobile()} {...tooltipProps()} />
           </Tooltip>
-        )
+        );
       }}
     </Show>
-  )
+  );
 }
 
 // --- SidebarMenuAction ---
 
 type SidebarMenuActionProps = ParentProps<
   JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
-    class?: string
-    as?: ValidComponent
-    showOnHover?: boolean
+    class?: string;
+    as?: ValidComponent;
+    showOnHover?: boolean;
   }
->
+>;
 
 function SidebarMenuAction(props: SidebarMenuActionProps) {
-  const [local, rest] = splitProps(props, ["class", "as", "showOnHover"])
+  const [local, rest] = splitProps(props, ["class", "as", "showOnHover"]);
   return (
     <Polymorphic
       as={local.as ?? "button"}
@@ -628,17 +624,19 @@ function SidebarMenuAction(props: SidebarMenuActionProps) {
         "group-data-[collapsible=icon]:hidden",
         local.showOnHover &&
           "peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarMenuBadge ---
 
-function SidebarMenuBadge(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>) {
-  const [local, rest] = splitProps(props, ["class"])
+function SidebarMenuBadge(
+  props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>,
+) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="sidebar-menu-badge"
@@ -650,26 +648,26 @@ function SidebarMenuBadge(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> 
         "peer-data-[size=default]/menu-button:top-1.5",
         "peer-data-[size=lg]/menu-button:top-2.5",
         "group-data-[collapsible=icon]:hidden",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarMenuSkeleton ---
 
 type SidebarMenuSkeletonProps = ParentProps<
   JSX.HTMLAttributes<HTMLDivElement> & {
-    class?: string
-    showIcon?: boolean
+    class?: string;
+    showIcon?: boolean;
   }
->
+>;
 
 function SidebarMenuSkeleton(props: SidebarMenuSkeletonProps) {
-  const [local, rest] = splitProps(props, ["class", "showIcon"])
+  const [local, rest] = splitProps(props, ["class", "showIcon"]);
   // Random width between 50 to 90%.
-  const width = createMemo(() => `${Math.floor(Math.random() * 40) + 50}%`)
+  const width = createMemo(() => `${Math.floor(Math.random() * 40) + 50}%`);
 
   return (
     <div
@@ -679,10 +677,7 @@ function SidebarMenuSkeleton(props: SidebarMenuSkeletonProps) {
       {...rest}
     >
       <Show when={local.showIcon}>
-        <Skeleton
-          class="size-4 rounded-md"
-          data-sidebar="menu-skeleton-icon"
-        />
+        <Skeleton class="size-4 rounded-md" data-sidebar="menu-skeleton-icon" />
       </Show>
       <Skeleton
         class="h-4 max-w-(--skeleton-width) flex-1"
@@ -690,13 +685,15 @@ function SidebarMenuSkeleton(props: SidebarMenuSkeletonProps) {
         style={{ "--skeleton-width": width() }}
       />
     </div>
-  )
+  );
 }
 
 // --- SidebarMenuSub ---
 
-function SidebarMenuSub(props: ParentProps<JSX.HTMLAttributes<HTMLUListElement> & { class?: string }>) {
-  const [local, rest] = splitProps(props, ["class"])
+function SidebarMenuSub(
+  props: ParentProps<JSX.HTMLAttributes<HTMLUListElement> & { class?: string }>,
+) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <ul
       data-slot="sidebar-menu-sub"
@@ -704,17 +701,19 @@ function SidebarMenuSub(props: ParentProps<JSX.HTMLAttributes<HTMLUListElement> 
       class={cn(
         "border-sidebar-border mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l px-2.5 py-0.5",
         "group-data-[collapsible=icon]:hidden",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarMenuSubItem ---
 
-function SidebarMenuSubItem(props: ParentProps<JSX.HTMLAttributes<HTMLLIElement> & { class?: string }>) {
-  const [local, rest] = splitProps(props, ["class"])
+function SidebarMenuSubItem(
+  props: ParentProps<JSX.HTMLAttributes<HTMLLIElement> & { class?: string }>,
+) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <li
       data-slot="sidebar-menu-sub-item"
@@ -722,23 +721,23 @@ function SidebarMenuSubItem(props: ParentProps<JSX.HTMLAttributes<HTMLLIElement>
       class={cn("group/menu-sub-item relative", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 // --- SidebarMenuSubButton ---
 
 type SidebarMenuSubButtonProps = ParentProps<
   JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
-    class?: string
-    as?: ValidComponent
-    size?: "sm" | "md"
-    isActive?: boolean
+    class?: string;
+    as?: ValidComponent;
+    size?: "sm" | "md";
+    isActive?: boolean;
   }
->
+>;
 
 function SidebarMenuSubButton(props: SidebarMenuSubButtonProps) {
-  const merged = mergeProps({ size: "md" as const, isActive: false }, props)
-  const [local, rest] = splitProps(merged, ["class", "as", "size", "isActive"])
+  const merged = mergeProps({ size: "md" as const, isActive: false }, props);
+  const [local, rest] = splitProps(merged, ["class", "as", "size", "isActive"]);
 
   return (
     <Polymorphic
@@ -753,11 +752,11 @@ function SidebarMenuSubButton(props: SidebarMenuSubButtonProps) {
         local.size === "sm" && "text-xs",
         local.size === "md" && "text-sm",
         "group-data-[collapsible=icon]:hidden",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 export {
@@ -785,4 +784,4 @@ export {
   SidebarSeparator,
   SidebarTrigger,
   useSidebar,
-}
+};

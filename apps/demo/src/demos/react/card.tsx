@@ -6,10 +6,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/react/ui/card"
-import { Button } from "@/registry/react/ui/button"
-import { Badge } from "@/registry/react/ui/badge"
-import { Separator } from "@/registry/react/ui/separator"
+} from "@/registry/react/ui/card";
+import { Button } from "@/registry/react/ui/button";
+import { Badge } from "@/registry/react/ui/badge";
+import { Separator } from "@/registry/react/ui/separator";
 
 export default function CardDemo() {
   return (
@@ -33,9 +33,7 @@ export default function CardDemo() {
             <span className="text-4xl font-semibold tracking-tight text-card-foreground">
               3,482
             </span>
-            <p className="text-sm text-muted-foreground">
-              +12.4% vs previous cycle
-            </p>
+            <p className="text-sm text-muted-foreground">+12.4% vs previous cycle</p>
           </div>
           <Button size="sm">View report</Button>
         </div>
@@ -50,5 +48,5 @@ export default function CardDemo() {
         </div>
       </CardFooter>
     </Card>
-  )
+  );
 }

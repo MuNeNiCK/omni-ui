@@ -9,7 +9,7 @@ import {
   ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuTrigger,
-} from "@/registry/solid/ui/context-menu"
+} from "@/registry/solid/ui/context-menu";
 
 export default function ContextMenuDemo() {
   return (
@@ -34,5 +34,5 @@ export default function ContextMenuDemo() {
         </ContextMenuCheckboxItem>
       </ContextMenuContent>
     </ContextMenu>
-  )
+  );
 }

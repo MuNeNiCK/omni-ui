@@ -1,12 +1,10 @@
-import { Badge } from "@/registry/react/ui/badge"
+import { Badge } from "@/registry/react/ui/badge";
 
 export default function BadgeDemo() {
   return (
     <div className="flex flex-col gap-6">
       <div className="space-y-2">
-        <h2 className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Variants
-        </h2>
+        <h2 className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Variants</h2>
         <div className="flex flex-wrap items-center gap-3">
           <Badge>Default</Badge>
           <Badge variant="secondary">Secondary</Badge>
@@ -16,18 +14,14 @@ export default function BadgeDemo() {
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Inline Usage
-        </h2>
+        <h2 className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Inline Usage</h2>
         <div className="flex flex-wrap items-center gap-2 rounded-lg border px-4 py-3 text-sm">
-          <span className="font-mono text-xs uppercase tracking-[0.28em]">
-            Deployment
-          </span>
+          <span className="font-mono text-xs uppercase tracking-[0.28em]">Deployment</span>
           <Badge variant="outline">Preview</Badge>
           <Badge>Active</Badge>
           <Badge variant="secondary">Synced</Badge>
         </div>
       </div>
     </div>
-  )
+  );
 }

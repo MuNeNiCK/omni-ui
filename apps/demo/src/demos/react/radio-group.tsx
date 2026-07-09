@@ -1,15 +1,12 @@
-import { Label } from "@/registry/react/ui/label"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/registry/react/ui/radio-group"
+import { Label } from "@/registry/react/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/registry/react/ui/radio-group";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/react/ui/card"
+} from "@/registry/react/ui/card";
 
 export default function RadioGroupDemo() {
   return (
@@ -45,5 +42,5 @@ export default function RadioGroupDemo() {
         </RadioGroup>
       </CardContent>
     </Card>
-  )
+  );
 }

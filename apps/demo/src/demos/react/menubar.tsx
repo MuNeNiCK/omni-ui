@@ -13,7 +13,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@/registry/react/ui/menubar"
+} from "@/registry/react/ui/menubar";
 
 export default function MenubarDemo() {
   return (
@@ -58,5 +58,5 @@ export default function MenubarDemo() {
         </MenubarContent>
       </MenubarMenu>
     </Menubar>
-  )
+  );
 }

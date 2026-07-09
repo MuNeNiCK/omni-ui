@@ -1,26 +1,16 @@
-import { type ComponentProps } from "solid-js"
-import * as CollapsiblePrimitive from "@kobalte/core/collapsible"
+import { type ComponentProps } from "solid-js";
+import * as CollapsiblePrimitive from "@kobalte/core/collapsible";
 
 function Collapsible(props: ComponentProps<typeof CollapsiblePrimitive.Root>) {
-  return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />
+  return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />;
 }
 
 function CollapsibleTrigger(props: ComponentProps<typeof CollapsiblePrimitive.Trigger>) {
-  return (
-    <CollapsiblePrimitive.Trigger
-      data-slot="collapsible-trigger"
-      {...props}
-    />
-  )
+  return <CollapsiblePrimitive.Trigger data-slot="collapsible-trigger" {...props} />;
 }
 
 function CollapsibleContent(props: ComponentProps<typeof CollapsiblePrimitive.Content>) {
-  return (
-    <CollapsiblePrimitive.Content
-      data-slot="collapsible-content"
-      {...props}
-    />
-  )
+  return <CollapsiblePrimitive.Content data-slot="collapsible-content" {...props} />;
 }
 
-export { Collapsible, CollapsibleTrigger, CollapsibleContent }
+export { Collapsible, CollapsibleTrigger, CollapsibleContent };

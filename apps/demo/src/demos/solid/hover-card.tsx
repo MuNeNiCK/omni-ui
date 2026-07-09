@@ -1,9 +1,5 @@
-import { Button } from "@/registry/solid/ui/button"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/registry/solid/ui/hover-card"
+import { Button } from "@/registry/solid/ui/button";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/registry/solid/ui/hover-card";
 
 export default function HoverCardDemo() {
   return (
@@ -23,5 +19,5 @@ export default function HoverCardDemo() {
         </div>
       </HoverCardContent>
     </HoverCard>
-  )
+  );
 }

@@ -6,7 +6,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/react/ui/breadcrumb"
+} from "@/registry/react/ui/breadcrumb";
 
 export default function BreadcrumbDemo() {
   return (
@@ -47,5 +47,5 @@ export default function BreadcrumbDemo() {
         </BreadcrumbList>
       </Breadcrumb>
     </div>
-  )
+  );
 }

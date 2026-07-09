@@ -1,25 +1,25 @@
-import { createSignal, createMemo } from "solid-js"
-import { format, subDays } from "date-fns"
+import { createSignal, createMemo } from "solid-js";
+import { format, subDays } from "date-fns";
 
-import { Button } from "@/registry/solid/ui/button"
-import { DatePicker } from "@/registry/solid/ui/date-picker"
-import type { DateRange } from "@/registry/solid/ui/calendar"
+import { Button } from "@/registry/solid/ui/button";
+import { DatePicker } from "@/registry/solid/ui/date-picker";
+import type { DateRange } from "@/registry/solid/ui/calendar";
 
 export default function DatePickerDemo() {
-  const [auditDate, setAuditDate] = createSignal<Date | undefined>(new Date())
+  const [auditDate, setAuditDate] = createSignal<Date | undefined>(new Date());
   const [maintenanceWindow, setMaintenanceWindow] = createSignal<DateRange | undefined>({
     from: subDays(new Date(), 6),
     to: new Date(),
-  })
+  });
 
   const maintenanceSummary = createMemo(() => {
-    const w = maintenanceWindow()
-    if (!w?.from) return "No window selected."
+    const w = maintenanceWindow();
+    if (!w?.from) return "No window selected.";
     if (!w.to) {
-      return `Window begins ${format(w.from, "PPP")}.`
+      return `Window begins ${format(w.from, "PPP")}.`;
     }
-    return `Window runs ${format(w.from, "PP")} -- ${format(w.to, "PP")}.`
-  })
+    return `Window runs ${format(w.from, "PP")} -- ${format(w.to, "PP")}.`;
+  });
 
   return (
     <div class="space-y-8">
@@ -62,5 +62,5 @@ export default function DatePickerDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

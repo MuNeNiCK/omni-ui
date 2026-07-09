@@ -1,14 +1,12 @@
-import { ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react";
 
-import { Button } from "@/registry/react/ui/button"
+import { Button } from "@/registry/react/ui/button";
 
 export default function ButtonDemo() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col items-center gap-3">
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Variants
-        </p>
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Variants</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Button>Default</Button>
           <Button variant="secondary">Secondary</Button>
@@ -20,9 +18,7 @@ export default function ButtonDemo() {
         </div>
       </div>
       <div className="flex flex-col items-center gap-3">
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Sizes
-        </p>
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Sizes</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Button size="sm">Small</Button>
           <Button size="default">Default</Button>
@@ -39,9 +35,7 @@ export default function ButtonDemo() {
         </div>
       </div>
       <div className="flex flex-col items-center gap-3">
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          asChild
-        </p>
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">asChild</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Button asChild>
             <a href="https://example.com" target="_blank" rel="noreferrer">
@@ -56,5 +50,5 @@ export default function ButtonDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

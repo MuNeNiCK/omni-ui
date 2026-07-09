@@ -1,56 +1,49 @@
-import type { Component, ComponentProps, ValidComponent } from "solid-js"
-import { Show, splitProps } from "solid-js"
+import type { Component, ComponentProps, ValidComponent } from "solid-js";
+import { Show, splitProps } from "solid-js";
 
-import type { DynamicProps, RootProps } from "@corvu/otp-field"
-import OtpField from "@corvu/otp-field"
-import { MinusIcon } from "lucide-solid"
+import type { DynamicProps, RootProps } from "@corvu/otp-field";
+import OtpField from "@corvu/otp-field";
+import { MinusIcon } from "lucide-solid";
 
-import { cn } from "@/registry/solid/lib/utils"
+import { cn } from "@/registry/solid/lib/utils";
 
-export const REGEXP_ONLY_DIGITS = "^\\d*$"
-export const REGEXP_ONLY_CHARS = "^[a-zA-Z]*$"
-export const REGEXP_ONLY_DIGITS_AND_CHARS = "^[a-zA-Z0-9]*$"
+export const REGEXP_ONLY_DIGITS = "^\\d*$";
+export const REGEXP_ONLY_CHARS = "^[a-zA-Z]*$";
+export const REGEXP_ONLY_DIGITS_AND_CHARS = "^[a-zA-Z0-9]*$";
 
 type InputOTPProps<T extends ValidComponent = "div"> = RootProps<T> & {
-  class?: string
-  containerClassName?: string
-}
+  class?: string;
+  containerClassName?: string;
+};
 
-const InputOTP = <T extends ValidComponent = "div">(
-  props: DynamicProps<T, InputOTPProps<T>>
-) => {
-  const [, rest] = splitProps(props as InputOTPProps, ["class", "containerClassName"])
+const InputOTP = <T extends ValidComponent = "div">(props: DynamicProps<T, InputOTPProps<T>>) => {
+  const [, rest] = splitProps(props as InputOTPProps, ["class", "containerClassName"]);
   return (
     <OtpField
       data-slot="input-otp"
       class={cn(
         "flex items-center gap-3 has-[:disabled]:opacity-50",
         props.containerClassName,
-        props.class
+        props.class,
       )}
       {...rest}
     />
-  )
-}
+  );
+};
 
 const InputOTPGroup: Component<ComponentProps<"div">> = (props) => {
-  const [local, others] = splitProps(props, ["class"])
+  const [local, others] = splitProps(props, ["class"]);
   return (
-    <div
-      data-slot="input-otp-group"
-      class={cn("flex items-center", local.class)}
-      {...others}
-    />
-  )
-}
+    <div data-slot="input-otp-group" class={cn("flex items-center", local.class)} {...others} />
+  );
+};
 
 const InputOTPSlot: Component<ComponentProps<"div"> & { index: number }> = (props) => {
-  const [local, others] = splitProps(props, ["class", "index"])
-  const context = OtpField.useContext()
-  const char = () => context.value()[local.index]
-  const isActive = () => context.activeSlots().includes(local.index)
-  const showFakeCaret = () =>
-    context.value().length === local.index && context.isInserting()
+  const [local, others] = splitProps(props, ["class", "index"]);
+  const context = OtpField.useContext();
+  const char = () => context.value()[local.index];
+  const isActive = () => context.activeSlots().includes(local.index);
+  const showFakeCaret = () => context.value().length === local.index && context.isInserting();
 
   return (
     <div
@@ -62,7 +55,7 @@ const InputOTPSlot: Component<ComponentProps<"div"> & { index: number }> = (prop
         "aria-invalid:border-destructive aria-invalid:text-destructive",
         "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
         "first:rounded-none first:border-l last:rounded-none",
-        local.class
+        local.class,
       )}
       {...others}
     >
@@ -73,8 +66,8 @@ const InputOTPSlot: Component<ComponentProps<"div"> & { index: number }> = (prop
         </div>
       </Show>
     </div>
-  )
-}
+  );
+};
 
 const InputOTPSeparator: Component<ComponentProps<"div">> = (props) => {
   return (
@@ -86,7 +79,7 @@ const InputOTPSeparator: Component<ComponentProps<"div">> = (props) => {
     >
       <MinusIcon class="size-4" />
     </div>
-  )
-}
+  );
+};
 
-export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator }
+export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator };

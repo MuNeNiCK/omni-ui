@@ -5,9 +5,9 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/solid/ui/empty"
-import { Button } from "@/registry/solid/ui/button"
-import { Badge } from "@/registry/solid/ui/badge"
+} from "@/registry/solid/ui/empty";
+import { Button } from "@/registry/solid/ui/button";
+import { Badge } from "@/registry/solid/ui/badge";
 
 export default function EmptyDemo() {
   return (
@@ -39,5 +39,5 @@ export default function EmptyDemo() {
         </p>
       </EmptyContent>
     </Empty>
-  )
+  );
 }

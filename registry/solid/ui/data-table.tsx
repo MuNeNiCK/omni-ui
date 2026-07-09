@@ -1,11 +1,4 @@
-import {
-  splitProps,
-  createSignal,
-  createEffect,
-  For,
-  Show,
-  type JSX,
-} from "solid-js"
+import { splitProps, createSignal, createEffect, For, Show, type JSX } from "solid-js";
 import {
   createSolidTable,
   flexRender,
@@ -19,8 +12,8 @@ import {
   type VisibilityState,
   type RowSelectionState,
   type Table as TableInstance,
-} from "@tanstack/solid-table"
-import type { SelectRootItemComponentProps } from "@kobalte/core/select"
+} from "@tanstack/solid-table";
+import type { SelectRootItemComponentProps } from "@kobalte/core/select";
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -28,24 +21,24 @@ import {
   ChevronRightIcon,
   ChevronsUpDownIcon,
   SlidersHorizontalIcon,
-} from "lucide-solid"
+} from "lucide-solid";
 
-import { cn } from "@/registry/solid/lib/utils"
-import { Button } from "@/registry/solid/ui/button"
-import { Input } from "@/registry/solid/ui/input"
+import { cn } from "@/registry/solid/lib/utils";
+import { Button } from "@/registry/solid/ui/button";
+import { Input } from "@/registry/solid/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/solid/ui/select"
+} from "@/registry/solid/ui/select";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/registry/solid/ui/dropdown-menu"
+} from "@/registry/solid/ui/dropdown-menu";
 import {
   Table,
   TableBody,
@@ -53,27 +46,27 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/registry/solid/ui/table"
+} from "@/registry/solid/ui/table";
 
 type DataTableColumnMeta = {
-  headerLabel?: string
-}
+  headerLabel?: string;
+};
 
 type DataTableProps<TData, TValue> = {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
-  class?: string
-  searchKey?: string
-  searchPlaceholder?: string
-  toolbar?: (table: TableInstance<TData>) => JSX.Element
-  emptyMessage?: JSX.Element
-  initialPageSize?: number
-  pageSizeOptions?: number[]
-  footer?: JSX.Element
-  viewOptions?: boolean
-}
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
+  class?: string;
+  searchKey?: string;
+  searchPlaceholder?: string;
+  toolbar?: (table: TableInstance<TData>) => JSX.Element;
+  emptyMessage?: JSX.Element;
+  initialPageSize?: number;
+  pageSizeOptions?: number[];
+  footer?: JSX.Element;
+  viewOptions?: boolean;
+};
 
-const defaultPageSizeOptions = [10, 20, 30, 50]
+const defaultPageSizeOptions = [10, 20, 30, 50];
 
 function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
   const [local] = splitProps(props, [
@@ -88,33 +81,33 @@ function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
     "pageSizeOptions",
     "footer",
     "viewOptions",
-  ])
+  ]);
 
-  const [sorting, setSorting] = createSignal<SortingState>([])
-  const [columnFilters, setColumnFilters] = createSignal<ColumnFiltersState>([])
-  const [columnVisibility, setColumnVisibility] = createSignal<VisibilityState>({})
-  const [rowSelection, setRowSelection] = createSignal<RowSelectionState>({})
-  const [searchValue, setSearchValue] = createSignal("")
+  const [sorting, setSorting] = createSignal<SortingState>([]);
+  const [columnFilters, setColumnFilters] = createSignal<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = createSignal<VisibilityState>({});
+  const [rowSelection, setRowSelection] = createSignal<RowSelectionState>({});
+  const [searchValue, setSearchValue] = createSignal("");
 
   const table = createSolidTable({
     get data() {
-      return local.data
+      return local.data;
     },
     get columns() {
-      return local.columns
+      return local.columns;
     },
     state: {
       get sorting() {
-        return sorting()
+        return sorting();
       },
       get columnFilters() {
-        return columnFilters()
+        return columnFilters();
       },
       get columnVisibility() {
-        return columnVisibility()
+        return columnVisibility();
       },
       get rowSelection() {
-        return rowSelection()
+        return rowSelection();
       },
     },
     initialState: {
@@ -130,22 +123,19 @@ function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-  })
+  });
 
   createEffect(() => {
-    if (!local.searchKey) return
-    const column = table.getColumn(local.searchKey)
-    column?.setFilterValue(searchValue())
-  })
+    if (!local.searchKey) return;
+    const column = table.getColumn(local.searchKey);
+    column?.setFilterValue(searchValue());
+  });
 
-  const isFiltered = () => Boolean(searchValue()) || columnFilters().length > 0
-  const showViewOptions = () => local.viewOptions !== false
+  const isFiltered = () => Boolean(searchValue()) || columnFilters().length > 0;
+  const showViewOptions = () => local.viewOptions !== false;
 
   return (
-    <div
-      data-slot="data-table"
-      class={cn("flex flex-col gap-4", local.class)}
-    >
+    <div data-slot="data-table" class={cn("flex flex-col gap-4", local.class)}>
       <div class="flex flex-col gap-3 border border-border/60 bg-muted/40 px-4 py-3 text-[10px] font-mono uppercase tracking-[0.28em] text-muted-foreground/80 shadow-[var(--glass-shadow-outline)] backdrop-blur-[4px] sm:flex-row sm:items-center sm:justify-between">
         <div class="flex flex-1 flex-wrap items-center gap-2">
           {local.toolbar?.(table)}
@@ -155,15 +145,16 @@ function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
               size="sm"
               class="h-8 border border-transparent px-3 py-1 tracking-[0.28em] text-muted-foreground/70 hover:border-border/60 hover:bg-foreground/10 hover:text-foreground"
               onClick={() => {
-                setSearchValue("")
-                table.resetColumnFilters()
+                setSearchValue("");
+                table.resetColumnFilters();
               }}
             >
               Reset
             </Button>
           </Show>
           <span class="hidden items-center gap-1 text-[9px] tracking-[0.32em] text-muted-foreground/60 sm:inline-flex">
-            {table.getFilteredSelectedRowModel().rows.length} selected • {table.getFilteredRowModel().rows.length} total
+            {table.getFilteredSelectedRowModel().rows.length} selected •{" "}
+            {table.getFilteredRowModel().rows.length} total
           </span>
         </div>
         <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-3">
@@ -189,23 +180,26 @@ function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
                   <For each={headerGroup.headers}>
                     {(header) => {
                       if (header.isPlaceholder) {
-                        return <TableHead />
+                        return <TableHead />;
                       }
 
-                      const canSort = header.column.getCanSort()
-                      const sortDirection = () => header.column.getIsSorted()
+                      const canSort = header.column.getCanSort();
+                      const sortDirection = () => header.column.getIsSorted();
 
                       return (
                         <TableHead
                           class={cn(
                             "h-12 px-3 text-[10px] font-mono uppercase tracking-[0.32em] text-muted-foreground/80",
-                            "[&[data-sort=desc]]:text-foreground [&[data-sort=asc]]:text-foreground"
+                            "[&[data-sort=desc]]:text-foreground [&[data-sort=asc]]:text-foreground",
                           )}
                           data-sort={sortDirection() ? String(sortDirection()) : undefined}
                         >
                           <Show
                             when={canSort}
-                            fallback={flexRender(header.column.columnDef.header, header.getContext())}
+                            fallback={flexRender(
+                              header.column.columnDef.header,
+                              header.getContext(),
+                            )}
                           >
                             <button
                               type="button"
@@ -229,7 +223,7 @@ function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
                             </button>
                           </Show>
                         </TableHead>
-                      )
+                      );
                     }}
                   </For>
                 </TableRow>
@@ -276,12 +270,12 @@ function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
         pageSizeOptions={local.pageSizeOptions ?? defaultPageSizeOptions}
       />
     </div>
-  )
+  );
 }
 
 type DataTableViewOptionsProps<TData> = {
-  table: TableInstance<TData>
-}
+  table: TableInstance<TData>;
+};
 
 function DataTableViewOptions<TData>(props: DataTableViewOptionsProps<TData>) {
   return (
@@ -297,23 +291,14 @@ function DataTableViewOptions<TData>(props: DataTableViewOptionsProps<TData>) {
           View
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        class="min-w-[12rem] border-border/60 bg-muted/60 text-foreground shadow-[var(--glass-shadow-outline)]"
-      >
-        <DropdownMenuCheckboxItem
-          class="pointer-events-none opacity-70"
-          checked
-        >
+      <DropdownMenuContent class="min-w-[12rem] border-border/60 bg-muted/60 text-foreground shadow-[var(--glass-shadow-outline)]">
+        <DropdownMenuCheckboxItem class="pointer-events-none opacity-70" checked>
           Columns
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem class="pointer-events-none opacity-40" checked>
           —
         </DropdownMenuCheckboxItem>
-        <For
-          each={props.table
-            .getAllLeafColumns()
-            .filter((column) => column.getCanHide())}
-        >
+        <For each={props.table.getAllLeafColumns().filter((column) => column.getCanHide())}>
           {(column) => (
             <DropdownMenuCheckboxItem
               checked={column.getIsVisible()}
@@ -326,29 +311,28 @@ function DataTableViewOptions<TData>(props: DataTableViewOptionsProps<TData>) {
         </For>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }
 
 type DataTablePaginationProps<TData> = {
-  table: TableInstance<TData>
-  pageSizeOptions?: number[]
-}
+  table: TableInstance<TData>;
+  pageSizeOptions?: number[];
+};
 
 function DataTablePagination<TData>(props: DataTablePaginationProps<TData>) {
-  const pageSizeOptions = () => props.pageSizeOptions ?? defaultPageSizeOptions
-  const pageSize = () => props.table.getState().pagination.pageSize
-  const pageCount = () => props.table.getPageCount()
-  const pageIndex = () => props.table.getState().pagination.pageIndex
-  const pageStart = () => pageIndex() * pageSize() + 1
-  const totalRows = () => props.table.getFilteredRowModel().rows.length
-  const pageEnd = () => Math.min(pageStart() + pageSize() - 1, totalRows())
+  const pageSizeOptions = () => props.pageSizeOptions ?? defaultPageSizeOptions;
+  const pageSize = () => props.table.getState().pagination.pageSize;
+  const pageCount = () => props.table.getPageCount();
+  const pageIndex = () => props.table.getState().pagination.pageIndex;
+  const pageStart = () => pageIndex() * pageSize() + 1;
+  const totalRows = () => props.table.getFilteredRowModel().rows.length;
+  const pageEnd = () => Math.min(pageStart() + pageSize() - 1, totalRows());
 
   return (
     <div class="flex flex-col gap-3 border border-border/60 bg-muted/40 px-4 py-3 text-[10px] font-mono uppercase tracking-[0.28em] text-muted-foreground/80 shadow-[var(--glass-shadow-outline)] backdrop-blur-[4px] sm:flex-row sm:items-center sm:justify-between">
       <div class="flex flex-wrap items-center gap-2">
         <span>
-          Showing {totalRows() ? `${pageStart()}–${pageEnd()}` : 0} of{" "}
-          {totalRows()} rows
+          Showing {totalRows() ? `${pageStart()}–${pageEnd()}` : 0} of {totalRows()} rows
         </span>
       </div>
       <div class="flex flex-wrap items-center gap-3">
@@ -357,19 +341,15 @@ function DataTablePagination<TData>(props: DataTablePaginationProps<TData>) {
           <Select
             value={String(pageSize())}
             onChange={(val: string) => {
-              if (val) props.table.setPageSize(Number(val))
+              if (val) props.table.setPageSize(Number(val));
             }}
             options={pageSizeOptions().map(String)}
             itemComponent={(itemProps: SelectRootItemComponentProps<string>) => (
-              <SelectItem item={itemProps.item}>
-                {itemProps.item.rawValue}
-              </SelectItem>
+              <SelectItem item={itemProps.item}>{itemProps.item.rawValue}</SelectItem>
             )}
           >
             <SelectTrigger class="h-8 min-w-[4.5rem] border-border/60 bg-background/20 text-[11px] font-mono uppercase tracking-[0.28em] text-foreground/85">
-              <SelectValue<string>>
-                {(state) => state.selectedOption()}
-              </SelectValue>
+              <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
             </SelectTrigger>
             <SelectContent align="end" class="bg-muted/60" />
           </Select>
@@ -403,7 +383,7 @@ function DataTablePagination<TData>(props: DataTablePaginationProps<TData>) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export { DataTable, DataTablePagination, DataTableViewOptions }
+export { DataTable, DataTablePagination, DataTableViewOptions };

@@ -1,11 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "acme",
-  "homepage": "https://acme.com",
+  "name": "omni-ui",
+  "homepage": "https://munenick.github.io/omni-ui",
   "items": [
     {
       "name": "accordion",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Accordion",
       "description": "Accordion component.",
       "files": [
@@ -14,18 +14,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@radix-ui/react-accordion",
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-accordion", "lucide-react"]
     },
     {
       "name": "alert",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Alert",
       "description": "Alert component.",
       "files": [
@@ -40,13 +34,11 @@
         "@omni/glass-style",
         "@omni/tone-style"
       ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "alert-dialog",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Alert Dialog",
       "description": "Alert Dialog component.",
       "files": [
@@ -61,14 +53,11 @@
         "@omni/font-mono",
         "@omni/glass-style"
       ],
-      "dependencies": [
-        "@radix-ui/react-alert-dialog",
-        "class-variance-authority"
-      ]
+      "dependencies": ["@radix-ui/react-alert-dialog", "class-variance-authority"]
     },
     {
       "name": "aspect-ratio",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Aspect Ratio",
       "description": "Aspect Ratio component.",
       "files": [
@@ -77,13 +66,11 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "@radix-ui/react-aspect-ratio"
-      ]
+      "dependencies": ["@radix-ui/react-aspect-ratio"]
     },
     {
       "name": "avatar",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Avatar",
       "description": "Avatar component.",
       "files": [
@@ -92,18 +79,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "@radix-ui/react-avatar"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-avatar"]
     },
     {
       "name": "badge",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Badge",
       "description": "Badge component.",
       "files": [
@@ -112,18 +93,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@radix-ui/react-slot",
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
     },
     {
       "name": "breadcrumb",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Breadcrumb",
       "description": "Breadcrumb component.",
       "files": [
@@ -132,18 +107,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@radix-ui/react-slot",
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-slot", "lucide-react"]
     },
     {
       "name": "button",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Button",
       "description": "Button component.",
       "files": [
@@ -152,17 +121,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "button-group",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Button Group",
       "description": "Button Group component.",
       "files": [
@@ -177,34 +141,25 @@
         "@omni/font-mono",
         "@omni/glass-style"
       ],
-      "dependencies": [
-        "@radix-ui/react-slot",
-        "class-variance-authority"
-      ]
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
     },
     {
       "name": "calendar",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Calendar",
       "description": "Calendar component.",
-      "registryDependencies": [
-        "@omni/button",
-        "@omni/utils"
-      ],
+      "registryDependencies": ["@omni/button", "@omni/utils"],
       "files": [
         {
           "path": "registry/react/ui/calendar.tsx",
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react",
-        "react-day-picker"
-      ]
+      "dependencies": ["lucide-react", "react-day-picker"]
     },
     {
       "name": "card",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Card",
       "description": "Card component.",
       "files": [
@@ -213,34 +168,25 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/glass-style"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"]
     },
     {
       "name": "carousel",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Carousel",
       "description": "Carousel component.",
-      "registryDependencies": [
-        "@omni/button",
-        "@omni/utils"
-      ],
+      "registryDependencies": ["@omni/button", "@omni/utils"],
       "files": [
         {
           "path": "registry/react/ui/carousel.tsx",
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "embla-carousel-react",
-        "lucide-react"
-      ]
+      "dependencies": ["embla-carousel-react", "lucide-react"]
     },
     {
       "name": "chart",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Chart",
       "description": "Chart component.",
       "files": [
@@ -249,17 +195,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "recharts"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["recharts"]
     },
     {
       "name": "checkbox",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Checkbox",
       "description": "Checkbox component.",
       "files": [
@@ -268,18 +209,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "@radix-ui/react-checkbox",
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-checkbox", "lucide-react"]
     },
     {
       "name": "collapsible",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Collapsible",
       "description": "Collapsible component.",
       "files": [
@@ -288,17 +223,15 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "@radix-ui/react-collapsible"
-      ]
+      "dependencies": ["@radix-ui/react-collapsible"]
     },
     {
       "name": "combobox",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Combobox",
       "description": "Combobox component.",
       "registryDependencies": [
-        "command",
+        "@omni/command",
         "@omni/utils",
         "@omni/font-mono",
         "@omni/glass-style"
@@ -309,14 +242,11 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "@radix-ui/react-popover",
-        "lucide-react"
-      ]
+      "dependencies": ["@radix-ui/react-popover", "lucide-react"]
     },
     {
       "name": "command",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Command",
       "description": "Command component.",
       "files": [
@@ -326,19 +256,16 @@
         }
       ],
       "registryDependencies": [
-        "dialog",
+        "@omni/dialog",
         "@omni/utils",
         "@omni/font-mono",
         "@omni/glass-style"
       ],
-      "dependencies": [
-        "cmdk",
-        "lucide-react"
-      ]
+      "dependencies": ["cmdk", "lucide-react"]
     },
     {
       "name": "context-menu",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Context Menu",
       "description": "Context Menu component.",
       "files": [
@@ -347,19 +274,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "@radix-ui/react-context-menu",
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-context-menu", "lucide-react"]
     },
     {
       "name": "data-table",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Data Table",
       "description": "Data Table component.",
       "registryDependencies": [
@@ -378,25 +298,18 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "@tanstack/react-table",
-        "lucide-react"
-      ]
+      "dependencies": ["@tanstack/react-table", "lucide-react"]
     },
     {
       "name": "date-picker",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Date Picker",
       "description": "Date Picker component.",
-      "dependencies": [
-        "date-fns",
-        "lucide-react",
-        "react-day-picker"
-      ],
+      "dependencies": ["date-fns", "lucide-react", "react-day-picker"],
       "registryDependencies": [
         "@omni/button",
-        "calendar",
-        "popover",
+        "@omni/calendar",
+        "@omni/popover",
         "@omni/utils",
         "@omni/font-mono",
         "@omni/glass-style"
@@ -410,7 +323,7 @@
     },
     {
       "name": "dialog",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Dialog",
       "description": "Dialog component.",
       "files": [
@@ -419,19 +332,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "@radix-ui/react-dialog",
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-dialog", "lucide-react"]
     },
     {
       "name": "drawer",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Drawer",
       "description": "Drawer component.",
       "files": [
@@ -440,18 +346,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "vaul"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["vaul"]
     },
     {
       "name": "dropdown-menu",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Dropdown Menu",
       "description": "Dropdown Menu component.",
       "files": [
@@ -460,19 +360,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "@radix-ui/react-dropdown-menu",
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-dropdown-menu", "lucide-react"]
     },
     {
       "name": "empty",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Empty",
       "description": "Empty component.",
       "files": [
@@ -481,57 +374,40 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils"
-      ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "field",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Field",
       "description": "Field component.",
-      "registryDependencies": [
-        "label",
-        "@omni/separator",
-        "@omni/utils"
-      ],
+      "registryDependencies": ["@omni/label", "@omni/separator", "@omni/utils"],
       "files": [
         {
           "path": "registry/react/ui/field.tsx",
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "form",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "React Hook Form",
       "description": "React Hook Form component.",
-      "registryDependencies": [
-        "label",
-        "@omni/utils"
-      ],
+      "registryDependencies": ["@omni/label", "@omni/utils"],
       "files": [
         {
           "path": "registry/react/ui/form.tsx",
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "@radix-ui/react-label",
-        "@radix-ui/react-slot",
-        "react-hook-form"
-      ]
+      "dependencies": ["@radix-ui/react-label", "@radix-ui/react-slot", "react-hook-form"]
     },
     {
       "name": "hover-card",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Hover Card",
       "description": "Hover Card component.",
       "files": [
@@ -540,17 +416,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "@radix-ui/react-hover-card"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-hover-card"]
     },
     {
       "name": "input",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Input",
       "description": "Input component.",
       "files": [
@@ -559,15 +430,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"]
     },
     {
       "name": "input-group",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Input Group",
       "description": "Input Group component.",
       "files": [
@@ -582,13 +449,11 @@
         "@omni/font-mono",
         "@omni/glass-style"
       ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "input-otp",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Input OTP",
       "description": "Input OTP component.",
       "files": [
@@ -597,19 +462,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "input-otp",
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["input-otp", "lucide-react"]
     },
     {
       "name": "item",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Item",
       "description": "Item component.",
       "files": [
@@ -624,14 +482,11 @@
         "@omni/font-mono",
         "@omni/glass-style"
       ],
-      "dependencies": [
-        "@radix-ui/react-slot",
-        "class-variance-authority"
-      ]
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
     },
     {
       "name": "kbd",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Kbd",
       "description": "Kbd component.",
       "files": [
@@ -640,15 +495,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"]
     },
     {
       "name": "label",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Label",
       "description": "Label component.",
       "files": [
@@ -657,17 +508,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@radix-ui/react-label"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-label"]
     },
     {
       "name": "menubar",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Menubar",
       "description": "Menubar component.",
       "files": [
@@ -676,18 +522,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@radix-ui/react-menubar",
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-menubar", "lucide-react"]
     },
     {
       "name": "navigation-menu",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Navigation Menu",
       "description": "Navigation Menu component.",
       "files": [
@@ -696,11 +536,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
       "dependencies": [
         "@radix-ui/react-navigation-menu",
         "class-variance-authority",
@@ -709,7 +545,7 @@
     },
     {
       "name": "pagination",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Pagination",
       "description": "Pagination component.",
       "files": [
@@ -718,17 +554,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["lucide-react"]
     },
     {
       "name": "popover",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Popover",
       "description": "Popover component.",
       "files": [
@@ -737,17 +568,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "@radix-ui/react-popover"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-popover"]
     },
     {
       "name": "progress",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Progress",
       "description": "Progress component.",
       "files": [
@@ -756,17 +582,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "@radix-ui/react-progress"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-progress"]
     },
     {
       "name": "radio-group",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Radio Group",
       "description": "Radio Group component.",
       "files": [
@@ -775,18 +596,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "@radix-ui/react-radio-group",
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-radio-group", "lucide-react"]
     },
     {
       "name": "resizable",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Resizable",
       "description": "Resizable component.",
       "files": [
@@ -795,17 +610,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils"
-      ],
-      "dependencies": [
-        "lucide-react",
-        "react-resizable-panels"
-      ]
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["lucide-react", "react-resizable-panels"]
     },
     {
       "name": "scroll-area",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Scroll Area",
       "description": "Scroll Area component.",
       "files": [
@@ -814,16 +624,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils"
-      ],
-      "dependencies": [
-        "@radix-ui/react-scroll-area"
-      ]
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["@radix-ui/react-scroll-area"]
     },
     {
       "name": "select",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Select",
       "description": "Select component.",
       "files": [
@@ -832,19 +638,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "@radix-ui/react-select",
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-select", "lucide-react"]
     },
     {
       "name": "separator",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Separator",
       "description": "Separator component.",
       "files": [
@@ -853,16 +652,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils"
-      ],
-      "dependencies": [
-        "@radix-ui/react-separator"
-      ]
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["@radix-ui/react-separator"]
     },
     {
       "name": "sheet",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Sheet",
       "description": "Sheet component.",
       "files": [
@@ -871,19 +666,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "@radix-ui/react-dialog",
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-dialog", "lucide-react"]
     },
     {
       "name": "sidebar",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Sidebar",
       "description": "Sidebar component.",
       "registryDependencies": [
@@ -902,15 +690,11 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "@radix-ui/react-slot",
-        "class-variance-authority",
-        "lucide-react"
-      ]
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority", "lucide-react"]
     },
     {
       "name": "skeleton",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Skeleton",
       "description": "Skeleton component.",
       "files": [
@@ -919,14 +703,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/glass-style"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"]
     },
     {
       "name": "slider",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Slider",
       "description": "Slider component.",
       "files": [
@@ -935,16 +716,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils"
-      ],
-      "dependencies": [
-        "@radix-ui/react-slider"
-      ]
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["@radix-ui/react-slider"]
     },
     {
       "name": "sonner",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Sonner",
       "description": "Sonner component.",
       "files": [
@@ -960,14 +737,11 @@
         "@omni/tone-style",
         "@omni/theme-provider"
       ],
-      "dependencies": [
-        "lucide-react",
-        "sonner"
-      ]
+      "dependencies": ["lucide-react", "sonner"]
     },
     {
       "name": "spinner",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Spinner",
       "description": "Spinner component.",
       "files": [
@@ -976,17 +750,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "lucide-react"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["lucide-react"]
     },
     {
       "name": "switch",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Switch",
       "description": "Switch component.",
       "files": [
@@ -995,16 +764,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils"
-      ],
-      "dependencies": [
-        "@radix-ui/react-switch"
-      ]
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["@radix-ui/react-switch"]
     },
     {
       "name": "table",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Table",
       "description": "Table component.",
       "files": [
@@ -1013,13 +778,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils"
-      ]
+      "registryDependencies": ["@omni/utils"]
     },
     {
       "name": "tabs",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Tabs",
       "description": "Tabs component.",
       "files": [
@@ -1028,17 +791,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@radix-ui/react-tabs"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-tabs"]
     },
     {
       "name": "textarea",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Textarea",
       "description": "Textarea component.",
       "files": [
@@ -1047,14 +805,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/glass-style"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"]
     },
     {
       "name": "toggle",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Toggle",
       "description": "Toggle component.",
       "files": [
@@ -1063,18 +818,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@radix-ui/react-toggle",
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-toggle", "class-variance-authority"]
     },
     {
       "name": "toggle-group",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Toggle Group",
       "description": "Toggle Group component.",
       "files": [
@@ -1083,17 +832,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils"
-      ],
-      "dependencies": [
-        "@radix-ui/react-toggle-group",
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["@radix-ui/react-toggle-group", "class-variance-authority"]
     },
     {
       "name": "tooltip",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Tooltip",
       "description": "Tooltip component.",
       "files": [
@@ -1102,17 +846,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/glass-style"
-      ],
-      "dependencies": [
-        "@radix-ui/react-tooltip"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-tooltip"]
     },
     {
       "name": "typography",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Typography",
       "description": "Typography component.",
       "files": [
@@ -1121,42 +860,35 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@radix-ui/react-slot",
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
     },
     {
       "name": "use-mobile",
-      "type": "registry:component",
+      "type": "registry:hook",
       "title": "useIsMobile",
       "description": "useIsMobile component.",
       "files": [
         {
           "path": "registry/react/hooks/use-mobile.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-mobile.ts"
         }
       ]
     },
     {
       "name": "utils",
-      "type": "registry:component",
+      "type": "registry:lib",
       "title": "Utilities",
       "description": "Utilities component.",
       "files": [
         {
           "path": "registry/react/lib/utils.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ]
+      "dependencies": ["clsx", "tailwind-merge"]
     },
     {
       "name": "theme-provider",
@@ -1331,7 +1063,7 @@
     },
     {
       "name": "solid/accordion",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Accordion (Solid)",
       "description": "Accordion component for SolidJS.",
       "files": [
@@ -1340,18 +1072,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@kobalte/core",
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/alert",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Alert (Solid)",
       "description": "Alert component for SolidJS.",
       "files": [
@@ -1366,13 +1092,11 @@
         "@omni/solid/glass-style",
         "@omni/solid/tone-style"
       ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "solid/alert-dialog",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Alert Dialog (Solid)",
       "description": "Alert Dialog component for SolidJS.",
       "files": [
@@ -1387,14 +1111,11 @@
         "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
-      "dependencies": [
-        "@kobalte/core",
-        "lucide-solid"
-      ]
+      "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/aspect-ratio",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Aspect Ratio (Solid)",
       "description": "Aspect Ratio component for SolidJS.",
       "files": [
@@ -1403,16 +1124,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/avatar",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Avatar (Solid)",
       "description": "Avatar component for SolidJS.",
       "files": [
@@ -1421,18 +1138,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/badge",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Badge (Solid)",
       "description": "Badge component for SolidJS.",
       "files": [
@@ -1441,17 +1152,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "solid/breadcrumb",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Breadcrumb (Solid)",
       "description": "Breadcrumb component for SolidJS.",
       "files": [
@@ -1460,17 +1166,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["lucide-solid"]
     },
     {
       "name": "solid/button",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Button (Solid)",
       "description": "Button component for SolidJS.",
       "files": [
@@ -1479,17 +1180,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "solid/button-group",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Button Group (Solid)",
       "description": "Button Group component for SolidJS.",
       "files": [
@@ -1504,13 +1200,11 @@
         "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "solid/calendar",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Calendar (Solid)",
       "description": "Calendar component for SolidJS.",
       "files": [
@@ -1519,17 +1213,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/button",
-        "@omni/solid/utils"
-      ],
-      "dependencies": [
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/button", "@omni/solid/utils"],
+      "dependencies": ["lucide-solid"]
     },
     {
       "name": "solid/card",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Card (Solid)",
       "description": "Card component for SolidJS.",
       "files": [
@@ -1538,14 +1227,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/solid/glass-style"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
     },
     {
       "name": "solid/carousel",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Carousel (Solid)",
       "description": "Carousel component for SolidJS.",
       "files": [
@@ -1554,18 +1240,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/button",
-        "@omni/solid/utils"
-      ],
-      "dependencies": [
-        "embla-carousel-solid",
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/button", "@omni/solid/utils"],
+      "dependencies": ["embla-carousel-solid", "lucide-solid"]
     },
     {
       "name": "solid/chart",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Chart (Solid)",
       "description": "Chart component for SolidJS.",
       "files": [
@@ -1574,14 +1254,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"]
     },
     {
       "name": "solid/checkbox",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Checkbox (Solid)",
       "description": "Checkbox component for SolidJS.",
       "files": [
@@ -1594,18 +1271,12 @@
           "type": "registry:lib"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core",
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/collapsible",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Collapsible (Solid)",
       "description": "Collapsible component for SolidJS.",
       "files": [
@@ -1614,16 +1285,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/combobox",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Combobox (Solid)",
       "description": "Combobox component for SolidJS.",
       "files": [
@@ -1638,14 +1305,11 @@
         "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
-      "dependencies": [
-        "@kobalte/core",
-        "lucide-solid"
-      ]
+      "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/command",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Command (Solid)",
       "description": "Command component for SolidJS.",
       "files": [
@@ -1660,14 +1324,11 @@
         "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
-      "dependencies": [
-        "cmdk-solid",
-        "@kobalte/core"
-      ]
+      "dependencies": ["cmdk-solid", "@kobalte/core"]
     },
     {
       "name": "solid/context-menu",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Context Menu (Solid)",
       "description": "Context Menu component for SolidJS.",
       "files": [
@@ -1676,19 +1337,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core",
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/data-table",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Data Table (Solid)",
       "description": "Data Table component for SolidJS.",
       "files": [
@@ -1707,14 +1361,11 @@
         "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
-      "dependencies": [
-        "@tanstack/solid-table",
-        "lucide-solid"
-      ]
+      "dependencies": ["@tanstack/solid-table", "lucide-solid"]
     },
     {
       "name": "solid/date-picker",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Date Picker (Solid)",
       "description": "Date Picker component for SolidJS.",
       "files": [
@@ -1731,13 +1382,11 @@
         "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
-      "dependencies": [
-        "lucide-solid"
-      ]
+      "dependencies": ["lucide-solid"]
     },
     {
       "name": "solid/dialog",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Dialog (Solid)",
       "description": "Dialog component for SolidJS.",
       "files": [
@@ -1746,19 +1395,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core",
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/drawer",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Drawer (Solid)",
       "description": "Drawer component for SolidJS.",
       "files": [
@@ -1767,18 +1409,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@corvu/drawer"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@corvu/drawer"]
     },
     {
       "name": "solid/dropdown-menu",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Dropdown Menu (Solid)",
       "description": "Dropdown Menu component for SolidJS.",
       "files": [
@@ -1787,19 +1423,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core",
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/empty",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Empty (Solid)",
       "description": "Empty component for SolidJS.",
       "files": [
@@ -1808,16 +1437,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils"
-      ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "solid/field",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Field (Solid)",
       "description": "Field component for SolidJS.",
       "files": [
@@ -1826,18 +1451,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/label",
-        "@omni/solid/separator",
-        "@omni/solid/utils"
-      ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/solid/label", "@omni/solid/separator", "@omni/solid/utils"],
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "solid/form",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "React Hook Form (Solid)",
       "description": "React Hook Form component for SolidJS.",
       "files": [
@@ -1850,14 +1469,11 @@
           "type": "registry:lib"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/label",
-        "@omni/solid/utils"
-      ]
+      "registryDependencies": ["@omni/solid/label", "@omni/solid/utils"]
     },
     {
       "name": "solid/hover-card",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Hover Card (Solid)",
       "description": "Hover Card component for SolidJS.",
       "files": [
@@ -1866,17 +1482,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/input",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Input (Solid)",
       "description": "Input component for SolidJS.",
       "files": [
@@ -1889,15 +1500,11 @@
           "type": "registry:lib"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono",
-        "@omni/solid/glass-style"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"]
     },
     {
       "name": "solid/input-group",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Input Group (Solid)",
       "description": "Input Group component for SolidJS.",
       "files": [
@@ -1912,13 +1519,11 @@
         "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "solid/input-otp",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Input OTP (Solid)",
       "description": "Input OTP component for SolidJS.",
       "files": [
@@ -1927,19 +1532,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@corvu/otp-field",
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@corvu/otp-field", "lucide-solid"]
     },
     {
       "name": "solid/item",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Item (Solid)",
       "description": "Item component for SolidJS.",
       "files": [
@@ -1954,13 +1552,11 @@
         "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "solid/kbd",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Kbd (Solid)",
       "description": "Kbd component for SolidJS.",
       "files": [
@@ -1969,15 +1565,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono",
-        "@omni/solid/glass-style"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"]
     },
     {
       "name": "solid/label",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Label (Solid)",
       "description": "Label component for SolidJS.",
       "files": [
@@ -1986,17 +1578,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/menubar",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Menubar (Solid)",
       "description": "Menubar component for SolidJS.",
       "files": [
@@ -2005,18 +1592,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@kobalte/core",
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/navigation-menu",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Navigation Menu (Solid)",
       "description": "Navigation Menu component for SolidJS.",
       "files": [
@@ -2025,20 +1606,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core",
-        "class-variance-authority",
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "class-variance-authority", "lucide-solid"]
     },
     {
       "name": "solid/pagination",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Pagination (Solid)",
       "description": "Pagination component for SolidJS.",
       "files": [
@@ -2047,17 +1620,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["lucide-solid"]
     },
     {
       "name": "solid/popover",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Popover (Solid)",
       "description": "Popover component for SolidJS.",
       "files": [
@@ -2066,17 +1634,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/progress",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Progress (Solid)",
       "description": "Progress component for SolidJS.",
       "files": [
@@ -2085,17 +1648,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/radio-group",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Radio Group (Solid)",
       "description": "Radio Group component for SolidJS.",
       "files": [
@@ -2104,17 +1662,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/resizable",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Resizable (Solid)",
       "description": "Resizable component for SolidJS.",
       "files": [
@@ -2123,17 +1676,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils"
-      ],
-      "dependencies": [
-        "@corvu/resizable",
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@corvu/resizable", "lucide-solid"]
     },
     {
       "name": "solid/scroll-area",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Scroll Area (Solid)",
       "description": "Scroll Area component for SolidJS.",
       "files": [
@@ -2142,16 +1690,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/select",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Select (Solid)",
       "description": "Select component for SolidJS.",
       "files": [
@@ -2164,19 +1708,12 @@
           "type": "registry:lib"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core",
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/separator",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Separator (Solid)",
       "description": "Separator component for SolidJS.",
       "files": [
@@ -2185,16 +1722,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/sheet",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Sheet (Solid)",
       "description": "Sheet component for SolidJS.",
       "files": [
@@ -2203,19 +1736,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core",
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/sidebar",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Sidebar (Solid)",
       "description": "Sidebar component for SolidJS.",
       "files": [
@@ -2234,15 +1760,11 @@
         "@omni/solid/use-mobile",
         "@omni/solid/utils"
       ],
-      "dependencies": [
-        "@kobalte/core",
-        "class-variance-authority",
-        "lucide-solid"
-      ]
+      "dependencies": ["@kobalte/core", "class-variance-authority", "lucide-solid"]
     },
     {
       "name": "solid/skeleton",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Skeleton (Solid)",
       "description": "Skeleton component for SolidJS.",
       "files": [
@@ -2251,14 +1773,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/solid/glass-style"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
     },
     {
       "name": "solid/slider",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Slider (Solid)",
       "description": "Slider component for SolidJS.",
       "files": [
@@ -2267,16 +1786,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/sonner",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Sonner (Solid)",
       "description": "Sonner component for SolidJS.",
       "files": [
@@ -2292,13 +1807,11 @@
         "@omni/solid/tone-style",
         "@omni/solid/theme-provider"
       ],
-      "dependencies": [
-        "solid-sonner"
-      ]
+      "dependencies": ["solid-sonner"]
     },
     {
       "name": "solid/spinner",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Spinner (Solid)",
       "description": "Spinner component for SolidJS.",
       "files": [
@@ -2307,17 +1820,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "lucide-solid"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["lucide-solid"]
     },
     {
       "name": "solid/switch",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Switch (Solid)",
       "description": "Switch component for SolidJS.",
       "files": [
@@ -2330,16 +1838,12 @@
           "type": "registry:lib"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/table",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Table (Solid)",
       "description": "Table component for SolidJS.",
       "files": [
@@ -2348,13 +1852,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils"
-      ]
+      "registryDependencies": ["@omni/solid/utils"]
     },
     {
       "name": "solid/tabs",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Tabs (Solid)",
       "description": "Tabs component for SolidJS.",
       "files": [
@@ -2363,17 +1865,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/textarea",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Textarea (Solid)",
       "description": "Textarea component for SolidJS.",
       "files": [
@@ -2386,14 +1883,11 @@
           "type": "registry:lib"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/solid/glass-style"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
     },
     {
       "name": "solid/toggle",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Toggle (Solid)",
       "description": "Toggle component for SolidJS.",
       "files": [
@@ -2402,18 +1896,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "@kobalte/core",
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["@kobalte/core", "class-variance-authority"]
     },
     {
       "name": "solid/toggle-group",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Toggle Group (Solid)",
       "description": "Toggle Group component for SolidJS.",
       "files": [
@@ -2422,17 +1910,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils"
-      ],
-      "dependencies": [
-        "@kobalte/core",
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core", "class-variance-authority"]
     },
     {
       "name": "solid/tooltip",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Tooltip (Solid)",
       "description": "Tooltip component for SolidJS.",
       "files": [
@@ -2441,17 +1924,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": [
-        "@kobalte/core"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core"]
     },
     {
       "name": "solid/typography",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Typography (Solid)",
       "description": "Typography component for SolidJS.",
       "files": [
@@ -2460,29 +1938,22 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/utils",
-        "@omni/font-mono"
-      ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["class-variance-authority"]
     },
     {
       "name": "solid/utils",
-      "type": "registry:component",
+      "type": "registry:lib",
       "title": "Utilities (Solid)",
       "description": "Utilities for SolidJS.",
       "files": [
         {
           "path": "registry/solid/lib/utils.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ]
+      "dependencies": ["clsx", "tailwind-merge"]
     },
     {
       "name": "solid/glass-style",
@@ -2539,13 +2010,14 @@
     },
     {
       "name": "solid/use-mobile",
-      "type": "registry:component",
+      "type": "registry:hook",
       "title": "useIsMobile (Solid)",
       "description": "useIsMobile hook for SolidJS.",
       "files": [
         {
           "path": "registry/solid/hooks/use-mobile.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-mobile.ts"
         }
       ]
     },

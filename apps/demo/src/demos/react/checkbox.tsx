@@ -1,11 +1,11 @@
-import { Checkbox } from "@/registry/react/ui/checkbox"
+import { Checkbox } from "@/registry/react/ui/checkbox";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/react/ui/card"
+} from "@/registry/react/ui/card";
 
 export default function CheckboxDemo() {
   return (
@@ -14,9 +14,7 @@ export default function CheckboxDemo() {
         <CardTitle className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
           Preferences
         </CardTitle>
-        <CardDescription>
-          Toggles inherit the mono uppercase labels used in forms.
-        </CardDescription>
+        <CardDescription>Toggles inherit the mono uppercase labels used in forms.</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-3">
         <label className="group/field flex items-center gap-3">
@@ -39,5 +37,5 @@ export default function CheckboxDemo() {
         </label>
       </CardContent>
     </Card>
-  )
+  );
 }

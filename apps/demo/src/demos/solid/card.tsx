@@ -6,10 +6,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/solid/ui/card"
-import { Button } from "@/registry/solid/ui/button"
-import { Badge } from "@/registry/solid/ui/badge"
-import { Separator } from "@/registry/solid/ui/separator"
+} from "@/registry/solid/ui/card";
+import { Button } from "@/registry/solid/ui/button";
+import { Badge } from "@/registry/solid/ui/badge";
+import { Separator } from "@/registry/solid/ui/separator";
 
 export default function CardDemo() {
   return (
@@ -30,12 +30,8 @@ export default function CardDemo() {
       <CardContent>
         <div class="flex items-end justify-between">
           <div class="space-y-1">
-            <span class="text-4xl font-semibold tracking-tight text-card-foreground">
-              3,482
-            </span>
-            <p class="text-sm text-muted-foreground">
-              +12.4% vs previous cycle
-            </p>
+            <span class="text-4xl font-semibold tracking-tight text-card-foreground">3,482</span>
+            <p class="text-sm text-muted-foreground">+12.4% vs previous cycle</p>
           </div>
           <Button size="sm">View report</Button>
         </div>
@@ -50,5 +46,5 @@ export default function CardDemo() {
         </div>
       </CardFooter>
     </Card>
-  )
+  );
 }

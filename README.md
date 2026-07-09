@@ -8,11 +8,13 @@ Omni UI is an opinionated fork of [shadcn/ui](https://ui.shadcn.com) with a fros
 ## Usage
 
 1. **Initialize shadcn/ui**
+
    ```bash
    pnpm dlx shadcn@latest init
    ```
 
 2. **Add the Omni registry** – edit your generated `components.json` so the aliases include the scope:
+
    ```json
    "registries": {
      "@omni": "https://munenick.github.io/omni-ui/r/{name}.json"
@@ -20,11 +22,13 @@ Omni UI is an opinionated fork of [shadcn/ui](https://ui.shadcn.com) with a fros
    ```
 
 3. **Pull components**
+
    ```bash
    pnpm dlx shadcn@latest add @omni/button
    ```
 
    For Solid:
+
    ```bash
    pnpm dlx shadcn@latest add @omni/solid/button
    ```

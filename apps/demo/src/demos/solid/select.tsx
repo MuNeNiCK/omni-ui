@@ -1,9 +1,9 @@
 import type {
   SelectRootItemComponentProps,
   SelectRootSectionComponentProps,
-} from "@kobalte/core/select"
+} from "@kobalte/core/select";
 
-import { Label } from "@/registry/solid/ui/label"
+import { Label } from "@/registry/solid/ui/label";
 import {
   Select,
   SelectContent,
@@ -12,25 +12,25 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/registry/solid/ui/select"
+} from "@/registry/solid/ui/select";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/solid/ui/card"
+} from "@/registry/solid/ui/card";
 
 type Region = {
-  value: string
-  label: string
-  disabled?: boolean
-}
+  value: string;
+  label: string;
+  disabled?: boolean;
+};
 
 type RegionGroup = {
-  label: string
-  options: Region[]
-}
+  label: string;
+  options: Region[];
+};
 
 const regionGroups: RegionGroup[] = [
   {
@@ -48,10 +48,10 @@ const regionGroups: RegionGroup[] = [
       { value: "virginia", label: "Virginia" },
     ],
   },
-]
+];
 
 export default function SelectDemo() {
-  const defaultOption = regionGroups[0].options[0]
+  const defaultOption = regionGroups[0].options[0];
 
   return (
     <Card class="border-border/70">
@@ -85,12 +85,13 @@ export default function SelectDemo() {
           <SelectTrigger id="region" class="min-w-[220px]">
             <SelectValue<Region>>
               {(state: { selectedOption: () => Region | undefined }) =>
-                state.selectedOption()?.label}
+                state.selectedOption()?.label
+              }
             </SelectValue>
           </SelectTrigger>
           <SelectContent position="popper" />
         </Select>
       </CardContent>
     </Card>
-  )
+  );
 }

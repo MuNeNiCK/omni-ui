@@ -1,4 +1,4 @@
-import { Button } from "@/registry/solid/ui/button"
+import { Button } from "@/registry/solid/ui/button";
 import {
   Sheet,
   SheetClose,
@@ -8,7 +8,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/registry/solid/ui/sheet"
+} from "@/registry/solid/ui/sheet";
 
 export default function SheetDemo() {
   return (
@@ -26,9 +26,7 @@ export default function SheetDemo() {
         <div class="space-y-3 px-4 text-sm text-foreground/80">
           <p>Runtime integrity passed.</p>
           <p>Network policy matches template.</p>
-          <p class="text-muted-foreground">
-            Estimated rollout time: 2m 14s.
-          </p>
+          <p class="text-muted-foreground">Estimated rollout time: 2m 14s.</p>
         </div>
         <SheetFooter>
           <SheetClose as={Button} variant="muted">
@@ -38,5 +36,5 @@ export default function SheetDemo() {
         </SheetFooter>
       </SheetContent>
     </Sheet>
-  )
+  );
 }

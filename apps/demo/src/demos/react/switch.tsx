@@ -1,11 +1,11 @@
-import { Switch } from "@/registry/react/ui/switch"
+import { Switch } from "@/registry/react/ui/switch";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/react/ui/card"
+} from "@/registry/react/ui/card";
 
 export default function SwitchDemo() {
   return (
@@ -33,5 +33,5 @@ export default function SwitchDemo() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

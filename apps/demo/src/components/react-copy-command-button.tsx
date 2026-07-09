@@ -1,1 +1,1 @@
-export { default as CopyCommandButton } from "@/components/copy-command-button"
+export { default as CopyCommandButton } from "@/components/copy-command-button";

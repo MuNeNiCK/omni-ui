@@ -1,13 +1,11 @@
-import { Input } from "@/registry/react/ui/input"
-import { Label } from "@/registry/react/ui/label"
+import { Input } from "@/registry/react/ui/input";
+import { Label } from "@/registry/react/ui/label";
 
 export default function InputDemo() {
   return (
     <div className="grid gap-6">
       <div className="grid gap-4">
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Default
-        </p>
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Default</p>
         <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
           <Input id="email" type="email" placeholder="you@omni.dev" />
@@ -19,9 +17,7 @@ export default function InputDemo() {
       </div>
 
       <div className="grid gap-4">
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Disabled State
-        </p>
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Disabled State</p>
         <div className="grid gap-2">
           <Label htmlFor="api-key" className="opacity-80">
             API Key
@@ -30,5 +26,5 @@ export default function InputDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

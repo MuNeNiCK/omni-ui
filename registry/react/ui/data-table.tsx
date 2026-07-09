@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   type ColumnDef,
   type ColumnFiltersState,
@@ -13,7 +13,7 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -21,11 +21,11 @@ import {
   ChevronRightIcon,
   ChevronsUpDownIcon,
   SlidersHorizontalIcon,
-} from "lucide-react"
+} from "lucide-react";
 
-import { cn } from "@/registry/react/lib/utils"
-import { Button } from "@/registry/react/ui/button"
-import { Input } from "@/registry/react/ui/input"
+import { cn } from "@/registry/react/lib/utils";
+import { Button } from "@/registry/react/ui/button";
+import { Input } from "@/registry/react/ui/input";
 import {
   Select,
   SelectContent,
@@ -33,13 +33,13 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/react/ui/select"
+} from "@/registry/react/ui/select";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/registry/react/ui/dropdown-menu"
+} from "@/registry/react/ui/dropdown-menu";
 import {
   Table,
   TableBody,
@@ -47,27 +47,27 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/registry/react/ui/table"
+} from "@/registry/react/ui/table";
 
 type DataTableProps<TData, TValue> = {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
-  className?: string
-  searchKey?: string
-  searchPlaceholder?: string
-  toolbar?: (table: TableInstance<TData>) => React.ReactNode
-  emptyMessage?: React.ReactNode
-  initialPageSize?: number
-  pageSizeOptions?: number[]
-  footer?: React.ReactNode
-  viewOptions?: boolean
-}
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
+  className?: string;
+  searchKey?: string;
+  searchPlaceholder?: string;
+  toolbar?: (table: TableInstance<TData>) => React.ReactNode;
+  emptyMessage?: React.ReactNode;
+  initialPageSize?: number;
+  pageSizeOptions?: number[];
+  footer?: React.ReactNode;
+  viewOptions?: boolean;
+};
 
 type DataTableColumnMeta = {
-  headerLabel?: string
-}
+  headerLabel?: string;
+};
 
-const defaultPageSizeOptions = [10, 20, 30, 50]
+const defaultPageSizeOptions = [10, 20, 30, 50];
 
 function DataTable<TData, TValue>({
   columns,
@@ -82,11 +82,11 @@ function DataTable<TData, TValue>({
   footer,
   viewOptions = true,
 }: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
-  const [searchValue, setSearchValue] = React.useState("")
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
+  const [searchValue, setSearchValue] = React.useState("");
 
   const table = useReactTable({
     data,
@@ -110,21 +110,18 @@ function DataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-  })
+  });
 
   React.useEffect(() => {
-    if (!searchKey) return
-    const column = table.getColumn(searchKey as string)
-    column?.setFilterValue(searchValue)
-  }, [table, searchKey, searchValue])
+    if (!searchKey) return;
+    const column = table.getColumn(searchKey as string);
+    column?.setFilterValue(searchValue);
+  }, [table, searchKey, searchValue]);
 
-  const isFiltered = Boolean(searchValue) || columnFilters.length > 0
+  const isFiltered = Boolean(searchValue) || columnFilters.length > 0;
 
   return (
-    <div
-      data-slot="data-table"
-      className={cn("flex flex-col gap-4", className)}
-    >
+    <div data-slot="data-table" className={cn("flex flex-col gap-4", className)}>
       <div className="flex flex-col gap-3 border border-border/60 bg-muted/40 px-4 py-3 text-[10px] font-mono uppercase tracking-[0.28em] text-muted-foreground/80 shadow-[var(--glass-shadow-outline)] backdrop-blur-[4px] sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-1 flex-wrap items-center gap-2">
           {toolbar?.(table)}
@@ -134,15 +131,16 @@ function DataTable<TData, TValue>({
               size="sm"
               className="h-8 border border-transparent px-3 py-1 tracking-[0.28em] text-muted-foreground/70 hover:border-border/60 hover:bg-foreground/10 hover:text-foreground"
               onClick={() => {
-                setSearchValue("")
-                table.resetColumnFilters()
+                setSearchValue("");
+                table.resetColumnFilters();
               }}
             >
               Reset
             </Button>
           ) : null}
           <span className="hidden items-center gap-1 text-[9px] tracking-[0.32em] text-muted-foreground/60 sm:inline-flex">
-            {table.getFilteredSelectedRowModel().rows.length} selected • {table.getFilteredRowModel().rows.length} total
+            {table.getFilteredSelectedRowModel().rows.length} selected •{" "}
+            {table.getFilteredRowModel().rows.length} total
           </span>
         </div>
         <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-3">
@@ -161,24 +159,21 @@ function DataTable<TData, TValue>({
         <Table className="min-w-full text-left">
           <TableHeader className="bg-muted/40">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow
-                key={headerGroup.id}
-                className="border-border/40 uppercase"
-              >
+              <TableRow key={headerGroup.id} className="border-border/40 uppercase">
                 {headerGroup.headers.map((header) => {
                   if (header.isPlaceholder) {
-                    return <TableHead key={header.id} />
+                    return <TableHead key={header.id} />;
                   }
 
-                  const canSort = header.column.getCanSort()
-                  const sortDirection = header.column.getIsSorted()
+                  const canSort = header.column.getCanSort();
+                  const sortDirection = header.column.getIsSorted();
 
                   return (
                     <TableHead
                       key={header.id}
                       className={cn(
                         "h-12 px-3 text-[10px] font-mono uppercase tracking-[0.32em] text-muted-foreground/80",
-                        "[&[data-sort=desc]]:text-foreground [&[data-sort=asc]]:text-foreground"
+                        "[&[data-sort=desc]]:text-foreground [&[data-sort=asc]]:text-foreground",
                       )}
                       data-sort={sortDirection ? String(sortDirection) : undefined}
                     >
@@ -205,7 +200,7 @@ function DataTable<TData, TValue>({
                         flexRender(header.column.columnDef.header, header.getContext())
                       )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -244,12 +239,12 @@ function DataTable<TData, TValue>({
       {footer}
       <DataTablePagination table={table} pageSizeOptions={pageSizeOptions} />
     </div>
-  )
+  );
 }
 
 type DataTableViewOptionsProps<TData> = {
-  table: TableInstance<TData>
-}
+  table: TableInstance<TData>;
+};
 
 function DataTableViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
   return (
@@ -269,10 +264,7 @@ function DataTableViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>
         align="end"
         className="min-w-[12rem] border-border/60 bg-muted/60 text-foreground shadow-[var(--glass-shadow-outline)]"
       >
-        <DropdownMenuCheckboxItem
-          className="pointer-events-none opacity-70"
-          checked
-        >
+        <DropdownMenuCheckboxItem className="pointer-events-none opacity-70" checked>
           Columns
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem className="pointer-events-none opacity-40" checked>
@@ -293,29 +285,29 @@ function DataTableViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>
           ))}
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }
 
 type DataTablePaginationProps<TData> = {
-  table: TableInstance<TData>
-  pageSizeOptions?: number[]
-}
+  table: TableInstance<TData>;
+  pageSizeOptions?: number[];
+};
 
 function DataTablePagination<TData>({
   table,
   pageSizeOptions = defaultPageSizeOptions,
 }: DataTablePaginationProps<TData>) {
-  const pageSize = table.getState().pagination.pageSize
-  const pageCount = table.getPageCount()
-  const pageIndex = table.getState().pagination.pageIndex
-  const pageStart = pageIndex * pageSize + 1
-  const pageEnd = Math.min(pageStart + pageSize - 1, table.getFilteredRowModel().rows.length)
+  const pageSize = table.getState().pagination.pageSize;
+  const pageCount = table.getPageCount();
+  const pageIndex = table.getState().pagination.pageIndex;
+  const pageStart = pageIndex * pageSize + 1;
+  const pageEnd = Math.min(pageStart + pageSize - 1, table.getFilteredRowModel().rows.length);
 
   return (
     <div className="flex flex-col gap-3 border border-border/60 bg-muted/40 px-4 py-3 text-[10px] font-mono uppercase tracking-[0.28em] text-muted-foreground/80 shadow-[var(--glass-shadow-outline)] backdrop-blur-[4px] sm:flex-row sm:items-center sm:justify-between">
       <div className="flex flex-wrap items-center gap-2">
         <span>
-          Showing {table.getFilteredRowModel().rows.length ? `${pageStart}–${pageEnd}` : 0} of {" "}
+          Showing {table.getFilteredRowModel().rows.length ? `${pageStart}–${pageEnd}` : 0} of{" "}
           {table.getFilteredRowModel().rows.length} rows
         </span>
       </div>
@@ -369,7 +361,7 @@ function DataTablePagination<TData>({
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export { DataTable, DataTablePagination, DataTableViewOptions }
+export { DataTable, DataTablePagination, DataTableViewOptions };

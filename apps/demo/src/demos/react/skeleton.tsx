@@ -1,4 +1,4 @@
-import { Skeleton } from "@/registry/react/ui/skeleton"
+import { Skeleton } from "@/registry/react/ui/skeleton";
 
 export default function SkeletonDemo() {
   return (
@@ -8,5 +8,5 @@ export default function SkeletonDemo() {
       <Skeleton className="h-4 w-5/6" />
       <Skeleton className="h-28 w-full" />
     </div>
-  )
+  );
 }

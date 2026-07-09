@@ -1,13 +1,13 @@
-import { splitProps, type ComponentProps, type JSX } from "solid-js"
-import * as CheckboxPrimitive from "@kobalte/core/checkbox"
-import { CheckIcon } from "lucide-solid"
+import { splitProps, type ComponentProps, type JSX } from "solid-js";
+import * as CheckboxPrimitive from "@kobalte/core/checkbox";
+import { CheckIcon } from "lucide-solid";
 
-import { useOptionalFormControlProps } from "@/registry/solid/lib/form-control"
-import { cn } from "@/registry/solid/lib/utils"
+import { useOptionalFormControlProps } from "@/registry/solid/lib/form-control";
+import { cn } from "@/registry/solid/lib/utils";
 
 function Checkbox(props: ComponentProps<typeof CheckboxPrimitive.Root>) {
-  const [local, rest] = splitProps(props, ["class", "children", "id"])
-  const formControlProps = useOptionalFormControlProps()
+  const [local, rest] = splitProps(props, ["class", "children", "id"]);
+  const formControlProps = useOptionalFormControlProps();
   return (
     <CheckboxPrimitive.Root data-slot="checkbox" {...rest}>
       <CheckboxPrimitive.Input
@@ -24,7 +24,7 @@ function Checkbox(props: ComponentProps<typeof CheckboxPrimitive.Root>) {
           "data-[checked]:bg-foreground data-[checked]:text-background",
           "disabled:cursor-not-allowed disabled:opacity-40",
           "rounded-none",
-          local.class
+          local.class,
         )}
       >
         <CheckboxPrimitive.Indicator
@@ -36,7 +36,7 @@ function Checkbox(props: ComponentProps<typeof CheckboxPrimitive.Root>) {
       </CheckboxPrimitive.Control>
       {local.children as JSX.Element}
     </CheckboxPrimitive.Root>
-  )
+  );
 }
 
-export { Checkbox }
+export { Checkbox };

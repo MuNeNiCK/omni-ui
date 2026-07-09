@@ -1,14 +1,12 @@
-import { splitProps, type ParentProps, type JSX, type ComponentProps } from "solid-js"
-import { Dynamic } from "solid-js/web"
-import { cva, type VariantProps } from "class-variance-authority"
+import { splitProps, type ParentProps, type JSX, type ComponentProps } from "solid-js";
+import { Dynamic } from "solid-js/web";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/registry/solid/lib/utils"
-import { Separator } from "@/registry/solid/ui/separator"
+import { cn } from "@/registry/solid/lib/utils";
+import { Separator } from "@/registry/solid/ui/separator";
 
-function ItemGroup(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>
-) {
-  const [local, rest] = splitProps(props, ["class"])
+function ItemGroup(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       role="list"
@@ -16,11 +14,11 @@ function ItemGroup(
       class={cn("group/item-group flex flex-col", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 function ItemSeparator(props: ComponentProps<typeof Separator>) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <Separator
       data-slot="item-separator"
@@ -28,7 +26,7 @@ function ItemSeparator(props: ComponentProps<typeof Separator>) {
       class={cn("my-0", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 const itemVariants = cva(
@@ -52,19 +50,21 @@ const itemVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
-)
+  },
+);
 
 function Item(
-  props: ParentProps<{
-    class?: string
-    asChild?: boolean
-  } & JSX.HTMLAttributes<HTMLDivElement>> &
-    VariantProps<typeof itemVariants>
+  props: ParentProps<
+    {
+      class?: string;
+      asChild?: boolean;
+    } & JSX.HTMLAttributes<HTMLDivElement>
+  > &
+    VariantProps<typeof itemVariants>,
 ) {
-  const [local, rest] = splitProps(props, ["class", "variant", "size", "asChild"])
-  const variant = () => local.variant ?? "default"
-  const size = () => local.size ?? "default"
+  const [local, rest] = splitProps(props, ["class", "variant", "size", "asChild"]);
+  const variant = () => local.variant ?? "default";
+  const size = () => local.size ?? "default";
   return (
     <Dynamic
       component={local.asChild ? "span" : "div"}
@@ -74,7 +74,7 @@ function Item(
       class={cn(itemVariants({ variant: variant(), size: size(), className: local.class }))}
       {...rest}
     />
-  )
+  );
 }
 
 const itemMediaVariants = cva(
@@ -91,15 +91,15 @@ const itemMediaVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
-)
+  },
+);
 
 function ItemMedia(
   props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>> &
-    VariantProps<typeof itemMediaVariants>
+    VariantProps<typeof itemMediaVariants>,
 ) {
-  const [local, rest] = splitProps(props, ["class", "variant"])
-  const variant = () => local.variant ?? "default"
+  const [local, rest] = splitProps(props, ["class", "variant"]);
+  const variant = () => local.variant ?? "default";
   return (
     <div
       data-slot="item-media"
@@ -107,101 +107,78 @@ function ItemMedia(
       class={cn(itemMediaVariants({ variant: variant(), className: local.class }))}
       {...rest}
     />
-  )
+  );
 }
 
-function ItemContent(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>
-) {
-  const [local, rest] = splitProps(props, ["class"])
+function ItemContent(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="item-content"
-      class={cn(
-        "flex flex-1 flex-col gap-1 [&+[data-slot=item-content]]:flex-none",
-        local.class
-      )}
+      class={cn("flex flex-1 flex-col gap-1 [&+[data-slot=item-content]]:flex-none", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
-function ItemTitle(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>
-) {
-  const [local, rest] = splitProps(props, ["class"])
+function ItemTitle(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="item-title"
       class={cn(
         "flex w-fit items-center gap-2 font-mono text-[10px] uppercase tracking-[0.28em] text-foreground",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 function ItemDescription(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLParagraphElement>>
+  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLParagraphElement>>,
 ) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <p
       data-slot="item-description"
       class={cn(
         "text-muted-foreground line-clamp-2 text-sm leading-relaxed",
         "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
-function ItemActions(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>
-) {
-  const [local, rest] = splitProps(props, ["class"])
+function ItemActions(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
-    <div
-      data-slot="item-actions"
-      class={cn("flex items-center gap-2", local.class)}
-      {...rest}
-    />
-  )
+    <div data-slot="item-actions" class={cn("flex items-center gap-2", local.class)} {...rest} />
+  );
 }
 
-function ItemHeader(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>
-) {
-  const [local, rest] = splitProps(props, ["class"])
+function ItemHeader(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="item-header"
-      class={cn(
-        "flex basis-full items-center justify-between gap-2",
-        local.class
-      )}
+      class={cn("flex basis-full items-center justify-between gap-2", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
-function ItemFooter(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>
-) {
-  const [local, rest] = splitProps(props, ["class"])
+function ItemFooter(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="item-footer"
-      class={cn(
-        "flex basis-full items-center justify-between gap-2",
-        local.class
-      )}
+      class={cn("flex basis-full items-center justify-between gap-2", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 export {
@@ -215,4 +192,4 @@ export {
   ItemDescription,
   ItemHeader,
   ItemFooter,
-}
+};

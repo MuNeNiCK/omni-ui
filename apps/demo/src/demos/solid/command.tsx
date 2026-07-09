@@ -1,6 +1,6 @@
-import { createSignal } from "solid-js"
+import { createSignal } from "solid-js";
 
-import { Button } from "@/registry/solid/ui/button"
+import { Button } from "@/registry/solid/ui/button";
 import {
   Command,
   CommandDialog,
@@ -11,10 +11,10 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/registry/solid/ui/command"
+} from "@/registry/solid/ui/command";
 
 export default function CommandDemo() {
-  const [open, setOpen] = createSignal(false)
+  const [open, setOpen] = createSignal(false);
 
   return (
     <div class="flex flex-col gap-4">
@@ -31,22 +31,16 @@ export default function CommandDemo() {
                 Launch console
                 <CommandShortcut>&#8984;K</CommandShortcut>
               </CommandItem>
-              <CommandItem onSelect={() => setOpen(false)}>
-                Open docs
-              </CommandItem>
+              <CommandItem onSelect={() => setOpen(false)}>Open docs</CommandItem>
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading="Workspaces">
-              <CommandItem onSelect={() => setOpen(false)}>
-                Tokyo region
-              </CommandItem>
-              <CommandItem onSelect={() => setOpen(false)}>
-                Sandbox
-              </CommandItem>
+              <CommandItem onSelect={() => setOpen(false)}>Tokyo region</CommandItem>
+              <CommandItem onSelect={() => setOpen(false)}>Sandbox</CommandItem>
             </CommandGroup>
           </CommandList>
         </Command>
       </CommandDialog>
     </div>
-  )
+  );
 }

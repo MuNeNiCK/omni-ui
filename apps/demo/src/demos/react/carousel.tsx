@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 
 import {
   type CarouselApi,
@@ -7,8 +7,8 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/registry/react/ui/carousel"
-import { Button } from "@/registry/react/ui/button"
+} from "@/registry/react/ui/carousel";
+import { Button } from "@/registry/react/ui/button";
 
 const slides = [
   {
@@ -26,19 +26,19 @@ const slides = [
     description: "Osaka cluster warming standby nodes",
     status: "Warm",
   },
-]
+];
 
 export default function CarouselDemo() {
-  const [index, setIndex] = useState(0)
-  const [api, setApi] = useState<CarouselApi | null>(null)
+  const [index, setIndex] = useState(0);
+  const [api, setApi] = useState<CarouselApi | null>(null);
 
   return (
     <div className="relative">
       <Carousel
         className="w-full"
         setApi={(instance) => {
-          setApi(instance)
-          instance?.on("select", () => setIndex(instance.selectedScrollSnap()))
+          setApi(instance);
+          instance?.on("select", () => setIndex(instance.selectedScrollSnap()));
         }}
       >
         <CarouselContent className="-ml-6">
@@ -48,12 +48,8 @@ export default function CarouselDemo() {
                 <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/80">
                   {slide.status}
                 </span>
-                <h3 className="text-xl font-semibold uppercase tracking-[0.12em]">
-                  {slide.title}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {slide.description}
-                </p>
+                <h3 className="text-xl font-semibold uppercase tracking-[0.12em]">{slide.title}</h3>
+                <p className="text-sm text-muted-foreground">{slide.description}</p>
               </div>
             </CarouselItem>
           ))}
@@ -69,8 +65,8 @@ export default function CarouselDemo() {
             size="icon-sm"
             className="size-8"
             onClick={() => {
-              api?.scrollTo(slideIndex)
-              setIndex(slideIndex)
+              api?.scrollTo(slideIndex);
+              setIndex(slideIndex);
             }}
           >
             <span className="sr-only">Go to slide {slideIndex + 1}</span>
@@ -79,5 +75,5 @@ export default function CarouselDemo() {
         ))}
       </div>
     </div>
-  )
+  );
 }

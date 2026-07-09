@@ -1,13 +1,11 @@
-import { Label } from "@/registry/react/ui/label"
-import { Textarea } from "@/registry/react/ui/textarea"
+import { Label } from "@/registry/react/ui/label";
+import { Textarea } from "@/registry/react/ui/textarea";
 
 export default function TextareaDemo() {
   return (
     <div className="grid gap-6">
       <div className="grid gap-4">
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Support Form
-        </p>
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Support Form</p>
         <div className="grid gap-2">
           <Label htmlFor="subject">Subject</Label>
           <Textarea id="subject" placeholder="Access issue on ap-tokyo-1" />
@@ -23,9 +21,7 @@ export default function TextareaDemo() {
       </div>
 
       <div className="grid gap-4">
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Read-Only
-        </p>
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Read-Only</p>
         <div className="grid gap-2">
           <Label htmlFor="logs" className="opacity-70">
             Latest Logs
@@ -41,5 +37,5 @@ export default function TextareaDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-import { Toggle } from "@/registry/solid/ui/toggle"
+import { Toggle } from "@/registry/solid/ui/toggle";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/solid/ui/card"
+} from "@/registry/solid/ui/card";
 
 export default function ToggleDemo() {
   return (
@@ -28,5 +28,5 @@ export default function ToggleDemo() {
         </Toggle>
       </CardContent>
     </Card>
-  )
+  );
 }

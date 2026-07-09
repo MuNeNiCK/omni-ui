@@ -1,19 +1,27 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { Button } from "@/registry/react/ui/button"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/registry/react/ui/form"
-import { Input } from "@/registry/react/ui/input"
-import { Switch } from "@/registry/react/ui/switch"
+import { Button } from "@/registry/react/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/registry/react/ui/form";
+import { Input } from "@/registry/react/ui/input";
+import { Switch } from "@/registry/react/ui/switch";
 
 const schema = z.object({
   email: z.string().email("Provide a valid email."),
   password: z.string().min(8, "Password must be at least 8 characters."),
   remember: z.boolean().optional(),
-})
+});
 
-type FormValues = z.infer<typeof schema>
+type FormValues = z.infer<typeof schema>;
 
 export default function ReactHookFormDemo() {
   const form = useForm<FormValues>({
@@ -23,11 +31,11 @@ export default function ReactHookFormDemo() {
       password: "",
       remember: true,
     },
-  })
+  });
 
   const onSubmit = (values: FormValues) => {
-    console.info("Submitted", values)
-  }
+    console.info("Submitted", values);
+  };
 
   return (
     <Form {...form}>
@@ -84,7 +92,12 @@ export default function ReactHookFormDemo() {
         />
 
         <div className="flex justify-end gap-3">
-          <Button variant="ghost" type="button" className="tracking-[0.3em]" onClick={() => form.reset()}>
+          <Button
+            variant="ghost"
+            type="button"
+            className="tracking-[0.3em]"
+            onClick={() => form.reset()}
+          >
             Reset
           </Button>
           <Button type="submit" className="tracking-[0.3em]">
@@ -93,5 +106,5 @@ export default function ReactHookFormDemo() {
         </div>
       </form>
     </Form>
-  )
+  );
 }

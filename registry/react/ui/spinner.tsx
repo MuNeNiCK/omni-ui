@@ -1,6 +1,6 @@
-import { Loader2Icon } from "lucide-react"
+import { Loader2Icon } from "lucide-react";
 
-import { cn } from "@/registry/react/lib/utils"
+import { cn } from "@/registry/react/lib/utils";
 
 function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
   return (
@@ -11,11 +11,11 @@ function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
       className={cn(
         "size-4 animate-spin text-foreground/80 drop-shadow-[var(--glass-drop-shadow-subtle)]",
         "dark:text-foreground",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { Spinner }
+export { Spinner };

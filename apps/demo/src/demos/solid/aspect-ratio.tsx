@@ -1,4 +1,4 @@
-import { AspectRatio } from "@/registry/solid/ui/aspect-ratio"
+import { AspectRatio } from "@/registry/solid/ui/aspect-ratio";
 
 export default function AspectRatioDemo() {
   return (
@@ -26,5 +26,5 @@ export default function AspectRatioDemo() {
         </div>
       </AspectRatio>
     </div>
-  )
+  );
 }

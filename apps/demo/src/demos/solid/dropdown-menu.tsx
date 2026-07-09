@@ -1,4 +1,4 @@
-import { Button } from "@/registry/solid/ui/button"
+import { Button } from "@/registry/solid/ui/button";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/registry/solid/ui/dropdown-menu"
+} from "@/registry/solid/ui/dropdown-menu";
 
 export default function DropdownMenuDemo() {
   return (
@@ -25,12 +25,8 @@ export default function DropdownMenuDemo() {
         <DropdownMenuSeparator />
         <DropdownMenuLabel>Workspace</DropdownMenuLabel>
         <DropdownMenuRadioGroup value="tokyo">
-          <DropdownMenuRadioItem value="tokyo">
-            Tokyo
-          </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="osaka">
-            Osaka
-          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="tokyo">Tokyo</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="osaka">Osaka</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
         <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem checked>
@@ -39,5 +35,5 @@ export default function DropdownMenuDemo() {
         </DropdownMenuCheckboxItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

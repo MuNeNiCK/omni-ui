@@ -6,37 +6,34 @@ import {
   type ComponentProps,
   type JSX,
   type ParentProps,
-} from "solid-js"
-import * as NavigationMenuPrimitive from "@kobalte/core/navigation-menu"
-import { cva } from "class-variance-authority"
-import { ChevronDownIcon } from "lucide-solid"
+} from "solid-js";
+import * as NavigationMenuPrimitive from "@kobalte/core/navigation-menu";
+import { cva } from "class-variance-authority";
+import { ChevronDownIcon } from "lucide-solid";
 
-import {
-  glassIndicatorSurfaceClass,
-  glassMenuSurfaceClass,
-} from "@/registry/solid/lib/glass"
-import { cn, omniMonoText } from "@/registry/solid/lib/utils"
+import { glassIndicatorSurfaceClass, glassMenuSurfaceClass } from "@/registry/solid/lib/glass";
+import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
 type NavigationMenuContextValue = {
-  viewport: () => boolean
-}
+  viewport: () => boolean;
+};
 
 const NavigationMenuContext = createContext<NavigationMenuContextValue>({
   viewport: () => true,
-})
+});
 
 function useNavigationMenuContext() {
-  return useContext(NavigationMenuContext)
+  return useContext(NavigationMenuContext);
 }
 
 function NavigationMenu(
   props: ComponentProps<typeof NavigationMenuPrimitive.Root> & {
-    class?: string
-    viewport?: boolean
-  }
+    class?: string;
+    viewport?: boolean;
+  },
 ) {
-  const [local, rest] = splitProps(props, ["class", "children", "viewport"])
-  const viewport = () => local.viewport ?? true
+  const [local, rest] = splitProps(props, ["class", "children", "viewport"]);
+  const viewport = () => local.viewport ?? true;
 
   return (
     <NavigationMenuContext.Provider
@@ -59,51 +56,46 @@ function NavigationMenu(
         </Show>
       </NavigationMenuPrimitive.Root>
     </NavigationMenuContext.Provider>
-  )
+  );
 }
 
 function NavigationMenuList(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLUListElement>>
+  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLUListElement>>,
 ) {
-  const [local, rest] = splitProps(props, ["class", "children"])
+  const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <ul
       data-slot="navigation-menu-list"
-      class={cn(
-        "group flex flex-1 list-none items-center justify-center gap-1",
-        local.class
-      )}
+      class={cn("group flex flex-1 list-none items-center justify-center gap-1", local.class)}
       {...rest}
     >
       {local.children}
     </ul>
-  )
+  );
 }
 
 function NavigationMenuItem(
-  props: ParentProps<{ class?: string } & ComponentProps<typeof NavigationMenuPrimitive.Menu>>
+  props: ParentProps<{ class?: string } & ComponentProps<typeof NavigationMenuPrimitive.Menu>>,
 ) {
-  const [local, rest] = splitProps(props, ["class", "children"])
+  const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <li data-slot="navigation-menu-item" class={cn("relative", local.class)}>
-      <NavigationMenuPrimitive.Menu {...rest}>
-        {local.children}
-      </NavigationMenuPrimitive.Menu>
+      <NavigationMenuPrimitive.Menu {...rest}>{local.children}</NavigationMenuPrimitive.Menu>
     </li>
-  )
+  );
 }
 
 const navigationMenuTriggerStyle = cva(
   cn(
     "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-3 py-1.5 text-muted-foreground transition-[color,background,border,box-shadow] focus-visible:outline-none",
-    omniMonoText.compact
-  )
-)
+    omniMonoText.compact,
+  ),
+);
 
 function NavigationMenuTrigger(
-  props: ParentProps<{ class?: string } & JSX.ButtonHTMLAttributes<HTMLButtonElement>>
+  props: ParentProps<{ class?: string } & JSX.ButtonHTMLAttributes<HTMLButtonElement>>,
 ) {
-  const [local, rest] = splitProps(props, ["class", "children"])
+  const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <NavigationMenuPrimitive.Trigger
       data-slot="navigation-menu-trigger"
@@ -114,7 +106,7 @@ function NavigationMenuTrigger(
         "data-[expanded]:bg-accent/50 data-[expanded]:text-accent-foreground",
         "disabled:pointer-events-none disabled:opacity-50",
         "group",
-        local.class
+        local.class,
       )}
       {...rest}
     >
@@ -124,14 +116,14 @@ function NavigationMenuTrigger(
         aria-hidden="true"
       />
     </NavigationMenuPrimitive.Trigger>
-  )
+  );
 }
 
 function NavigationMenuContent(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>
+  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>,
 ) {
-  const [local, rest] = splitProps(props, ["class"])
-  const ctx = useNavigationMenuContext()
+  const [local, rest] = splitProps(props, ["class"]);
+  const ctx = useNavigationMenuContext();
   const content = (
     <NavigationMenuPrimitive.Content
       as="div"
@@ -143,26 +135,23 @@ function NavigationMenuContent(
         "group-data-[viewport=false]/navigation-menu:data-[expanded]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[expanded]:zoom-in-95 group-data-[viewport=false]/navigation-menu:data-[closed]:fade-out-0 group-data-[viewport=false]/navigation-menu:data-[closed]:zoom-out-95",
         "**:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none",
         "dark:group-data-[viewport=false]/navigation-menu:border-white/20",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 
   return (
-    <Show
-      when={ctx.viewport()}
-      fallback={content}
-    >
+    <Show when={ctx.viewport()} fallback={content}>
       <NavigationMenuPrimitive.Portal>{content}</NavigationMenuPrimitive.Portal>
     </Show>
-  )
+  );
 }
 
 function NavigationMenuViewport(
-  props?: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>
+  props?: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>,
 ) {
-  const [local, rest] = splitProps(props ?? {}, ["class"])
+  const [local, rest] = splitProps(props ?? {}, ["class"]);
   return (
     <div class={cn("absolute top-full left-0 isolate z-50 flex justify-center")}>
       <NavigationMenuPrimitive.Viewport
@@ -173,18 +162,18 @@ function NavigationMenuViewport(
           "data-[expanded]:animate-in data-[expanded]:zoom-in-95 data-[expanded]:fade-in-0",
           "data-[closed]:animate-out data-[closed]:zoom-out-95 data-[closed]:fade-out-0",
           "dark:border-white/20",
-          local.class
+          local.class,
         )}
         {...rest}
       />
     </div>
-  )
+  );
 }
 
 function NavigationMenuLink(
-  props: ParentProps<{ class?: string } & JSX.AnchorHTMLAttributes<HTMLAnchorElement>>
+  props: ParentProps<{ class?: string } & JSX.AnchorHTMLAttributes<HTMLAnchorElement>>,
 ) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <NavigationMenuPrimitive.Item
       data-slot="navigation-menu-link"
@@ -195,35 +184,30 @@ function NavigationMenuLink(
         "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "data-[active=true]:border-foreground data-[active=true]:bg-foreground data-[active=true]:text-background",
         "[&_svg:not([class*='text-'])]:text-muted-foreground/70 [&_svg:not([class*='size-'])]:size-3.5",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 function NavigationMenuIndicator(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>
+  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>,
 ) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="navigation-menu-indicator"
       class={cn(
         "top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
         "data-[expanded]:animate-in data-[expanded]:fade-in data-[closed]:animate-out data-[closed]:fade-out",
-        local.class
+        local.class,
       )}
       {...rest}
     >
-      <div
-        class={cn(
-          "relative top-[60%] h-2 w-2 rotate-45",
-          glassIndicatorSurfaceClass
-        )}
-      />
+      <div class={cn("relative top-[60%] h-2 w-2 rotate-45", glassIndicatorSurfaceClass)} />
     </div>
-  )
+  );
 }
 
 export {
@@ -236,4 +220,4 @@ export {
   NavigationMenuIndicator,
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
-}
+};

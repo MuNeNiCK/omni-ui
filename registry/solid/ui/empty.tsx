@@ -1,34 +1,31 @@
-import { type JSX, splitProps } from "solid-js"
-import { cva, type VariantProps } from "class-variance-authority"
+import { type JSX, splitProps } from "solid-js";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/registry/solid/lib/utils"
+import { cn } from "@/registry/solid/lib/utils";
 
 function Empty(props: JSX.HTMLAttributes<HTMLDivElement>) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="empty"
       class={cn(
         "flex min-w-0 flex-1 flex-col items-center justify-center gap-6 rounded-lg border-dashed p-6 text-center text-balance md:p-12",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 function EmptyHeader(props: JSX.HTMLAttributes<HTMLDivElement>) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="empty-header"
-      class={cn(
-        "flex max-w-sm flex-col items-center gap-2 text-center",
-        local.class
-      )}
+      class={cn("flex max-w-sm flex-col items-center gap-2 text-center", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 const emptyMediaVariants = cva(
@@ -43,15 +40,14 @@ const emptyMediaVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
-)
+  },
+);
 
-type EmptyMediaProps = JSX.HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof emptyMediaVariants>
+type EmptyMediaProps = JSX.HTMLAttributes<HTMLDivElement> & VariantProps<typeof emptyMediaVariants>;
 
 function EmptyMedia(props: EmptyMediaProps) {
-  const [local, rest] = splitProps(props, ["class", "variant"])
-  const variant = () => local.variant ?? "default"
+  const [local, rest] = splitProps(props, ["class", "variant"]);
+  const variant = () => local.variant ?? "default";
   return (
     <div
       data-slot="empty-icon"
@@ -59,53 +55,46 @@ function EmptyMedia(props: EmptyMediaProps) {
       class={cn(emptyMediaVariants({ variant: variant(), className: local.class }))}
       {...rest}
     />
-  )
+  );
 }
 
 function EmptyTitle(props: JSX.HTMLAttributes<HTMLDivElement>) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="empty-title"
       class={cn("text-lg font-medium tracking-tight", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 function EmptyDescription(props: JSX.HTMLAttributes<HTMLParagraphElement>) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="empty-description"
       class={cn(
         "text-muted-foreground [&>a:hover]:text-primary text-sm/relaxed [&>a]:underline [&>a]:underline-offset-4",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 function EmptyContent(props: JSX.HTMLAttributes<HTMLDivElement>) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="empty-content"
       class={cn(
         "flex w-full max-w-sm min-w-0 flex-col items-center gap-4 text-sm text-balance",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
-export {
-  Empty,
-  EmptyHeader,
-  EmptyTitle,
-  EmptyDescription,
-  EmptyContent,
-  EmptyMedia,
-}
+export { Empty, EmptyHeader, EmptyTitle, EmptyDescription, EmptyContent, EmptyMedia };

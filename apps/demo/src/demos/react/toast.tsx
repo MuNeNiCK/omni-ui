@@ -1,9 +1,9 @@
-import { useCallback } from "react"
-import { toast } from "sonner"
-import { AlertTriangle, CheckCircle2, Info } from "lucide-react"
+import { useCallback } from "react";
+import { toast } from "sonner";
+import { AlertTriangle, CheckCircle2, Info } from "lucide-react";
 
-import { Button } from "@/registry/react/ui/button"
-import { Toaster } from "@/registry/react/ui/sonner"
+import { Button } from "@/registry/react/ui/button";
+import { Toaster } from "@/registry/react/ui/sonner";
 
 export default function ToastDemo() {
   const fireToast = useCallback(() => {
@@ -13,14 +13,14 @@ export default function ToastDemo() {
         label: "View runbook",
         onClick: () => toast.success("Runbook opened"),
       },
-    })
-  }, [])
+    });
+  }, []);
 
   const fireWarning = useCallback(() => {
     toast.warning("Latency rising", {
       description: "Ingress in Singapore is above the target budget.",
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <div className="flex flex-col gap-4">
@@ -30,11 +30,7 @@ export default function ToastDemo() {
           <Info className="size-4" />
           Info toast
         </Button>
-        <Button
-          variant="ghost"
-          onClick={fireWarning}
-          className="justify-start gap-3"
-        >
+        <Button variant="ghost" onClick={fireWarning} className="justify-start gap-3">
           <AlertTriangle className="size-4" />
           Warning toast
         </Button>
@@ -48,5 +44,5 @@ export default function ToastDemo() {
         </Button>
       </div>
     </div>
-  )
+  );
 }

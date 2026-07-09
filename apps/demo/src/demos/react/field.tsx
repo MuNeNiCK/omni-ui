@@ -1,8 +1,8 @@
-import { useState } from "react"
-import { CheckCircle2 } from "lucide-react"
+import { useState } from "react";
+import { CheckCircle2 } from "lucide-react";
 
-import { Badge } from "@/registry/react/ui/badge"
-import { Button } from "@/registry/react/ui/button"
+import { Badge } from "@/registry/react/ui/badge";
+import { Button } from "@/registry/react/ui/button";
 import {
   Field,
   FieldContent,
@@ -13,22 +13,22 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/registry/react/ui/field"
-import { Input } from "@/registry/react/ui/input"
-import { Label } from "@/registry/react/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/registry/react/ui/radio-group"
+} from "@/registry/react/ui/field";
+import { Input } from "@/registry/react/ui/input";
+import { Label } from "@/registry/react/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/registry/react/ui/radio-group";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/react/ui/select"
-import { Switch } from "@/registry/react/ui/switch"
+} from "@/registry/react/ui/select";
+import { Switch } from "@/registry/react/ui/switch";
 
 export default function FieldDemo() {
-  const [env, setEnv] = useState("staging")
-  const [notify, setNotify] = useState(true)
+  const [env, setEnv] = useState("staging");
+  const [notify, setNotify] = useState(true);
 
   return (
     <FieldSet>
@@ -56,9 +56,7 @@ export default function FieldDemo() {
                 <SelectItem value="platform">Platform</SelectItem>
               </SelectContent>
             </Select>
-            <FieldDescription>
-              Used for escalation workflows and audit tagging.
-            </FieldDescription>
+            <FieldDescription>Used for escalation workflows and audit tagging.</FieldDescription>
           </FieldContent>
         </Field>
       </FieldGroup>
@@ -69,14 +67,12 @@ export default function FieldDemo() {
         <Field orientation="vertical">
           <FieldTitle>
             <span>Environment</span>
-            <Badge variant="outline" className="ml-2">{env}</Badge>
+            <Badge variant="outline" className="ml-2">
+              {env}
+            </Badge>
           </FieldTitle>
           <FieldContent>
-            <RadioGroup
-              value={env}
-              onValueChange={setEnv}
-              className="grid gap-2"
-            >
+            <RadioGroup value={env} onValueChange={setEnv} className="grid gap-2">
               {[
                 { value: "staging", label: "Staging" },
                 { value: "production", label: "Production" },
@@ -107,9 +103,7 @@ export default function FieldDemo() {
               Toggle to notify the incident channel when metrics drift.
             </FieldDescription>
           </FieldContent>
-          <FieldError>
-            {!notify && "Alerts are required for production rollouts."}
-          </FieldError>
+          <FieldError>{!notify && "Alerts are required for production rollouts."}</FieldError>
         </Field>
       </FieldGroup>
 
@@ -125,5 +119,5 @@ export default function FieldDemo() {
         </Field>
       </FieldGroup>
     </FieldSet>
-  )
+  );
 }

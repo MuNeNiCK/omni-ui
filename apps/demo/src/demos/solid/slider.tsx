@@ -1,11 +1,11 @@
-import { Slider } from "@/registry/solid/ui/slider"
+import { Slider } from "@/registry/solid/ui/slider";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/solid/ui/card"
+} from "@/registry/solid/ui/card";
 
 export default function SliderDemo() {
   return (
@@ -14,9 +14,7 @@ export default function SliderDemo() {
         <CardTitle class="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
           Capacity
         </CardTitle>
-        <CardDescription>
-          Used for intensity controls and resource allocations.
-        </CardDescription>
+        <CardDescription>Used for intensity controls and resource allocations.</CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div class="space-y-2">
@@ -33,5 +31,5 @@ export default function SliderDemo() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

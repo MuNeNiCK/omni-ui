@@ -2,7 +2,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/registry/react/ui/resizable"
+} from "@/registry/react/ui/resizable";
 
 export default function ResizableDemo() {
   return (
@@ -31,12 +31,15 @@ export default function ResizableDemo() {
               </p>
             </ResizablePanel>
             <ResizableHandle withHandle />
-            <ResizablePanel defaultSize={40} className="border border-border/60 bg-background/30 p-4">
+            <ResizablePanel
+              defaultSize={40}
+              className="border border-border/60 bg-background/30 p-4"
+            >
               <h3 className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
                 Log tail
               </h3>
               <pre className="mt-3 h-full overflow-auto text-xs leading-relaxed text-muted-foreground/80">
-{`02:11:01 edge-cache rewrite enabled
+                {`02:11:01 edge-cache rewrite enabled
 02:11:03 ingress latency 164ms (target 180ms)
 02:11:10 billing job completed (duration 48s)`}
               </pre>
@@ -45,5 +48,5 @@ export default function ResizableDemo() {
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>
-  )
+  );
 }

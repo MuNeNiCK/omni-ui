@@ -1,9 +1,5 @@
-import { Button } from "@/registry/solid/ui/button"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/solid/ui/popover"
+import { Button } from "@/registry/solid/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/solid/ui/popover";
 
 export default function PopoverDemo() {
   return (
@@ -26,5 +22,5 @@ export default function PopoverDemo() {
         </PopoverContent>
       </Popover>
     </div>
-  )
+  );
 }

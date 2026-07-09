@@ -2,7 +2,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/registry/solid/ui/resizable"
+} from "@/registry/solid/ui/resizable";
 
 export default function ResizableDemo() {
   return (
@@ -36,7 +36,7 @@ export default function ResizableDemo() {
                 Log tail
               </h3>
               <pre class="mt-3 h-full overflow-auto text-xs leading-relaxed text-muted-foreground/80">
-{`02:11:01 edge-cache rewrite enabled
+                {`02:11:01 edge-cache rewrite enabled
 02:11:03 ingress latency 164ms (target 180ms)
 02:11:10 billing job completed (duration 48s)`}
               </pre>
@@ -45,5 +45,5 @@ export default function ResizableDemo() {
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>
-  )
+  );
 }

@@ -1,8 +1,8 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/registry/react/lib/utils"
-import { toneVarDefaults, toneVarOverrides } from "@/registry/react/lib/tone"
+import { cn } from "@/registry/react/lib/utils";
+import { toneVarDefaults, toneVarOverrides } from "@/registry/react/lib/tone";
 
 const alertVariants = cva(
   [
@@ -25,15 +25,15 @@ const alertVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
-)
+  },
+);
 
 function Alert({
   className,
   variant,
   ...props
 }: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
-  const tone = variant ?? "default"
+  const tone = variant ?? "default";
 
   return (
     <div
@@ -43,7 +43,7 @@ function Alert({
       className={cn(alertVariants({ variant: tone }), className)}
       {...props}
     />
-  )
+  );
 }
 
 function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
@@ -52,43 +52,37 @@ function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="alert-title"
       className={cn(
         "col-start-2 font-mono text-[10px] uppercase tracking-[0.32em] text-[color:var(--tone-title)]",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-function AlertDescription({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function AlertDescription({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-description"
       className={cn(
         "col-start-2 grid justify-items-start gap-2 text-left text-sm text-[color:var(--tone-description)] [&_p]:leading-relaxed",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-function AlertActions({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function AlertActions({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-actions"
       className={cn(
         "col-start-2 flex flex-wrap items-center gap-2 pt-1 text-[10px] font-mono uppercase tracking-[0.32em] text-[color:var(--tone-title)]",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { Alert, AlertActions, AlertDescription, AlertTitle, alertVariants }
+export { Alert, AlertActions, AlertDescription, AlertTitle, alertVariants };

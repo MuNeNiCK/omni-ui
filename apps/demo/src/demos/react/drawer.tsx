@@ -1,4 +1,4 @@
-import { Button } from "@/registry/react/ui/button"
+import { Button } from "@/registry/react/ui/button";
 import {
   Drawer,
   DrawerClose,
@@ -8,7 +8,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/registry/react/ui/drawer"
+} from "@/registry/react/ui/drawer";
 
 export default function DrawerDemo() {
   return (
@@ -37,5 +37,5 @@ export default function DrawerDemo() {
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }

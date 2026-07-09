@@ -1,1 +1,1 @@
-export { default as CodeSnippet } from "@/components/code-snippet"
+export { default as CodeSnippet } from "@/components/code-snippet";

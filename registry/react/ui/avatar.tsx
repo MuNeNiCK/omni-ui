@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as AvatarPrimitive from "@radix-ui/react-avatar"
+import * as React from "react";
+import * as AvatarPrimitive from "@radix-ui/react-avatar";
 
-import { cn } from "@/registry/react/lib/utils"
+import { cn } from "@/registry/react/lib/utils";
 
-type AvatarStatus = "online" | "away" | "offline"
+type AvatarStatus = "online" | "away" | "offline";
 
 const statusBadgeStyles: Record<AvatarStatus, string> = {
   online: "text-emerald-400 dark:text-emerald-300",
   away: "text-amber-300 dark:text-amber-200",
   offline: "text-muted-foreground/60 dark:text-muted-foreground/40",
-}
+};
 
 function Avatar({
   className,
@@ -19,7 +19,7 @@ function Avatar({
   children,
   ...props
 }: React.ComponentProps<typeof AvatarPrimitive.Root> & {
-  status?: AvatarStatus
+  status?: AvatarStatus;
 }) {
   return (
     <AvatarPrimitive.Root
@@ -29,7 +29,7 @@ function Avatar({
         "relative flex size-10 shrink-0 items-center justify-center overflow-hidden",
         "rounded-none border border-border/60 bg-muted/40 text-foreground shadow-[var(--glass-shadow-outline)] backdrop-blur-[8px]",
         "transition-[border,background,color,box-shadow]",
-        className
+        className,
       )}
       {...props}
     >
@@ -40,7 +40,7 @@ function Avatar({
           className={cn(
             "pointer-events-none absolute bottom-0 right-0 grid size-3.5 place-items-center overflow-visible text-current",
             "translate-x-[45%] translate-y-[45%]",
-            statusBadgeStyles[status]
+            statusBadgeStyles[status],
           )}
         >
           <span className="absolute inset-0 bg-background/92 backdrop-blur-[2px] shadow-[var(--glass-shadow-outline-strong)]" />
@@ -49,20 +49,17 @@ function Avatar({
         </span>
       ) : null}
     </AvatarPrimitive.Root>
-  )
+  );
 }
 
-function AvatarImage({
-  className,
-  ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Image>) {
+function AvatarImage({ className, ...props }: React.ComponentProps<typeof AvatarPrimitive.Image>) {
   return (
     <AvatarPrimitive.Image
       data-slot="avatar-image"
       className={cn("size-full object-cover", className)}
       {...props}
     />
-  )
+  );
 }
 
 function AvatarFallback({
@@ -75,13 +72,13 @@ function AvatarFallback({
       data-slot="avatar-fallback"
       className={cn(
         "pointer-events-none flex size-full items-center justify-center bg-transparent font-mono text-[11px] uppercase tracking-[0.32em] text-muted-foreground/80",
-        className
+        className,
       )}
       {...props}
     >
       {children}
     </AvatarPrimitive.Fallback>
-  )
+  );
 }
 
-export { Avatar, AvatarImage, AvatarFallback }
+export { Avatar, AvatarImage, AvatarFallback };

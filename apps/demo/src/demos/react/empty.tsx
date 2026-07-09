@@ -5,9 +5,9 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/react/ui/empty"
-import { Button } from "@/registry/react/ui/button"
-import { Badge } from "@/registry/react/ui/badge"
+} from "@/registry/react/ui/empty";
+import { Button } from "@/registry/react/ui/button";
+import { Badge } from "@/registry/react/ui/badge";
 
 export default function EmptyDemo() {
   return (
@@ -39,5 +39,5 @@ export default function EmptyDemo() {
         </p>
       </EmptyContent>
     </Empty>
-  )
+  );
 }

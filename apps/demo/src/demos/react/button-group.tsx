@@ -2,8 +2,8 @@ import {
   ButtonGroup,
   ButtonGroupSeparator,
   ButtonGroupText,
-} from "@/registry/react/ui/button-group"
-import { Button } from "@/registry/react/ui/button"
+} from "@/registry/react/ui/button-group";
+import { Button } from "@/registry/react/ui/button";
 
 export default function ButtonGroupDemo() {
   return (
@@ -47,5 +47,5 @@ export default function ButtonGroupDemo() {
         </ButtonGroup>
       </div>
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { Button } from "@/registry/solid/ui/button"
+import { Button } from "@/registry/solid/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/solid/ui/dialog"
+} from "@/registry/solid/ui/dialog";
 
 export default function DialogDemo() {
   return (
@@ -25,12 +25,12 @@ export default function DialogDemo() {
         </DialogHeader>
         <div class="space-y-3 text-sm text-foreground/80">
           <p>
-            Deploying an instance will provision compute, network, and
-            observability hooks in the selected zone.
+            Deploying an instance will provision compute, network, and observability hooks in the
+            selected zone.
           </p>
           <p class="text-muted-foreground">
-            You can reconfigure after launch. Billing starts once the instance
-            reaches a running state.
+            You can reconfigure after launch. Billing starts once the instance reaches a running
+            state.
           </p>
         </div>
         <DialogFooter>
@@ -41,5 +41,5 @@ export default function DialogDemo() {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

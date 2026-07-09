@@ -1,21 +1,21 @@
-import { splitProps, type ComponentProps, type JSX } from "solid-js"
-import * as ComboboxPrimitive from "@kobalte/core/combobox"
-import { CheckIcon, ChevronsUpDownIcon, SearchIcon } from "lucide-solid"
-import { glassSurfaceClass } from "@/registry/solid/lib/glass"
-import { cn } from "@/registry/solid/lib/utils"
+import { splitProps, type ComponentProps, type JSX } from "solid-js";
+import * as ComboboxPrimitive from "@kobalte/core/combobox";
+import { CheckIcon, ChevronsUpDownIcon, SearchIcon } from "lucide-solid";
+import { glassSurfaceClass } from "@/registry/solid/lib/glass";
+import { cn } from "@/registry/solid/lib/utils";
 
 function Combobox<Option, OptGroup = never>(
-  props: ComboboxPrimitive.ComboboxRootProps<Option, OptGroup>
+  props: ComboboxPrimitive.ComboboxRootProps<Option, OptGroup>,
 ) {
-  return <ComboboxPrimitive.Root data-slot="combobox" {...props} />
+  return <ComboboxPrimitive.Root data-slot="combobox" {...props} />;
 }
 
 function ComboboxTrigger(
   props: ComponentProps<typeof ComboboxPrimitive.Trigger> & {
-    placeholder?: JSX.Element | string
-    hideIndicator?: boolean
-    size?: "sm" | "default"
-  }
+    placeholder?: JSX.Element | string;
+    hideIndicator?: boolean;
+    size?: "sm" | "default";
+  },
 ) {
   const [local, rest] = splitProps(props, [
     "class",
@@ -23,9 +23,9 @@ function ComboboxTrigger(
     "placeholder",
     "hideIndicator",
     "size",
-  ])
+  ]);
   const showPlaceholder = () =>
-    local.children === undefined || local.children === null || local.children === ""
+    local.children === undefined || local.children === null || local.children === "";
   return (
     <ComboboxPrimitive.Trigger
       data-slot="combobox-trigger"
@@ -40,7 +40,7 @@ function ComboboxTrigger(
         "data-[placeholder=true]:text-muted-foreground/70",
         "data-[size=default]:h-10 data-[size=default]:min-w-[10rem]",
         "data-[size=sm]:h-9 data-[size=sm]:min-w-[8rem]",
-        local.class
+        local.class,
       )}
       {...rest}
     >
@@ -53,11 +53,11 @@ function ComboboxTrigger(
         </ComboboxPrimitive.Icon>
       )}
     </ComboboxPrimitive.Trigger>
-  )
+  );
 }
 
 function ComboboxContent(props: ComponentProps<typeof ComboboxPrimitive.Content>) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <ComboboxPrimitive.Portal>
       <ComboboxPrimitive.Content
@@ -66,18 +66,18 @@ function ComboboxContent(props: ComponentProps<typeof ComboboxPrimitive.Content>
           "relative z-50 max-h-[var(--kb-popper-content-available-height)] min-w-[12rem] origin-[var(--kb-combobox-content-transform-origin)] overflow-hidden",
           glassSurfaceClass,
           "data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95",
-          local.class
+          local.class,
         )}
         {...rest}
       >
         <ComboboxPrimitive.Listbox class="p-1" />
       </ComboboxPrimitive.Content>
     </ComboboxPrimitive.Portal>
-  )
+  );
 }
 
 function ComboboxSearch(props: ComponentProps<typeof ComboboxPrimitive.Input>) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="combobox-search"
@@ -89,33 +89,38 @@ function ComboboxSearch(props: ComponentProps<typeof ComboboxPrimitive.Input>) {
         {...rest}
       />
     </div>
-  )
+  );
 }
 
 function ComboboxList(props: ComponentProps<typeof ComboboxPrimitive.Listbox>) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <ComboboxPrimitive.Listbox
       data-slot="combobox-list"
       class={cn("max-h-60 scroll-py-1 overflow-y-auto overflow-x-hidden p-1", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
 function ComboboxEmpty(props: JSX.HTMLAttributes<HTMLDivElement> & { class?: string }) {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="combobox-empty"
-      class={cn("py-6 text-center text-[11px] font-mono uppercase tracking-[0.28em] text-muted-foreground/70", local.class)}
+      class={cn(
+        "py-6 text-center text-[11px] font-mono uppercase tracking-[0.28em] text-muted-foreground/70",
+        local.class,
+      )}
       {...rest}
     />
-  )
+  );
 }
 
-function ComboboxGroup(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>) {
-  const [local, rest] = splitProps(props, ["class"])
+function ComboboxGroup(
+  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>,
+) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="combobox-group"
@@ -123,26 +128,28 @@ function ComboboxGroup(props: ParentProps<{ class?: string } & JSX.HTMLAttribute
       class={cn("overflow-hidden py-1", local.class)}
       {...rest}
     />
-  )
+  );
 }
 
-function ComboboxSeparator(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>) {
-  const [local, rest] = splitProps(props, ["class"])
+function ComboboxSeparator(
+  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>,
+) {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="combobox-separator"
       role="separator"
       class={cn(
         "pointer-events-none -mx-1 my-1 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent",
-        local.class
+        local.class,
       )}
       {...rest}
     />
-  )
+  );
 }
 
 function ComboboxItem(props: ComponentProps<typeof ComboboxPrimitive.Item>) {
-  const [local, rest] = splitProps(props, ["class", "children"])
+  const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <ComboboxPrimitive.Item
       data-slot="combobox-item"
@@ -153,7 +160,7 @@ function ComboboxItem(props: ComponentProps<typeof ComboboxPrimitive.Item>) {
         "data-[highlighted]:bg-foreground data-[highlighted]:text-background",
         "data-[selected]:bg-foreground data-[selected]:text-background",
         "rounded-none",
-        local.class
+        local.class,
       )}
       {...rest}
     >
@@ -164,7 +171,7 @@ function ComboboxItem(props: ComponentProps<typeof ComboboxPrimitive.Item>) {
       </span>
       <ComboboxPrimitive.ItemLabel>{local.children}</ComboboxPrimitive.ItemLabel>
     </ComboboxPrimitive.Item>
-  )
+  );
 }
 
 export {
@@ -177,4 +184,4 @@ export {
   ComboboxGroup,
   ComboboxSeparator,
   ComboboxItem,
-}
+};

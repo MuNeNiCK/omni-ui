@@ -1,4 +1,4 @@
-import { Button } from "@/registry/react/ui/button"
+import { Button } from "@/registry/react/ui/button";
 import {
   Sheet,
   SheetClose,
@@ -8,7 +8,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/registry/react/ui/sheet"
+} from "@/registry/react/ui/sheet";
 
 export default function SheetDemo() {
   return (
@@ -26,9 +26,7 @@ export default function SheetDemo() {
         <div className="space-y-3 px-4 text-sm text-foreground/80">
           <p>Runtime integrity passed.</p>
           <p>Network policy matches template.</p>
-          <p className="text-muted-foreground">
-            Estimated rollout time: 2m 14s.
-          </p>
+          <p className="text-muted-foreground">Estimated rollout time: 2m 14s.</p>
         </div>
         <SheetFooter>
           <SheetClose asChild>
@@ -38,5 +36,5 @@ export default function SheetDemo() {
         </SheetFooter>
       </SheetContent>
     </Sheet>
-  )
+  );
 }

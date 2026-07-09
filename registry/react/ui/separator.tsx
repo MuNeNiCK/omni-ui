@@ -1,7 +1,7 @@
-import * as React from "react"
-import * as SeparatorPrimitive from "@radix-ui/react-separator"
+import * as React from "react";
+import * as SeparatorPrimitive from "@radix-ui/react-separator";
 
-import { cn } from "@/registry/react/lib/utils"
+import { cn } from "@/registry/react/lib/utils";
 
 function Separator({
   className,
@@ -20,11 +20,11 @@ function Separator({
         "data-[orientation=horizontal]:after:bg-gradient-to-r data-[orientation=horizontal]:after:from-transparent data-[orientation=horizontal]:after:via-border/60 data-[orientation=horizontal]:after:to-transparent",
         "data-[orientation=vertical]:after:bg-gradient-to-b data-[orientation=vertical]:after:from-transparent data-[orientation=vertical]:after:via-border/60 data-[orientation=vertical]:after:to-transparent",
         "dark:data-[orientation=horizontal]:after:via-white/20 dark:data-[orientation=vertical]:after:via-white/20",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { Separator }
+export { Separator };

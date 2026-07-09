@@ -1,8 +1,8 @@
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/registry/react/lib/utils"
-import { Separator } from "@/registry/react/ui/separator"
+import { cn } from "@/registry/react/lib/utils";
+import { Separator } from "@/registry/react/ui/separator";
 
 const buttonGroupVariants = cva(
   "isolate inline-flex w-fit items-stretch overflow-hidden rounded-none border border-border/60 bg-muted/30 shadow-[var(--glass-shadow-outline)] backdrop-blur-[6px]",
@@ -16,8 +16,8 @@ const buttonGroupVariants = cva(
     defaultVariants: {
       orientation: "horizontal",
     },
-  }
-)
+  },
+);
 
 function ButtonGroup({
   className,
@@ -32,7 +32,7 @@ function ButtonGroup({
       className={cn(buttonGroupVariants({ orientation }), className)}
       {...props}
     />
-  )
+  );
 }
 
 function ButtonGroupText({
@@ -40,9 +40,9 @@ function ButtonGroupText({
   asChild = false,
   ...props
 }: React.ComponentProps<"div"> & {
-  asChild?: boolean
+  asChild?: boolean;
 }) {
-  const Comp = asChild ? Slot : "div"
+  const Comp = asChild ? Slot : "div";
 
   return (
     <Comp
@@ -50,11 +50,11 @@ function ButtonGroupText({
       className={cn(
         "flex min-h-10 items-center gap-3 bg-muted/40 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/80",
         "[&>svg]:size-3.5 [&>svg]:opacity-70",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function ButtonGroupSeparator({
@@ -69,23 +69,16 @@ function ButtonGroupSeparator({
       decorative
       className={cn(
         "relative !m-0 bg-transparent",
-        orientation === "vertical"
-          ? "h-auto w-px"
-          : "h-px w-full",
+        orientation === "vertical" ? "h-auto w-px" : "h-px w-full",
         "after:absolute after:inset-0 after:content-['']",
         orientation === "vertical"
           ? "after:bg-gradient-to-b after:from-transparent after:via-border/60 after:to-transparent"
           : "after:bg-gradient-to-r after:from-transparent after:via-border/60 after:to-transparent",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-export {
-  ButtonGroup,
-  ButtonGroupSeparator,
-  ButtonGroupText,
-  buttonGroupVariants,
-}
+export { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, buttonGroupVariants };

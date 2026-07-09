@@ -1,10 +1,10 @@
-import { Button } from "@/registry/react/ui/button"
+import { Button } from "@/registry/react/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/registry/react/ui/tooltip"
+} from "@/registry/react/ui/tooltip";
 
 export default function TooltipDemo() {
   return (
@@ -18,5 +18,5 @@ export default function TooltipDemo() {
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
-  )
+  );
 }

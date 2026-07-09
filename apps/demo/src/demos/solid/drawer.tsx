@@ -1,4 +1,4 @@
-import { Button } from "@/registry/solid/ui/button"
+import { Button } from "@/registry/solid/ui/button";
 import {
   Drawer,
   DrawerClose,
@@ -8,12 +8,14 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/registry/solid/ui/drawer"
+} from "@/registry/solid/ui/drawer";
 
 export default function DrawerDemo() {
   return (
     <Drawer>
-      <DrawerTrigger as={Button} variant="muted">Open drawer</DrawerTrigger>
+      <DrawerTrigger as={Button} variant="muted">
+        Open drawer
+      </DrawerTrigger>
       <DrawerContent class="data-[vaul-drawer-direction=right]:w-full data-[vaul-drawer-direction=right]:sm:max-w-md">
         <DrawerHeader>
           <DrawerTitle>PROJECT</DrawerTitle>
@@ -28,10 +30,12 @@ export default function DrawerDemo() {
           </p>
         </div>
         <DrawerFooter>
-          <DrawerClose as={Button} variant="muted">Dismiss</DrawerClose>
+          <DrawerClose as={Button} variant="muted">
+            Dismiss
+          </DrawerClose>
           <Button>Save changes</Button>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }

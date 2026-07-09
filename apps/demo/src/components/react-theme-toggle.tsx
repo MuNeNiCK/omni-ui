@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react"
-import { Moon, Sun } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState, useEffect } from "react";
+import { Moon, Sun } from "lucide-react";
+import { Button } from "@/registry/react/ui/button";
 
 export function ThemeToggle() {
-  const [dark, setDark] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const [dark, setDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-    setDark(document.documentElement.classList.contains("dark"))
-  }, [])
+    setMounted(true);
+    setDark(document.documentElement.classList.contains("dark"));
+  }, []);
 
   const toggle = () => {
-    const next = !dark
-    setDark(next)
-    document.documentElement.classList.toggle("dark", next)
-    localStorage.setItem("theme", next ? "dark" : "light")
-  }
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+  };
 
   return (
     <Button
@@ -32,5 +32,5 @@ export function ThemeToggle() {
       <Moon className="absolute size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
       <span className="sr-only">Toggle theme</span>
     </Button>
-  )
+  );
 }

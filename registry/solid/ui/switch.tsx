@@ -1,12 +1,12 @@
-import { splitProps, type ComponentProps } from "solid-js"
-import * as SwitchPrimitive from "@kobalte/core/switch"
+import { splitProps, type ComponentProps } from "solid-js";
+import * as SwitchPrimitive from "@kobalte/core/switch";
 
-import { useOptionalFormControlProps } from "@/registry/solid/lib/form-control"
-import { cn } from "@/registry/solid/lib/utils"
+import { useOptionalFormControlProps } from "@/registry/solid/lib/form-control";
+import { cn } from "@/registry/solid/lib/utils";
 
 function Switch(props: ComponentProps<typeof SwitchPrimitive.Root>) {
-  const [local, rest] = splitProps(props, ["class"])
-  const formControlProps = useOptionalFormControlProps()
+  const [local, rest] = splitProps(props, ["class"]);
+  const formControlProps = useOptionalFormControlProps();
   return (
     <SwitchPrimitive.Root data-slot="switch" {...rest}>
       <SwitchPrimitive.Input
@@ -20,7 +20,7 @@ function Switch(props: ComponentProps<typeof SwitchPrimitive.Root>) {
           "data-[checked]:bg-foreground data-[checked]:text-background",
           "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
           "rounded-none",
-          local.class
+          local.class,
         )}
       >
         <SwitchPrimitive.Thumb
@@ -29,12 +29,12 @@ function Switch(props: ComponentProps<typeof SwitchPrimitive.Root>) {
             "pointer-events-none block size-4 border border-border/60 bg-muted/70 text-current transition-transform",
             "translate-x-0",
             "data-[checked]:translate-x-[calc(100%-2px)]",
-            "rounded-none"
+            "rounded-none",
           )}
         />
       </SwitchPrimitive.Control>
     </SwitchPrimitive.Root>
-  )
+  );
 }
 
-export { Switch }
+export { Switch };

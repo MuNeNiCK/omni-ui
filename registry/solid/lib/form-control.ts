@@ -1,16 +1,16 @@
-import { createContext, useContext, type Accessor } from "solid-js"
+import { createContext, useContext, type Accessor } from "solid-js";
 
 type FormControlProps = {
-  id?: string
-  "aria-describedby"?: string
-  "aria-invalid"?: boolean
-}
+  id?: string;
+  "aria-describedby"?: string;
+  "aria-invalid"?: boolean;
+};
 
-const FormControlContext = createContext<Accessor<FormControlProps>>()
+const FormControlContext = createContext<Accessor<FormControlProps>>();
 
 function useOptionalFormControlProps() {
-  return useContext(FormControlContext)
+  return useContext(FormControlContext);
 }
 
-export { FormControlContext, useOptionalFormControlProps }
-export type { FormControlProps }
+export { FormControlContext, useOptionalFormControlProps };
+export type { FormControlProps };

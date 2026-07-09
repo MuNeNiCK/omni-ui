@@ -1,13 +1,9 @@
-import { createSignal, createMemo, Show, For } from "solid-js"
-import { ChevronsUpDownIcon } from "lucide-solid"
+import { createSignal, createMemo, Show, For } from "solid-js";
+import { ChevronsUpDownIcon } from "lucide-solid";
 
-import { Badge } from "@/registry/solid/ui/badge"
-import { Button } from "@/registry/solid/ui/button"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/solid/ui/popover"
+import { Badge } from "@/registry/solid/ui/badge";
+import { Button } from "@/registry/solid/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/solid/ui/popover";
 import {
   Command,
   CommandEmpty,
@@ -16,8 +12,8 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/registry/solid/ui/command"
-import { cn } from "@/registry/solid/lib/utils"
+} from "@/registry/solid/ui/command";
+import { cn } from "@/registry/solid/lib/utils";
 
 const regions = [
   {
@@ -44,27 +40,23 @@ const regions = [
     badge: "Preview",
     description: "Pilot clusters for APAC partners.",
   },
-]
+];
 
 const teams = [
   { value: "observability", label: "Observability", hint: "SRE" },
   { value: "security", label: "Security", hint: "Security" },
   { value: "product", label: "Product", hint: "Product" },
   { value: "growth", label: "Growth", hint: "Operations" },
-]
+];
 
 export default function ComboboxDemo() {
-  const [openRegion, setOpenRegion] = createSignal(false)
-  const [region, setRegion] = createSignal<string | null>(null)
-  const [openTeam, setOpenTeam] = createSignal(false)
-  const [team, setTeam] = createSignal<string | null>("observability")
+  const [openRegion, setOpenRegion] = createSignal(false);
+  const [region, setRegion] = createSignal<string | null>(null);
+  const [openTeam, setOpenTeam] = createSignal(false);
+  const [team, setTeam] = createSignal<string | null>("observability");
 
-  const selectedRegion = createMemo(() =>
-    regions.find((item) => item.value === region())
-  )
-  const selectedTeam = createMemo(() =>
-    teams.find((item) => item.value === team())
-  )
+  const selectedRegion = createMemo(() => regions.find((item) => item.value === region()));
+  const selectedTeam = createMemo(() => teams.find((item) => item.value === team()));
 
   return (
     <div class="space-y-8">
@@ -79,14 +71,11 @@ export default function ComboboxDemo() {
               "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
               "h-10 min-w-[18rem]",
               "rounded-none",
-              !selectedRegion() && "text-muted-foreground/70"
+              !selectedRegion() && "text-muted-foreground/70",
             )}
           >
             <span class="truncate text-left leading-none">
-              <Show
-                when={selectedRegion()}
-                fallback="Select a deployment region"
-              >
+              <Show when={selectedRegion()} fallback="Select a deployment region">
                 {(r) => (
                   <span class="flex items-center gap-3">
                     <span>{r().label}</span>
@@ -110,15 +99,13 @@ export default function ComboboxDemo() {
                       <CommandItem
                         value={item.value}
                         onSelect={(current: string) => {
-                          const next = current === region() ? null : current
-                          setRegion(next)
-                          setOpenRegion(false)
+                          const next = current === region() ? null : current;
+                          setRegion(next);
+                          setOpenRegion(false);
                         }}
                       >
                         <span class="flex flex-col">
-                          <span class="font-medium leading-none">
-                            {item.label}
-                          </span>
+                          <span class="font-medium leading-none">{item.label}</span>
                           <span class="text-muted-foreground/70 text-[11px]">
                             {item.description}
                           </span>
@@ -142,10 +129,8 @@ export default function ComboboxDemo() {
         >
           {(r) => (
             <p class="text-sm text-muted-foreground">
-              <span class="font-semibold text-foreground">
-                {r().label}
-              </span>{" "}
-              is mapped to the {r().badge?.toLowerCase()} cluster.
+              <span class="font-semibold text-foreground">{r().label}</span> is mapped to the{" "}
+              {r().badge?.toLowerCase()} cluster.
             </p>
           )}
         </Show>
@@ -181,15 +166,13 @@ export default function ComboboxDemo() {
                         <CommandItem
                           value={item.value}
                           onSelect={(current: string) => {
-                            setTeam(current)
-                            setOpenTeam(false)
+                            setTeam(current);
+                            setOpenTeam(false);
                           }}
                         >
                           <span class="flex w-full items-center justify-between">
                             <span>{item.label}</span>
-                            <span class="text-muted-foreground/60 text-[11px]">
-                              {item.hint}
-                            </span>
+                            <span class="text-muted-foreground/60 text-[11px]">{item.hint}</span>
                           </span>
                         </CommandItem>
                       )}
@@ -200,7 +183,7 @@ export default function ComboboxDemo() {
                     <CommandItem
                       value="new-team"
                       onSelect={() => {
-                        setOpenTeam(false)
+                        setOpenTeam(false);
                       }}
                     >
                       Create new team...
@@ -220,5 +203,5 @@ export default function ComboboxDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

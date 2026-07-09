@@ -1,11 +1,11 @@
-import { Slider } from "@/registry/react/ui/slider"
+import { Slider } from "@/registry/react/ui/slider";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/react/ui/card"
+} from "@/registry/react/ui/card";
 
 export default function SliderDemo() {
   return (
@@ -14,9 +14,7 @@ export default function SliderDemo() {
         <CardTitle className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
           Capacity
         </CardTitle>
-        <CardDescription>
-          Used for intensity controls and resource allocations.
-        </CardDescription>
+        <CardDescription>Used for intensity controls and resource allocations.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-2">
@@ -33,5 +31,5 @@ export default function SliderDemo() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

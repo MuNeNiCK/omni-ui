@@ -5,9 +5,9 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/solid/ui/input-group"
-import { Button } from "@/registry/solid/ui/button"
-import { Badge } from "@/registry/solid/ui/badge"
+} from "@/registry/solid/ui/input-group";
+import { Button } from "@/registry/solid/ui/button";
+import { Badge } from "@/registry/solid/ui/badge";
 
 export default function InputGroupDemo() {
   return (
@@ -54,5 +54,5 @@ export default function InputGroupDemo() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  )
+  );
 }
