@@ -48,7 +48,7 @@ function ButtonGroupText({
     <Comp
       data-slot="button-group-text"
       className={cn(
-        "flex min-h-10 items-center gap-3 bg-muted/40 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/80",
+        "flex min-h-10 items-center gap-3 bg-muted/40 px-4 py-2 text-xs font-medium text-muted-foreground/80",
         "[&>svg]:size-3.5 [&>svg]:opacity-70",
         className,
       )}

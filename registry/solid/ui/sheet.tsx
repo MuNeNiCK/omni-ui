@@ -2,11 +2,6 @@ import { splitProps, type ComponentProps, type JSX } from "solid-js";
 import * as DialogPrimitive from "@kobalte/core/dialog";
 import { XIcon } from "lucide-solid";
 
-import {
-  glassCloseButtonClass,
-  glassOverlayBackdropClass,
-  glassSurfaceStrongClass,
-} from "@/registry/solid/lib/glass";
 import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
 function Sheet(props: ComponentProps<typeof DialogPrimitive.Root>) {
@@ -31,7 +26,7 @@ function SheetOverlay(props: ComponentProps<typeof DialogPrimitive.Overlay>) {
     <DialogPrimitive.Overlay
       data-slot="sheet-overlay"
       class={cn(
-        glassOverlayBackdropClass,
+        "omni-glass-overlay",
         "data-[expanded]:animate-in data-[expanded]:fade-in-0 data-[closed]:animate-out data-[closed]:fade-out-0",
         local.class,
       )}
@@ -55,7 +50,7 @@ function SheetContent(
         data-slot="sheet-content"
         class={cn(
           "fixed z-50 flex flex-col gap-4 transition ease-in-out data-[closed]:duration-300 data-[expanded]:duration-500",
-          glassSurfaceStrongClass,
+          "omni-glass-surface-strong",
           side() === "right" &&
             "data-[closed]:slide-out-to-right data-[expanded]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
           side() === "left" &&
@@ -69,7 +64,7 @@ function SheetContent(
         {...rest}
       >
         {local.children}
-        <DialogPrimitive.CloseButton class={glassCloseButtonClass}>
+        <DialogPrimitive.CloseButton class="omni-glass-close-button">
           <XIcon class="size-4" />
           <span class="sr-only">Close</span>
         </DialogPrimitive.CloseButton>

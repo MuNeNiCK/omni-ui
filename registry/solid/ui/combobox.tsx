@@ -1,7 +1,6 @@
-import { splitProps, type ComponentProps, type JSX } from "solid-js";
+import { splitProps, type ComponentProps, type JSX, type ParentProps } from "solid-js";
 import * as ComboboxPrimitive from "@kobalte/core/combobox";
 import { CheckIcon, ChevronsUpDownIcon, SearchIcon } from "lucide-solid";
-import { glassSurfaceClass } from "@/registry/solid/lib/glass";
 import { cn } from "@/registry/solid/lib/utils";
 
 function Combobox<Option, OptGroup = never>(
@@ -32,8 +31,8 @@ function ComboboxTrigger(
       data-size={local.size ?? "default"}
       data-placeholder={showPlaceholder() ? "true" : undefined}
       class={cn(
-        "inline-flex w-fit items-center justify-between gap-2 px-3 text-[11px] font-mono uppercase tracking-[0.28em] text-foreground/85 transition-[border,background,color,box-shadow] outline-none",
-        glassSurfaceClass,
+        "inline-flex w-fit items-center justify-between gap-2 px-3 text-xs text-foreground/85 transition-[border,background,color,box-shadow] outline-none",
+        "omni-glass-surface",
         "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive/35",
         "disabled:cursor-not-allowed disabled:opacity-50",
@@ -64,7 +63,7 @@ function ComboboxContent(props: ComponentProps<typeof ComboboxPrimitive.Content>
         data-slot="combobox-content"
         class={cn(
           "relative z-50 max-h-[var(--kb-popper-content-available-height)] min-w-[12rem] origin-[var(--kb-combobox-content-transform-origin)] overflow-hidden",
-          glassSurfaceClass,
+          "omni-glass-surface",
           "data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95",
           local.class,
         )}
@@ -77,15 +76,24 @@ function ComboboxContent(props: ComponentProps<typeof ComboboxPrimitive.Content>
 }
 
 function ComboboxSearch(props: ComponentProps<typeof ComboboxPrimitive.Input>) {
-  const [local, rest] = splitProps(props, ["class"]);
+  const [local, rest] = splitProps(props, ["class", "aria-label", "placeholder"]);
+  const inputLabel = () =>
+    local["aria-label"] ??
+    (typeof local.placeholder === "string" ? local.placeholder : "Search options");
+
   return (
     <div
       data-slot="combobox-search"
-      class={cn("flex items-center gap-2 border-b border-border/60 px-3", local.class)}
+      class={cn(
+        "flex items-center gap-2 border-b border-border/60 px-3 transition-[border,box-shadow] focus-within:border-foreground focus-within:ring-2 focus-within:ring-ring/40",
+        local.class,
+      )}
     >
-      <SearchIcon class="size-4 shrink-0 opacity-50" />
+      <SearchIcon class="size-4 shrink-0 opacity-50" aria-hidden="true" />
       <ComboboxPrimitive.Input
-        class="flex h-12 w-full bg-transparent py-3 font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/75 outline-none placeholder:text-muted-foreground/60 disabled:cursor-not-allowed disabled:opacity-50"
+        aria-label={inputLabel()}
+        placeholder={local.placeholder}
+        class="flex h-12 w-full bg-transparent py-3 text-sm text-foreground/90 outline-none placeholder:text-muted-foreground/60 disabled:cursor-not-allowed disabled:opacity-50"
         {...rest}
       />
     </div>
@@ -97,7 +105,7 @@ function ComboboxList(props: ComponentProps<typeof ComboboxPrimitive.Listbox>) {
   return (
     <ComboboxPrimitive.Listbox
       data-slot="combobox-list"
-      class={cn("max-h-60 scroll-py-1 overflow-y-auto overflow-x-hidden p-1", local.class)}
+      class={cn("max-h-72 scroll-py-1 overflow-y-auto overflow-x-hidden p-1", local.class)}
       {...rest}
     />
   );
@@ -108,10 +116,7 @@ function ComboboxEmpty(props: JSX.HTMLAttributes<HTMLDivElement> & { class?: str
   return (
     <div
       data-slot="combobox-empty"
-      class={cn(
-        "py-6 text-center text-[11px] font-mono uppercase tracking-[0.28em] text-muted-foreground/70",
-        local.class,
-      )}
+      class={cn("py-6 text-center text-xs text-muted-foreground/70", local.class)}
       {...rest}
     />
   );
@@ -154,7 +159,7 @@ function ComboboxItem(props: ComponentProps<typeof ComboboxPrimitive.Item>) {
     <ComboboxPrimitive.Item
       data-slot="combobox-item"
       class={cn(
-        "relative flex w-full cursor-default items-center gap-3 px-3 py-2 text-[11px] font-mono uppercase tracking-[0.28em] text-muted-foreground/90 outline-hidden select-none transition-[background,color]",
+        "relative flex min-h-11 w-full cursor-default items-start gap-3 px-3 py-3 text-sm leading-normal text-muted-foreground/85 outline-hidden select-none transition-[background,color]",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-40",
         "hover:bg-foreground hover:text-background",
         "data-[highlighted]:bg-foreground data-[highlighted]:text-background",
@@ -164,12 +169,14 @@ function ComboboxItem(props: ComponentProps<typeof ComboboxPrimitive.Item>) {
       )}
       {...rest}
     >
-      <span class="absolute right-2 flex size-3.5 items-center justify-center">
+      <span class="mt-0.5 flex size-4 shrink-0 items-center justify-center" aria-hidden="true">
         <ComboboxPrimitive.ItemIndicator>
-          <CheckIcon class="size-4" />
+          <CheckIcon class="size-3.5" />
         </ComboboxPrimitive.ItemIndicator>
       </span>
-      <ComboboxPrimitive.ItemLabel>{local.children}</ComboboxPrimitive.ItemLabel>
+      <ComboboxPrimitive.ItemLabel class="min-w-0 flex-1 text-left leading-normal [&_*]:leading-normal">
+        {local.children}
+      </ComboboxPrimitive.ItemLabel>
     </ComboboxPrimitive.Item>
   );
 }

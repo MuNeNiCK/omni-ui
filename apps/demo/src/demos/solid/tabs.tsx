@@ -11,9 +11,7 @@ export default function TabsDemo() {
   return (
     <Card class="border-border/70">
       <CardHeader>
-        <CardTitle class="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Overview Tabs
-        </CardTitle>
+        <CardTitle class="text-sm font-medium text-muted-foreground">Overview Tabs</CardTitle>
         <CardDescription>
           Tabs sit directly on the same surface as cards for a seamless look.
         </CardDescription>

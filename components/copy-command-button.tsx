@@ -32,15 +32,20 @@ export default function CopyCommandButton({
   const shortCommand = command.split(" ").slice(-1)[0];
 
   return (
-    <Button
-      type="button"
-      variant="outline"
-      onClick={handleCopy}
-      className={`font-mono text-xs md:text-sm gap-2 ${className ?? ""}`}
-    >
-      <Terminal className="size-3 md:size-4" />
-      <span className="hidden sm:block">{copied ? "Copied!" : command}</span>
-      <span className="block sm:hidden">{copied ? "Copied!" : shortCommand}</span>
-    </Button>
+    <>
+      <Button
+        type="button"
+        variant="outline"
+        onClick={handleCopy}
+        className={`font-mono text-xs gap-2 ${className ?? ""}`}
+      >
+        <Terminal className="size-3 md:size-4" aria-hidden="true" />
+        <span className="hidden sm:block">{copied ? "Copied!" : command}</span>
+        <span className="block sm:hidden">{copied ? "Copied!" : shortCommand}</span>
+      </Button>
+      <span className="sr-only" aria-live="polite">
+        {copied ? "Command copied" : ""}
+      </span>
+    </>
   );
 }

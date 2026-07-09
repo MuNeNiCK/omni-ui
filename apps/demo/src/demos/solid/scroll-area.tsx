@@ -21,7 +21,7 @@ export default function ScrollAreaDemo() {
       <ul class="flex flex-col gap-3 p-4 text-sm text-muted-foreground">
         <For each={regions}>
           {(region) => (
-            <li class="flex items-center justify-between border border-border/50 bg-muted/40 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground/80">
+            <li class="flex items-center justify-between border border-border/50 bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground/80">
               {region}
               <span class="text-xs normal-case tracking-normal text-foreground/70">
                 12 services

@@ -15,11 +15,11 @@ export default function TypographyDemo() {
   return (
     <div className="flex flex-col gap-8">
       <div className="space-y-4">
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Dashboard Hero</p>
+        <p className="text-sm font-medium text-muted-foreground">Dashboard Hero</p>
         <TypographyEyebrow>STATUS</TypographyEyebrow>
         <TypographyDisplay>Control Plane Deployment Overview</TypographyDisplay>
         <TypographySubtitle>
-          Edge fleet, workload health, and compliance snapshots in one uppercase viewport.
+          Edge fleet, workload health, and compliance snapshots in one viewport.
         </TypographySubtitle>
         <TypographyBodyMuted>
           Latency and error rates mirror the alerting thresholds defined in the platform guardrails.
@@ -28,7 +28,7 @@ export default function TypographyDemo() {
       </div>
 
       <div className="space-y-4">
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Metrics Deck</p>
+        <p className="text-sm font-medium text-muted-foreground">Metrics Deck</p>
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="space-y-1">
             <TypographyLabel>Requests</TypographyLabel>

@@ -50,10 +50,7 @@ function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-title"
-      className={cn(
-        "col-start-2 font-mono text-[10px] uppercase tracking-[0.32em] text-[color:var(--tone-title)]",
-        className,
-      )}
+      className={cn("col-start-2 text-sm font-semibold text-[color:var(--tone-title)]", className)}
       {...props}
     />
   );
@@ -77,7 +74,7 @@ function AlertActions({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="alert-actions"
       className={cn(
-        "col-start-2 flex flex-wrap items-center gap-2 pt-1 text-[10px] font-mono uppercase tracking-[0.32em] text-[color:var(--tone-title)]",
+        "col-start-2 flex flex-wrap items-center gap-2 pt-1 text-xs font-medium text-[color:var(--tone-title)]",
         className,
       )}
       {...props}

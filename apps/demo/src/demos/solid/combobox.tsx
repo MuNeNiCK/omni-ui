@@ -61,13 +61,11 @@ export default function ComboboxDemo() {
   return (
     <div class="space-y-8">
       <div class="space-y-4">
-        <h3 class="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Region selector
-        </h3>
+        <h3 class="text-sm font-medium text-muted-foreground">Region selector</h3>
         <Popover open={openRegion()} onOpenChange={setOpenRegion}>
           <PopoverTrigger
             class={cn(
-              "inline-flex w-fit items-center justify-between gap-2 border border-border/60 bg-muted/60 px-3 text-[11px] font-mono uppercase tracking-[0.28em] text-foreground/85 shadow-[var(--glass-shadow-outline)] transition-[border,background,color,box-shadow] outline-none",
+              "inline-flex w-fit items-center justify-between gap-2 border border-border/60 bg-muted/60 px-3 text-xs font-medium text-foreground/85 shadow-[var(--glass-shadow-outline)] transition-[border,background,color,box-shadow] outline-none",
               "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
               "h-10 min-w-[18rem]",
               "rounded-none",
@@ -75,13 +73,11 @@ export default function ComboboxDemo() {
             )}
           >
             <span class="truncate text-left leading-none">
-              <Show when={selectedRegion()} fallback="Select a deployment region">
+              <Show when={selectedRegion()} fallback="Select a deployment region…">
                 {(r) => (
                   <span class="flex items-center gap-3">
                     <span>{r().label}</span>
-                    <Badge variant="outline" class="font-mono text-[10px]">
-                      {r().badge}
-                    </Badge>
+                    <Badge variant="outline">{r().badge}</Badge>
                   </span>
                 )}
               </Show>
@@ -90,7 +86,7 @@ export default function ComboboxDemo() {
           </PopoverTrigger>
           <PopoverContent class="w-auto min-w-[18rem] p-0">
             <Command class="border-none bg-transparent shadow-none backdrop-blur-none">
-              <CommandInput placeholder="Filter regions" />
+              <CommandInput placeholder="Filter regions…" />
               <CommandList>
                 <CommandEmpty>No regions found.</CommandEmpty>
                 <CommandGroup>
@@ -106,9 +102,7 @@ export default function ComboboxDemo() {
                       >
                         <span class="flex flex-col">
                           <span class="font-medium leading-none">{item.label}</span>
-                          <span class="text-muted-foreground/70 text-[11px]">
-                            {item.description}
-                          </span>
+                          <span class="text-muted-foreground/70 text-xs">{item.description}</span>
                         </span>
                       </CommandItem>
                     )}
@@ -137,27 +131,25 @@ export default function ComboboxDemo() {
       </div>
 
       <div class="space-y-4">
-        <h3 class="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Team assignment
-        </h3>
+        <h3 class="text-sm font-medium text-muted-foreground">Team assignment</h3>
         <div class="flex flex-wrap items-center gap-3">
           <Popover open={openTeam()} onOpenChange={setOpenTeam}>
             <PopoverTrigger
               class={cn(
-                "inline-flex w-fit items-center justify-between gap-2 border border-border/60 bg-muted/60 px-3 text-[11px] font-mono uppercase tracking-[0.28em] text-foreground/85 shadow-[var(--glass-shadow-outline)] transition-[border,background,color,box-shadow] outline-none",
+                "inline-flex w-fit items-center justify-between gap-2 border border-border/60 bg-muted/60 px-3 text-xs font-medium text-foreground/85 shadow-[var(--glass-shadow-outline)] transition-[border,background,color,box-shadow] outline-none",
                 "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                 "h-9 min-w-[12rem]",
                 "rounded-none",
               )}
             >
               <span class="truncate text-left leading-none">
-                {selectedTeam()?.label ?? "Assign to..."}
+                {selectedTeam()?.label ?? "Assign to…"}
               </span>
               <ChevronsUpDownIcon class="size-3.5 shrink-0 opacity-60" />
             </PopoverTrigger>
             <PopoverContent class="w-auto min-w-[12rem] p-0">
               <Command class="border-none bg-transparent shadow-none backdrop-blur-none">
-                <CommandInput placeholder="Filter teams" />
+                <CommandInput placeholder="Filter teams…" />
                 <CommandList>
                   <CommandEmpty>No team found.</CommandEmpty>
                   <CommandGroup>
@@ -172,7 +164,7 @@ export default function ComboboxDemo() {
                         >
                           <span class="flex w-full items-center justify-between">
                             <span>{item.label}</span>
-                            <span class="text-muted-foreground/60 text-[11px]">{item.hint}</span>
+                            <span class="text-muted-foreground/60 text-xs">{item.hint}</span>
                           </span>
                         </CommandItem>
                       )}
@@ -186,7 +178,7 @@ export default function ComboboxDemo() {
                         setOpenTeam(false);
                       }}
                     >
-                      Create new team...
+                      Create new team…
                     </CommandItem>
                   </CommandGroup>
                 </CommandList>
@@ -194,12 +186,10 @@ export default function ComboboxDemo() {
             </PopoverContent>
           </Popover>
 
-          <Button variant="ghost" size="sm" class="tracking-[0.32em]">
+          <Button variant="ghost" size="sm">
             Notify
           </Button>
-          <Button size="sm" class="tracking-[0.32em]">
-            Assign
-          </Button>
+          <Button size="sm">Assign</Button>
         </div>
       </div>
     </div>

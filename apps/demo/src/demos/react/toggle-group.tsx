@@ -11,9 +11,7 @@ export default function ToggleGroupDemo() {
   return (
     <Card className="border-border/70">
       <CardHeader>
-        <CardTitle className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Segment control
-        </CardTitle>
+        <CardTitle className="text-sm font-medium text-muted-foreground">Segment control</CardTitle>
         <CardDescription>
           Uses the same squared toggles with shared borders for clarity.
         </CardDescription>

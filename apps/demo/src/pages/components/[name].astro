@@ -35,7 +35,7 @@ const componentName = title.replace(/\s+/g, "")
             client:load
           />
         </span>
-        <span id="cmd-solid" style="display: none;">
+        <span id="cmd-solid" hidden>
           <CopyCommandButton
             command={installCommandSolid}
             copyCommand={installCommandSolid}
@@ -46,28 +46,38 @@ const componentName = title.replace(/\s+/g, "")
 
       <p class="text-muted-foreground">{description}</p>
 
-      <div class="flex flex-col gap-4 rounded-lg border p-4 min-h-[300px]">
+      <div class="flex flex-col gap-4 border border-border/60 bg-background/20 p-4 sm:p-5">
         <div class="flex items-center justify-between">
-          <h2 class="text-sm text-muted-foreground sm:pl-3">{title} component</h2>
-          <div class="flex items-center gap-1" id="framework-toggle">
+          <h2 class="text-xs font-medium text-muted-foreground/80 sm:pl-1">{title} component</h2>
+          <div class="flex items-center gap-1" id="framework-toggle" role="tablist" aria-label="Framework">
             <button
+              id="framework-tab-react"
+              type="button"
+              role="tab"
               data-framework="react"
-              class="rounded border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors border-foreground/20 bg-foreground/5 text-foreground"
+              aria-selected="true"
+              aria-controls="demo-react install-react usage-react cmd-react"
+              class="border px-2.5 py-1.5 text-xs font-medium transition-colors border-foreground bg-foreground text-background"
             >
               react
             </button>
             <button
+              id="framework-tab-solid"
+              type="button"
+              role="tab"
               data-framework="solid"
-              class="rounded border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors border-border/60 bg-muted/40 text-muted-foreground hover:text-foreground"
+              aria-selected="false"
+              aria-controls="demo-solid install-solid usage-solid cmd-solid"
+              class="border px-2.5 py-1.5 text-xs font-medium transition-colors border-border/60 bg-muted/30 text-muted-foreground hover:border-foreground/40 hover:text-foreground"
             >
               solid
             </button>
           </div>
         </div>
-        <div id="demo-react">
+        <div id="demo-react" role="tabpanel" aria-labelledby="framework-tab-react">
           <ReactDemoRenderer name={name} client:only="react" />
         </div>
-        <div id="demo-solid" style="display: none;">
+        <div id="demo-solid" role="tabpanel" aria-labelledby="framework-tab-solid" hidden>
           <SolidDemoRenderer name={name} client:only="solid-js" />
         </div>
       </div>
@@ -78,7 +88,7 @@ const componentName = title.replace(/\s+/g, "")
       <div id="install-react">
         <InstallationCommands packageName={name} client:load />
       </div>
-      <div id="install-solid" style="display: none;">
+      <div id="install-solid" hidden>
         <InstallationCommands packageName={`solid/${name}`} client:load />
       </div>
 
@@ -88,7 +98,7 @@ const componentName = title.replace(/\s+/g, "")
       <div id="usage-react">
         <CodeSnippet client:load>{`import { ${componentName} } from "@/components/ui/${name}"`}</CodeSnippet>
       </div>
-      <div id="usage-solid" style="display: none;">
+      <div id="usage-solid" hidden>
         <CodeSnippet client:load>{`import { ${componentName} } from "@/components/ui/${name}"`}</CodeSnippet>
       </div>
     </div>
@@ -112,16 +122,17 @@ const componentName = title.replace(/\s+/g, "")
       localStorage.setItem('omni-framework', fw)
       const isReact = fw === 'react'
       pairs.forEach(([r, s]) => {
-        r!.style.display = isReact ? '' : 'none'
-        s!.style.display = isReact ? 'none' : ''
+        r!.hidden = !isReact
+        s!.hidden = isReact
       })
       buttons.forEach(btn => {
         const isActive = (btn as HTMLElement).dataset.framework === fw
+        ;(btn as HTMLElement).setAttribute('aria-selected', String(isActive))
         ;(btn as HTMLElement).className = [
-          'rounded border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors',
+          'border px-2.5 py-1.5 text-xs font-medium transition-colors',
           isActive
-            ? 'border-foreground/20 bg-foreground/5 text-foreground'
-            : 'border-border/60 bg-muted/40 text-muted-foreground hover:text-foreground'
+            ? 'border-foreground bg-foreground text-background'
+            : 'border-border/60 bg-muted/30 text-muted-foreground hover:border-foreground/40 hover:text-foreground'
         ].join(' ')
       })
     }

@@ -5,7 +5,6 @@ import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 
 import { type VariantProps } from "class-variance-authority";
 
-import { glassOverlayBackdropClass, glassSurfaceStrongClass } from "@/registry/react/lib/glass";
 import { Button, buttonVariants } from "@/registry/react/ui/button";
 import { cn } from "@/registry/react/lib/utils";
 
@@ -31,7 +30,7 @@ function AlertDialogOverlay({
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"
       className={cn(
-        glassOverlayBackdropClass,
+        "omni-glass-overlay",
         "data-[state=open]:animate-in data-[state=open]:fade-in-0",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
         className,
@@ -53,7 +52,7 @@ function AlertDialogContent({
         data-slot="alert-dialog-content"
         className={cn(
           "fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-6 px-6 py-6",
-          glassSurfaceStrongClass,
+          "omni-glass-surface-strong",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
           "data-[state=closed]:animate-out data-[state=closed]:zoom-out-95",
           className,
@@ -96,10 +95,7 @@ function AlertDialogTitle({
   return (
     <AlertDialogPrimitive.Title
       data-slot="alert-dialog-title"
-      className={cn(
-        "font-mono text-xs uppercase tracking-[0.36em] text-muted-foreground",
-        className,
-      )}
+      className={cn("text-sm font-medium text-muted-foreground", className)}
       {...props}
     />
   );

@@ -16,7 +16,7 @@ export default function CollapsibleDemo() {
   return (
     <Card className="border-border/70">
       <CardHeader>
-        <CardTitle className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
+        <CardTitle className="text-sm font-medium text-muted-foreground">
           Build Step Summary
         </CardTitle>
         <CardDescription>

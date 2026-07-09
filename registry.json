@@ -14,7 +14,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/utils"],
       "dependencies": ["@radix-ui/react-accordion", "lucide-react"]
     },
     {
@@ -28,12 +28,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style",
-        "@omni/tone-style"
-      ],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style", "@omni/tone-style"],
       "dependencies": ["class-variance-authority"]
     },
     {
@@ -47,12 +42,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/button",
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
+      "registryDependencies": ["@omni/button", "@omni/utils", "@omni/glass-style"],
       "dependencies": ["@radix-ui/react-alert-dialog", "class-variance-authority"]
     },
     {
@@ -79,7 +69,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
       "dependencies": ["@radix-ui/react-avatar"]
     },
     {
@@ -93,7 +83,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/utils"],
       "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
     },
     {
@@ -107,7 +97,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/utils"],
       "dependencies": ["@radix-ui/react-slot", "lucide-react"]
     },
     {
@@ -121,7 +111,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/utils"],
       "dependencies": ["class-variance-authority"]
     },
     {
@@ -135,12 +125,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/separator",
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
+      "registryDependencies": ["@omni/separator", "@omni/utils", "@omni/glass-style"],
       "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
     },
     {
@@ -195,7 +180,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/utils"],
       "dependencies": ["recharts"]
     },
     {
@@ -230,12 +215,7 @@
       "type": "registry:ui",
       "title": "Combobox",
       "description": "Combobox component.",
-      "registryDependencies": [
-        "@omni/command",
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
+      "registryDependencies": ["@omni/command", "@omni/utils", "@omni/glass-style"],
       "files": [
         {
           "path": "registry/react/ui/combobox.tsx",
@@ -255,12 +235,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/dialog",
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
+      "registryDependencies": ["@omni/dialog", "@omni/utils", "@omni/glass-style"],
       "dependencies": ["cmdk", "lucide-react"]
     },
     {
@@ -274,7 +249,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
       "dependencies": ["@radix-ui/react-context-menu", "lucide-react"]
     },
     {
@@ -289,7 +264,6 @@
         "@omni/select",
         "@omni/table",
         "@omni/utils",
-        "@omni/font-mono",
         "@omni/glass-style"
       ],
       "files": [
@@ -311,7 +285,6 @@
         "@omni/calendar",
         "@omni/popover",
         "@omni/utils",
-        "@omni/font-mono",
         "@omni/glass-style"
       ],
       "files": [
@@ -332,7 +305,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
       "dependencies": ["@radix-ui/react-dialog", "lucide-react"]
     },
     {
@@ -346,7 +319,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
       "dependencies": ["vaul"]
     },
     {
@@ -360,7 +333,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
       "dependencies": ["@radix-ui/react-dropdown-menu", "lucide-react"]
     },
     {
@@ -430,7 +403,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"]
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"]
     },
     {
       "name": "input-group",
@@ -443,12 +416,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/button",
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
+      "registryDependencies": ["@omni/button", "@omni/utils", "@omni/glass-style"],
       "dependencies": ["class-variance-authority"]
     },
     {
@@ -462,7 +430,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
       "dependencies": ["input-otp", "lucide-react"]
     },
     {
@@ -476,12 +444,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/separator",
-        "@omni/utils",
-        "@omni/font-mono",
-        "@omni/glass-style"
-      ],
+      "registryDependencies": ["@omni/separator", "@omni/utils", "@omni/glass-style"],
       "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
     },
     {
@@ -495,7 +458,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"]
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"]
     },
     {
       "name": "label",
@@ -508,7 +471,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/utils"],
       "dependencies": ["@radix-ui/react-label"]
     },
     {
@@ -522,7 +485,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
       "dependencies": ["@radix-ui/react-menubar", "lucide-react"]
     },
     {
@@ -536,7 +499,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
       "dependencies": [
         "@radix-ui/react-navigation-menu",
         "class-variance-authority",
@@ -554,7 +517,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/utils"],
       "dependencies": ["lucide-react"]
     },
     {
@@ -638,7 +601,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
       "dependencies": ["@radix-ui/react-select", "lucide-react"]
     },
     {
@@ -666,7 +629,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
       "dependencies": ["@radix-ui/react-dialog", "lucide-react"]
     },
     {
@@ -682,6 +645,7 @@
         "@omni/skeleton",
         "@omni/tooltip",
         "@omni/use-mobile",
+        "@omni/glass-style",
         "@omni/utils"
       ],
       "files": [
@@ -732,7 +696,6 @@
       ],
       "registryDependencies": [
         "@omni/utils",
-        "@omni/font-mono",
         "@omni/glass-style",
         "@omni/tone-style",
         "@omni/theme-provider"
@@ -791,7 +754,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/utils"],
       "dependencies": ["@radix-ui/react-tabs"]
     },
     {
@@ -818,7 +781,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/utils"],
       "dependencies": ["@radix-ui/react-toggle", "class-variance-authority"]
     },
     {
@@ -860,7 +823,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/utils"],
       "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
     },
     {
@@ -903,28 +866,11 @@
       ]
     },
     {
-      "name": "font-mono",
-      "type": "registry:style",
-      "title": "Font Mono",
-      "description": "Font Mono style.",
-      "files": [],
-      "cssVars": {
-        "theme": {
-          "font-mono": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace"
-        }
-      }
-    },
-    {
       "name": "glass-style",
       "type": "registry:style",
       "title": "Glass Surface Tokens",
       "description": "Glass Surface Tokens style.",
-      "files": [
-        {
-          "path": "registry/react/lib/glass.ts",
-          "type": "registry:lib"
-        }
-      ],
+      "files": [],
       "css": {
         ":root": {
           "--glass-drop-shadow-subtle": "0 0 10px rgba(15, 23, 42, 0.08)",
@@ -964,6 +910,86 @@
           "--glass-tint-heavy": "rgba(255, 255, 255, 0.18)",
           "--glass-tint-strong": "rgba(255, 255, 255, 0.12)",
           "--glass-tint-subtle": "rgba(255, 255, 255, 0.04)"
+        },
+        ".omni-glass-overlay": {
+          "position": "fixed",
+          "inset": "0",
+          "z-index": "50",
+          "background-color": "color-mix(in oklab, var(--background) 70%, transparent)",
+          "backdrop-filter": "blur(12px)",
+          "-webkit-backdrop-filter": "blur(12px)",
+          "transition-property": "opacity",
+          "transition-duration": "150ms",
+          "transition-timing-function": "cubic-bezier(0.4, 0, 0.2, 1)"
+        },
+        ".omni-glass-surface, .omni-glass-surface-strong, .omni-glass-surface-subtle, .omni-glass-inset-surface, .omni-glass-menu-surface, .omni-glass-indicator-surface": {
+          "border": "1px solid color-mix(in oklab, var(--border) 60%, transparent)",
+          "border-radius": "0"
+        },
+        ".omni-glass-surface, .omni-glass-surface-strong, .omni-glass-surface-subtle, .omni-glass-inset-surface, .omni-glass-menu-surface": {
+          "color": "var(--foreground)"
+        },
+        ".omni-glass-surface": {
+          "background-color": "color-mix(in oklab, var(--muted) 60%, transparent)",
+          "box-shadow": "var(--glass-shadow-outline)",
+          "backdrop-filter": "blur(6px)",
+          "-webkit-backdrop-filter": "blur(6px)"
+        },
+        ".omni-glass-surface-strong": {
+          "background-color": "color-mix(in oklab, var(--muted) 60%, transparent)",
+          "box-shadow": "var(--glass-shadow-outline-strong)",
+          "backdrop-filter": "blur(8px)",
+          "-webkit-backdrop-filter": "blur(8px)"
+        },
+        ".omni-glass-surface-subtle": {
+          "background-color": "color-mix(in oklab, var(--muted) 65%, transparent)",
+          "box-shadow": "var(--glass-shadow-outline-subtle)",
+          "backdrop-filter": "blur(4px)",
+          "-webkit-backdrop-filter": "blur(4px)"
+        },
+        ".omni-glass-inset-surface": {
+          "background-color": "color-mix(in oklab, var(--muted) 40%, transparent)",
+          "box-shadow": "var(--glass-shadow-inset)"
+        },
+        ".omni-glass-menu-surface": {
+          "background-color": "color-mix(in oklab, var(--muted) 70%, transparent)",
+          "box-shadow": "var(--glass-shadow-outline-subtle)",
+          "backdrop-filter": "blur(4px)",
+          "-webkit-backdrop-filter": "blur(4px)"
+        },
+        ".omni-glass-indicator-surface": {
+          "background-color": "color-mix(in oklab, var(--muted) 70%, transparent)",
+          "box-shadow": "var(--glass-shadow-outline)"
+        },
+        ".omni-glass-close-button": {
+          "position": "absolute",
+          "top": "1rem",
+          "right": "1rem",
+          "display": "inline-flex",
+          "width": "2.25rem",
+          "height": "2.25rem",
+          "align-items": "center",
+          "justify-content": "center",
+          "border": "1px solid color-mix(in oklab, var(--border) 60%, transparent)",
+          "border-radius": "0",
+          "background-color": "color-mix(in oklab, var(--muted) 50%, transparent)",
+          "color": "color-mix(in oklab, var(--muted-foreground) 80%, transparent)",
+          "transition-property": "color, background-color, border-color",
+          "transition-duration": "150ms",
+          "transition-timing-function": "cubic-bezier(0.4, 0, 0.2, 1)"
+        },
+        ".omni-glass-close-button:hover": {
+          "background-color": "var(--foreground)",
+          "color": "var(--background)"
+        },
+        ".omni-glass-close-button:focus-visible": {
+          "border-color": "var(--foreground)",
+          "outline": "none",
+          "box-shadow": "0 0 0 2px var(--background), 0 0 0 4px color-mix(in oklab, var(--ring) 40%, transparent)"
+        },
+        ".omni-glass-close-button:disabled": {
+          "pointer-events": "none",
+          "opacity": "0.4"
         }
       }
     },
@@ -1072,7 +1098,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/solid/utils"],
       "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
@@ -1088,7 +1114,6 @@
       ],
       "registryDependencies": [
         "@omni/solid/utils",
-        "@omni/font-mono",
         "@omni/solid/glass-style",
         "@omni/solid/tone-style"
       ],
@@ -1108,7 +1133,6 @@
       "registryDependencies": [
         "@omni/solid/button",
         "@omni/solid/utils",
-        "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
       "dependencies": ["@kobalte/core", "lucide-solid"]
@@ -1138,7 +1162,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
       "dependencies": ["@kobalte/core"]
     },
     {
@@ -1152,7 +1176,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/solid/utils"],
       "dependencies": ["class-variance-authority"]
     },
     {
@@ -1166,7 +1190,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/solid/utils"],
       "dependencies": ["lucide-solid"]
     },
     {
@@ -1180,7 +1204,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/solid/utils"],
       "dependencies": ["class-variance-authority"]
     },
     {
@@ -1197,7 +1221,6 @@
       "registryDependencies": [
         "@omni/solid/separator",
         "@omni/solid/utils",
-        "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
       "dependencies": ["class-variance-authority"]
@@ -1254,7 +1277,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"]
+      "registryDependencies": ["@omni/solid/utils"]
     },
     {
       "name": "solid/checkbox",
@@ -1302,7 +1325,6 @@
       "registryDependencies": [
         "@omni/solid/command",
         "@omni/solid/utils",
-        "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
       "dependencies": ["@kobalte/core", "lucide-solid"]
@@ -1321,7 +1343,6 @@
       "registryDependencies": [
         "@omni/solid/dialog",
         "@omni/solid/utils",
-        "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
       "dependencies": ["cmdk-solid", "@kobalte/core"]
@@ -1337,7 +1358,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
       "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
@@ -1358,7 +1379,6 @@
         "@omni/solid/select",
         "@omni/solid/table",
         "@omni/solid/utils",
-        "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
       "dependencies": ["@tanstack/solid-table", "lucide-solid"]
@@ -1379,7 +1399,6 @@
         "@omni/solid/calendar",
         "@omni/solid/popover",
         "@omni/solid/utils",
-        "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
       "dependencies": ["lucide-solid"]
@@ -1395,7 +1414,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
       "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
@@ -1409,7 +1428,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
       "dependencies": ["@corvu/drawer"]
     },
     {
@@ -1423,7 +1442,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
       "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
@@ -1500,7 +1519,7 @@
           "type": "registry:lib"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
     },
     {
       "name": "solid/input-group",
@@ -1516,7 +1535,6 @@
       "registryDependencies": [
         "@omni/solid/button",
         "@omni/solid/utils",
-        "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
       "dependencies": ["class-variance-authority"]
@@ -1532,7 +1550,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
       "dependencies": ["@corvu/otp-field", "lucide-solid"]
     },
     {
@@ -1549,7 +1567,6 @@
       "registryDependencies": [
         "@omni/solid/separator",
         "@omni/solid/utils",
-        "@omni/font-mono",
         "@omni/solid/glass-style"
       ],
       "dependencies": ["class-variance-authority"]
@@ -1565,7 +1582,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
     },
     {
       "name": "solid/label",
@@ -1578,7 +1595,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/solid/utils"],
       "dependencies": ["@kobalte/core"]
     },
     {
@@ -1592,7 +1609,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
       "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
@@ -1606,7 +1623,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
       "dependencies": ["@kobalte/core", "class-variance-authority", "lucide-solid"]
     },
     {
@@ -1620,7 +1637,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/solid/utils"],
       "dependencies": ["lucide-solid"]
     },
     {
@@ -1708,7 +1725,7 @@
           "type": "registry:lib"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
       "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
@@ -1736,7 +1753,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
       "dependencies": ["@kobalte/core", "lucide-solid"]
     },
     {
@@ -1758,6 +1775,7 @@
         "@omni/solid/skeleton",
         "@omni/solid/tooltip",
         "@omni/solid/use-mobile",
+        "@omni/solid/glass-style",
         "@omni/solid/utils"
       ],
       "dependencies": ["@kobalte/core", "class-variance-authority", "lucide-solid"]
@@ -1802,7 +1820,6 @@
       ],
       "registryDependencies": [
         "@omni/solid/utils",
-        "@omni/font-mono",
         "@omni/solid/glass-style",
         "@omni/solid/tone-style",
         "@omni/solid/theme-provider"
@@ -1865,7 +1882,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/solid/utils"],
       "dependencies": ["@kobalte/core"]
     },
     {
@@ -1896,7 +1913,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/solid/utils"],
       "dependencies": ["@kobalte/core", "class-variance-authority"]
     },
     {
@@ -1938,7 +1955,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "registryDependencies": ["@omni/solid/utils"],
       "dependencies": ["class-variance-authority"]
     },
     {
@@ -1960,12 +1977,7 @@
       "type": "registry:style",
       "title": "Glass Surface Tokens (Solid)",
       "description": "Glass Surface Tokens style for SolidJS.",
-      "files": [
-        {
-          "path": "registry/solid/lib/glass.ts",
-          "type": "registry:lib"
-        }
-      ],
+      "files": [],
       "css": {
         ":root": {
           "--glass-drop-shadow-subtle": "0 0 10px rgba(15, 23, 42, 0.08)",
@@ -2005,6 +2017,86 @@
           "--glass-tint-heavy": "rgba(255, 255, 255, 0.18)",
           "--glass-tint-strong": "rgba(255, 255, 255, 0.12)",
           "--glass-tint-subtle": "rgba(255, 255, 255, 0.04)"
+        },
+        ".omni-glass-overlay": {
+          "position": "fixed",
+          "inset": "0",
+          "z-index": "50",
+          "background-color": "color-mix(in oklab, var(--background) 70%, transparent)",
+          "backdrop-filter": "blur(12px)",
+          "-webkit-backdrop-filter": "blur(12px)",
+          "transition-property": "opacity",
+          "transition-duration": "150ms",
+          "transition-timing-function": "cubic-bezier(0.4, 0, 0.2, 1)"
+        },
+        ".omni-glass-surface, .omni-glass-surface-strong, .omni-glass-surface-subtle, .omni-glass-inset-surface, .omni-glass-menu-surface, .omni-glass-indicator-surface": {
+          "border": "1px solid color-mix(in oklab, var(--border) 60%, transparent)",
+          "border-radius": "0"
+        },
+        ".omni-glass-surface, .omni-glass-surface-strong, .omni-glass-surface-subtle, .omni-glass-inset-surface, .omni-glass-menu-surface": {
+          "color": "var(--foreground)"
+        },
+        ".omni-glass-surface": {
+          "background-color": "color-mix(in oklab, var(--muted) 60%, transparent)",
+          "box-shadow": "var(--glass-shadow-outline)",
+          "backdrop-filter": "blur(6px)",
+          "-webkit-backdrop-filter": "blur(6px)"
+        },
+        ".omni-glass-surface-strong": {
+          "background-color": "color-mix(in oklab, var(--muted) 60%, transparent)",
+          "box-shadow": "var(--glass-shadow-outline-strong)",
+          "backdrop-filter": "blur(8px)",
+          "-webkit-backdrop-filter": "blur(8px)"
+        },
+        ".omni-glass-surface-subtle": {
+          "background-color": "color-mix(in oklab, var(--muted) 65%, transparent)",
+          "box-shadow": "var(--glass-shadow-outline-subtle)",
+          "backdrop-filter": "blur(4px)",
+          "-webkit-backdrop-filter": "blur(4px)"
+        },
+        ".omni-glass-inset-surface": {
+          "background-color": "color-mix(in oklab, var(--muted) 40%, transparent)",
+          "box-shadow": "var(--glass-shadow-inset)"
+        },
+        ".omni-glass-menu-surface": {
+          "background-color": "color-mix(in oklab, var(--muted) 70%, transparent)",
+          "box-shadow": "var(--glass-shadow-outline-subtle)",
+          "backdrop-filter": "blur(4px)",
+          "-webkit-backdrop-filter": "blur(4px)"
+        },
+        ".omni-glass-indicator-surface": {
+          "background-color": "color-mix(in oklab, var(--muted) 70%, transparent)",
+          "box-shadow": "var(--glass-shadow-outline)"
+        },
+        ".omni-glass-close-button": {
+          "position": "absolute",
+          "top": "1rem",
+          "right": "1rem",
+          "display": "inline-flex",
+          "width": "2.25rem",
+          "height": "2.25rem",
+          "align-items": "center",
+          "justify-content": "center",
+          "border": "1px solid color-mix(in oklab, var(--border) 60%, transparent)",
+          "border-radius": "0",
+          "background-color": "color-mix(in oklab, var(--muted) 50%, transparent)",
+          "color": "color-mix(in oklab, var(--muted-foreground) 80%, transparent)",
+          "transition-property": "color, background-color, border-color",
+          "transition-duration": "150ms",
+          "transition-timing-function": "cubic-bezier(0.4, 0, 0.2, 1)"
+        },
+        ".omni-glass-close-button:hover": {
+          "background-color": "var(--foreground)",
+          "color": "var(--background)"
+        },
+        ".omni-glass-close-button:focus-visible": {
+          "border-color": "var(--foreground)",
+          "outline": "none",
+          "box-shadow": "0 0 0 2px var(--background), 0 0 0 4px color-mix(in oklab, var(--ring) 40%, transparent)"
+        },
+        ".omni-glass-close-button:disabled": {
+          "pointer-events": "none",
+          "opacity": "0.4"
         }
       }
     },

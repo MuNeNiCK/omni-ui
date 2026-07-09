@@ -50,10 +50,7 @@ function AlertTitle(props: JSX.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       data-slot="alert-title"
-      class={cn(
-        "col-start-2 font-mono text-[10px] uppercase tracking-[0.32em] text-[color:var(--tone-title)]",
-        local.class,
-      )}
+      class={cn("col-start-2 text-sm font-semibold text-[color:var(--tone-title)]", local.class)}
       {...rest}
     />
   );
@@ -79,7 +76,7 @@ function AlertActions(props: JSX.HTMLAttributes<HTMLDivElement>) {
     <div
       data-slot="alert-actions"
       class={cn(
-        "col-start-2 flex flex-wrap items-center gap-2 pt-1 text-[10px] font-mono uppercase tracking-[0.32em] text-[color:var(--tone-title)]",
+        "col-start-2 flex flex-wrap items-center gap-2 pt-1 text-xs font-medium text-[color:var(--tone-title)]",
         local.class,
       )}
       {...rest}

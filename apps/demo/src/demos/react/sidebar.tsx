@@ -11,7 +11,6 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarInput,
-  SidebarInset,
   SidebarMenu,
   SidebarMenuBadge,
   SidebarMenuButton,
@@ -36,11 +35,11 @@ export default function SidebarDemo() {
   return (
     <div className="overflow-hidden rounded-none border border-border/70">
       <SidebarProvider defaultOpen className="relative flex min-h-[360px]">
-        <Sidebar className="bg-muted/20">
+        <Sidebar className="!absolute !inset-y-0 !left-0 !h-full bg-muted/20">
           <SidebarHeader className="gap-4">
-            <SidebarInput placeholder="Search services" />
+            <SidebarInput aria-label="Search services" placeholder="Search services…" />
           </SidebarHeader>
-          <SidebarContent>
+          <SidebarContent className="overflow-hidden">
             <SidebarGroup>
               <SidebarGroupLabel>Overview</SidebarGroupLabel>
               <SidebarMenu>
@@ -94,16 +93,14 @@ export default function SidebarDemo() {
           </SidebarFooter>
           <SidebarRail />
         </Sidebar>
-        <SidebarInset className="flex-1 bg-background/40 p-6">
+        <div className="relative flex w-full flex-1 flex-col bg-background/40 p-6">
           <div className="flex items-center justify-between">
             <SidebarTrigger />
-            <Badge variant="outline" className="tracking-[0.32em] uppercase">
-              {active}
-            </Badge>
+            <Badge variant="outline">{active}</Badge>
           </div>
           <Card className="mt-6 border-border/70">
             <CardHeader>
-              <CardTitle className="font-mono text-xs uppercase tracking-[0.32em] text-muted-foreground">
+              <CardTitle className="text-sm font-medium text-muted-foreground">
                 {active === "overview"
                   ? "Control plane"
                   : active === "security"
@@ -116,10 +113,10 @@ export default function SidebarDemo() {
             </CardHeader>
             <CardContent className="text-sm text-muted-foreground">
               This panel inherits the frosted backdrop while the sidebar keeps its glass rail and
-              uppercase markers.
+              markers.
             </CardContent>
           </Card>
-        </SidebarInset>
+        </div>
       </SidebarProvider>
     </div>
   );

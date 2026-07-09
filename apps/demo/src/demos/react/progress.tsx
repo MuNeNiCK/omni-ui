@@ -11,9 +11,7 @@ export default function ProgressDemo() {
   return (
     <Card className="border-border/70">
       <CardHeader>
-        <CardTitle className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Region sync
-        </CardTitle>
+        <CardTitle className="text-sm font-medium text-muted-foreground">Region sync</CardTitle>
         <CardDescription>
           The indicator uses a solid fill with a glassy overlay highlight to feel consistent with
           buttons and inputs.

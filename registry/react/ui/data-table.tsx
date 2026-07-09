@@ -38,6 +38,8 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/registry/react/ui/dropdown-menu";
 import {
@@ -74,7 +76,7 @@ function DataTable<TData, TValue>({
   data,
   className,
   searchKey,
-  searchPlaceholder = "Filter results...",
+  searchPlaceholder = "Filter results…",
   toolbar,
   emptyMessage = "No records found.",
   initialPageSize = 10,
@@ -122,14 +124,14 @@ function DataTable<TData, TValue>({
 
   return (
     <div data-slot="data-table" className={cn("flex flex-col gap-4", className)}>
-      <div className="flex flex-col gap-3 border border-border/60 bg-muted/40 px-4 py-3 text-[10px] font-mono uppercase tracking-[0.28em] text-muted-foreground/80 shadow-[var(--glass-shadow-outline)] backdrop-blur-[4px] sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-1 flex-wrap items-center gap-2">
+      <div className="flex flex-col gap-3 border border-border/60 bg-muted/40 px-3 py-3 text-xs text-muted-foreground/80 shadow-[var(--glass-shadow-outline)] backdrop-blur-[4px] sm:flex-row sm:items-center sm:justify-between sm:px-4">
+        <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2">
           {toolbar?.(table)}
           {isFiltered ? (
             <Button
               variant="ghost"
               size="sm"
-              className="h-8 border border-transparent px-3 py-1 tracking-[0.28em] text-muted-foreground/70 hover:border-border/60 hover:bg-foreground/10 hover:text-foreground"
+              className="h-8 border border-transparent px-3 py-1 text-muted-foreground/70 hover:border-border/60 hover:bg-foreground/10 hover:text-foreground"
               onClick={() => {
                 setSearchValue("");
                 table.resetColumnFilters();
@@ -138,28 +140,31 @@ function DataTable<TData, TValue>({
               Reset
             </Button>
           ) : null}
-          <span className="hidden items-center gap-1 text-[9px] tracking-[0.32em] text-muted-foreground/60 sm:inline-flex">
+          <span className="hidden items-center gap-1 text-xs tabular-nums text-muted-foreground/60 sm:inline-flex">
             {table.getFilteredSelectedRowModel().rows.length} selected •{" "}
             {table.getFilteredRowModel().rows.length} total
           </span>
         </div>
-        <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-3">
+        <div className="flex w-full min-w-0 flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-3">
           {searchKey ? (
             <Input
+              aria-label={searchPlaceholder}
+              autoComplete="off"
+              name={String(searchKey)}
               value={searchValue}
               onChange={(event) => setSearchValue(event.target.value)}
               placeholder={searchPlaceholder}
-              className="h-9 w-full min-w-[220px] border-border/60 bg-background/20 text-[11px] font-mono uppercase tracking-[0.28em] text-foreground/90 sm:w-56"
+              className="h-9 w-full min-w-0 border-border/60 bg-background/20 text-sm text-foreground/90 sm:w-56"
             />
           ) : null}
           {viewOptions ? <DataTableViewOptions table={table} /> : null}
         </div>
       </div>
-      <div className="overflow-hidden border border-border/60 bg-background/10 shadow-[var(--glass-shadow-outline-subtle)] backdrop-blur-[2px]">
-        <Table className="min-w-full text-left">
+      <div className="max-w-full overflow-x-auto border border-border/60 bg-background/10 shadow-[var(--glass-shadow-outline-subtle)] backdrop-blur-[2px]">
+        <Table className="min-w-[680px] text-left sm:min-w-full">
           <TableHeader className="bg-muted/40">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className="border-border/40 uppercase">
+              <TableRow key={headerGroup.id} className="border-border/40">
                 {headerGroup.headers.map((header) => {
                   if (header.isPlaceholder) {
                     return <TableHead key={header.id} />;
@@ -167,19 +172,32 @@ function DataTable<TData, TValue>({
 
                   const canSort = header.column.getCanSort();
                   const sortDirection = header.column.getIsSorted();
+                  const headerLabel =
+                    (header.column.columnDef.meta as DataTableColumnMeta | undefined)
+                      ?.headerLabel || header.column.id;
 
                   return (
                     <TableHead
                       key={header.id}
                       className={cn(
-                        "h-12 px-3 text-[10px] font-mono uppercase tracking-[0.32em] text-muted-foreground/80",
+                        "h-12 px-3 text-xs font-medium text-muted-foreground/80",
                         "[&[data-sort=desc]]:text-foreground [&[data-sort=asc]]:text-foreground",
                       )}
                       data-sort={sortDirection ? String(sortDirection) : undefined}
+                      aria-sort={
+                        sortDirection === "asc"
+                          ? "ascending"
+                          : sortDirection === "desc"
+                            ? "descending"
+                            : canSort
+                              ? "none"
+                              : undefined
+                      }
                     >
                       {canSort ? (
                         <button
                           type="button"
+                          aria-label={`Sort by ${headerLabel}`}
                           onClick={header.column.getToggleSortingHandler()}
                           className="group flex w-full items-center gap-2 text-left transition-colors hover:text-foreground"
                         >
@@ -214,10 +232,7 @@ function DataTable<TData, TValue>({
                   className="border-border/40 text-sm text-foreground/85 transition-colors hover:bg-muted/30"
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell
-                      key={cell.id}
-                      className="px-3 py-3 text-sm font-mono tracking-[0.08em] text-foreground/80"
-                    >
+                    <TableCell key={cell.id} className="px-3 py-3 text-sm text-foreground/80">
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
@@ -254,7 +269,7 @@ function DataTableViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>
           type="button"
           variant="ghost"
           size="sm"
-          className="h-9 gap-2 border border-border/60 bg-muted/40 px-3 font-mono uppercase tracking-[0.28em] text-muted-foreground/80 hover:bg-foreground/10 hover:text-foreground"
+          className="h-9 gap-2 border border-border/60 bg-muted/40 px-3 text-muted-foreground/80 hover:bg-foreground/10 hover:text-foreground"
         >
           <SlidersHorizontalIcon className="size-3.5" />
           View
@@ -264,12 +279,10 @@ function DataTableViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>
         align="end"
         className="min-w-[12rem] border-border/60 bg-muted/60 text-foreground shadow-[var(--glass-shadow-outline)]"
       >
-        <DropdownMenuCheckboxItem className="pointer-events-none opacity-70" checked>
+        <DropdownMenuLabel className="px-3 py-2 text-xs font-medium text-muted-foreground/70">
           Columns
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem className="pointer-events-none opacity-40" checked>
-          —
-        </DropdownMenuCheckboxItem>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
         {table
           .getAllLeafColumns()
           .filter((column) => column.getCanHide())
@@ -278,7 +291,7 @@ function DataTableViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>
               key={column.id}
               checked={column.getIsVisible()}
               onCheckedChange={(value) => column.toggleVisibility(Boolean(value))}
-              className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted-foreground/80 data-[state=checked]:text-foreground"
+              className="text-sm text-muted-foreground/80 data-[state=checked]:text-foreground"
             >
               {(column.columnDef.meta as DataTableColumnMeta | undefined)?.headerLabel || column.id}
             </DropdownMenuCheckboxItem>
@@ -304,7 +317,7 @@ function DataTablePagination<TData>({
   const pageEnd = Math.min(pageStart + pageSize - 1, table.getFilteredRowModel().rows.length);
 
   return (
-    <div className="flex flex-col gap-3 border border-border/60 bg-muted/40 px-4 py-3 text-[10px] font-mono uppercase tracking-[0.28em] text-muted-foreground/80 shadow-[var(--glass-shadow-outline)] backdrop-blur-[4px] sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-3 border border-border/60 bg-muted/40 px-4 py-3 text-xs text-muted-foreground/80 shadow-[var(--glass-shadow-outline)] backdrop-blur-[4px] sm:flex-row sm:items-center sm:justify-between">
       <div className="flex flex-wrap items-center gap-2">
         <span>
           Showing {table.getFilteredRowModel().rows.length ? `${pageStart}–${pageEnd}` : 0} of{" "}
@@ -318,7 +331,7 @@ function DataTablePagination<TData>({
             value={String(pageSize)}
             onValueChange={(value) => table.setPageSize(Number(value))}
           >
-            <SelectTrigger className="h-8 min-w-[4.5rem] border-border/60 bg-background/20 text-[11px] font-mono uppercase tracking-[0.28em] text-foreground/85">
+            <SelectTrigger className="h-8 min-w-[4.5rem] border-border/60 bg-background/20 text-xs text-foreground/85">
               <SelectValue />
             </SelectTrigger>
             <SelectContent align="end" className="bg-muted/60">
@@ -344,7 +357,7 @@ function DataTablePagination<TData>({
             <ChevronLeftIcon className="size-3.5" />
             <span className="sr-only">Previous</span>
           </Button>
-          <span className="text-[9px] text-muted-foreground/70">
+          <span className="text-xs tabular-nums text-muted-foreground/70">
             {pageIndex + 1} / {pageCount || 1}
           </span>
           <Button

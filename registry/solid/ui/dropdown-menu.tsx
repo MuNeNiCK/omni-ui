@@ -2,7 +2,6 @@ import { splitProps, type ComponentProps, type JSX, type ParentProps } from "sol
 import * as DropdownMenuPrimitive from "@kobalte/core/dropdown-menu";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-solid";
 
-import { glassSurfaceClass } from "@/registry/solid/lib/glass";
 import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
 function DropdownMenu(props: ComponentProps<typeof DropdownMenuPrimitive.Root>) {
@@ -25,7 +24,7 @@ function DropdownMenuContent(props: ComponentProps<typeof DropdownMenuPrimitive.
         data-slot="dropdown-menu-content"
         class={cn(
           "z-50 max-h-[var(--kb-popper-content-available-height)] min-w-[10rem] origin-[var(--kb-menu-content-transform-origin)] overflow-hidden p-1",
-          glassSurfaceClass,
+          "omni-glass-surface",
           "data-[expanded]:animate-in data-[expanded]:fade-in-0 data-[expanded]:zoom-in-95 data-[closed]:animate-out data-[closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           local.class,
         )}
@@ -40,7 +39,7 @@ function DropdownMenuGroup(props: ComponentProps<typeof DropdownMenuPrimitive.Gr
 }
 
 const itemBase = cn(
-  "relative flex cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/90 outline-hidden transition-[background,color] data-[disabled]:pointer-events-none data-[disabled]:opacity-40 rounded-none",
+  "relative flex min-h-9 cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/90 outline-hidden transition-[background,color] data-[disabled]:pointer-events-none data-[disabled]:opacity-40 rounded-none",
   omniMonoText.menu,
 );
 
@@ -82,7 +81,7 @@ function DropdownMenuCheckboxItem(
       checked={local.checked}
       {...rest}
     >
-      <span class="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-foreground">
+      <span class="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-current">
         <DropdownMenuPrimitive.ItemIndicator>
           <CheckIcon class="size-3.5" />
         </DropdownMenuPrimitive.ItemIndicator>
@@ -104,7 +103,7 @@ function DropdownMenuRadioItem(props: ComponentProps<typeof DropdownMenuPrimitiv
       class={cn(itemBase, "pl-9 hover:bg-foreground hover:text-background", local.class)}
       {...rest}
     >
-      <span class="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-foreground">
+      <span class="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-current">
         <DropdownMenuPrimitive.ItemIndicator>
           <CircleIcon class="size-2 fill-current" />
         </DropdownMenuPrimitive.ItemIndicator>
@@ -195,7 +194,7 @@ function DropdownMenuSubContent(props: ComponentProps<typeof DropdownMenuPrimiti
       data-slot="dropdown-menu-sub-content"
       class={cn(
         "z-50 min-w-[10rem] origin-[var(--kb-menu-content-transform-origin)] overflow-hidden p-1",
-        glassSurfaceClass,
+        "omni-glass-surface",
         "data-[expanded]:animate-in data-[expanded]:fade-in-0 data-[expanded]:zoom-in-95 data-[closed]:animate-out data-[closed]:zoom-out-95",
         local.class,
       )}

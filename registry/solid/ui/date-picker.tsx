@@ -152,7 +152,7 @@ function DatePicker<M extends CalendarMode = "single">(props: DatePickerProps<M>
         size={buttonSize()}
         disabled={local.disabled}
         class={cn(
-          "flex min-w-[12rem] items-center gap-3 border border-border/60 bg-muted/40 px-3 text-[11px] font-mono uppercase tracking-[0.28em] text-foreground/85 shadow-[var(--glass-shadow-outline)] hover:border-foreground",
+          "flex min-w-[12rem] items-center gap-3 border border-border/60 bg-muted/40 px-3 text-xs text-foreground/85 shadow-[var(--glass-shadow-outline)] hover:border-foreground",
           !hasValue() && "text-muted-foreground/70",
           "rounded-none",
           local.triggerClassName,
@@ -181,7 +181,7 @@ function DatePicker<M extends CalendarMode = "single">(props: DatePickerProps<M>
               variant="ghost"
               size="sm"
               onClick={handleReset}
-              class="h-8 w-full justify-center gap-2 border border-border/40 bg-background/30 text-[11px] font-mono uppercase tracking-[0.28em] text-muted-foreground/80 hover:border-border/60 hover:bg-foreground/10 hover:text-foreground"
+              class="h-8 w-full justify-center gap-2 border border-border/40 bg-background/30 text-xs text-muted-foreground/80 hover:border-border/60 hover:bg-foreground/10 hover:text-foreground"
             >
               <RotateCcwIcon class="size-3.5" />
               {local.clearLabel ?? "Reset"}

@@ -7,7 +7,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/registry/react/lib/utils";
 
 const toggleVariants = cva(
-  "inline-flex items-center justify-center gap-2 border border-border/60 bg-muted/30 px-3 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground/90 transition-[border,background,color,box-shadow] outline-none disabled:pointer-events-none disabled:opacity-40 whitespace-nowrap [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive/30 dark:aria-invalid:focus-visible:ring-destructive/40 data-[state=on]:border-foreground data-[state=on]:bg-foreground data-[state=on]:text-background",
+  "inline-flex items-center justify-center gap-2 border border-border/60 bg-muted/30 px-3 text-xs font-medium text-muted-foreground/90 transition-[border,background,color,box-shadow] outline-none disabled:pointer-events-none disabled:opacity-40 whitespace-nowrap [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive/30 dark:aria-invalid:focus-visible:ring-destructive/40 data-[state=on]:border-foreground data-[state=on]:bg-foreground data-[state=on]:text-background",
   {
     variants: {
       variant: {

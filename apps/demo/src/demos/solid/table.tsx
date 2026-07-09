@@ -30,9 +30,7 @@ export default function TableDemo() {
         <For each={rows}>
           {(row) => (
             <TableRow>
-              <TableCell class="font-mono text-[10px] uppercase tracking-[0.28em] text-foreground">
-                {row.region}
-              </TableCell>
+              <TableCell class="text-xs font-medium text-foreground">{row.region}</TableCell>
               <TableCell class="text-sm text-muted-foreground/80">{row.status}</TableCell>
               <TableCell class="text-sm text-foreground/80">{row.latency}</TableCell>
             </TableRow>

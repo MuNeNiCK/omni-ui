@@ -10,7 +10,7 @@ export default function SpinnerDemo() {
       </Button>
       <div class="flex items-center gap-2 text-sm text-muted-foreground">
         <Spinner />
-        <span>Fetching cluster metrics...</span>
+        <span>Fetching cluster metrics…</span>
       </div>
     </div>
   );

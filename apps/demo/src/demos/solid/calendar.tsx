@@ -27,9 +27,7 @@ export default function CalendarDemo() {
   return (
     <div class="space-y-8">
       <div class="space-y-3">
-        <h3 class="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Single date
-        </h3>
+        <h3 class="text-sm font-medium text-muted-foreground">Single date</h3>
         <div class="max-w-full overflow-x-auto">
           <Calendar
             mode="single"
@@ -44,9 +42,7 @@ export default function CalendarDemo() {
       </div>
 
       <div class="space-y-3">
-        <h3 class="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Date range
-        </h3>
+        <h3 class="text-sm font-medium text-muted-foreground">Date range</h3>
         <div class="max-w-full overflow-x-auto">
           <Calendar
             mode="range"
@@ -58,12 +54,7 @@ export default function CalendarDemo() {
         </div>
         <div class="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <span>{rangeSummary()}</span>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setRange(undefined)}
-            class="tracking-[0.3em]"
-          >
+          <Button variant="ghost" size="sm" onClick={() => setRange(undefined)}>
             Reset
           </Button>
         </div>

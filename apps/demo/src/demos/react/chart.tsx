@@ -28,10 +28,10 @@ const trafficConfig = {
 } satisfies ChartConfig;
 
 const trafficData = [
-  { label: "00:00", requests: 4200, errors: 30 },
-  { label: "06:00", requests: 5100, errors: 42 },
-  { label: "12:00", requests: 6400, errors: 54 },
-  { label: "18:00", requests: 7200, errors: 33 },
+  { label: "00:00", requests: 42, errors: 12 },
+  { label: "06:00", requests: 51, errors: 18 },
+  { label: "12:00", requests: 64, errors: 14 },
+  { label: "18:00", requests: 72, errors: 22 },
 ];
 
 const latencyConfig = {
@@ -54,7 +54,7 @@ export default function ChartDemo() {
     <div className="flex flex-col gap-4">
       <Card className="border-border/70">
         <CardHeader>
-          <CardTitle className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
+          <CardTitle className="text-sm font-medium text-muted-foreground">
             Request vs error rate
           </CardTitle>
           <CardDescription>
@@ -62,12 +62,12 @@ export default function ChartDemo() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="max-w-full overflow-x-auto">
-            <ChartContainer config={trafficConfig} className="h-72 w-full min-w-[320px]">
-              <AreaChart data={trafficData} margin={{ top: 16, right: 16, left: 0, bottom: 8 }}>
+          <div className="min-w-0 overflow-hidden">
+            <ChartContainer config={trafficConfig} className="h-56 w-full sm:h-72">
+              <AreaChart data={trafficData} margin={{ top: 12, right: 8, left: 0, bottom: 0 }}>
                 <CartesianGrid vertical={false} strokeDasharray="4 4" />
-                <XAxis dataKey="label" tickLine={false} axisLine={false} />
-                <YAxis tickLine={false} axisLine={false} width={32} />
+                <XAxis dataKey="label" tickLine={false} axisLine={false} tickMargin={8} />
+                <YAxis tickLine={false} axisLine={false} width={36} />
                 <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
                 <ChartLegend content={<ChartLegendContent />} />
                 <Area
@@ -75,16 +75,18 @@ export default function ChartDemo() {
                   dataKey="requests"
                   stroke="var(--color-requests)"
                   fill="var(--color-requests)"
-                  fillOpacity={0.15}
-                  strokeWidth={2}
+                  fillOpacity={0.24}
+                  strokeWidth={2.5}
+                  isAnimationActive={false}
                 />
                 <Area
                   type="monotone"
                   dataKey="errors"
                   stroke="var(--color-errors)"
                   fill="var(--color-errors)"
-                  fillOpacity={0.2}
-                  strokeWidth={2}
+                  fillOpacity={0.28}
+                  strokeWidth={2.5}
+                  isAnimationActive={false}
                 />
               </AreaChart>
             </ChartContainer>
@@ -94,7 +96,7 @@ export default function ChartDemo() {
 
       <Card className="border-border/70">
         <CardHeader>
-          <CardTitle className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
+          <CardTitle className="text-sm font-medium text-muted-foreground">
             Regional latency
           </CardTitle>
           <CardDescription>
@@ -102,14 +104,19 @@ export default function ChartDemo() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="max-w-full overflow-x-auto">
-            <ChartContainer config={latencyConfig} className="h-72 w-full min-w-[320px]">
-              <BarChart data={latencyData} margin={{ top: 16, right: 16, left: 0, bottom: 8 }}>
+          <div className="min-w-0 overflow-hidden">
+            <ChartContainer config={latencyConfig} className="h-56 w-full sm:h-72">
+              <BarChart data={latencyData} margin={{ top: 12, right: 8, left: 0, bottom: 0 }}>
                 <CartesianGrid vertical={false} strokeDasharray="4 4" />
-                <XAxis dataKey="label" tickLine={false} axisLine={false} />
-                <YAxis tickLine={false} axisLine={false} width={32} />
+                <XAxis dataKey="label" tickLine={false} axisLine={false} tickMargin={8} />
+                <YAxis tickLine={false} axisLine={false} width={36} />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar dataKey="latency" radius={0} fill="var(--color-latency)" />
+                <Bar
+                  dataKey="latency"
+                  radius={0}
+                  fill="var(--color-latency)"
+                  isAnimationActive={false}
+                />
               </BarChart>
             </ChartContainer>
           </div>

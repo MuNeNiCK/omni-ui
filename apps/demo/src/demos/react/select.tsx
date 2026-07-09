@@ -20,9 +20,7 @@ export default function SelectDemo() {
   return (
     <Card className="border-border/70">
       <CardHeader>
-        <CardTitle className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Region Picker
-        </CardTitle>
+        <CardTitle className="text-sm font-medium text-muted-foreground">Region Picker</CardTitle>
         <CardDescription>
           Square trigger and flat dropdown to match the PoC form system.
         </CardDescription>
@@ -31,7 +29,7 @@ export default function SelectDemo() {
         <Label htmlFor="region">Region</Label>
         <Select defaultValue="tokyo">
           <SelectTrigger id="region" className="min-w-[220px]">
-            <SelectValue placeholder="Select a region" />
+            <SelectValue placeholder="Select a region…" />
           </SelectTrigger>
           <SelectContent position="popper">
             <SelectGroup>

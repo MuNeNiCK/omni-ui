@@ -1,6 +1,5 @@
 import { splitProps, type ComponentProps } from "solid-js";
 import * as HoverCardPrimitive from "@kobalte/core/hover-card";
-import { glassSurfaceClass } from "@/registry/solid/lib/glass";
 import { cn } from "@/registry/solid/lib/utils";
 
 function HoverCard(props: ComponentProps<typeof HoverCardPrimitive.Root>) {
@@ -19,7 +18,7 @@ function HoverCardContent(props: ComponentProps<typeof HoverCardPrimitive.Conten
         data-slot="hover-card-content"
         class={cn(
           "relative z-50 w-64 px-4 py-4",
-          glassSurfaceClass,
+          "omni-glass-surface",
           "data-[expanded]:animate-in data-[expanded]:fade-in-0 data-[expanded]:zoom-in-95 data-[closed]:animate-out data-[closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           "outline-hidden",
           local.class,

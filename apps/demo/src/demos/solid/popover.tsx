@@ -10,9 +10,7 @@ export default function PopoverDemo() {
         </PopoverTrigger>
         <PopoverContent class="w-80">
           <div class="flex flex-col gap-3 text-sm text-foreground/80">
-            <p class="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
-              Capsule 74b
-            </p>
+            <p class="text-xs font-medium text-muted-foreground">Capsule 74b</p>
             <p>Active nodes: 12</p>
             <p>Latency avg: 128ms</p>
             <p class="text-muted-foreground">

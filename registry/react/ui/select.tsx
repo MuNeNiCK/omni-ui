@@ -4,7 +4,6 @@ import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
-import { glassSurfaceSubtleClass } from "@/registry/react/lib/glass";
 import { cn } from "@/registry/react/lib/utils";
 
 function Select({ ...props }: React.ComponentProps<typeof SelectPrimitive.Root>) {
@@ -32,8 +31,8 @@ function SelectTrigger({
       data-slot="select-trigger"
       data-size={size}
       className={cn(
-        "flex w-fit items-center justify-between gap-2 px-3 py-2 text-sm whitespace-nowrap text-foreground/90 data-[placeholder]:text-muted-foreground/70 [&_svg:not([class*='text-'])]:text-muted-foreground/70 transition-[border,background,color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-10 data-[size=sm]:h-9",
-        glassSurfaceSubtleClass,
+        "flex w-fit items-center justify-between gap-2 px-3 py-2 text-xs whitespace-nowrap text-foreground/90 data-[placeholder]:text-muted-foreground/70 [&_svg:not([class*='text-'])]:text-muted-foreground/70 transition-[border,background,color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-10 data-[size=sm]:h-9",
+        "omni-glass-surface-subtle",
         "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive/30 dark:aria-invalid:focus-visible:ring-destructive/40",
         className,
@@ -61,7 +60,7 @@ function SelectContent({
         data-slot="select-content"
         className={cn(
           "relative z-50 max-h-(--radix-select-content-available-height) min-w-[8rem] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto",
-          glassSurfaceSubtleClass,
+          "omni-glass-surface-subtle",
           "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           position === "popper" &&
             "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
@@ -91,10 +90,7 @@ function SelectLabel({ className, ...props }: React.ComponentProps<typeof Select
   return (
     <SelectPrimitive.Label
       data-slot="select-label"
-      className={cn(
-        "px-3 py-2 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground/90",
-        className,
-      )}
+      className={cn("px-3 py-2 text-xs font-medium text-muted-foreground/90", className)}
       {...props}
     />
   );
@@ -109,7 +105,7 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "relative flex w-full cursor-default items-center gap-3 px-3 py-2 text-[11px] font-mono uppercase tracking-[0.28em] text-muted-foreground/90 outline-hidden select-none transition-[background,color]",
+        "relative flex min-h-9 w-full cursor-default items-center gap-3 py-2 pl-3 pr-9 text-sm text-muted-foreground/90 outline-hidden select-none transition-[background,color]",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-40",
         "hover:bg-foreground hover:text-background",
         "data-[state=checked]:bg-foreground data-[state=checked]:text-background",

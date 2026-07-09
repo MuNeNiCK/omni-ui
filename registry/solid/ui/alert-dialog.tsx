@@ -1,7 +1,6 @@
 import { splitProps, type ComponentProps, type JSX } from "solid-js";
 import * as AlertDialogPrimitive from "@kobalte/core/alert-dialog";
 import { type VariantProps } from "class-variance-authority";
-import { glassOverlayBackdropClass, glassSurfaceStrongClass } from "@/registry/solid/lib/glass";
 import { Button, buttonVariants } from "@/registry/solid/ui/button";
 import { cn } from "@/registry/solid/lib/utils";
 
@@ -23,7 +22,7 @@ function AlertDialogOverlay(props: ComponentProps<typeof AlertDialogPrimitive.Ov
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"
       class={cn(
-        glassOverlayBackdropClass,
+        "omni-glass-overlay",
         "data-[expanded]:animate-in data-[expanded]:fade-in-0",
         "data-[closed]:animate-out data-[closed]:fade-out-0",
         local.class,
@@ -43,7 +42,7 @@ function AlertDialogContent(props: ComponentProps<typeof AlertDialogPrimitive.Co
         onInteractOutside={(e: Event) => e.preventDefault()}
         class={cn(
           "fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-6 px-6 py-6",
-          glassSurfaceStrongClass,
+          "omni-glass-surface-strong",
           "data-[expanded]:animate-in data-[expanded]:fade-in-0 data-[expanded]:zoom-in-95",
           "data-[closed]:animate-out data-[closed]:zoom-out-95",
           local.class,
@@ -82,7 +81,7 @@ function AlertDialogTitle(props: ComponentProps<typeof AlertDialogPrimitive.Titl
   return (
     <AlertDialogPrimitive.Title
       data-slot="alert-dialog-title"
-      class={cn("font-mono text-xs uppercase tracking-[0.36em] text-muted-foreground", local.class)}
+      class={cn("text-sm font-medium text-muted-foreground", local.class)}
       {...rest}
     />
   );

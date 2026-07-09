@@ -60,22 +60,18 @@ export default function ComboboxDemo() {
   return (
     <div className="space-y-8">
       <div className="space-y-4">
-        <h3 className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Region selector
-        </h3>
+        <h3 className="text-sm font-medium text-muted-foreground">Region selector</h3>
         <Combobox open={openRegion} onOpenChange={setOpenRegion}>
-          <ComboboxTrigger placeholder="Select a deployment region" className="min-w-[18rem]">
+          <ComboboxTrigger placeholder="Select a deployment region…" className="min-w-[18rem]">
             {selectedRegion ? (
               <span className="flex items-center gap-3">
                 <span>{selectedRegion.label}</span>
-                <Badge variant="outline" className="font-mono text-[10px]">
-                  {selectedRegion.badge}
-                </Badge>
+                <Badge variant="outline">{selectedRegion.badge}</Badge>
               </span>
             ) : null}
           </ComboboxTrigger>
           <ComboboxContent>
-            <ComboboxSearch placeholder="Filter regions" />
+            <ComboboxSearch placeholder="Filter regions…" />
             <ComboboxList>
               <ComboboxEmpty>No regions found.</ComboboxEmpty>
               <ComboboxGroup>
@@ -91,9 +87,7 @@ export default function ComboboxDemo() {
                   >
                     <span className="flex flex-col">
                       <span className="font-medium leading-none">{item.label}</span>
-                      <span className="text-muted-foreground/70 text-[11px]">
-                        {item.description}
-                      </span>
+                      <span className="text-muted-foreground/70 text-xs">{item.description}</span>
                     </span>
                   </ComboboxItem>
                 ))}
@@ -115,16 +109,14 @@ export default function ComboboxDemo() {
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Team assignment
-        </h3>
+        <h3 className="text-sm font-medium text-muted-foreground">Team assignment</h3>
         <div className="flex flex-wrap items-center gap-3">
           <Combobox open={openTeam} onOpenChange={setOpenTeam}>
-            <ComboboxTrigger size="sm" placeholder="Assign to..." className="min-w-[12rem]">
+            <ComboboxTrigger size="sm" placeholder="Assign to…" className="min-w-[12rem]">
               {selectedTeam?.label}
             </ComboboxTrigger>
             <ComboboxContent align="end">
-              <ComboboxSearch placeholder="Filter teams" />
+              <ComboboxSearch placeholder="Filter teams…" />
               <ComboboxList>
                 <ComboboxEmpty>No team found.</ComboboxEmpty>
                 <ComboboxGroup>
@@ -139,7 +131,7 @@ export default function ComboboxDemo() {
                     >
                       <span className="flex w-full items-center justify-between">
                         <span>{item.label}</span>
-                        <span className="text-muted-foreground/60 text-[11px]">{item.hint}</span>
+                        <span className="text-muted-foreground/60 text-xs">{item.hint}</span>
                       </span>
                     </ComboboxItem>
                   ))}
@@ -152,19 +144,17 @@ export default function ComboboxDemo() {
                       setOpenTeam(false);
                     }}
                   >
-                    Create new team...
+                    Create new team…
                   </ComboboxItem>
                 </ComboboxGroup>
               </ComboboxList>
             </ComboboxContent>
           </Combobox>
 
-          <Button variant="ghost" size="sm" className="tracking-[0.32em]">
+          <Button variant="ghost" size="sm">
             Notify
           </Button>
-          <Button size="sm" className="tracking-[0.32em]">
-            Assign
-          </Button>
+          <Button size="sm">Assign</Button>
         </div>
       </div>
     </div>

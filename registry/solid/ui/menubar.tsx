@@ -1,4 +1,4 @@
-import { splitProps, type ComponentProps, type JSX } from "solid-js";
+import { splitProps, type ComponentProps, type JSX, type ParentProps } from "solid-js";
 import * as MenubarPrimitive from "@kobalte/core/menubar";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-solid";
 
@@ -9,7 +9,7 @@ function Menubar(props: ComponentProps<typeof MenubarPrimitive.Root>) {
   return (
     <MenubarPrimitive.Root
       data-slot="menubar"
-      class={cn("flex h-9 items-center gap-1", local.class)}
+      class={cn("omni-glass-inset-surface flex h-9 items-center gap-1 px-1", local.class)}
       {...rest}
     />
   );
@@ -37,11 +37,11 @@ function MenubarTrigger(props: ComponentProps<typeof MenubarPrimitive.Trigger>) 
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
       class={cn(
-        "flex items-center gap-2 rounded-md px-3 py-1 text-muted-foreground outline-none transition-[color,background]",
+        "flex items-center gap-2 px-2.5 py-1 text-muted-foreground outline-none transition-[color,background]",
         omniMonoText.compact,
-        "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-        "data-[expanded]:bg-accent/50 data-[expanded]:text-accent-foreground",
+        "hover:bg-muted/60 hover:text-foreground",
+        "focus-visible:ring-ring/40 focus-visible:ring-2",
+        "data-[expanded]:bg-foreground data-[expanded]:text-background",
         "disabled:pointer-events-none disabled:opacity-50",
         local.class,
       )}
@@ -57,7 +57,7 @@ function MenubarContent(props: ComponentProps<typeof MenubarPrimitive.Content>) 
       <MenubarPrimitive.Content
         data-slot="menubar-content"
         class={cn(
-          "z-50 min-w-[12rem] origin-[var(--kb-menu-content-transform-origin)] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow",
+          "omni-glass-menu-surface z-50 min-w-[12rem] origin-[var(--kb-menu-content-transform-origin)] overflow-hidden p-1",
           "data-[expanded]:animate-in data-[expanded]:zoom-in-95 data-[expanded]:fade-in-0",
           "data-[closed]:animate-out data-[closed]:zoom-out-95 data-[closed]:fade-out-0",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
@@ -84,10 +84,10 @@ function MenubarItem(
       data-inset={local.inset}
       data-variant={variant()}
       class={cn(
-        "relative flex cursor-default items-center gap-3 rounded-sm px-2 py-1.5 text-muted-foreground outline-none transition-[color,background]",
-        omniMonoText.compact,
-        "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        "relative flex min-h-9 cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/90 outline-none transition-[color,background]",
+        omniMonoText.menu,
+        "hover:bg-muted/60 hover:text-foreground data-[highlighted]:bg-muted/60 data-[highlighted]:text-foreground",
+        "focus-visible:ring-ring/40 focus-visible:ring-2",
         "data-[variant=destructive]:text-destructive data-[variant=destructive]:hover:bg-destructive/10",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         "data-[inset]:pl-8",
@@ -105,17 +105,17 @@ function MenubarCheckboxItem(props: ComponentProps<typeof MenubarPrimitive.Check
     <MenubarPrimitive.CheckboxItem
       data-slot="menubar-checkbox-item"
       class={cn(
-        "relative flex cursor-default items-center gap-3 rounded-sm px-2 py-1.5 text-muted-foreground outline-none transition-[color,background]",
-        omniMonoText.compact,
-        "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        "relative flex min-h-9 cursor-default items-center gap-3 py-2 pl-9 pr-3 text-muted-foreground/90 outline-none transition-[color,background]",
+        omniMonoText.menu,
+        "hover:bg-muted/60 hover:text-foreground data-[highlighted]:bg-muted/60 data-[highlighted]:text-foreground",
+        "focus-visible:ring-ring/40 focus-visible:ring-2",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         local.class,
       )}
       checked={local.checked}
       {...rest}
     >
-      <span class="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <span class="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-current">
         <MenubarPrimitive.ItemIndicator>
           <CheckIcon class="size-3" />
         </MenubarPrimitive.ItemIndicator>
@@ -131,16 +131,16 @@ function MenubarRadioItem(props: ComponentProps<typeof MenubarPrimitive.RadioIte
     <MenubarPrimitive.RadioItem
       data-slot="menubar-radio-item"
       class={cn(
-        "relative flex cursor-default items-center gap-3 rounded-sm px-2 py-1.5 text-muted-foreground outline-none transition-[color,background]",
-        omniMonoText.compact,
-        "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        "relative flex min-h-9 cursor-default items-center gap-3 py-2 pl-9 pr-3 text-muted-foreground/90 outline-none transition-[color,background]",
+        omniMonoText.menu,
+        "hover:bg-muted/60 hover:text-foreground data-[highlighted]:bg-muted/60 data-[highlighted]:text-foreground",
+        "focus-visible:ring-ring/40 focus-visible:ring-2",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         local.class,
       )}
       {...rest}
     >
-      <span class="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <span class="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-current">
         <MenubarPrimitive.ItemIndicator>
           <CircleIcon class="size-2 fill-current" />
         </MenubarPrimitive.ItemIndicator>
@@ -159,7 +159,7 @@ function MenubarLabel(
       data-slot="menubar-label"
       data-inset={local.inset}
       class={cn(
-        "px-2 py-1.5 text-muted-foreground/60",
+        "px-3 py-1.5 text-muted-foreground/60",
         omniMonoText.compact,
         "data-[inset]:pl-8",
         local.class,
@@ -208,11 +208,11 @@ function MenubarSubTrigger(
       data-slot="menubar-sub-trigger"
       data-inset={local.inset}
       class={cn(
-        "flex cursor-default items-center gap-3 rounded-sm px-2 py-1.5 text-muted-foreground outline-none transition-[color,background]",
-        omniMonoText.compact,
-        "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-        "data-[expanded]:bg-accent/50 data-[expanded]:text-accent-foreground",
+        "flex min-h-9 cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/90 outline-none transition-[color,background]",
+        omniMonoText.menu,
+        "hover:bg-muted/60 hover:text-foreground data-[highlighted]:bg-muted/60 data-[highlighted]:text-foreground",
+        "focus-visible:ring-ring/40 focus-visible:ring-2",
+        "data-[expanded]:bg-muted/60 data-[expanded]:text-foreground",
         "data-[inset]:pl-8",
         local.class,
       )}
@@ -230,7 +230,7 @@ function MenubarSubContent(props: ComponentProps<typeof MenubarPrimitive.SubCont
     <MenubarPrimitive.SubContent
       data-slot="menubar-sub-content"
       class={cn(
-        "z-50 min-w-[8rem] origin-[var(--kb-menu-content-transform-origin)] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow",
+        "omni-glass-menu-surface z-50 min-w-[8rem] origin-[var(--kb-menu-content-transform-origin)] overflow-hidden p-1",
         "data-[expanded]:animate-in data-[expanded]:zoom-in-95 data-[expanded]:fade-in-0",
         "data-[closed]:animate-out data-[closed]:zoom-out-95 data-[closed]:fade-out-0",
         "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",

@@ -11,7 +11,6 @@ import * as NavigationMenuPrimitive from "@kobalte/core/navigation-menu";
 import { cva } from "class-variance-authority";
 import { ChevronDownIcon } from "lucide-solid";
 
-import { glassIndicatorSurfaceClass, glassMenuSurfaceClass } from "@/registry/solid/lib/glass";
 import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
 type NavigationMenuContextValue = {
@@ -158,7 +157,7 @@ function NavigationMenuViewport(
         data-slot="navigation-menu-viewport"
         class={cn(
           "origin-top-center relative mt-1.5 h-[var(--kb-navigation-menu-viewport-height)] w-full overflow-hidden transition-[width,height] duration-200 md:w-[var(--kb-navigation-menu-viewport-width)]",
-          glassMenuSurfaceClass,
+          "omni-glass-menu-surface",
           "data-[expanded]:animate-in data-[expanded]:zoom-in-95 data-[expanded]:fade-in-0",
           "data-[closed]:animate-out data-[closed]:zoom-out-95 data-[closed]:fade-out-0",
           "dark:border-white/20",
@@ -178,8 +177,7 @@ function NavigationMenuLink(
     <NavigationMenuPrimitive.Item
       data-slot="navigation-menu-link"
       class={cn(
-        "flex flex-col gap-2 rounded-none border border-transparent p-3 text-muted-foreground/80 transition-[color,background,border] outline-none",
-        omniMonoText.base,
+        "flex flex-col gap-2 rounded-none border border-transparent p-3 text-sm leading-normal text-muted-foreground/80 transition-[color,background,border] outline-none",
         "hover:border-border/60 hover:bg-foreground/10 hover:text-foreground",
         "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "data-[active=true]:border-foreground data-[active=true]:bg-foreground data-[active=true]:text-background",
@@ -205,7 +203,7 @@ function NavigationMenuIndicator(
       )}
       {...rest}
     >
-      <div class={cn("relative top-[60%] h-2 w-2 rotate-45", glassIndicatorSurfaceClass)} />
+      <div class={cn("relative top-[60%] h-2 w-2 rotate-45", "omni-glass-indicator-surface")} />
     </div>
   );
 }

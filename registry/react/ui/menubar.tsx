@@ -10,7 +10,7 @@ function Menubar({ className, ...props }: React.ComponentProps<typeof MenubarPri
   return (
     <MenubarPrimitive.Root
       data-slot="menubar"
-      className={cn("flex h-9 items-center gap-1", className)}
+      className={cn("omni-glass-inset-surface flex h-9 items-center gap-1 px-1", className)}
       {...props}
     />
   );
@@ -40,11 +40,11 @@ function MenubarTrigger({
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
       className={cn(
-        "flex items-center gap-2 rounded-md px-3 py-1 text-muted-foreground outline-none transition-[color,background]",
+        "flex items-center gap-2 px-2.5 py-1 text-muted-foreground outline-none transition-[color,background]",
         omniMonoText.compact,
-        "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-        "data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground",
+        "hover:bg-muted/60 hover:text-foreground",
+        "focus-visible:ring-ring/40 focus-visible:ring-2",
+        "data-[state=open]:bg-foreground data-[state=open]:text-background",
         "disabled:pointer-events-none disabled:opacity-50",
         className,
       )}
@@ -68,7 +68,7 @@ function MenubarContent({
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow",
+          "omni-glass-menu-surface z-50 min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden p-1",
           "data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0",
           "data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=closed]:fade-out-0",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
@@ -95,10 +95,10 @@ function MenubarItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "relative flex cursor-default items-center gap-3 rounded-sm px-2 py-1.5 text-muted-foreground outline-none transition-[color,background]",
-        omniMonoText.compact,
-        "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        "relative flex min-h-9 cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/90 outline-none transition-[color,background]",
+        omniMonoText.menu,
+        "hover:bg-muted/60 hover:text-foreground data-[highlighted]:bg-muted/60 data-[highlighted]:text-foreground",
+        "focus-visible:ring-ring/40 focus-visible:ring-2",
         "data-[variant=destructive]:text-destructive data-[variant=destructive]:hover:bg-destructive/10",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         "data-[inset]:pl-8",
@@ -120,17 +120,17 @@ function MenubarCheckboxItem({
     <MenubarPrimitive.CheckboxItem
       data-slot="menubar-checkbox-item"
       className={cn(
-        "relative flex cursor-default items-center gap-3 rounded-sm px-2 py-1.5 text-muted-foreground outline-none transition-[color,background]",
-        omniMonoText.compact,
-        "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        "relative flex min-h-9 cursor-default items-center gap-3 py-2 pl-9 pr-3 text-muted-foreground/90 outline-none transition-[color,background]",
+        omniMonoText.menu,
+        "hover:bg-muted/60 hover:text-foreground data-[highlighted]:bg-muted/60 data-[highlighted]:text-foreground",
+        "focus-visible:ring-ring/40 focus-visible:ring-2",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className,
       )}
       checked={checked}
       {...props}
     >
-      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <span className="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-current">
         <MenubarPrimitive.ItemIndicator>
           <CheckIcon className="size-3" />
         </MenubarPrimitive.ItemIndicator>
@@ -149,16 +149,16 @@ function MenubarRadioItem({
     <MenubarPrimitive.RadioItem
       data-slot="menubar-radio-item"
       className={cn(
-        "relative flex cursor-default items-center gap-3 rounded-sm px-2 py-1.5 text-muted-foreground outline-none transition-[color,background]",
-        omniMonoText.compact,
-        "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        "relative flex min-h-9 cursor-default items-center gap-3 py-2 pl-9 pr-3 text-muted-foreground/90 outline-none transition-[color,background]",
+        omniMonoText.menu,
+        "hover:bg-muted/60 hover:text-foreground data-[highlighted]:bg-muted/60 data-[highlighted]:text-foreground",
+        "focus-visible:ring-ring/40 focus-visible:ring-2",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className,
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <span className="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-current">
         <MenubarPrimitive.ItemIndicator>
           <CircleIcon className="size-2 fill-current" />
         </MenubarPrimitive.ItemIndicator>
@@ -180,7 +180,7 @@ function MenubarLabel({
       data-slot="menubar-label"
       data-inset={inset}
       className={cn(
-        "px-2 py-1.5 text-muted-foreground/60",
+        "px-3 py-1.5 text-muted-foreground/60",
         omniMonoText.compact,
         "data-[inset]:pl-8",
         className,
@@ -230,11 +230,11 @@ function MenubarSubTrigger({
       data-slot="menubar-sub-trigger"
       data-inset={inset}
       className={cn(
-        "flex cursor-default items-center gap-3 rounded-sm px-2 py-1.5 text-muted-foreground outline-none transition-[color,background]",
-        omniMonoText.compact,
-        "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-        "data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground",
+        "flex min-h-9 cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/90 outline-none transition-[color,background]",
+        omniMonoText.menu,
+        "hover:bg-muted/60 hover:text-foreground data-[highlighted]:bg-muted/60 data-[highlighted]:text-foreground",
+        "focus-visible:ring-ring/40 focus-visible:ring-2",
+        "data-[state=open]:bg-muted/60 data-[state=open]:text-foreground",
         "data-[inset]:pl-8",
         className,
       )}
@@ -254,7 +254,7 @@ function MenubarSubContent({
     <MenubarPrimitive.SubContent
       data-slot="menubar-sub-content"
       className={cn(
-        "z-50 min-w-[8rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow",
+        "omni-glass-menu-surface z-50 min-w-[8rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden p-1",
         "data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0",
         "data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=closed]:fade-out-0",
         "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",

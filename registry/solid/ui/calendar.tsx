@@ -34,22 +34,9 @@ function isInRange(date: Date, from: Date, to: Date): boolean {
   return t >= from.getTime() && t <= to.getTime();
 }
 
-const MONTH_NAMES = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-const DAY_NAMES = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+const monthFormatter = new Intl.DateTimeFormat(undefined, { month: "long" });
+const weekdayFormatter = new Intl.DateTimeFormat(undefined, { weekday: "short" });
+const weekdayDates = Array.from({ length: 7 }, (_, day) => new Date(2021, 7, day + 1));
 
 // --- Types ---
 
@@ -374,8 +361,8 @@ function Calendar(props: CalendarProps) {
               <Show when={idx() > 0}>
                 <div />
               </Show>
-              <div class="font-mono text-[11px] uppercase tracking-[0.28em] text-foreground">
-                {MONTH_NAMES[m.month]} {m.year}
+              <div class="text-sm font-medium text-foreground">
+                {monthFormatter.format(new Date(m.year, m.month, 1))} {m.year}
               </div>
               <Show when={idx() === numMonths() - 1}>
                 <Button
@@ -396,10 +383,10 @@ function Calendar(props: CalendarProps) {
             <table class="w-full border-collapse" data-slot="calendar-grid">
               <thead>
                 <tr class="flex">
-                  <For each={DAY_NAMES}>
+                  <For each={weekdayDates}>
                     {(day) => (
-                      <th class="w-9 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/70 font-normal">
-                        {day}
+                      <th class="w-9 text-center text-xs font-normal text-muted-foreground/70">
+                        {weekdayFormatter.format(day)}
                       </th>
                     )}
                   </For>

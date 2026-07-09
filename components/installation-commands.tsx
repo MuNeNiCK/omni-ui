@@ -51,13 +51,13 @@ export default function InstallationCommands({
   };
 
   return (
-    <div className={`overflow-hidden rounded-lg border ${className ?? ""}`}>
+    <div className={`overflow-hidden rounded-none border ${className ?? ""}`}>
       <Tabs
         value={activeManager}
         onValueChange={(value) => setActiveManager(value as (typeof managers)[number])}
       >
-        <TabsList className="flex w-full justify-between rounded-none border-b bg-background px-2">
-          <div className="flex gap-1">
+        <div className="flex w-full items-center justify-between border-b bg-background px-2">
+          <TabsList className="flex rounded-none bg-transparent p-0">
             {managers.map((manager) => (
               <TabsTrigger
                 key={manager}
@@ -67,20 +67,26 @@ export default function InstallationCommands({
                 {manager}
               </TabsTrigger>
             ))}
-          </div>
+          </TabsList>
           <Button
             type="button"
             variant="ghost"
             size="icon"
-            className="rounded-md hover:bg-primary/10"
+            className="rounded-none hover:bg-primary/10"
             onClick={handleCopy}
+            aria-label="Copy installation command"
           >
             {copied ? <Check className="size-3" /> : <Clipboard className="size-3" />}
           </Button>
-        </TabsList>
+        </div>
+        <span className="sr-only" aria-live="polite">
+          {copied ? "Installation command copied" : ""}
+        </span>
 
-        <TabsContent value={activeManager} className="p-4 pt-2">
-          <div className="font-mono text-xs md:text-sm">{command}</div>
+        <TabsContent value={activeManager} className="overflow-x-auto p-4 pt-2">
+          <div className="w-max min-w-full whitespace-nowrap font-mono text-xs md:text-sm">
+            {command}
+          </div>
         </TabsContent>
       </Tabs>
     </div>

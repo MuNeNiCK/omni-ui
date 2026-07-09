@@ -48,7 +48,7 @@ export default function FieldDemo() {
           <FieldContent>
             <Select defaultValue="sre">
               <SelectTrigger id="owner" className="w-full">
-                <SelectValue placeholder="Select owner" />
+                <SelectValue placeholder="Select owner…" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="sre">SRE</SelectItem>
@@ -109,10 +109,10 @@ export default function FieldDemo() {
 
       <FieldGroup>
         <Field orientation="horizontal" className="justify-end gap-3">
-          <Button variant="ghost" size="sm" className="tracking-[0.3em]">
+          <Button variant="ghost" size="sm">
             Cancel
           </Button>
-          <Button size="sm" className="tracking-[0.3em]">
+          <Button size="sm">
             <CheckCircle2 className="mr-2 size-3" />
             Save changes
           </Button>

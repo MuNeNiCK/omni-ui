@@ -3,7 +3,6 @@ import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
 import { ChevronDownIcon } from "lucide-react";
 
-import { glassIndicatorSurfaceClass, glassMenuSurfaceClass } from "@/registry/react/lib/glass";
 import { cn, omniMonoText } from "@/registry/react/lib/utils";
 
 function NavigationMenu({
@@ -122,7 +121,7 @@ function NavigationMenuViewport({
         data-slot="navigation-menu-viewport"
         className={cn(
           "relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden md:w-[var(--radix-navigation-menu-viewport-width)]",
-          glassMenuSurfaceClass,
+          "omni-glass-menu-surface",
           "data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0",
           "data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=closed]:fade-out-0",
           "dark:border-white/20",
@@ -142,8 +141,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "flex flex-col gap-2 rounded-none border border-transparent p-3 text-muted-foreground/80 transition-[color,background,border] outline-none",
-        omniMonoText.base,
+        "flex flex-col gap-2 rounded-none border border-transparent p-3 text-sm leading-normal text-muted-foreground/80 transition-[color,background,border] outline-none",
         "hover:border-border/60 hover:bg-foreground/10 hover:text-foreground",
         "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "data-[active=true]:border-foreground data-[active=true]:bg-foreground data-[active=true]:text-background",
@@ -169,7 +167,7 @@ function NavigationMenuIndicator({
       )}
       {...props}
     >
-      <div className={cn("relative top-[60%] h-2 w-2 rotate-45", glassIndicatorSurfaceClass)} />
+      <div className={cn("relative top-[60%] h-2 w-2 rotate-45", "omni-glass-indicator-surface")} />
     </NavigationMenuPrimitive.Indicator>
   );
 }

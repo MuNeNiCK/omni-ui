@@ -24,13 +24,11 @@ export default function DatePickerDemo() {
   return (
     <div class="space-y-8">
       <div class="flex flex-col gap-3">
-        <h3 class="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Single date
-        </h3>
+        <h3 class="text-sm font-medium text-muted-foreground">Single date</h3>
         <DatePicker
           value={auditDate()}
           onValueChange={setAuditDate}
-          placeholder="Choose audit date"
+          placeholder="Choose audit date…"
           buttonVariant="muted"
         />
         <p class="text-sm text-muted-foreground">
@@ -41,9 +39,7 @@ export default function DatePickerDemo() {
       </div>
 
       <div class="flex flex-col gap-3">
-        <h3 class="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Range picker
-        </h3>
+        <h3 class="text-sm font-medium text-muted-foreground">Range picker</h3>
         <DatePicker
           mode="range"
           value={maintenanceWindow()}
@@ -51,7 +47,7 @@ export default function DatePickerDemo() {
           numberOfMonths={2}
           showClearButton
           closeOnSelect={false}
-          placeholder="Select maintenance range"
+          placeholder="Select maintenance range…"
         />
         <p class="text-sm text-muted-foreground">{maintenanceSummary()}</p>
         <div class="flex gap-2">

@@ -7,18 +7,20 @@ import { cn } from "@/registry/solid/lib/utils";
 const typographyVariants = cva("text-foreground", {
   variants: {
     variant: {
-      display: "font-mono text-4xl uppercase tracking-[0.32em] text-foreground/95 leading-[1.05]",
-      headline: "font-mono text-2xl uppercase tracking-[0.3em] text-foreground/90 leading-snug",
-      title: "font-mono text-xl uppercase tracking-[0.28em] text-foreground/85",
-      subtitle: "font-mono text-lg uppercase tracking-[0.26em] text-muted-foreground/90",
-      eyebrow: "font-mono text-[11px] uppercase tracking-[0.42em] text-muted-foreground/70",
+      display:
+        "text-4xl font-semibold tracking-tight text-foreground/95 leading-tight text-balance",
+      headline:
+        "text-2xl font-semibold tracking-tight text-foreground/90 leading-snug text-balance",
+      title: "text-xl font-semibold tracking-tight text-foreground/85",
+      subtitle: "text-lg leading-relaxed text-muted-foreground/90",
+      eyebrow: "text-xs font-medium text-muted-foreground/70",
       body: "text-base leading-relaxed text-foreground/85",
       bodyMuted: "text-base leading-relaxed text-muted-foreground/80",
-      mono: "font-mono text-sm uppercase tracking-[0.32em] text-muted-foreground/80",
-      caption: "font-mono text-xs uppercase tracking-[0.36em] text-muted-foreground/70",
-      metric: "font-mono text-5xl leading-none tracking-tight text-foreground",
+      mono: "font-mono text-sm text-muted-foreground/80",
+      caption: "text-xs leading-relaxed text-muted-foreground/70",
+      metric: "text-5xl font-semibold leading-none tracking-tight tabular-nums text-foreground",
       code: "rounded-none bg-muted/40 px-2 py-1 font-mono text-[13px] text-foreground/90",
-      label: "font-mono text-[12px] uppercase tracking-[0.36em] text-muted-foreground/75",
+      label: "text-xs font-medium text-muted-foreground/75",
     },
   },
   defaultVariants: {

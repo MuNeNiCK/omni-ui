@@ -4,7 +4,6 @@ import * as React from "react";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 
-import { glassSurfaceClass } from "@/registry/react/lib/glass";
 import { cn, omniMonoText } from "@/registry/react/lib/utils";
 
 function ContextMenu({ ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Root>) {
@@ -36,7 +35,7 @@ function ContextMenuRadioGroup({
 }
 
 const itemBase = cn(
-  "relative flex cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/80 outline-hidden transition-[background,color] data-[disabled]:pointer-events-none data-[disabled]:opacity-40 rounded-none",
+  "relative flex min-h-9 cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/80 outline-hidden transition-[background,color] data-[disabled]:pointer-events-none data-[disabled]:opacity-40 rounded-none",
   omniMonoText.menu,
 );
 
@@ -75,7 +74,7 @@ function ContextMenuSubContent({
       data-slot="context-menu-sub-content"
       className={cn(
         "z-50 min-w-[10rem] origin-(--radix-context-menu-content-transform-origin) overflow-hidden p-1",
-        glassSurfaceClass,
+        "omni-glass-surface",
         "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95",
         className,
       )}
@@ -94,7 +93,7 @@ function ContextMenuContent({
         data-slot="context-menu-content"
         className={cn(
           "z-50 max-h-(--radix-context-menu-content-available-height) min-w-[10rem] origin-(--radix-context-menu-content-transform-origin) overflow-hidden p-1",
-          glassSurfaceClass,
+          "omni-glass-surface",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           className,
         )}
@@ -143,7 +142,7 @@ function ContextMenuCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span className="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-foreground">
+      <span className="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-current">
         <ContextMenuPrimitive.ItemIndicator>
           <CheckIcon className="size-3.5" />
         </ContextMenuPrimitive.ItemIndicator>
@@ -164,7 +163,7 @@ function ContextMenuRadioItem({
       className={cn(itemBase, "pl-9 hover:bg-foreground hover:text-background", className)}
       {...props}
     >
-      <span className="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-foreground">
+      <span className="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-current">
         <ContextMenuPrimitive.ItemIndicator>
           <CircleIcon className="size-2 fill-current" />
         </ContextMenuPrimitive.ItemIndicator>

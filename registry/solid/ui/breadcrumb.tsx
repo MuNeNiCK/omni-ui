@@ -23,7 +23,7 @@ function BreadcrumbList(props: JSX.OlHTMLAttributes<HTMLOListElement>) {
       data-slot="breadcrumb-list"
       class={cn(
         "flex flex-wrap items-center gap-2 break-words sm:gap-3",
-        "font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/70",
+        "text-xs text-muted-foreground/70",
         local.class,
       )}
       {...rest}
@@ -70,10 +70,7 @@ function BreadcrumbPage(props: JSX.HTMLAttributes<HTMLSpanElement>) {
       role="link"
       aria-disabled="true"
       aria-current="page"
-      class={cn(
-        "inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.36em] text-foreground",
-        local.class,
-      )}
+      class={cn("inline-flex items-center gap-2 text-xs font-medium text-foreground", local.class)}
       {...rest}
     />
   );

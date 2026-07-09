@@ -126,10 +126,7 @@ function ItemTitle(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HT
   return (
     <div
       data-slot="item-title"
-      class={cn(
-        "flex w-fit items-center gap-2 font-mono text-[10px] uppercase tracking-[0.28em] text-foreground",
-        local.class,
-      )}
+      class={cn("flex w-fit items-center gap-2 text-sm font-medium text-foreground", local.class)}
       {...rest}
     />
   );

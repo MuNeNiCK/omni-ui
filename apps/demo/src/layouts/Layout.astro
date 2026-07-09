@@ -29,20 +29,26 @@ const isComponents = isReact || isSolid || isUnified
     </script>
   </head>
   <body class="bg-background font-sans antialiased">
+    <a
+      href="#main-content"
+      class="sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:not-sr-only focus:border focus:border-border focus:bg-background focus:px-3 focus:py-2 focus:text-xs focus:font-medium focus:text-foreground"
+    >
+      Skip to content
+    </a>
     <div class="flex min-h-svh flex-col">
       <header class="fixed inset-x-0 top-0 z-30 flex h-16 items-center justify-between border-b border-border/60 bg-background/90 px-4 backdrop-blur supports-[backdrop-filter]:bg-background/70 md:px-6">
         <nav class="flex items-center gap-2">
           <a
             href={`${base}/`}
-            class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded-md px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+            class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap border border-transparent px-3 text-xs font-medium text-muted-foreground transition-colors hover:border-border hover:bg-accent/60 hover:text-accent-foreground"
           >
             Home
           </a>
           <a
             href={`${base}/components`}
             class:list={[
-              "inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded-md px-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
-              isComponents ? "text-foreground" : "text-muted-foreground"
+              "inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap border border-transparent px-3 text-xs font-medium transition-colors hover:border-border hover:bg-accent/60 hover:text-accent-foreground",
+              isComponents ? "border-border bg-accent/60 text-foreground" : "text-muted-foreground"
             ]}
           >
             Components
@@ -50,9 +56,9 @@ const isComponents = isReact || isSolid || isUnified
         </nav>
         <ThemeToggle client:load />
       </header>
-      <main class="flex-1 pt-16">
+      <div id="main-content" tabindex="-1" class="flex-1 pt-16">
         <slot />
-      </main>
+      </div>
     </div>
   </body>
 </html>

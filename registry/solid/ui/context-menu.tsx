@@ -2,7 +2,6 @@ import { splitProps, type ComponentProps, type JSX } from "solid-js";
 import * as ContextMenuPrimitive from "@kobalte/core/context-menu";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-solid";
 
-import { glassSurfaceClass } from "@/registry/solid/lib/glass";
 import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
 function ContextMenu(props: ComponentProps<typeof ContextMenuPrimitive.Root>) {
@@ -30,7 +29,7 @@ function ContextMenuRadioGroup(props: ComponentProps<typeof ContextMenuPrimitive
 }
 
 const itemBase = cn(
-  "relative flex cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/80 outline-hidden transition-[background,color] data-[disabled]:pointer-events-none data-[disabled]:opacity-40 rounded-none",
+  "relative flex min-h-9 cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/80 outline-hidden transition-[background,color] data-[disabled]:pointer-events-none data-[disabled]:opacity-40 rounded-none",
   omniMonoText.menu,
 );
 
@@ -65,7 +64,7 @@ function ContextMenuSubContent(props: ComponentProps<typeof ContextMenuPrimitive
       data-slot="context-menu-sub-content"
       class={cn(
         "z-50 min-w-[10rem] origin-[var(--kb-menu-content-transform-origin)] overflow-hidden p-1",
-        glassSurfaceClass,
+        "omni-glass-surface",
         "data-[expanded]:animate-in data-[expanded]:fade-in-0 data-[expanded]:zoom-in-95 data-[closed]:animate-out data-[closed]:zoom-out-95",
         local.class,
       )}
@@ -82,7 +81,7 @@ function ContextMenuContent(props: ComponentProps<typeof ContextMenuPrimitive.Co
         data-slot="context-menu-content"
         class={cn(
           "z-50 max-h-[var(--kb-popper-content-available-height)] min-w-[10rem] origin-[var(--kb-menu-content-transform-origin)] overflow-hidden p-1",
-          glassSurfaceClass,
+          "omni-glass-surface",
           "data-[expanded]:animate-in data-[expanded]:fade-in-0 data-[expanded]:zoom-in-95 data-[closed]:animate-out data-[closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           local.class,
         )}
@@ -128,7 +127,7 @@ function ContextMenuCheckboxItem(props: ComponentProps<typeof ContextMenuPrimiti
       checked={local.checked}
       {...rest}
     >
-      <span class="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-foreground">
+      <span class="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-current">
         <ContextMenuPrimitive.ItemIndicator>
           <CheckIcon class="size-3.5" />
         </ContextMenuPrimitive.ItemIndicator>
@@ -146,7 +145,7 @@ function ContextMenuRadioItem(props: ComponentProps<typeof ContextMenuPrimitive.
       class={cn(itemBase, "pl-9 hover:bg-foreground hover:text-background", local.class)}
       {...rest}
     >
-      <span class="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-foreground">
+      <span class="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-current">
         <ContextMenuPrimitive.ItemIndicator>
           <CircleIcon class="size-2 fill-current" />
         </ContextMenuPrimitive.ItemIndicator>

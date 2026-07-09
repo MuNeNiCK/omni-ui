@@ -14,7 +14,7 @@ export default function InputGroupDemo() {
     <div className="space-y-6">
       <InputGroup>
         <InputGroupAddon>SEARCH</InputGroupAddon>
-        <InputGroupInput placeholder="Find services" />
+        <InputGroupInput aria-label="Search services" placeholder="Find services…" />
         <InputGroupButton variant="ghost" size="icon-sm">
           <span className="sr-only">Run search</span>
           <svg viewBox="0 0 24 24" className="size-4" aria-hidden>
@@ -32,7 +32,7 @@ export default function InputGroupDemo() {
 
       <InputGroup>
         <InputGroupAddon align="inline-start">OWNER</InputGroupAddon>
-        <InputGroupInput placeholder="team@omni.dev" />
+        <InputGroupInput aria-label="Owner email" placeholder="team@omni.dev…" />
         <InputGroupAddon align="inline-end" className="gap-1">
           <Badge variant="outline">SRE</Badge>
         </InputGroupAddon>
@@ -40,15 +40,19 @@ export default function InputGroupDemo() {
 
       <InputGroup>
         <InputGroupText>https://</InputGroupText>
-        <InputGroupInput placeholder="cloud.omni.dev" />
+        <InputGroupInput aria-label="Workspace domain" placeholder="cloud.omni.dev…" />
         <InputGroupButton size="xs">Copy</InputGroupButton>
       </InputGroup>
 
       <InputGroup>
         <InputGroupAddon align="block-start">NOTES</InputGroupAddon>
-        <InputGroupTextarea placeholder="Add runbook context" rows={4} />
+        <InputGroupTextarea
+          aria-label="Runbook notes"
+          placeholder="Add runbook context…"
+          rows={4}
+        />
         <InputGroupAddon align="block-end">
-          <Button variant="ghost" className="px-3 text-[10px] tracking-[0.32em]">
+          <Button variant="ghost" className="px-3 text-xs">
             Attach
           </Button>
         </InputGroupAddon>

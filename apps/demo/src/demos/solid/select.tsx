@@ -56,9 +56,7 @@ export default function SelectDemo() {
   return (
     <Card class="border-border/70">
       <CardHeader>
-        <CardTitle class="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Region Picker
-        </CardTitle>
+        <CardTitle class="text-sm font-medium text-muted-foreground">Region Picker</CardTitle>
         <CardDescription>
           Square trigger and flat dropdown to match the PoC form system.
         </CardDescription>
@@ -72,7 +70,7 @@ export default function SelectDemo() {
           optionDisabled="disabled"
           optionGroupChildren="options"
           defaultValue={defaultOption}
-          placeholder="Select a region"
+          placeholder="Select a region…"
           sectionComponent={(props: SelectRootSectionComponentProps<RegionGroup>) => (
             <SelectGroup>
               <SelectLabel>{props.section.rawValue.label}</SelectLabel>

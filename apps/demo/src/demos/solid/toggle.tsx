@@ -11,9 +11,7 @@ export default function ToggleDemo() {
   return (
     <Card class="border-border/70">
       <CardHeader>
-        <CardTitle class="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Toolbar actions
-        </CardTitle>
+        <CardTitle class="text-sm font-medium text-muted-foreground">Toolbar actions</CardTitle>
         <CardDescription>
           Toggles apply the same flat styling seen in the dashboard PoC.
         </CardDescription>

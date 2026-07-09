@@ -77,7 +77,7 @@ export default function ReactHookFormDemo() {
           render={({ field }) => (
             <FormItem className="flex flex-row items-center justify-between rounded-none border border-border/60 bg-muted/40 px-4 py-3">
               <div className="space-y-0.5">
-                <FormLabel className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/80">
+                <FormLabel className="text-xs font-medium text-muted-foreground/80">
                   Remember device
                 </FormLabel>
                 <FormDescription className="max-w-sm">
@@ -92,17 +92,10 @@ export default function ReactHookFormDemo() {
         />
 
         <div className="flex justify-end gap-3">
-          <Button
-            variant="ghost"
-            type="button"
-            className="tracking-[0.3em]"
-            onClick={() => form.reset()}
-          >
+          <Button variant="ghost" type="button" onClick={() => form.reset()}>
             Reset
           </Button>
-          <Button type="submit" className="tracking-[0.3em]">
-            Submit
-          </Button>
+          <Button type="submit">Submit</Button>
         </div>
       </form>
     </Form>

@@ -17,9 +17,7 @@ export default function ItemDemo() {
     <ItemGroup class="divide-y divide-border/60">
       <Item>
         <ItemMedia variant="icon">
-          <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-            API
-          </span>
+          <span class="text-xs font-medium text-muted-foreground">API</span>
         </ItemMedia>
         <ItemContent>
           <ItemHeader>
@@ -42,9 +40,7 @@ export default function ItemDemo() {
 
       <Item>
         <ItemMedia variant="icon">
-          <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-            DB
-          </span>
+          <span class="text-xs font-medium text-muted-foreground">DB</span>
         </ItemMedia>
         <ItemContent>
           <ItemHeader>

@@ -4,7 +4,6 @@ import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 
-import { glassSurfaceClass } from "@/registry/react/lib/glass";
 import { cn, omniMonoText } from "@/registry/react/lib/utils";
 
 function DropdownMenu({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
@@ -35,7 +34,7 @@ function DropdownMenuContent({
         sideOffset={sideOffset}
         className={cn(
           "z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[10rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden p-1",
-          glassSurfaceClass,
+          "omni-glass-surface",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           className,
         )}
@@ -50,7 +49,7 @@ function DropdownMenuGroup({ ...props }: React.ComponentProps<typeof DropdownMen
 }
 
 const itemBase = cn(
-  "relative flex cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/90 outline-hidden transition-[background,color] data-[disabled]:pointer-events-none data-[disabled]:opacity-40 rounded-none",
+  "relative flex min-h-9 cursor-default items-center gap-3 px-3 py-2 text-muted-foreground/90 outline-hidden transition-[background,color] data-[disabled]:pointer-events-none data-[disabled]:opacity-40 rounded-none",
   omniMonoText.menu,
 );
 
@@ -93,7 +92,7 @@ function DropdownMenuCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span className="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-foreground">
+      <span className="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-current">
         <DropdownMenuPrimitive.ItemIndicator>
           <CheckIcon className="size-3.5" />
         </DropdownMenuPrimitive.ItemIndicator>
@@ -120,7 +119,7 @@ function DropdownMenuRadioItem({
       className={cn(itemBase, "pl-9 hover:bg-foreground hover:text-background", className)}
       {...props}
     >
-      <span className="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-foreground">
+      <span className="pointer-events-none absolute left-3 flex size-3.5 items-center justify-center text-current">
         <DropdownMenuPrimitive.ItemIndicator>
           <CircleIcon className="size-2 fill-current" />
         </DropdownMenuPrimitive.ItemIndicator>
@@ -217,7 +216,7 @@ function DropdownMenuSubContent({
       data-slot="dropdown-menu-sub-content"
       className={cn(
         "z-50 min-w-[10rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden p-1",
-        glassSurfaceClass,
+        "omni-glass-surface",
         "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95",
         className,
       )}

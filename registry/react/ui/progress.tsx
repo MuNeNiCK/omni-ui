@@ -23,7 +23,7 @@ function Progress({
       <ProgressPrimitive.Indicator
         data-slot="progress-indicator"
         className={cn(
-          "relative h-full w-full flex-1 bg-foreground transition-all",
+          "relative h-full w-full flex-1 bg-foreground transition-transform",
           "[&::after]:absolute [&::after]:inset-0 [&::after]:bg-background/20 [&::after]:mix-blend-overlay [&::after]:content-['']",
         )}
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}

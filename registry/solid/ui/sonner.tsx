@@ -33,9 +33,7 @@ const toastVariants = {
   normal: toneVarOverrides.default,
 };
 
-const toastTitleClass = cn(
-  "col-start-2 font-mono text-[10px] uppercase tracking-[0.32em] text-[color:var(--tone-title)]",
-);
+const toastTitleClass = cn("col-start-2 text-sm font-semibold text-[color:var(--tone-title)]");
 
 const toastDescriptionClass = cn(
   "col-start-2 grid justify-items-start gap-2 text-left text-sm text-[color:var(--tone-description)] [&_p]:leading-relaxed",
@@ -46,11 +44,11 @@ const toastCloseButtonClass = cn(
 );
 
 const toastCancelButtonClass = cn(
-  "rounded-none border border-border/60 bg-muted/40 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground/70 transition-colors hover:border-foreground/60 hover:text-foreground",
+  "rounded-none border border-border/60 bg-muted/40 px-2 py-1 text-xs font-medium text-muted-foreground/70 transition-colors hover:border-foreground/60 hover:text-foreground",
 );
 
 const toastActionButtonClass = cn(
-  "rounded-none border border-foreground bg-foreground px-2 py-1 font-mono text-[10px] uppercase tracking-[0.28em] text-background transition-colors hover:bg-foreground/90",
+  "rounded-none border border-foreground bg-foreground px-2 py-1 text-xs font-medium text-background transition-colors hover:bg-foreground/90",
 );
 
 const toastToneCSS = `

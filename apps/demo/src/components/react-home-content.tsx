@@ -39,25 +39,25 @@ export function HomeContent() {
   return (
     <main className="mx-auto flex min-h-svh max-w-4xl flex-col gap-10 px-6 py-16">
       <section className="flex flex-col gap-6 text-balance">
-        <Badge className="w-fit tracking-[0.32em]">omni ui registry</Badge>
+        <Badge className="w-fit">Omni UI registry</Badge>
         <div className="space-y-2">
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
             Frosted dashboards, ready to drop in
           </h1>
           <p className="text-lg text-muted-foreground">
-            Omni UI is a shadcn/ui fork with glass surfaces, mono typography, and tone-controlled
+            Omni UI is a shadcn/ui fork with glass surfaces, calmer typography, and tone-controlled
             color tokens. Wire the registry into your project and keep shipping.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <Button asChild>
             <a href={`${base}/components`}>
-              <span className="relative z-10 tracking-[0.2em]">Browse components</span>
+              <span className="relative z-10">Browse components</span>
             </a>
           </Button>
-          <Button variant="ghost" asChild className="tracking-[0.28em]">
+          <Button variant="ghost" asChild>
             <a href="https://github.com/MuNeNICK/omni-ui" target="_blank" rel="noreferrer">
-              <span className="relative z-10 tracking-[0.2em]">View repository</span>
+              <span className="relative z-10">View repository</span>
             </a>
           </Button>
         </div>
@@ -80,7 +80,7 @@ export function HomeContent() {
           {steps.map((step, index) => (
             <Card key={step.title} className="border-border/60 bg-muted/30 backdrop-blur">
               <CardHeader className="space-y-3">
-                <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.32em] text-muted-foreground/80">
+                <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground/80">
                   <span className="rounded-full border border-border/70 px-2 py-0.5">
                     Step {index + 1}
                   </span>

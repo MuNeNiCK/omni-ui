@@ -37,6 +37,8 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/registry/solid/ui/dropdown-menu";
 import {
@@ -136,14 +138,14 @@ function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
 
   return (
     <div data-slot="data-table" class={cn("flex flex-col gap-4", local.class)}>
-      <div class="flex flex-col gap-3 border border-border/60 bg-muted/40 px-4 py-3 text-[10px] font-mono uppercase tracking-[0.28em] text-muted-foreground/80 shadow-[var(--glass-shadow-outline)] backdrop-blur-[4px] sm:flex-row sm:items-center sm:justify-between">
-        <div class="flex flex-1 flex-wrap items-center gap-2">
+      <div class="flex flex-col gap-3 border border-border/60 bg-muted/40 px-3 py-3 text-xs text-muted-foreground/80 shadow-[var(--glass-shadow-outline)] backdrop-blur-[4px] sm:flex-row sm:items-center sm:justify-between sm:px-4">
+        <div class="flex min-w-0 flex-1 flex-wrap items-center gap-2">
           {local.toolbar?.(table)}
           <Show when={isFiltered()}>
             <Button
               variant="ghost"
               size="sm"
-              class="h-8 border border-transparent px-3 py-1 tracking-[0.28em] text-muted-foreground/70 hover:border-border/60 hover:bg-foreground/10 hover:text-foreground"
+              class="h-8 border border-transparent px-3 py-1 text-muted-foreground/70 hover:border-border/60 hover:bg-foreground/10 hover:text-foreground"
               onClick={() => {
                 setSearchValue("");
                 table.resetColumnFilters();
@@ -152,18 +154,21 @@ function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
               Reset
             </Button>
           </Show>
-          <span class="hidden items-center gap-1 text-[9px] tracking-[0.32em] text-muted-foreground/60 sm:inline-flex">
+          <span class="hidden items-center gap-1 text-xs tabular-nums text-muted-foreground/60 sm:inline-flex">
             {table.getFilteredSelectedRowModel().rows.length} selected •{" "}
             {table.getFilteredRowModel().rows.length} total
           </span>
         </div>
-        <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-3">
+        <div class="flex w-full min-w-0 flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-3">
           <Show when={local.searchKey}>
             <Input
+              aria-label={local.searchPlaceholder ?? "Filter results…"}
+              autocomplete="off"
+              name={local.searchKey}
               value={searchValue()}
               onInput={(e) => setSearchValue(e.currentTarget.value)}
-              placeholder={local.searchPlaceholder ?? "Filter results..."}
-              class="h-9 w-full min-w-[220px] border-border/60 bg-background/20 text-[11px] font-mono uppercase tracking-[0.28em] text-foreground/90 sm:w-56"
+              placeholder={local.searchPlaceholder ?? "Filter results…"}
+              class="h-9 w-full min-w-0 border-border/60 bg-background/20 text-sm text-foreground/90 sm:w-56"
             />
           </Show>
           <Show when={showViewOptions()}>
@@ -171,12 +176,12 @@ function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
           </Show>
         </div>
       </div>
-      <div class="overflow-hidden border border-border/60 bg-background/10 shadow-[var(--glass-shadow-outline-subtle)] backdrop-blur-[2px]">
-        <Table class="min-w-full text-left">
+      <div class="max-w-full overflow-x-auto border border-border/60 bg-background/10 shadow-[var(--glass-shadow-outline-subtle)] backdrop-blur-[2px]">
+        <Table class="min-w-[680px] text-left sm:min-w-full">
           <TableHeader class="bg-muted/40">
             <For each={table.getHeaderGroups()}>
               {(headerGroup) => (
-                <TableRow class="border-border/40 uppercase">
+                <TableRow class="border-border/40">
                   <For each={headerGroup.headers}>
                     {(header) => {
                       if (header.isPlaceholder) {
@@ -185,14 +190,26 @@ function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
 
                       const canSort = header.column.getCanSort();
                       const sortDirection = () => header.column.getIsSorted();
+                      const headerLabel =
+                        (header.column.columnDef.meta as DataTableColumnMeta | undefined)
+                          ?.headerLabel || header.column.id;
 
                       return (
                         <TableHead
                           class={cn(
-                            "h-12 px-3 text-[10px] font-mono uppercase tracking-[0.32em] text-muted-foreground/80",
+                            "h-12 px-3 text-xs font-medium text-muted-foreground/80",
                             "[&[data-sort=desc]]:text-foreground [&[data-sort=asc]]:text-foreground",
                           )}
                           data-sort={sortDirection() ? String(sortDirection()) : undefined}
+                          aria-sort={
+                            sortDirection() === "asc"
+                              ? "ascending"
+                              : sortDirection() === "desc"
+                                ? "descending"
+                                : canSort
+                                  ? "none"
+                                  : undefined
+                          }
                         >
                           <Show
                             when={canSort}
@@ -203,6 +220,7 @@ function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
                           >
                             <button
                               type="button"
+                              aria-label={`Sort by ${headerLabel}`}
                               onClick={header.column.getToggleSortingHandler()}
                               class="group flex w-full items-center gap-2 text-left transition-colors hover:text-foreground"
                             >
@@ -252,7 +270,7 @@ function DataTable<TData, TValue>(props: DataTableProps<TData, TValue>) {
                   >
                     <For each={row.getVisibleCells()}>
                       {(cell) => (
-                        <TableCell class="px-3 py-3 text-sm font-mono tracking-[0.08em] text-foreground/80">
+                        <TableCell class="px-3 py-3 text-sm text-foreground/80">
                           {flexRender(cell.column.columnDef.cell, cell.getContext())}
                         </TableCell>
                       )}
@@ -280,30 +298,27 @@ type DataTableViewOptionsProps<TData> = {
 function DataTableViewOptions<TData>(props: DataTableViewOptionsProps<TData>) {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          class="h-9 gap-2 border border-border/60 bg-muted/40 px-3 font-mono uppercase tracking-[0.28em] text-muted-foreground/80 hover:bg-foreground/10 hover:text-foreground"
-        >
-          <SlidersHorizontalIcon class="size-3.5" />
-          View
-        </Button>
+      <DropdownMenuTrigger
+        as={Button}
+        type="button"
+        variant="ghost"
+        size="sm"
+        class="h-9 gap-2 border border-border/60 bg-muted/40 px-3 text-muted-foreground/80 hover:bg-foreground/10 hover:text-foreground"
+      >
+        <SlidersHorizontalIcon class="size-3.5" />
+        View
       </DropdownMenuTrigger>
       <DropdownMenuContent class="min-w-[12rem] border-border/60 bg-muted/60 text-foreground shadow-[var(--glass-shadow-outline)]">
-        <DropdownMenuCheckboxItem class="pointer-events-none opacity-70" checked>
+        <DropdownMenuLabel class="px-3 py-2 text-xs font-medium text-muted-foreground/70">
           Columns
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem class="pointer-events-none opacity-40" checked>
-          —
-        </DropdownMenuCheckboxItem>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
         <For each={props.table.getAllLeafColumns().filter((column) => column.getCanHide())}>
           {(column) => (
             <DropdownMenuCheckboxItem
               checked={column.getIsVisible()}
               onChange={(value: boolean) => column.toggleVisibility(value)}
-              class="font-mono text-[11px] uppercase tracking-[0.28em] text-muted-foreground/80 data-[state=checked]:text-foreground"
+              class="text-sm text-muted-foreground/80 data-[state=checked]:text-foreground"
             >
               {(column.columnDef.meta as DataTableColumnMeta | undefined)?.headerLabel || column.id}
             </DropdownMenuCheckboxItem>
@@ -329,7 +344,7 @@ function DataTablePagination<TData>(props: DataTablePaginationProps<TData>) {
   const pageEnd = () => Math.min(pageStart() + pageSize() - 1, totalRows());
 
   return (
-    <div class="flex flex-col gap-3 border border-border/60 bg-muted/40 px-4 py-3 text-[10px] font-mono uppercase tracking-[0.28em] text-muted-foreground/80 shadow-[var(--glass-shadow-outline)] backdrop-blur-[4px] sm:flex-row sm:items-center sm:justify-between">
+    <div class="flex flex-col gap-3 border border-border/60 bg-muted/40 px-4 py-3 text-xs text-muted-foreground/80 shadow-[var(--glass-shadow-outline)] backdrop-blur-[4px] sm:flex-row sm:items-center sm:justify-between">
       <div class="flex flex-wrap items-center gap-2">
         <span>
           Showing {totalRows() ? `${pageStart()}–${pageEnd()}` : 0} of {totalRows()} rows
@@ -348,7 +363,7 @@ function DataTablePagination<TData>(props: DataTablePaginationProps<TData>) {
               <SelectItem item={itemProps.item}>{itemProps.item.rawValue}</SelectItem>
             )}
           >
-            <SelectTrigger class="h-8 min-w-[4.5rem] border-border/60 bg-background/20 text-[11px] font-mono uppercase tracking-[0.28em] text-foreground/85">
+            <SelectTrigger class="h-8 min-w-[4.5rem] border-border/60 bg-background/20 text-xs text-foreground/85">
               <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
             </SelectTrigger>
             <SelectContent align="end" class="bg-muted/60" />
@@ -366,7 +381,7 @@ function DataTablePagination<TData>(props: DataTablePaginationProps<TData>) {
             <ChevronLeftIcon class="size-3.5" />
             <span class="sr-only">Previous</span>
           </Button>
-          <span class="text-[9px] text-muted-foreground/70">
+          <span class="text-xs tabular-nums text-muted-foreground/70">
             {pageIndex() + 1} / {pageCount() || 1}
           </span>
           <Button

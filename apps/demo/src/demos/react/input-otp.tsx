@@ -19,7 +19,7 @@ export default function InputOTPDemo() {
         </InputOTPGroup>
       </InputOTP>
 
-      <div className="text-sm text-muted-foreground font-mono tracking-[0.3em] uppercase">
+      <div className="text-sm text-muted-foreground">
         Value: <span className="text-foreground">{value || "------"}</span>
       </div>
 

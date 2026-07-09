@@ -11,24 +11,18 @@ export default function SwitchDemo() {
   return (
     <Card class="border-border/70">
       <CardHeader>
-        <CardTitle class="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Preferences
-        </CardTitle>
+        <CardTitle class="text-sm font-medium text-muted-foreground">Preferences</CardTitle>
         <CardDescription>
           Toggle states render with the same glass treatment as inputs.
         </CardDescription>
       </CardHeader>
       <CardContent class="space-y-3">
         <div class="flex items-center justify-between">
-          <span class="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/80">
-            Auto backups
-          </span>
+          <span class="text-xs font-medium text-muted-foreground/80">Auto backups</span>
           <Switch defaultChecked />
         </div>
         <div class="flex items-center justify-between opacity-60">
-          <span class="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/70">
-            Public access
-          </span>
+          <span class="text-xs font-medium text-muted-foreground/70">Public access</span>
           <Switch disabled />
         </div>
       </CardContent>

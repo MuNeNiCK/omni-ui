@@ -45,10 +45,8 @@ export default function CarouselDemo() {
           {slides.map((slide) => (
             <CarouselItem key={slide.title} className="pl-6">
               <div className="flex flex-col gap-3 rounded-none border border-border/70 bg-muted/30 p-6 shadow-[0_0_0_1px_rgba(15,23,42,0.12)]">
-                <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/80">
-                  {slide.status}
-                </span>
-                <h3 className="text-xl font-semibold uppercase tracking-[0.12em]">{slide.title}</h3>
+                <span className="text-xs font-medium text-muted-foreground/80">{slide.status}</span>
+                <h3 className="text-xl font-semibold">{slide.title}</h3>
                 <p className="text-sm text-muted-foreground">{slide.description}</p>
               </div>
             </CarouselItem>

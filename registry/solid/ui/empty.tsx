@@ -9,7 +9,7 @@ function Empty(props: JSX.HTMLAttributes<HTMLDivElement>) {
     <div
       data-slot="empty"
       class={cn(
-        "flex min-w-0 flex-1 flex-col items-center justify-center gap-6 rounded-lg border-dashed p-6 text-center text-balance md:p-12",
+        "flex min-w-0 flex-1 flex-col items-center justify-center gap-6 rounded-none border-dashed p-6 text-center text-balance md:p-10",
         local.class,
       )}
       {...rest}
@@ -34,7 +34,7 @@ const emptyMediaVariants = cva(
     variants: {
       variant: {
         default: "bg-transparent",
-        icon: "bg-muted text-foreground flex size-10 shrink-0 items-center justify-center rounded-lg [&_svg:not([class*='size-'])]:size-6",
+        icon: "bg-muted text-foreground flex size-10 shrink-0 items-center justify-center rounded-none [&_svg:not([class*='size-'])]:size-6",
       },
     },
     defaultVariants: {
@@ -60,19 +60,13 @@ function EmptyMedia(props: EmptyMediaProps) {
 
 function EmptyTitle(props: JSX.HTMLAttributes<HTMLDivElement>) {
   const [local, rest] = splitProps(props, ["class"]);
-  return (
-    <div
-      data-slot="empty-title"
-      class={cn("text-lg font-medium tracking-tight", local.class)}
-      {...rest}
-    />
-  );
+  return <div data-slot="empty-title" class={cn("text-sm font-medium", local.class)} {...rest} />;
 }
 
 function EmptyDescription(props: JSX.HTMLAttributes<HTMLParagraphElement>) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
-    <div
+    <p
       data-slot="empty-description"
       class={cn(
         "text-muted-foreground [&>a:hover]:text-primary text-sm/relaxed [&>a]:underline [&>a]:underline-offset-4",

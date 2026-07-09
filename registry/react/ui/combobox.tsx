@@ -4,7 +4,6 @@ import * as React from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
 
-import { glassSurfaceClass } from "@/registry/react/lib/glass";
 import { cn } from "@/registry/react/lib/utils";
 import {
   Command,
@@ -41,8 +40,8 @@ const ComboboxTrigger = React.forwardRef<
         data-size={size}
         data-placeholder={showPlaceholder ? "true" : undefined}
         className={cn(
-          "inline-flex w-fit items-center justify-between gap-2 px-3 text-[11px] font-mono uppercase tracking-[0.28em] text-foreground/85 transition-[border,background,color,box-shadow] outline-none",
-          glassSurfaceClass,
+          "inline-flex w-fit items-center justify-between gap-2 px-3 text-xs text-foreground/85 transition-[border,background,color,box-shadow] outline-none",
+          "omni-glass-surface",
           "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
           "aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive/35",
           "disabled:cursor-not-allowed disabled:opacity-50",
@@ -82,7 +81,7 @@ const ComboboxContent = React.forwardRef<
         sideOffset={sideOffset}
         className={cn(
           "relative z-50 min-w-[12rem]",
-          glassSurfaceClass,
+          "omni-glass-surface",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=top]:slide-in-from-bottom-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2",
           "outline-hidden",
@@ -94,9 +93,9 @@ const ComboboxContent = React.forwardRef<
           {...commandProps}
           className={cn(
             "bg-transparent",
-            "[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:pb-1 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-[0.28em] [&_[cmdk-group-heading]]:text-muted-foreground/70",
+            "[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:pb-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground/70",
             "[&_[cmdk-group]]:px-1",
-            "[&_[cmdk-item]]:px-3 [&_[cmdk-item]]:py-2",
+            "[&_[cmdk-item]]:px-3 [&_[cmdk-item]]:py-3",
             commandProps?.className,
           )}
         >
@@ -110,14 +109,15 @@ ComboboxContent.displayName = "ComboboxContent";
 
 const ComboboxSearch = ({
   className,
-  placeholder = "Filter options...",
+  placeholder = "Filter options…",
   ...props
 }: React.ComponentPropsWithoutRef<typeof CommandInput>) => (
   <CommandInput
+    aria-label={typeof placeholder === "string" ? placeholder : "Search options"}
     data-slot="combobox-search"
     placeholder={placeholder}
     className={cn(
-      "h-12 font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/75 placeholder:text-muted-foreground/60",
+      "h-12 text-sm text-foreground/90 placeholder:text-muted-foreground/60",
       className,
     )}
     {...props}
@@ -130,7 +130,7 @@ const ComboboxList = ({
 }: React.ComponentPropsWithoutRef<typeof CommandList>) => (
   <CommandList
     data-slot="combobox-list"
-    className={cn("max-h-60 scroll-py-1 overflow-y-auto", className)}
+    className={cn("max-h-72 scroll-py-1 overflow-y-auto", className)}
     {...props}
   />
 );
@@ -141,10 +141,7 @@ const ComboboxEmpty = ({
 }: React.ComponentPropsWithoutRef<typeof CommandEmpty>) => (
   <CommandEmpty
     data-slot="combobox-empty"
-    className={cn(
-      "py-6 text-center text-[11px] font-mono uppercase tracking-[0.28em] text-muted-foreground/70",
-      className,
-    )}
+    className={cn("py-6 text-center text-xs text-muted-foreground/70", className)}
     {...props}
   />
 );
@@ -211,7 +208,7 @@ const ComboboxItem = ({
     <CommandItem
       data-slot="combobox-item"
       className={cn(
-        "group/combobox-item relative flex w-full cursor-default items-center gap-3 px-3 py-2 text-[11px] font-mono uppercase tracking-[0.28em] text-muted-foreground/80 outline-hidden transition-[background,color]",
+        "group/combobox-item relative flex min-h-11 w-full cursor-default items-start gap-3 px-3 py-3 text-sm leading-normal text-muted-foreground/85 outline-hidden transition-[background,color]",
         "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-35",
         "data-[selected=true]:bg-foreground data-[selected=true]:text-background",
         "rounded-none",
@@ -220,11 +217,16 @@ const ComboboxItem = ({
       {...props}
     >
       {renderedIndicator ? (
-        <span className="flex size-4 shrink-0 items-center justify-center" aria-hidden="true">
+        <span
+          className="mt-0.5 flex size-4 shrink-0 items-center justify-center"
+          aria-hidden="true"
+        >
           {renderedIndicator}
         </span>
       ) : null}
-      <span className="truncate text-left leading-tight">{children}</span>
+      <span className="min-w-0 flex-1 text-left leading-normal [&_*]:leading-normal">
+        {children}
+      </span>
     </CommandItem>
   );
 };

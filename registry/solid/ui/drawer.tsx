@@ -14,7 +14,6 @@ import type {
 } from "@corvu/drawer";
 import DrawerPrimitive from "@corvu/drawer";
 
-import { glassOverlayBackdropClass, glassSurfaceStrongClass } from "@/registry/solid/lib/glass";
 import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
 function Drawer(props: ComponentProps<typeof DrawerPrimitive>) {
@@ -45,7 +44,7 @@ const DrawerOverlay = <T extends ValidComponent = "div">(
     <DrawerPrimitive.Overlay
       data-slot="drawer-overlay"
       class={cn(
-        glassOverlayBackdropClass,
+        "omni-glass-overlay",
         "data-[transitioning]:transition-opacity data-[transitioning]:duration-300",
         props.class,
       )}
@@ -74,7 +73,7 @@ const DrawerContent = <T extends ValidComponent = "div">(
         data-vaul-drawer-direction={side()}
         class={cn(
           "group/drawer-content fixed z-50 flex h-auto flex-col",
-          glassSurfaceStrongClass,
+          "omni-glass-surface-strong",
           "data-[side=top]:inset-x-0 data-[side=top]:top-0 data-[side=top]:mb-24 data-[side=top]:max-h-[80vh] data-[side=top]:border-b",
           "data-[side=bottom]:inset-x-0 data-[side=bottom]:bottom-0 data-[side=bottom]:mt-24 data-[side=bottom]:max-h-[80vh] data-[side=bottom]:border-t",
           "data-[side=right]:inset-y-0 data-[side=right]:right-0 data-[side=right]:w-full data-[side=right]:sm:max-w-md data-[side=right]:border-l",

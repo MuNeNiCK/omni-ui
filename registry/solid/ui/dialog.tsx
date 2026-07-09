@@ -1,11 +1,6 @@
 import { splitProps, Show, type ComponentProps, type JSX } from "solid-js";
 import * as DialogPrimitive from "@kobalte/core/dialog";
 import { XIcon } from "lucide-solid";
-import {
-  glassCloseButtonClass,
-  glassOverlayBackdropClass,
-  glassSurfaceStrongClass,
-} from "@/registry/solid/lib/glass";
 import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
 function Dialog(props: ComponentProps<typeof DialogPrimitive.Root>) {
@@ -30,7 +25,7 @@ function DialogOverlay(props: ComponentProps<typeof DialogPrimitive.Overlay>) {
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       class={cn(
-        glassOverlayBackdropClass,
+        "omni-glass-overlay",
         "data-[expanded]:animate-in data-[expanded]:fade-in-0 data-[closed]:animate-out data-[closed]:fade-out-0",
         local.class,
       )}
@@ -52,8 +47,8 @@ function DialogContent(
       <DialogPrimitive.Content
         data-slot="dialog-content"
         class={cn(
-          "fixed left-1/2 top-1/2 z-50 grid w-full max-w-xl -translate-x-1/2 -translate-y-1/2 gap-6 px-6 py-6",
-          glassSurfaceStrongClass,
+          "fixed left-1/2 top-1/2 z-50 grid max-h-[calc(100dvh-2rem)] w-[calc(100vw-2rem)] max-w-xl -translate-x-1/2 -translate-y-1/2 gap-6 overflow-y-auto px-6 py-6",
+          "omni-glass-surface-strong",
           "data-[expanded]:animate-in data-[expanded]:fade-in-0 data-[expanded]:zoom-in-95 data-[closed]:animate-out data-[closed]:zoom-out-95",
           local.class,
         )}
@@ -61,7 +56,7 @@ function DialogContent(
       >
         {local.children}
         <Show when={showClose()}>
-          <DialogPrimitive.CloseButton data-slot="dialog-close" class={glassCloseButtonClass}>
+          <DialogPrimitive.CloseButton data-slot="dialog-close" class="omni-glass-close-button">
             <XIcon class="size-4" />
             <span class="sr-only">Close</span>
           </DialogPrimitive.CloseButton>

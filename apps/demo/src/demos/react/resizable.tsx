@@ -9,9 +9,7 @@ export default function ResizableDemo() {
     <div className="h-[320px]">
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel defaultSize={35} className="border border-border/60 bg-muted/30 p-4">
-          <h3 className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
-            Services
-          </h3>
+          <h3 className="text-xs font-medium text-muted-foreground">Services</h3>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li>control-plane</li>
             <li>ingress-gateway</li>
@@ -23,9 +21,7 @@ export default function ResizableDemo() {
         <ResizablePanel defaultSize={65} className="flex flex-col">
           <ResizablePanelGroup direction="vertical">
             <ResizablePanel defaultSize={60} className="border border-border/60 bg-muted/30 p-4">
-              <h3 className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
-                Live metrics
-              </h3>
+              <h3 className="text-xs font-medium text-muted-foreground">Live metrics</h3>
               <p className="mt-3 text-sm text-muted-foreground">
                 Stream duration: 14m 22s -- Latency steady at 162ms.
               </p>
@@ -35,9 +31,7 @@ export default function ResizableDemo() {
               defaultSize={40}
               className="border border-border/60 bg-background/30 p-4"
             >
-              <h3 className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
-                Log tail
-              </h3>
+              <h3 className="text-xs font-medium text-muted-foreground">Log tail</h3>
               <pre className="mt-3 h-full overflow-auto text-xs leading-relaxed text-muted-foreground/80">
                 {`02:11:01 edge-cache rewrite enabled
 02:11:03 ingress latency 164ms (target 180ms)

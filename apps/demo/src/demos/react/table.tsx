@@ -28,9 +28,7 @@ export default function TableDemo() {
       <TableBody>
         {rows.map((row) => (
           <TableRow key={row.region}>
-            <TableCell className="font-mono text-[10px] uppercase tracking-[0.28em] text-foreground">
-              {row.region}
-            </TableCell>
+            <TableCell className="text-xs font-medium text-foreground">{row.region}</TableCell>
             <TableCell className="text-sm text-muted-foreground/80">{row.status}</TableCell>
             <TableCell className="text-sm text-foreground/80">{row.latency}</TableCell>
           </TableRow>

@@ -4,7 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from "lucide-so
 import { cn } from "@/registry/solid/lib/utils";
 
 const paginationLinkBase =
-  "relative inline-flex min-w-9 items-center justify-center border border-border/60 bg-muted/40 px-2 py-[0.35rem] font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/90 transition-[color,background,border,box-shadow] [&_svg]:pointer-events-none [&_svg]:size-3.5";
+  "relative inline-flex min-w-9 items-center justify-center border border-border/60 bg-muted/40 px-2 py-[0.35rem] text-xs font-medium text-muted-foreground/90 transition-[color,background,border,box-shadow] [&_svg]:pointer-events-none [&_svg]:size-3.5";
 const paginationStateClasses =
   "hover:border-foreground/60 hover:bg-foreground/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 const paginationActiveClasses =
@@ -102,7 +102,7 @@ function PaginationEllipsis(props: JSX.HTMLAttributes<HTMLSpanElement>) {
       aria-hidden
       data-slot="pagination-ellipsis"
       class={cn(
-        "inline-flex h-9 min-w-9 items-center justify-center border border-dashed border-border/60 bg-muted/30 font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/80",
+        "inline-flex h-9 min-w-9 items-center justify-center border border-dashed border-border/60 bg-muted/30 text-xs font-medium text-muted-foreground/80",
         local.class,
       )}
       {...rest}

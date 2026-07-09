@@ -11,7 +11,7 @@ export const components: ComponentMeta[] = [
   {
     name: "accordion",
     title: "Accordion",
-    description: "Glass disclosure list with uppercase triggers.",
+    description: "Glass disclosure list with calm, readable triggers.",
     status: "done",
   },
   {
@@ -53,7 +53,7 @@ export const components: ComponentMeta[] = [
   {
     name: "button",
     title: "Button",
-    description: "Sharp, uppercase button system.",
+    description: "Sharp button system with balanced text.",
     status: "done",
   },
   {
@@ -258,7 +258,7 @@ export const components: ComponentMeta[] = [
     name: "sidebar",
     title: "Sidebar",
     description:
-      "Navigation shell with squared rails, uppercase labels, and an off-canvas mobile experience.",
+      "Navigation shell with squared rails, readable labels, and an off-canvas mobile experience.",
     status: "done",
   },
   {

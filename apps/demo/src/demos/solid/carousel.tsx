@@ -46,10 +46,8 @@ export default function CarouselDemo() {
             {(slide) => (
               <CarouselItem class="pl-6">
                 <div class="flex flex-col gap-3 rounded-none border border-border/70 bg-muted/30 p-6 shadow-[0_0_0_1px_rgba(15,23,42,0.12)]">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/80">
-                    {slide.status}
-                  </span>
-                  <h3 class="text-xl font-semibold uppercase tracking-[0.12em]">{slide.title}</h3>
+                  <span class="text-xs font-medium text-muted-foreground/80">{slide.status}</span>
+                  <h3 class="text-xl font-semibold">{slide.title}</h3>
                   <p class="text-sm text-muted-foreground">{slide.description}</p>
                 </div>
               </CarouselItem>

@@ -43,19 +43,18 @@ function AccordionTrigger(props: ComponentProps<typeof AccordionPrimitive.Trigge
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         class={cn(
-          "flex w-full items-center justify-between gap-5 px-4 py-4 text-left",
-          "font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/80 dark:text-muted-foreground",
+          "flex w-full items-center justify-between gap-5 px-4 py-4 text-left text-sm font-medium text-muted-foreground/85 dark:text-muted-foreground",
           "outline-none transition-colors",
           "hover:text-foreground",
           "focus-visible:ring-2 focus-visible:ring-ring/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-          "data-[expanded]:text-foreground data-[expanded]:tracking-[0.34em]",
+          "data-[expanded]:text-foreground",
           "disabled:pointer-events-none disabled:opacity-40",
           "[&>[data-slot=accordion-chevron]]:transition-transform [&[data-expanded]>[data-slot=accordion-chevron]]:rotate-180",
           local.class,
         )}
         {...rest}
       >
-        <span class="flex-1 leading-snug tracking-[0.3em]">{local.children}</span>
+        <span class="flex-1 leading-snug">{local.children}</span>
         <span
           data-slot="accordion-chevron"
           class="inline-flex size-5 items-center justify-center text-muted-foreground/60 transition-transform group-hover:text-foreground"

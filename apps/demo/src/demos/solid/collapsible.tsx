@@ -16,9 +16,7 @@ export default function CollapsibleDemo() {
   return (
     <Card class="border-border/70">
       <CardHeader>
-        <CardTitle class="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
-          Build Step Summary
-        </CardTitle>
+        <CardTitle class="text-sm font-medium text-muted-foreground">Build Step Summary</CardTitle>
         <CardDescription>
           Toggle the collapsed region to reveal the raw build logs while the summary stays visible.
         </CardDescription>

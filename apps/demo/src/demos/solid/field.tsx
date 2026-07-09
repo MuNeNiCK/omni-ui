@@ -52,7 +52,7 @@ export default function FieldDemo() {
             <Select
               options={owners}
               defaultValue="SRE"
-              placeholder="Select owner"
+              placeholder="Select owner…"
               itemComponent={(props: SelectRootItemComponentProps<string>) => (
                 <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
               )}
@@ -118,10 +118,10 @@ export default function FieldDemo() {
 
       <FieldGroup>
         <Field orientation="horizontal" class="justify-end gap-3">
-          <Button variant="ghost" size="sm" class="tracking-[0.3em]">
+          <Button variant="ghost" size="sm">
             Cancel
           </Button>
-          <Button size="sm" class="tracking-[0.3em]">
+          <Button size="sm">
             <CheckCircle2 class="mr-2 size-3" />
             Save changes
           </Button>

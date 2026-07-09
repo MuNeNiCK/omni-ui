@@ -29,7 +29,7 @@ function TabsTrigger(props: ComponentProps<typeof TabsPrimitive.Trigger>) {
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       class={cn(
-        "inline-flex h-10 flex-1 items-center justify-center gap-2 px-3 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground/90 transition-[border,background,color,box-shadow] outline-none",
+        "inline-flex h-10 flex-1 items-center justify-center gap-2 px-3 text-xs font-medium text-muted-foreground/90 transition-[border,background,color,box-shadow] outline-none",
         "border border-transparent rounded-none",
         "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "data-[selected]:border-foreground data-[selected]:bg-foreground data-[selected]:text-background",

@@ -158,10 +158,11 @@ function DatePicker<M extends CalendarMode = "single">({
       <PopoverTrigger asChild>
         <Button
           type="button"
+          data-slot="date-picker-trigger"
           variant={buttonVariant}
           size={buttonSize}
           className={cn(
-            "flex min-w-[12rem] items-center gap-3 border border-border/60 bg-muted/40 px-3 text-[11px] font-mono uppercase tracking-[0.28em] text-foreground/85 shadow-[var(--glass-shadow-outline)] hover:border-foreground",
+            "flex min-w-[12rem] items-center gap-3 border border-border/60 bg-muted/40 px-3 text-xs text-foreground/85 shadow-[var(--glass-shadow-outline)] hover:border-foreground",
             !displayValue && "text-muted-foreground/70",
             "rounded-none",
             triggerClassName,
@@ -171,7 +172,12 @@ function DatePicker<M extends CalendarMode = "single">({
           <span className="truncate text-left leading-none">{displayValue ?? placeholderText}</span>
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="start" sideOffset={8} className={cn("p-0", popoverClassName)}>
+      <PopoverContent
+        data-slot="date-picker-content"
+        align="start"
+        sideOffset={8}
+        className={cn("w-auto p-0", popoverClassName)}
+      >
         <div className="flex flex-col gap-3 p-3">
           <Calendar
             {...({
@@ -189,7 +195,7 @@ function DatePicker<M extends CalendarMode = "single">({
               variant="ghost"
               size="sm"
               onClick={handleReset}
-              className="h-8 w-full justify-center gap-2 border border-border/40 bg-background/30 text-[11px] font-mono uppercase tracking-[0.28em] text-muted-foreground/80 hover:border-border/60 hover:bg-foreground/10 hover:text-foreground"
+              className="h-8 w-full justify-center gap-2 border border-border/40 bg-background/30 text-xs text-muted-foreground/80 hover:border-border/60 hover:bg-foreground/10 hover:text-foreground"
             >
               <RotateCcwIcon className="size-3.5" />
               {clearLabel}

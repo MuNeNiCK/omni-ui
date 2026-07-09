@@ -31,9 +31,7 @@ export default function EmptyDemo() {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button variant="ghost" class="tracking-[0.3em]">
-          Create Deployment
-        </Button>
+        <Button variant="ghost">Create Deployment</Button>
         <p class="text-xs text-muted-foreground">
           Need help? Visit the <Badge>Runbook</Badge> or contact the SRE team.
         </p>

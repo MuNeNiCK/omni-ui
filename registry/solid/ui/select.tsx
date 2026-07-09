@@ -14,7 +14,6 @@ import {
 import * as SelectPrimitive from "@kobalte/core/select";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-solid";
 
-import { glassSurfaceSubtleClass } from "@/registry/solid/lib/glass";
 import { useOptionalFormControlProps } from "@/registry/solid/lib/form-control";
 import { cn } from "@/registry/solid/lib/utils";
 
@@ -100,8 +99,8 @@ function SelectTrigger(
       aria-describedby={local["aria-describedby"] ?? formControlProps?.()["aria-describedby"]}
       aria-invalid={local["aria-invalid"] ?? formControlProps?.()["aria-invalid"]}
       class={cn(
-        "flex w-fit items-center justify-between gap-2 px-3 py-2 text-sm whitespace-nowrap text-foreground/90 data-[placeholder]:text-muted-foreground/70 [&_svg:not([class*='text-'])]:text-muted-foreground/70 transition-[border,background,color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-10 data-[size=sm]:h-9",
-        glassSurfaceSubtleClass,
+        "flex w-fit items-center justify-between gap-2 px-3 py-2 text-xs whitespace-nowrap text-foreground/90 data-[placeholder]:text-muted-foreground/70 [&_svg:not([class*='text-'])]:text-muted-foreground/70 transition-[border,background,color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-10 data-[size=sm]:h-9",
+        "omni-glass-surface-subtle",
         "focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive/30 dark:aria-invalid:focus-visible:ring-destructive/40",
         local.class,
@@ -176,7 +175,7 @@ function SelectContent(
         data-slot="select-content"
         class={cn(
           "relative z-50 max-h-[var(--kb-popper-content-available-height)] min-w-[8rem] origin-[var(--kb-select-content-transform-origin)] overflow-x-hidden overflow-y-auto",
-          glassSurfaceSubtleClass,
+          "omni-glass-surface-subtle",
           "data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           position() === "popper" &&
             "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
@@ -218,10 +217,7 @@ function SelectLabel(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<
   return (
     <div
       data-slot="select-label"
-      class={cn(
-        "px-3 py-2 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground/90",
-        local.class,
-      )}
+      class={cn("px-3 py-2 text-xs font-medium text-muted-foreground/90", local.class)}
       {...rest}
     />
   );
@@ -240,7 +236,7 @@ function SelectItem(props: ComponentProps<typeof SelectPrimitive.Item>) {
     <SelectPrimitive.Item
       data-slot="select-item"
       class={cn(
-        "relative flex w-full cursor-default items-center gap-3 px-3 py-2 text-[11px] font-mono uppercase tracking-[0.28em] text-muted-foreground/90 outline-hidden select-none transition-[background,color]",
+        "relative flex min-h-9 w-full cursor-default items-center gap-3 py-2 pl-3 pr-9 text-sm text-muted-foreground/90 outline-hidden select-none transition-[background,color]",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-40",
         "hover:bg-foreground hover:text-background",
         "data-[highlighted]:bg-foreground data-[highlighted]:text-background",

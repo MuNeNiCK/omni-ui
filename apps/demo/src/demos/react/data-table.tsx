@@ -69,9 +69,7 @@ const columns: ColumnDef<Deployment>[] = [
     header: "SERVICE",
     cell: ({ row }) => (
       <div className="space-y-1">
-        <p className="font-mono text-[11px] uppercase tracking-[0.28em]">
-          {row.getValue("service") as string}
-        </p>
+        <p className="text-sm">{row.getValue("service") as string}</p>
         <p className="text-muted-foreground text-xs">{row.original.id}</p>
       </div>
     ),
@@ -92,7 +90,7 @@ const columns: ColumnDef<Deployment>[] = [
       const tone =
         status === "Healthy" ? "secondary" : status === "Warning" ? "outline" : "destructive";
       return (
-        <Badge variant={tone} className="text-[10px]">
+        <Badge variant={tone} className="text-xs">
           {status}
         </Badge>
       );
@@ -102,9 +100,7 @@ const columns: ColumnDef<Deployment>[] = [
     accessorKey: "region",
     header: "REGION",
     cell: ({ row }) => (
-      <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-foreground/80">
-        {row.getValue("region") as string}
-      </span>
+      <span className="text-sm text-foreground/80">{row.getValue("region") as string}</span>
     ),
   },
   {
@@ -134,7 +130,7 @@ export default function DataTableDemo() {
       data={data}
       searchKey="service"
       toolbar={() => (
-        <Button size="sm" variant="muted" className="tracking-[0.32em]">
+        <Button size="sm" variant="muted">
           Export CSV
         </Button>
       )}

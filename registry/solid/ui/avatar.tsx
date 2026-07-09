@@ -80,7 +80,7 @@ function AvatarFallback(
     <span
       data-slot="avatar-fallback"
       class={cn(
-        "pointer-events-none flex size-full items-center justify-center bg-transparent font-mono text-[11px] uppercase tracking-[0.32em] text-muted-foreground/80",
+        "pointer-events-none flex size-full items-center justify-center bg-transparent text-xs font-medium text-muted-foreground/80",
         local.class,
       )}
       {...rest}

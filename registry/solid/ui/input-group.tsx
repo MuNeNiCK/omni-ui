@@ -26,7 +26,7 @@ function InputGroup(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<H
 }
 
 const inputGroupAddonVariants = cva(
-  "flex items-center gap-2 bg-transparent text-[10px] font-mono uppercase tracking-[0.32em] text-muted-foreground/75",
+  "flex items-center gap-2 bg-transparent text-xs font-medium text-muted-foreground/75",
   {
     variants: {
       align: {
@@ -67,22 +67,19 @@ function InputGroupAddon(
   );
 }
 
-const inputGroupButtonVariants = cva(
-  "font-mono uppercase tracking-[0.28em] shadow-none transition-colors",
-  {
-    variants: {
-      size: {
-        xs: "h-8 px-3 text-[10px]",
-        sm: "h-9 px-3.5 text-[10px]",
-        "icon-xs": "size-8 p-0",
-        "icon-sm": "size-9 p-0",
-      },
-    },
-    defaultVariants: {
-      size: "xs",
+const inputGroupButtonVariants = cva("font-medium shadow-none transition-colors", {
+  variants: {
+    size: {
+      xs: "h-8 px-3 text-xs",
+      sm: "h-9 px-3.5 text-xs",
+      "icon-xs": "size-8 p-0",
+      "icon-sm": "size-9 p-0",
     },
   },
-);
+  defaultVariants: {
+    size: "xs",
+  },
+});
 
 function InputGroupButton(
   props: Omit<ButtonProps, "size"> &
@@ -110,7 +107,7 @@ function InputGroupText(
     <span
       data-slot="input-group-text"
       class={cn(
-        "flex items-center gap-2 bg-transparent font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/70",
+        "flex items-center gap-2 bg-transparent text-xs text-muted-foreground/70",
         "[&>svg]:size-3.5 [&>svg]:opacity-70",
         local.class,
       )}

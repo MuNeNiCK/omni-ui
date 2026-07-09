@@ -16,7 +16,7 @@ export default function CardDemo() {
     <Card className="divide-y divide-border">
       <CardHeader>
         <div>
-          <CardTitle className="font-mono text-xs uppercase tracking-[0.28em] text-card-foreground/80 dark:text-card-foreground/70">
+          <CardTitle className="text-sm font-medium text-card-foreground/80 dark:text-card-foreground/70">
             Usage
           </CardTitle>
           <CardDescription className="mt-2 text-base text-card-foreground">
@@ -40,9 +40,7 @@ export default function CardDemo() {
       </CardContent>
       <CardFooter>
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
-          <span className="font-mono uppercase tracking-[0.28em] text-card-foreground/70">
-            Next update
-          </span>
+          <span className="font-medium text-card-foreground/70">Next update</span>
           <Separator orientation="vertical" className="mx-2 h-4" />
           <span className="text-muted-foreground">In 15 minutes</span>
         </div>

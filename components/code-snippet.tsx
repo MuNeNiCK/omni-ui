@@ -29,7 +29,7 @@ export default function CodeSnippet({ children, className }: CodeSnippetProps) {
   }, [children]);
 
   return (
-    <div className={cn("relative overflow-x-auto rounded-lg border bg-background/60", className)}>
+    <div className={cn("relative overflow-x-auto rounded-none border bg-background/60", className)}>
       <pre className="p-4 text-xs md:text-sm">
         <code className="block whitespace-pre leading-relaxed">{children}</code>
       </pre>
@@ -39,9 +39,13 @@ export default function CodeSnippet({ children, className }: CodeSnippetProps) {
         size="icon"
         onClick={handleCopy}
         className="absolute right-2 top-2 h-7 w-7"
+        aria-label="Copy code"
       >
         {copied ? <Check className="size-3" /> : <Clipboard className="size-3" />}
       </Button>
+      <span className="sr-only" aria-live="polite">
+        {copied ? "Code copied" : ""}
+      </span>
     </div>
   );
 }

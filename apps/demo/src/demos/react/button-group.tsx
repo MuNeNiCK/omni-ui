@@ -25,14 +25,12 @@ export default function ButtonGroupDemo() {
 
       <div className="flex flex-wrap items-start gap-6">
         <ButtonGroup orientation="vertical" className="min-w-[180px]">
-          <ButtonGroupText className="justify-between text-[9px] tracking-[0.36em]">
-            REGION
-          </ButtonGroupText>
-          <Button variant="ghost" className="justify-between text-[10px] tracking-[0.28em]">
+          <ButtonGroupText className="justify-between text-xs">REGION</ButtonGroupText>
+          <Button variant="ghost" className="justify-between text-xs">
             Tokyo <span className="text-muted-foreground">JP-1</span>
           </Button>
           <ButtonGroupSeparator orientation="horizontal" />
-          <Button variant="ghost" className="justify-between text-[10px] tracking-[0.28em]">
+          <Button variant="ghost" className="justify-between text-xs">
             Singapore <span className="text-muted-foreground">SG-1</span>
           </Button>
         </ButtonGroup>

@@ -11,10 +11,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-    monospace;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
   --glass-shadow-outline: var(--glass-shadow-outline);
   --glass-shadow-outline-subtle: var(--glass-shadow-outline-subtle);
   --glass-shadow-outline-strong: var(--glass-shadow-outline-strong);
@@ -75,9 +72,6 @@
 
 :root {
   --radius: 0.625rem;
-  --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-    monospace;
 
   --glass-shadow-outline-heavy: 0 0 0 1px rgba(15, 23, 42, 0.2);
   --glass-shadow-outline-faint: 0 0 0 1px rgba(15, 23, 42, 0.06);
@@ -301,9 +295,127 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@layer components {
+  .omni-glass-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background-color: color-mix(in oklab, var(--background) 70%, transparent);
+    backdrop-filter: blur(12px);
+    transition-property: opacity;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .omni-glass-surface,
+  .omni-glass-surface-strong,
+  .omni-glass-surface-subtle,
+  .omni-glass-inset-surface,
+  .omni-glass-menu-surface,
+  .omni-glass-indicator-surface {
+    border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+    border-radius: 0;
+  }
+
+  .omni-glass-surface,
+  .omni-glass-surface-strong,
+  .omni-glass-surface-subtle,
+  .omni-glass-inset-surface,
+  .omni-glass-menu-surface {
+    color: var(--foreground);
+  }
+
+  .omni-glass-surface {
+    background-color: color-mix(in oklab, var(--muted) 60%, transparent);
+    box-shadow: var(--glass-shadow-outline);
+    backdrop-filter: blur(6px);
+  }
+
+  .omni-glass-surface-strong {
+    background-color: color-mix(in oklab, var(--muted) 60%, transparent);
+    box-shadow: var(--glass-shadow-outline-strong);
+    backdrop-filter: blur(8px);
+  }
+
+  .omni-glass-surface-subtle {
+    background-color: color-mix(in oklab, var(--muted) 65%, transparent);
+    box-shadow: var(--glass-shadow-outline-subtle);
+    backdrop-filter: blur(4px);
+  }
+
+  .omni-glass-inset-surface {
+    background-color: color-mix(in oklab, var(--muted) 40%, transparent);
+    box-shadow: var(--glass-shadow-inset);
+  }
+
+  .omni-glass-menu-surface {
+    background-color: color-mix(in oklab, var(--muted) 70%, transparent);
+    box-shadow: var(--glass-shadow-outline-subtle);
+    backdrop-filter: blur(4px);
+  }
+
+  .omni-glass-indicator-surface {
+    background-color: color-mix(in oklab, var(--muted) 70%, transparent);
+    box-shadow: var(--glass-shadow-outline);
+  }
+
+  .omni-glass-close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: inline-flex;
+    width: 2.25rem;
+    height: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+    border-radius: 0;
+    background-color: color-mix(in oklab, var(--muted) 50%, transparent);
+    color: color-mix(in oklab, var(--muted-foreground) 80%, transparent);
+    transition-property: color, background-color, border-color;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .omni-glass-close-button:hover {
+    background-color: var(--foreground);
+    color: var(--background);
+  }
+
+  .omni-glass-close-button:focus-visible {
+    border-color: var(--foreground);
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 4px color-mix(in oklab, var(--ring) 40%, transparent);
+  }
+
+  .omni-glass-close-button:disabled {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    scrollbar-color: color-mix(in oklab, var(--muted-foreground) 35%, transparent) transparent;
+    scrollbar-width: thin;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: color-mix(in oklab, var(--muted-foreground) 35%, transparent);
+    background-clip: content-box;
+    border: 2px solid transparent;
+  }
+  *::-webkit-scrollbar-corner {
+    background: transparent;
   }
   body {
     @apply bg-background text-foreground;

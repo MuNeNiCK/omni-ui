@@ -16,7 +16,7 @@ function Progress(props: ComponentProps<typeof ProgressPrimitive.Root>) {
         <ProgressPrimitive.Fill
           data-slot="progress-indicator"
           class={cn(
-            "relative h-full w-[var(--kb-progress-fill-width)] bg-foreground transition-all",
+            "relative h-full w-[var(--kb-progress-fill-width)] bg-foreground transition-[width]",
             "[&::after]:absolute [&::after]:inset-0 [&::after]:bg-background/20 [&::after]:mix-blend-overlay [&::after]:content-['']",
           )}
         />
