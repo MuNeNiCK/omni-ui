@@ -1,0 +1,135 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import ComponentsSidebarLayout from "../../layouts/ComponentsSidebarLayout.astro"
+import { components } from "../../lib/components"
+import ReactDemoRenderer from "../../components/react-demo-map"
+import SolidDemoRenderer from "../../components/solid-demo-map"
+import { CopyCommandButton } from "../../components/react-copy-command-button"
+import { InstallationCommands } from "../../components/react-installation-commands"
+import { CodeSnippet } from "../../components/react-code-snippet"
+
+export function getStaticPaths() {
+  return components.map((c) => ({
+    params: { name: c.name },
+    props: c,
+  }))
+}
+
+const { name, title, description } = Astro.props
+const base = import.meta.env.BASE_URL.replace(/\/$/, "")
+const currentPath = `${base}/components/${name}`
+const installCommandReact = `pnpm dlx shadcn@latest add @omni/${name}`
+const installCommandSolid = `pnpm dlx shadcn@latest add @omni/solid/${name}`
+const componentName = title.replace(/\s+/g, "")
+---
+
+<Layout title={title}>
+  <ComponentsSidebarLayout currentPath={currentPath}>
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-col items-start justify-between gap-2 md:flex-row md:items-center">
+        <h1 class="text-3xl font-bold">{title}</h1>
+        <span id="cmd-react">
+          <CopyCommandButton
+            command={installCommandReact}
+            copyCommand={installCommandReact}
+            client:load
+          />
+        </span>
+        <span id="cmd-solid" style="display: none;">
+          <CopyCommandButton
+            command={installCommandSolid}
+            copyCommand={installCommandSolid}
+            client:load
+          />
+        </span>
+      </div>
+
+      <p class="text-muted-foreground">{description}</p>
+
+      <div class="flex flex-col gap-4 rounded-lg border p-4 min-h-[300px]">
+        <div class="flex items-center justify-between">
+          <h2 class="text-sm text-muted-foreground sm:pl-3">{title} component</h2>
+          <div class="flex items-center gap-1" id="framework-toggle">
+            <button
+              data-framework="react"
+              class="rounded border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors border-foreground/20 bg-foreground/5 text-foreground"
+            >
+              react
+            </button>
+            <button
+              data-framework="solid"
+              class="rounded border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors border-border/60 bg-muted/40 text-muted-foreground hover:text-foreground"
+            >
+              solid
+            </button>
+          </div>
+        </div>
+        <div id="demo-react">
+          <ReactDemoRenderer name={name} client:only="react" />
+        </div>
+        <div id="demo-solid" style="display: none;">
+          <SolidDemoRenderer name={name} client:only="solid-js" />
+        </div>
+      </div>
+
+      <h3 class="text-lg font-bold">Installation</h3>
+      <div role="separator" class="shrink-0 bg-border h-[1px] w-full my-2"></div>
+
+      <div id="install-react">
+        <InstallationCommands packageName={name} client:load />
+      </div>
+      <div id="install-solid" style="display: none;">
+        <InstallationCommands packageName={`solid/${name}`} client:load />
+      </div>
+
+      <h3 class="text-lg font-bold mt-10">Usage</h3>
+      <div role="separator" class="shrink-0 bg-border h-[1px] w-full my-2"></div>
+
+      <div id="usage-react">
+        <CodeSnippet client:load>{`import { ${componentName} } from "@/components/ui/${name}"`}</CodeSnippet>
+      </div>
+      <div id="usage-solid" style="display: none;">
+        <CodeSnippet client:load>{`import { ${componentName} } from "@/components/ui/${name}"`}</CodeSnippet>
+      </div>
+    </div>
+  </ComponentsSidebarLayout>
+</Layout>
+
+<script>
+  const toggle = document.getElementById('framework-toggle')
+  const pairs = [
+    ['demo-react', 'demo-solid'],
+    ['usage-react', 'usage-solid'],
+    ['cmd-react', 'cmd-solid'],
+    ['install-react', 'install-solid'],
+  ].map(([r, s]) => [document.getElementById(r), document.getElementById(s)] as const)
+
+  if (toggle && pairs.every(([r, s]) => r && s)) {
+    const buttons = toggle.querySelectorAll('button')
+    const saved = localStorage.getItem('omni-framework') || 'react'
+
+    function setFramework(fw: string) {
+      localStorage.setItem('omni-framework', fw)
+      const isReact = fw === 'react'
+      pairs.forEach(([r, s]) => {
+        r!.style.display = isReact ? '' : 'none'
+        s!.style.display = isReact ? 'none' : ''
+      })
+      buttons.forEach(btn => {
+        const isActive = (btn as HTMLElement).dataset.framework === fw
+        ;(btn as HTMLElement).className = [
+          'rounded border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors',
+          isActive
+            ? 'border-foreground/20 bg-foreground/5 text-foreground'
+            : 'border-border/60 bg-muted/40 text-muted-foreground hover:text-foreground'
+        ].join(' ')
+      })
+    }
+
+    setFramework(saved)
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => setFramework((btn as HTMLElement).dataset.framework || 'react'))
+    })
+  }
+</script>

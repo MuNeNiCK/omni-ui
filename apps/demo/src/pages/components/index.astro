@@ -1,0 +1,44 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import ComponentsSidebarLayout from "../../layouts/ComponentsSidebarLayout.astro"
+import { components } from "../../lib/components"
+import { COMPONENT_STATUS_META } from "@/lib/component-status"
+const base = import.meta.env.BASE_URL.replace(/\/$/, "")
+---
+
+<Layout title="Components">
+  <ComponentsSidebarLayout currentPath={`${base}/components`}>
+    <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
+        <h1 class="text-3xl font-bold">Components</h1>
+        <p class="text-muted-foreground">
+          Explore the Omni UI component library. Each page showcases the
+          Omni-styled registry implementation alongside installation and usage
+          guidelines.
+        </p>
+      </div>
+
+      <div class="grid gap-2 sm:grid-cols-2">
+        {components.map((item) => {
+          const statusMeta = COMPONENT_STATUS_META[item.status]
+          return (
+            <a
+              href={`${base}/components/${item.name}`}
+              class="flex items-center justify-between rounded-lg border border-border/80 bg-card/40 px-4 py-3 text-sm transition hover:border-primary/60 hover:bg-card/60"
+            >
+              <span class="font-medium text-foreground">{item.title}</span>
+              {statusMeta && (
+                <span class:list={[
+                  "inline-flex items-center rounded-md border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide",
+                  statusMeta.className
+                ]}>
+                  {statusMeta.label}
+                </span>
+              )}
+            </a>
+          )
+        })}
+      </div>
+    </div>
+  </ComponentsSidebarLayout>
+</Layout>

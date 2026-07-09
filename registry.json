@@ -1,0 +1,2131 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "omni-ui",
+  "homepage": "https://munenick.github.io/omni-ui",
+  "items": [
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Accordion component.",
+      "files": [
+        {
+          "path": "registry/react/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-accordion", "lucide-react"]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Alert component.",
+      "files": [
+        {
+          "path": "registry/react/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/utils",
+        "@omni/font-mono",
+        "@omni/glass-style",
+        "@omni/tone-style"
+      ],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Alert Dialog component.",
+      "files": [
+        {
+          "path": "registry/react/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/button",
+        "@omni/utils",
+        "@omni/font-mono",
+        "@omni/glass-style"
+      ],
+      "dependencies": ["@radix-ui/react-alert-dialog", "class-variance-authority"]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Aspect Ratio component.",
+      "files": [
+        {
+          "path": "registry/react/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["@radix-ui/react-aspect-ratio"]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Avatar component.",
+      "files": [
+        {
+          "path": "registry/react/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-avatar"]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Badge component.",
+      "files": [
+        {
+          "path": "registry/react/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Breadcrumb component.",
+      "files": [
+        {
+          "path": "registry/react/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-slot", "lucide-react"]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Button component.",
+      "files": [
+        {
+          "path": "registry/react/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "Button Group component.",
+      "files": [
+        {
+          "path": "registry/react/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/separator",
+        "@omni/utils",
+        "@omni/font-mono",
+        "@omni/glass-style"
+      ],
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Calendar component.",
+      "registryDependencies": ["@omni/button", "@omni/utils"],
+      "files": [
+        {
+          "path": "registry/react/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["lucide-react", "react-day-picker"]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Card component.",
+      "files": [
+        {
+          "path": "registry/react/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Carousel component.",
+      "registryDependencies": ["@omni/button", "@omni/utils"],
+      "files": [
+        {
+          "path": "registry/react/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["embla-carousel-react", "lucide-react"]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Chart component.",
+      "files": [
+        {
+          "path": "registry/react/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["recharts"]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Checkbox component.",
+      "files": [
+        {
+          "path": "registry/react/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-checkbox", "lucide-react"]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Collapsible component.",
+      "files": [
+        {
+          "path": "registry/react/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["@radix-ui/react-collapsible"]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Combobox component.",
+      "registryDependencies": [
+        "@omni/command",
+        "@omni/utils",
+        "@omni/font-mono",
+        "@omni/glass-style"
+      ],
+      "files": [
+        {
+          "path": "registry/react/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["@radix-ui/react-popover", "lucide-react"]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Command component.",
+      "files": [
+        {
+          "path": "registry/react/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/dialog",
+        "@omni/utils",
+        "@omni/font-mono",
+        "@omni/glass-style"
+      ],
+      "dependencies": ["cmdk", "lucide-react"]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Context Menu component.",
+      "files": [
+        {
+          "path": "registry/react/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-context-menu", "lucide-react"]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "Data Table component.",
+      "registryDependencies": [
+        "@omni/button",
+        "@omni/dropdown-menu",
+        "@omni/input",
+        "@omni/select",
+        "@omni/table",
+        "@omni/utils",
+        "@omni/font-mono",
+        "@omni/glass-style"
+      ],
+      "files": [
+        {
+          "path": "registry/react/ui/data-table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["@tanstack/react-table", "lucide-react"]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "Date Picker component.",
+      "dependencies": ["date-fns", "lucide-react", "react-day-picker"],
+      "registryDependencies": [
+        "@omni/button",
+        "@omni/calendar",
+        "@omni/popover",
+        "@omni/utils",
+        "@omni/font-mono",
+        "@omni/glass-style"
+      ],
+      "files": [
+        {
+          "path": "registry/react/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Dialog component.",
+      "files": [
+        {
+          "path": "registry/react/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-dialog", "lucide-react"]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Drawer component.",
+      "files": [
+        {
+          "path": "registry/react/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["vaul"]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Dropdown Menu component.",
+      "files": [
+        {
+          "path": "registry/react/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-dropdown-menu", "lucide-react"]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Empty component.",
+      "files": [
+        {
+          "path": "registry/react/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Field component.",
+      "registryDependencies": ["@omni/label", "@omni/separator", "@omni/utils"],
+      "files": [
+        {
+          "path": "registry/react/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "React Hook Form",
+      "description": "React Hook Form component.",
+      "registryDependencies": ["@omni/label", "@omni/utils"],
+      "files": [
+        {
+          "path": "registry/react/ui/form.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["@radix-ui/react-label", "@radix-ui/react-slot", "react-hook-form"]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Hover Card component.",
+      "files": [
+        {
+          "path": "registry/react/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-hover-card"]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Input component.",
+      "files": [
+        {
+          "path": "registry/react/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Input Group component.",
+      "files": [
+        {
+          "path": "registry/react/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/button",
+        "@omni/utils",
+        "@omni/font-mono",
+        "@omni/glass-style"
+      ],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input OTP",
+      "description": "Input OTP component.",
+      "files": [
+        {
+          "path": "registry/react/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["input-otp", "lucide-react"]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "Item component.",
+      "files": [
+        {
+          "path": "registry/react/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/separator",
+        "@omni/utils",
+        "@omni/font-mono",
+        "@omni/glass-style"
+      ],
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Kbd component.",
+      "files": [
+        {
+          "path": "registry/react/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Label component.",
+      "files": [
+        {
+          "path": "registry/react/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-label"]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "Menubar component.",
+      "files": [
+        {
+          "path": "registry/react/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-menubar", "lucide-react"]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "Navigation Menu component.",
+      "files": [
+        {
+          "path": "registry/react/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": [
+        "@radix-ui/react-navigation-menu",
+        "class-variance-authority",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Pagination component.",
+      "files": [
+        {
+          "path": "registry/react/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["lucide-react"]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Popover component.",
+      "files": [
+        {
+          "path": "registry/react/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-popover"]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Progress component.",
+      "files": [
+        {
+          "path": "registry/react/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-progress"]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Radio Group component.",
+      "files": [
+        {
+          "path": "registry/react/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-radio-group", "lucide-react"]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Resizable component.",
+      "files": [
+        {
+          "path": "registry/react/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["lucide-react", "react-resizable-panels"]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Scroll Area component.",
+      "files": [
+        {
+          "path": "registry/react/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["@radix-ui/react-scroll-area"]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Select component.",
+      "files": [
+        {
+          "path": "registry/react/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-select", "lucide-react"]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Separator component.",
+      "files": [
+        {
+          "path": "registry/react/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["@radix-ui/react-separator"]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Sheet component.",
+      "files": [
+        {
+          "path": "registry/react/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-dialog", "lucide-react"]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Sidebar component.",
+      "registryDependencies": [
+        "@omni/button",
+        "@omni/input",
+        "@omni/separator",
+        "@omni/sheet",
+        "@omni/skeleton",
+        "@omni/tooltip",
+        "@omni/use-mobile",
+        "@omni/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/react/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority", "lucide-react"]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Skeleton component.",
+      "files": [
+        {
+          "path": "registry/react/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Slider component.",
+      "files": [
+        {
+          "path": "registry/react/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["@radix-ui/react-slider"]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Sonner",
+      "description": "Sonner component.",
+      "files": [
+        {
+          "path": "registry/react/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/utils",
+        "@omni/font-mono",
+        "@omni/glass-style",
+        "@omni/tone-style",
+        "@omni/theme-provider"
+      ],
+      "dependencies": ["lucide-react", "sonner"]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Spinner component.",
+      "files": [
+        {
+          "path": "registry/react/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["lucide-react"]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Switch component.",
+      "files": [
+        {
+          "path": "registry/react/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["@radix-ui/react-switch"]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Table component.",
+      "files": [
+        {
+          "path": "registry/react/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils"]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabs component.",
+      "files": [
+        {
+          "path": "registry/react/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-tabs"]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Textarea component.",
+      "files": [
+        {
+          "path": "registry/react/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "Toggle component.",
+      "files": [
+        {
+          "path": "registry/react/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-toggle", "class-variance-authority"]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "Toggle Group component.",
+      "files": [
+        {
+          "path": "registry/react/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["@radix-ui/react-toggle-group", "class-variance-authority"]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Tooltip component.",
+      "files": [
+        {
+          "path": "registry/react/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/glass-style"],
+      "dependencies": ["@radix-ui/react-tooltip"]
+    },
+    {
+      "name": "typography",
+      "type": "registry:ui",
+      "title": "Typography",
+      "description": "Typography component.",
+      "files": [
+        {
+          "path": "registry/react/ui/typography.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils", "@omni/font-mono"],
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
+    },
+    {
+      "name": "use-mobile",
+      "type": "registry:hook",
+      "title": "useIsMobile",
+      "description": "useIsMobile component.",
+      "files": [
+        {
+          "path": "registry/react/hooks/use-mobile.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-mobile.ts"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utilities",
+      "description": "Utilities component.",
+      "files": [
+        {
+          "path": "registry/react/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ],
+      "dependencies": ["clsx", "tailwind-merge"]
+    },
+    {
+      "name": "theme-provider",
+      "type": "registry:component",
+      "title": "Theme Provider",
+      "description": "Client-side theme manager providing context and hooks.",
+      "files": [
+        {
+          "path": "registry/react/components/theme-provider.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "font-mono",
+      "type": "registry:style",
+      "title": "Font Mono",
+      "description": "Font Mono style.",
+      "files": [],
+      "cssVars": {
+        "theme": {
+          "font-mono": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace"
+        }
+      }
+    },
+    {
+      "name": "glass-style",
+      "type": "registry:style",
+      "title": "Glass Surface Tokens",
+      "description": "Glass Surface Tokens style.",
+      "files": [
+        {
+          "path": "registry/react/lib/glass.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "css": {
+        ":root": {
+          "--glass-drop-shadow-subtle": "0 0 10px rgba(15, 23, 42, 0.08)",
+          "--glass-gradient-card-dark": "linear-gradient(180deg, rgba(63, 63, 70, 0.78) 0%, rgba(31, 31, 44, 0.55) 48%, rgba(9, 9, 11, 0.35) 100%)",
+          "--glass-gradient-card-light": "linear-gradient(180deg, rgba(32, 34, 40, 0.18) 0%, rgba(32, 34, 40, 0.05) 70%, rgba(32, 34, 40, 0) 100%)",
+          "--glass-highlight-soft": "rgba(255, 255, 255, 0.04)",
+          "--glass-highlight-subtle": "rgba(255, 255, 255, 0.03)",
+          "--glass-radiant-warning": "rgba(254, 243, 199, 0.9)",
+          "--glass-shadow-card-inner-dark": "0 0 0 1px rgba(255, 255, 255, 0.14), inset 0 0 0 0.3px rgba(255, 255, 255, 0.04)",
+          "--glass-shadow-inset": "inset 0 0 0 1px rgba(15, 23, 42, 0.08)",
+          "--glass-shadow-outline-faint": "0 0 0 1px rgba(15, 23, 42, 0.06)",
+          "--glass-shadow-outline-heavy": "0 0 0 1px rgba(15, 23, 42, 0.2)",
+          "--glass-toast-warning": "rgba(254, 243, 199, 0.9)",
+          "--glass-highlight-bright": "rgba(255, 255, 255, 0.14)",
+          "--glass-highlight-strong": "rgba(255, 255, 255, 0.12)",
+          "--glass-shadow-card": "0 0 4px rgba(0, 0, 0, 0.08)",
+          "--glass-shadow-card-dark": "0 0 10px rgba(0, 0, 0, 0.45)",
+          "--glass-shadow-card-inner-light": "0 0 0 1px rgba(15, 23, 42, 0.06), inset 0 0 0 0.8px rgba(255, 255, 255, 0.03)",
+          "--glass-shadow-outline": "0 0 0 1px rgba(15, 23, 42, 0.12)",
+          "--glass-shadow-outline-strong": "0 0 0 1px rgba(15, 23, 42, 0.18)",
+          "--glass-shadow-outline-subtle": "0 0 0 1px rgba(15, 23, 42, 0.08)",
+          "--glass-tint-base": "rgba(15, 23, 42, 0.12)",
+          "--glass-tint-heavy": "rgba(15, 23, 42, 0.2)",
+          "--glass-tint-strong": "rgba(15, 23, 42, 0.18)",
+          "--glass-tint-subtle": "rgba(15, 23, 42, 0.08)"
+        },
+        ".dark": {
+          "--glass-highlight-bright": "rgba(255, 255, 255, 0.2)",
+          "--glass-highlight-strong": "rgba(255, 255, 255, 0.16)",
+          "--glass-shadow-card": "0 0 10px rgba(0, 0, 0, 0.45)",
+          "--glass-shadow-card-dark": "0 0 10px rgba(0, 0, 0, 0.45)",
+          "--glass-shadow-card-inner-light": "var(--glass-shadow-card-inner-dark)",
+          "--glass-shadow-outline": "0 0 0 1px rgba(255, 255, 255, 0.12)",
+          "--glass-shadow-outline-strong": "0 0 0 1px rgba(255, 255, 255, 0.18)",
+          "--glass-shadow-outline-subtle": "0 0 0 1px rgba(255, 255, 255, 0.08)",
+          "--glass-tint-base": "rgba(255, 255, 255, 0.08)",
+          "--glass-tint-heavy": "rgba(255, 255, 255, 0.18)",
+          "--glass-tint-strong": "rgba(255, 255, 255, 0.12)",
+          "--glass-tint-subtle": "rgba(255, 255, 255, 0.04)"
+        }
+      }
+    },
+    {
+      "name": "tone-style",
+      "type": "registry:style",
+      "title": "Tone Color Tokens",
+      "description": "Tone Color Tokens style.",
+      "files": [
+        {
+          "path": "registry/react/lib/tone.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "css": {
+        ":root": {
+          "--tone-destructive-bar": "rgba(239, 68, 68, 0.7)",
+          "--tone-destructive-bg": "rgba(239, 68, 68, 0.08)",
+          "--tone-destructive-border": "rgba(239, 68, 68, 0.45)",
+          "--tone-destructive-gradient": "linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.5), transparent)",
+          "--tone-destructive-icon-bg": "rgba(239, 68, 68, 0.15)",
+          "--tone-destructive-icon-border": "rgba(239, 68, 68, 0.5)",
+          "--tone-info-bar": "rgba(56, 189, 248, 0.7)",
+          "--tone-info-bg": "rgba(14, 165, 233, 0.1)",
+          "--tone-info-border": "rgba(14, 165, 233, 0.4)",
+          "--tone-info-gradient": "linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.5), transparent)",
+          "--tone-info-icon-bg": "rgba(14, 165, 233, 0.15)",
+          "--tone-info-icon-border": "rgba(56, 189, 248, 0.5)",
+          "--tone-success-bar": "rgba(52, 211, 153, 0.7)",
+          "--tone-success-bg": "rgba(16, 185, 129, 0.1)",
+          "--tone-success-border": "rgba(16, 185, 129, 0.4)",
+          "--tone-success-gradient": "linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.5), transparent)",
+          "--tone-success-icon-bg": "rgba(16, 185, 129, 0.15)",
+          "--tone-success-icon-border": "rgba(52, 211, 153, 0.5)",
+          "--tone-warning-bar": "rgba(251, 191, 36, 0.7)",
+          "--tone-warning-bg": "rgba(245, 158, 11, 0.1)",
+          "--tone-warning-border": "rgba(245, 158, 11, 0.4)",
+          "--tone-warning-gradient": "linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.5), transparent)",
+          "--tone-warning-icon-bg": "rgba(245, 158, 11, 0.15)",
+          "--tone-warning-icon-border": "rgba(251, 191, 36, 0.5)",
+          "--tone-default-bar": "rgba(148, 163, 184, 0.7)",
+          "--tone-default-bg": "rgba(15, 23, 42, 0.08)",
+          "--tone-default-body": "rgba(15, 23, 42, 0.85)",
+          "--tone-default-border": "rgba(15, 23, 42, 0.12)",
+          "--tone-default-description": "rgba(30, 41, 59, 0.85)",
+          "--tone-default-gradient": "linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.5), transparent)",
+          "--tone-default-icon-bg": "rgba(148, 163, 184, 0.12)",
+          "--tone-default-icon-border": "rgba(148, 163, 184, 0.5)",
+          "--tone-default-icon-fg": "rgba(100, 116, 139, 0.8)",
+          "--tone-default-title": "rgba(100, 116, 139, 0.9)",
+          "--tone-destructive-body": "#7f1d1d",
+          "--tone-destructive-description": "rgba(185, 28, 28, 0.9)",
+          "--tone-destructive-icon-fg": "#dc2626",
+          "--tone-destructive-title": "#b91c1c",
+          "--tone-info-body": "#0c4a6e",
+          "--tone-info-description": "#0c4a6e",
+          "--tone-info-icon-fg": "#0284c7",
+          "--tone-info-title": "#0369a1",
+          "--tone-success-body": "#064e3b",
+          "--tone-success-description": "#065f46",
+          "--tone-success-icon-fg": "#059669",
+          "--tone-success-title": "#047857",
+          "--tone-warning-body": "#92400e",
+          "--tone-warning-description": "#b45309",
+          "--tone-warning-icon-fg": "#b45309",
+          "--tone-warning-title": "#b45309"
+        },
+        ".dark": {
+          "--tone-default-bar": "rgba(148, 163, 184, 0.4)",
+          "--tone-default-bg": "rgba(148, 163, 184, 0.15)",
+          "--tone-default-body": "rgba(226, 232, 240, 0.85)",
+          "--tone-default-border": "rgba(255, 255, 255, 0.12)",
+          "--tone-default-description": "rgba(148, 163, 184, 0.85)",
+          "--tone-default-gradient": "linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.35), transparent)",
+          "--tone-default-icon-bg": "rgba(148, 163, 184, 0.18)",
+          "--tone-default-icon-border": "rgba(148, 163, 184, 0.35)",
+          "--tone-default-icon-fg": "rgba(226, 232, 240, 0.85)",
+          "--tone-default-title": "rgba(226, 232, 240, 0.9)",
+          "--tone-destructive-body": "rgba(254, 202, 202, 0.9)",
+          "--tone-destructive-description": "rgba(248, 113, 113, 0.85)",
+          "--tone-destructive-icon-fg": "#fca5a5",
+          "--tone-destructive-title": "#fca5a5",
+          "--tone-info-body": "#bae6fd",
+          "--tone-info-description": "rgba(125, 211, 252, 0.85)",
+          "--tone-info-icon-fg": "#bae6fd",
+          "--tone-info-title": "#bae6fd",
+          "--tone-success-body": "#bbf7d0",
+          "--tone-success-description": "rgba(134, 239, 172, 0.85)",
+          "--tone-success-icon-fg": "#bbf7d0",
+          "--tone-success-title": "#bbf7d0",
+          "--tone-warning-body": "rgba(254, 243, 199, 0.9)",
+          "--tone-warning-description": "rgba(253, 224, 71, 0.85)",
+          "--tone-warning-icon-fg": "#fcd34d",
+          "--tone-warning-title": "#fcd34d"
+        }
+      }
+    },
+    {
+      "name": "solid/accordion",
+      "type": "registry:ui",
+      "title": "Accordion (Solid)",
+      "description": "Accordion component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
+    },
+    {
+      "name": "solid/alert",
+      "type": "registry:ui",
+      "title": "Alert (Solid)",
+      "description": "Alert component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/solid/utils",
+        "@omni/font-mono",
+        "@omni/solid/glass-style",
+        "@omni/solid/tone-style"
+      ],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "solid/alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog (Solid)",
+      "description": "Alert Dialog component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/solid/button",
+        "@omni/solid/utils",
+        "@omni/font-mono",
+        "@omni/solid/glass-style"
+      ],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
+    },
+    {
+      "name": "solid/aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio (Solid)",
+      "description": "Aspect Ratio component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/avatar",
+      "type": "registry:ui",
+      "title": "Avatar (Solid)",
+      "description": "Avatar component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/badge",
+      "type": "registry:ui",
+      "title": "Badge (Solid)",
+      "description": "Badge component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "solid/breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb (Solid)",
+      "description": "Breadcrumb component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["lucide-solid"]
+    },
+    {
+      "name": "solid/button",
+      "type": "registry:ui",
+      "title": "Button (Solid)",
+      "description": "Button component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "solid/button-group",
+      "type": "registry:ui",
+      "title": "Button Group (Solid)",
+      "description": "Button Group component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/solid/separator",
+        "@omni/solid/utils",
+        "@omni/font-mono",
+        "@omni/solid/glass-style"
+      ],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "solid/calendar",
+      "type": "registry:ui",
+      "title": "Calendar (Solid)",
+      "description": "Calendar component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/button", "@omni/solid/utils"],
+      "dependencies": ["lucide-solid"]
+    },
+    {
+      "name": "solid/card",
+      "type": "registry:ui",
+      "title": "Card (Solid)",
+      "description": "Card component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
+    },
+    {
+      "name": "solid/carousel",
+      "type": "registry:ui",
+      "title": "Carousel (Solid)",
+      "description": "Carousel component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/button", "@omni/solid/utils"],
+      "dependencies": ["embla-carousel-solid", "lucide-solid"]
+    },
+    {
+      "name": "solid/chart",
+      "type": "registry:ui",
+      "title": "Chart (Solid)",
+      "description": "Chart component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"]
+    },
+    {
+      "name": "solid/checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox (Solid)",
+      "description": "Checkbox component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/checkbox.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/solid/lib/form-control.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
+    },
+    {
+      "name": "solid/collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible (Solid)",
+      "description": "Collapsible component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/combobox",
+      "type": "registry:ui",
+      "title": "Combobox (Solid)",
+      "description": "Combobox component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/solid/command",
+        "@omni/solid/utils",
+        "@omni/font-mono",
+        "@omni/solid/glass-style"
+      ],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
+    },
+    {
+      "name": "solid/command",
+      "type": "registry:ui",
+      "title": "Command (Solid)",
+      "description": "Command component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/solid/dialog",
+        "@omni/solid/utils",
+        "@omni/font-mono",
+        "@omni/solid/glass-style"
+      ],
+      "dependencies": ["cmdk-solid", "@kobalte/core"]
+    },
+    {
+      "name": "solid/context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu (Solid)",
+      "description": "Context Menu component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
+    },
+    {
+      "name": "solid/data-table",
+      "type": "registry:ui",
+      "title": "Data Table (Solid)",
+      "description": "Data Table component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/data-table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/solid/button",
+        "@omni/solid/dropdown-menu",
+        "@omni/solid/input",
+        "@omni/solid/select",
+        "@omni/solid/table",
+        "@omni/solid/utils",
+        "@omni/font-mono",
+        "@omni/solid/glass-style"
+      ],
+      "dependencies": ["@tanstack/solid-table", "lucide-solid"]
+    },
+    {
+      "name": "solid/date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker (Solid)",
+      "description": "Date Picker component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/solid/button",
+        "@omni/solid/calendar",
+        "@omni/solid/popover",
+        "@omni/solid/utils",
+        "@omni/font-mono",
+        "@omni/solid/glass-style"
+      ],
+      "dependencies": ["lucide-solid"]
+    },
+    {
+      "name": "solid/dialog",
+      "type": "registry:ui",
+      "title": "Dialog (Solid)",
+      "description": "Dialog component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
+    },
+    {
+      "name": "solid/drawer",
+      "type": "registry:ui",
+      "title": "Drawer (Solid)",
+      "description": "Drawer component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@corvu/drawer"]
+    },
+    {
+      "name": "solid/dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu (Solid)",
+      "description": "Dropdown Menu component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
+    },
+    {
+      "name": "solid/empty",
+      "type": "registry:ui",
+      "title": "Empty (Solid)",
+      "description": "Empty component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "solid/field",
+      "type": "registry:ui",
+      "title": "Field (Solid)",
+      "description": "Field component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/label", "@omni/solid/separator", "@omni/solid/utils"],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "solid/form",
+      "type": "registry:ui",
+      "title": "React Hook Form (Solid)",
+      "description": "React Hook Form component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/form.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/solid/lib/form-control.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/label", "@omni/solid/utils"]
+    },
+    {
+      "name": "solid/hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card (Solid)",
+      "description": "Hover Card component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/input",
+      "type": "registry:ui",
+      "title": "Input (Solid)",
+      "description": "Input component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/solid/lib/form-control.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"]
+    },
+    {
+      "name": "solid/input-group",
+      "type": "registry:ui",
+      "title": "Input Group (Solid)",
+      "description": "Input Group component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/solid/button",
+        "@omni/solid/utils",
+        "@omni/font-mono",
+        "@omni/solid/glass-style"
+      ],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "solid/input-otp",
+      "type": "registry:ui",
+      "title": "Input OTP (Solid)",
+      "description": "Input OTP component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@corvu/otp-field", "lucide-solid"]
+    },
+    {
+      "name": "solid/item",
+      "type": "registry:ui",
+      "title": "Item (Solid)",
+      "description": "Item component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/solid/separator",
+        "@omni/solid/utils",
+        "@omni/font-mono",
+        "@omni/solid/glass-style"
+      ],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "solid/kbd",
+      "type": "registry:ui",
+      "title": "Kbd (Solid)",
+      "description": "Kbd component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"]
+    },
+    {
+      "name": "solid/label",
+      "type": "registry:ui",
+      "title": "Label (Solid)",
+      "description": "Label component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/menubar",
+      "type": "registry:ui",
+      "title": "Menubar (Solid)",
+      "description": "Menubar component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
+    },
+    {
+      "name": "solid/navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu (Solid)",
+      "description": "Navigation Menu component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "class-variance-authority", "lucide-solid"]
+    },
+    {
+      "name": "solid/pagination",
+      "type": "registry:ui",
+      "title": "Pagination (Solid)",
+      "description": "Pagination component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["lucide-solid"]
+    },
+    {
+      "name": "solid/popover",
+      "type": "registry:ui",
+      "title": "Popover (Solid)",
+      "description": "Popover component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/progress",
+      "type": "registry:ui",
+      "title": "Progress (Solid)",
+      "description": "Progress component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group (Solid)",
+      "description": "Radio Group component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/resizable",
+      "type": "registry:ui",
+      "title": "Resizable (Solid)",
+      "description": "Resizable component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@corvu/resizable", "lucide-solid"]
+    },
+    {
+      "name": "solid/scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area (Solid)",
+      "description": "Scroll Area component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/select",
+      "type": "registry:ui",
+      "title": "Select (Solid)",
+      "description": "Select component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/select.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/solid/lib/form-control.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
+    },
+    {
+      "name": "solid/separator",
+      "type": "registry:ui",
+      "title": "Separator (Solid)",
+      "description": "Separator component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/sheet",
+      "type": "registry:ui",
+      "title": "Sheet (Solid)",
+      "description": "Sheet component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core", "lucide-solid"]
+    },
+    {
+      "name": "solid/sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar (Solid)",
+      "description": "Sidebar component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/solid/button",
+        "@omni/solid/input",
+        "@omni/solid/separator",
+        "@omni/solid/sheet",
+        "@omni/solid/skeleton",
+        "@omni/solid/tooltip",
+        "@omni/solid/use-mobile",
+        "@omni/solid/utils"
+      ],
+      "dependencies": ["@kobalte/core", "class-variance-authority", "lucide-solid"]
+    },
+    {
+      "name": "solid/skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton (Solid)",
+      "description": "Skeleton component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
+    },
+    {
+      "name": "solid/slider",
+      "type": "registry:ui",
+      "title": "Slider (Solid)",
+      "description": "Slider component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/sonner",
+      "type": "registry:ui",
+      "title": "Sonner (Solid)",
+      "description": "Sonner component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "@omni/solid/utils",
+        "@omni/font-mono",
+        "@omni/solid/glass-style",
+        "@omni/solid/tone-style",
+        "@omni/solid/theme-provider"
+      ],
+      "dependencies": ["solid-sonner"]
+    },
+    {
+      "name": "solid/spinner",
+      "type": "registry:ui",
+      "title": "Spinner (Solid)",
+      "description": "Spinner component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["lucide-solid"]
+    },
+    {
+      "name": "solid/switch",
+      "type": "registry:ui",
+      "title": "Switch (Solid)",
+      "description": "Switch component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/switch.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/solid/lib/form-control.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/table",
+      "type": "registry:ui",
+      "title": "Table (Solid)",
+      "description": "Table component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils"]
+    },
+    {
+      "name": "solid/tabs",
+      "type": "registry:ui",
+      "title": "Tabs (Solid)",
+      "description": "Tabs component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/textarea",
+      "type": "registry:ui",
+      "title": "Textarea (Solid)",
+      "description": "Textarea component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/textarea.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/solid/lib/form-control.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
+    },
+    {
+      "name": "solid/toggle",
+      "type": "registry:ui",
+      "title": "Toggle (Solid)",
+      "description": "Toggle component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["@kobalte/core", "class-variance-authority"]
+    },
+    {
+      "name": "solid/toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group (Solid)",
+      "description": "Toggle Group component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["@kobalte/core", "class-variance-authority"]
+    },
+    {
+      "name": "solid/tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip (Solid)",
+      "description": "Tooltip component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["@kobalte/core"]
+    },
+    {
+      "name": "solid/typography",
+      "type": "registry:ui",
+      "title": "Typography (Solid)",
+      "description": "Typography component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/typography.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils", "@omni/font-mono"],
+      "dependencies": ["class-variance-authority"]
+    },
+    {
+      "name": "solid/utils",
+      "type": "registry:lib",
+      "title": "Utilities (Solid)",
+      "description": "Utilities for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ],
+      "dependencies": ["clsx", "tailwind-merge"]
+    },
+    {
+      "name": "solid/glass-style",
+      "type": "registry:style",
+      "title": "Glass Surface Tokens (Solid)",
+      "description": "Glass Surface Tokens style for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/lib/glass.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "css": {
+        ":root": {
+          "--glass-drop-shadow-subtle": "0 0 10px rgba(15, 23, 42, 0.08)",
+          "--glass-gradient-card-dark": "linear-gradient(180deg, rgba(63, 63, 70, 0.78) 0%, rgba(31, 31, 44, 0.55) 48%, rgba(9, 9, 11, 0.35) 100%)",
+          "--glass-gradient-card-light": "linear-gradient(180deg, rgba(32, 34, 40, 0.18) 0%, rgba(32, 34, 40, 0.05) 70%, rgba(32, 34, 40, 0) 100%)",
+          "--glass-highlight-soft": "rgba(255, 255, 255, 0.04)",
+          "--glass-highlight-subtle": "rgba(255, 255, 255, 0.03)",
+          "--glass-radiant-warning": "rgba(254, 243, 199, 0.9)",
+          "--glass-shadow-card-inner-dark": "0 0 0 1px rgba(255, 255, 255, 0.14), inset 0 0 0 0.3px rgba(255, 255, 255, 0.04)",
+          "--glass-shadow-inset": "inset 0 0 0 1px rgba(15, 23, 42, 0.08)",
+          "--glass-shadow-outline-faint": "0 0 0 1px rgba(15, 23, 42, 0.06)",
+          "--glass-shadow-outline-heavy": "0 0 0 1px rgba(15, 23, 42, 0.2)",
+          "--glass-toast-warning": "rgba(254, 243, 199, 0.9)",
+          "--glass-highlight-bright": "rgba(255, 255, 255, 0.14)",
+          "--glass-highlight-strong": "rgba(255, 255, 255, 0.12)",
+          "--glass-shadow-card": "0 0 4px rgba(0, 0, 0, 0.08)",
+          "--glass-shadow-card-dark": "0 0 10px rgba(0, 0, 0, 0.45)",
+          "--glass-shadow-card-inner-light": "0 0 0 1px rgba(15, 23, 42, 0.06), inset 0 0 0 0.8px rgba(255, 255, 255, 0.03)",
+          "--glass-shadow-outline": "0 0 0 1px rgba(15, 23, 42, 0.12)",
+          "--glass-shadow-outline-strong": "0 0 0 1px rgba(15, 23, 42, 0.18)",
+          "--glass-shadow-outline-subtle": "0 0 0 1px rgba(15, 23, 42, 0.08)",
+          "--glass-tint-base": "rgba(15, 23, 42, 0.12)",
+          "--glass-tint-heavy": "rgba(15, 23, 42, 0.2)",
+          "--glass-tint-strong": "rgba(15, 23, 42, 0.18)",
+          "--glass-tint-subtle": "rgba(15, 23, 42, 0.08)"
+        },
+        ".dark": {
+          "--glass-highlight-bright": "rgba(255, 255, 255, 0.2)",
+          "--glass-highlight-strong": "rgba(255, 255, 255, 0.16)",
+          "--glass-shadow-card": "0 0 10px rgba(0, 0, 0, 0.45)",
+          "--glass-shadow-card-dark": "0 0 10px rgba(0, 0, 0, 0.45)",
+          "--glass-shadow-card-inner-light": "var(--glass-shadow-card-inner-dark)",
+          "--glass-shadow-outline": "0 0 0 1px rgba(255, 255, 255, 0.12)",
+          "--glass-shadow-outline-strong": "0 0 0 1px rgba(255, 255, 255, 0.18)",
+          "--glass-shadow-outline-subtle": "0 0 0 1px rgba(255, 255, 255, 0.08)",
+          "--glass-tint-base": "rgba(255, 255, 255, 0.08)",
+          "--glass-tint-heavy": "rgba(255, 255, 255, 0.18)",
+          "--glass-tint-strong": "rgba(255, 255, 255, 0.12)",
+          "--glass-tint-subtle": "rgba(255, 255, 255, 0.04)"
+        }
+      }
+    },
+    {
+      "name": "solid/use-mobile",
+      "type": "registry:hook",
+      "title": "useIsMobile (Solid)",
+      "description": "useIsMobile hook for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/hooks/use-mobile.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-mobile.ts"
+        }
+      ]
+    },
+    {
+      "name": "solid/theme-provider",
+      "type": "registry:component",
+      "title": "Theme Provider (Solid)",
+      "description": "Theme provider for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/components/theme-provider.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "solid/tone-style",
+      "type": "registry:style",
+      "title": "Tone Color Tokens (Solid)",
+      "description": "Tone Color Tokens style for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/lib/tone.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "css": {
+        ":root": {
+          "--tone-destructive-bar": "rgba(239, 68, 68, 0.7)",
+          "--tone-destructive-bg": "rgba(239, 68, 68, 0.08)",
+          "--tone-destructive-border": "rgba(239, 68, 68, 0.45)",
+          "--tone-destructive-gradient": "linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.5), transparent)",
+          "--tone-destructive-icon-bg": "rgba(239, 68, 68, 0.15)",
+          "--tone-destructive-icon-border": "rgba(239, 68, 68, 0.5)",
+          "--tone-info-bar": "rgba(56, 189, 248, 0.7)",
+          "--tone-info-bg": "rgba(14, 165, 233, 0.1)",
+          "--tone-info-border": "rgba(14, 165, 233, 0.4)",
+          "--tone-info-gradient": "linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.5), transparent)",
+          "--tone-info-icon-bg": "rgba(14, 165, 233, 0.15)",
+          "--tone-info-icon-border": "rgba(56, 189, 248, 0.5)",
+          "--tone-success-bar": "rgba(52, 211, 153, 0.7)",
+          "--tone-success-bg": "rgba(16, 185, 129, 0.1)",
+          "--tone-success-border": "rgba(16, 185, 129, 0.4)",
+          "--tone-success-gradient": "linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.5), transparent)",
+          "--tone-success-icon-bg": "rgba(16, 185, 129, 0.15)",
+          "--tone-success-icon-border": "rgba(52, 211, 153, 0.5)",
+          "--tone-warning-bar": "rgba(251, 191, 36, 0.7)",
+          "--tone-warning-bg": "rgba(245, 158, 11, 0.1)",
+          "--tone-warning-border": "rgba(245, 158, 11, 0.4)",
+          "--tone-warning-gradient": "linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.5), transparent)",
+          "--tone-warning-icon-bg": "rgba(245, 158, 11, 0.15)",
+          "--tone-warning-icon-border": "rgba(251, 191, 36, 0.5)",
+          "--tone-default-bar": "rgba(148, 163, 184, 0.7)",
+          "--tone-default-bg": "rgba(15, 23, 42, 0.08)",
+          "--tone-default-body": "rgba(15, 23, 42, 0.85)",
+          "--tone-default-border": "rgba(15, 23, 42, 0.12)",
+          "--tone-default-description": "rgba(30, 41, 59, 0.85)",
+          "--tone-default-gradient": "linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.5), transparent)",
+          "--tone-default-icon-bg": "rgba(148, 163, 184, 0.12)",
+          "--tone-default-icon-border": "rgba(148, 163, 184, 0.5)",
+          "--tone-default-icon-fg": "rgba(100, 116, 139, 0.8)",
+          "--tone-default-title": "rgba(100, 116, 139, 0.9)",
+          "--tone-destructive-body": "#7f1d1d",
+          "--tone-destructive-description": "rgba(185, 28, 28, 0.9)",
+          "--tone-destructive-icon-fg": "#dc2626",
+          "--tone-destructive-title": "#b91c1c",
+          "--tone-info-body": "#0c4a6e",
+          "--tone-info-description": "#0c4a6e",
+          "--tone-info-icon-fg": "#0284c7",
+          "--tone-info-title": "#0369a1",
+          "--tone-success-body": "#064e3b",
+          "--tone-success-description": "#065f46",
+          "--tone-success-icon-fg": "#059669",
+          "--tone-success-title": "#047857",
+          "--tone-warning-body": "#92400e",
+          "--tone-warning-description": "#b45309",
+          "--tone-warning-icon-fg": "#b45309",
+          "--tone-warning-title": "#b45309"
+        },
+        ".dark": {
+          "--tone-default-bar": "rgba(148, 163, 184, 0.4)",
+          "--tone-default-bg": "rgba(148, 163, 184, 0.15)",
+          "--tone-default-body": "rgba(226, 232, 240, 0.85)",
+          "--tone-default-border": "rgba(255, 255, 255, 0.12)",
+          "--tone-default-description": "rgba(148, 163, 184, 0.85)",
+          "--tone-default-gradient": "linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.35), transparent)",
+          "--tone-default-icon-bg": "rgba(148, 163, 184, 0.18)",
+          "--tone-default-icon-border": "rgba(148, 163, 184, 0.35)",
+          "--tone-default-icon-fg": "rgba(226, 232, 240, 0.85)",
+          "--tone-default-title": "rgba(226, 232, 240, 0.9)",
+          "--tone-destructive-body": "rgba(254, 202, 202, 0.9)",
+          "--tone-destructive-description": "rgba(248, 113, 113, 0.85)",
+          "--tone-destructive-icon-fg": "#fca5a5",
+          "--tone-destructive-title": "#fca5a5",
+          "--tone-info-body": "#bae6fd",
+          "--tone-info-description": "rgba(125, 211, 252, 0.85)",
+          "--tone-info-icon-fg": "#bae6fd",
+          "--tone-info-title": "#bae6fd",
+          "--tone-success-body": "#bbf7d0",
+          "--tone-success-description": "rgba(134, 239, 172, 0.85)",
+          "--tone-success-icon-fg": "#bbf7d0",
+          "--tone-success-title": "#bbf7d0",
+          "--tone-warning-body": "rgba(254, 243, 199, 0.9)",
+          "--tone-warning-description": "rgba(253, 224, 71, 0.85)",
+          "--tone-warning-icon-fg": "#fcd34d",
+          "--tone-warning-title": "#fcd34d"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+---
+import { components } from "../lib/components"
+import { COMPONENT_STATUS_META } from "@/lib/component-status"
+
+interface Props {
+  framework?: "react" | "solid"
+  currentPath: string
+}
+
+const { framework, currentPath } = Astro.props
+const base = import.meta.env.BASE_URL.replace(/\/$/, "")
+const linkPrefix = framework ? `${base}/${framework}` : `${base}/components`
+---
+
+<div
+  class="group/sidebar-wrapper flex min-h-svh w-full"
+  style="--sidebar-width: 16rem; --sidebar-width-icon: 3rem;"
+>
+  <!-- Sidebar (desktop) -->
+  <div class="peer text-sidebar-foreground hidden md:block" data-state="expanded" data-variant="sidebar" data-side="left">
+    <div class="relative w-[var(--sidebar-width)] bg-transparent"></div>
+    <div class="fixed inset-y-0 left-0 z-10 hidden h-svh w-[var(--sidebar-width)] md:flex top-16 h-[calc(100vh-4rem)] border-border/60 border-r">
+      <div class="bg-sidebar flex h-full w-full flex-col">
+        <div class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto bg-background px-4">
+          <div class="relative flex w-full min-w-0 flex-col p-2">
+            <div class="text-sidebar-foreground/70 flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium">
+              Components
+            </div>
+            <div class="w-full text-sm">
+              <ul class="flex w-full min-w-0 flex-col gap-1">
+                {components.map((item) => {
+                  const url = `${linkPrefix}/${item.name}`
+                  const isActive = currentPath === url
+                  const statusMeta = COMPONENT_STATUS_META[item.status]
+                  return (
+                    <li class="group/menu-item relative">
+                      <a
+                        href={url}
+                        data-active={isActive}
+                        class:list={[
+                          "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden transition-[width,height,padding]",
+                          "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+                          isActive && "bg-sidebar-accent font-medium text-sidebar-accent-foreground",
+                        ]}
+                      >
+                        <span class="flex items-center justify-between w-full">
+                          <span>{item.title}</span>
+                          {statusMeta && (
+                            <span class:list={[
+                              "inline-flex items-center rounded-md border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide",
+                              statusMeta.className
+                            ]}>
+                              {statusMeta.label}
+                            </span>
+                          )}
+                        </span>
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <main class="bg-background relative flex w-full flex-1 flex-col">
+    <div class="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-6 px-4 py-6">
+      <slot />
+    </div>
+  </main>
+</div>

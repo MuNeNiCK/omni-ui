@@ -1,0 +1,72 @@
+import { Show, type Component, lazy } from "solid-js";
+
+const demos: Record<string, Component> = {
+  accordion: lazy(() => import("../demos/solid/accordion")),
+  alert: lazy(() => import("../demos/solid/alert")),
+  "alert-dialog": lazy(() => import("../demos/solid/alert-dialog")),
+  "aspect-ratio": lazy(() => import("../demos/solid/aspect-ratio")),
+  avatar: lazy(() => import("../demos/solid/avatar")),
+  badge: lazy(() => import("../demos/solid/badge")),
+  breadcrumb: lazy(() => import("../demos/solid/breadcrumb")),
+  button: lazy(() => import("../demos/solid/button")),
+  "button-group": lazy(() => import("../demos/solid/button-group")),
+  calendar: lazy(() => import("../demos/solid/calendar")),
+  card: lazy(() => import("../demos/solid/card")),
+  carousel: lazy(() => import("../demos/solid/carousel")),
+  chart: lazy(() => import("../demos/solid/chart")),
+  checkbox: lazy(() => import("../demos/solid/checkbox")),
+  collapsible: lazy(() => import("../demos/solid/collapsible")),
+  combobox: lazy(() => import("../demos/solid/combobox")),
+  command: lazy(() => import("../demos/solid/command")),
+  "context-menu": lazy(() => import("../demos/solid/context-menu")),
+  "data-table": lazy(() => import("../demos/solid/data-table")),
+  "date-picker": lazy(() => import("../demos/solid/date-picker")),
+  dialog: lazy(() => import("../demos/solid/dialog")),
+  drawer: lazy(() => import("../demos/solid/drawer")),
+  "dropdown-menu": lazy(() => import("../demos/solid/dropdown-menu")),
+  empty: lazy(() => import("../demos/solid/empty")),
+  field: lazy(() => import("../demos/solid/field")),
+  form: lazy(() => import("../demos/solid/form")),
+  "hover-card": lazy(() => import("../demos/solid/hover-card")),
+  input: lazy(() => import("../demos/solid/input")),
+  "input-group": lazy(() => import("../demos/solid/input-group")),
+  "input-otp": lazy(() => import("../demos/solid/input-otp")),
+  item: lazy(() => import("../demos/solid/item")),
+  kbd: lazy(() => import("../demos/solid/kbd")),
+  label: lazy(() => import("../demos/solid/label")),
+  menubar: lazy(() => import("../demos/solid/menubar")),
+  "navigation-menu": lazy(() => import("../demos/solid/navigation-menu")),
+  pagination: lazy(() => import("../demos/solid/pagination")),
+  popover: lazy(() => import("../demos/solid/popover")),
+  progress: lazy(() => import("../demos/solid/progress")),
+  "radio-group": lazy(() => import("../demos/solid/radio-group")),
+  resizable: lazy(() => import("../demos/solid/resizable")),
+  "scroll-area": lazy(() => import("../demos/solid/scroll-area")),
+  select: lazy(() => import("../demos/solid/select")),
+  separator: lazy(() => import("../demos/solid/separator")),
+  sheet: lazy(() => import("../demos/solid/sheet")),
+  skeleton: lazy(() => import("../demos/solid/skeleton")),
+  slider: lazy(() => import("../demos/solid/slider")),
+  sonner: lazy(() => import("../demos/solid/sonner")),
+  spinner: lazy(() => import("../demos/solid/spinner")),
+  switch: lazy(() => import("../demos/solid/switch")),
+  table: lazy(() => import("../demos/solid/table")),
+  tabs: lazy(() => import("../demos/solid/tabs")),
+  textarea: lazy(() => import("../demos/solid/textarea")),
+  toggle: lazy(() => import("../demos/solid/toggle")),
+  "toggle-group": lazy(() => import("../demos/solid/toggle-group")),
+  tooltip: lazy(() => import("../demos/solid/tooltip")),
+  typography: lazy(() => import("../demos/solid/typography")),
+  sidebar: lazy(() => import("../demos/solid/sidebar")),
+  toast: lazy(() => import("../demos/solid/toast")),
+  "react-hook-form": lazy(() => import("../demos/solid/react-hook-form")),
+};
+
+export default function SolidDemoRenderer(props: { name: string }) {
+  const Demo = demos[props.name];
+  return (
+    <Show when={Demo} fallback={<p class="text-muted-foreground">Demo not available.</p>}>
+      {Demo && <Demo />}
+    </Show>
+  );
+}
