@@ -1,8 +1,12 @@
 import { createSignal, createMemo } from "solid-js";
 
 import { Calendar } from "@/registry/solid/ui/calendar";
-import type { DateRange } from "@/registry/solid/ui/calendar";
 import { Button } from "@/registry/solid/ui/button";
+
+type DateRange = {
+  from: Date | undefined;
+  to: Date | undefined;
+};
 
 function addDays(date: Date, days: number): Date {
   const result = new Date(date);

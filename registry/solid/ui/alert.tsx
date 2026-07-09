@@ -28,7 +28,7 @@ const alertVariants = cva(
   },
 );
 
-type AlertProps = JSX.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>;
+export type AlertProps = JSX.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>;
 
 function Alert(props: AlertProps) {
   const [local, rest] = splitProps(props, ["class", "variant"]);
@@ -45,7 +45,9 @@ function Alert(props: AlertProps) {
   );
 }
 
-function AlertTitle(props: JSX.HTMLAttributes<HTMLDivElement>) {
+export type AlertTitleProps = JSX.HTMLAttributes<HTMLDivElement>;
+
+function AlertTitle(props: AlertTitleProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -56,7 +58,9 @@ function AlertTitle(props: JSX.HTMLAttributes<HTMLDivElement>) {
   );
 }
 
-function AlertDescription(props: JSX.HTMLAttributes<HTMLDivElement>) {
+export type AlertDescriptionProps = JSX.HTMLAttributes<HTMLDivElement>;
+
+function AlertDescription(props: AlertDescriptionProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -70,11 +74,13 @@ function AlertDescription(props: JSX.HTMLAttributes<HTMLDivElement>) {
   );
 }
 
-function AlertActions(props: JSX.HTMLAttributes<HTMLDivElement>) {
+export type AlertActionProps = JSX.HTMLAttributes<HTMLDivElement>;
+
+function AlertAction(props: AlertActionProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
-      data-slot="alert-actions"
+      data-slot="alert-action"
       class={cn(
         "col-start-2 flex flex-wrap items-center gap-2 pt-1 text-xs font-medium text-[color:var(--tone-title)]",
         local.class,
@@ -84,4 +90,4 @@ function AlertActions(props: JSX.HTMLAttributes<HTMLDivElement>) {
   );
 }
 
-export { Alert, AlertActions, AlertDescription, AlertTitle, alertVariants };
+export { Alert, AlertAction, AlertDescription, AlertTitle, alertVariants };

@@ -1,21 +1,26 @@
 import { splitProps, type ComponentProps, type JSX, type ParentProps } from "solid-js";
 import * as ComboboxPrimitive from "@kobalte/core/combobox";
-import { CheckIcon, ChevronsUpDownIcon, SearchIcon } from "lucide-solid";
+import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-solid";
 import { cn } from "@/registry/solid/lib/utils";
 
-function Combobox<Option, OptGroup = never>(
-  props: ComboboxPrimitive.ComboboxRootProps<Option, OptGroup>,
-) {
+const ComboboxPortal = ComboboxPrimitive.Portal;
+
+export type ComboboxProps<Option, OptGroup = never> = ComboboxPrimitive.ComboboxRootProps<
+  Option,
+  OptGroup
+>;
+
+function Combobox<Option, OptGroup = never>(props: ComboboxProps<Option, OptGroup>) {
   return <ComboboxPrimitive.Root data-slot="combobox" {...props} />;
 }
 
-function ComboboxTrigger(
-  props: ComponentProps<typeof ComboboxPrimitive.Trigger> & {
-    placeholder?: JSX.Element | string;
-    hideIndicator?: boolean;
-    size?: "sm" | "default";
-  },
-) {
+export type ComboboxTriggerProps = ComponentProps<typeof ComboboxPrimitive.Trigger> & {
+  placeholder?: JSX.Element | string;
+  hideIndicator?: boolean;
+  size?: "sm" | "default";
+};
+
+function ComboboxTrigger(props: ComboboxTriggerProps) {
   const [local, rest] = splitProps(props, [
     "class",
     "children",
@@ -55,7 +60,9 @@ function ComboboxTrigger(
   );
 }
 
-function ComboboxContent(props: ComponentProps<typeof ComboboxPrimitive.Content>) {
+export type ComboboxContentProps = ComponentProps<typeof ComboboxPrimitive.Content>;
+
+function ComboboxContent(props: ComboboxContentProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <ComboboxPrimitive.Portal>
@@ -75,32 +82,65 @@ function ComboboxContent(props: ComponentProps<typeof ComboboxPrimitive.Content>
   );
 }
 
-function ComboboxSearch(props: ComponentProps<typeof ComboboxPrimitive.Input>) {
-  const [local, rest] = splitProps(props, ["class", "aria-label", "placeholder"]);
-  const inputLabel = () =>
-    local["aria-label"] ??
-    (typeof local.placeholder === "string" ? local.placeholder : "Search options");
+export type ComboboxInputProps = ComponentProps<typeof ComboboxPrimitive.Input> & {
+  showTrigger?: boolean;
+};
 
+function ComboboxInput(props: ComboboxInputProps) {
+  const [local, rest] = splitProps(props, ["class", "showTrigger", "disabled", "children"]);
   return (
-    <div
-      data-slot="combobox-search"
+    <ComboboxPrimitive.Control
+      data-slot="combobox-control"
       class={cn(
-        "flex items-center gap-2 border-b border-border/60 px-3 transition-[border,box-shadow] focus-within:border-foreground focus-within:ring-2 focus-within:ring-ring/40",
-        local.class,
+        "inline-flex h-10 w-full min-w-0 items-center border border-border/60 bg-muted/40 transition-[border,box-shadow] focus-within:border-foreground focus-within:ring-2 focus-within:ring-ring/40",
+        "rounded-none",
       )}
     >
-      <SearchIcon class="size-4 shrink-0 opacity-50" aria-hidden="true" />
       <ComboboxPrimitive.Input
-        aria-label={inputLabel()}
-        placeholder={local.placeholder}
-        class="flex h-12 w-full bg-transparent py-3 text-sm text-foreground/90 outline-none placeholder:text-muted-foreground/60 disabled:cursor-not-allowed disabled:opacity-50"
+        data-slot="combobox-input"
+        disabled={local.disabled}
+        class={cn(
+          "h-full min-w-0 flex-1 bg-transparent px-3 text-sm text-foreground/90 outline-none placeholder:text-muted-foreground/60 disabled:cursor-not-allowed disabled:opacity-50",
+          local.class,
+        )}
         {...rest}
       />
-    </div>
+      {(local.showTrigger ?? true) && (
+        <ComboboxTrigger
+          disabled={local.disabled}
+          hideIndicator
+          class="h-full min-w-0 border-0 bg-transparent px-2"
+        >
+          <ChevronsUpDownIcon class="size-3.5 opacity-60" />
+        </ComboboxTrigger>
+      )}
+      {local.children}
+    </ComboboxPrimitive.Control>
   );
 }
 
-function ComboboxList(props: ComponentProps<typeof ComboboxPrimitive.Listbox>) {
+export type ComboboxControlProps<Option = unknown> = ComponentProps<
+  typeof ComboboxPrimitive.Control<Option>
+>;
+
+function ComboboxControl<Option = unknown>(props: ComboboxControlProps<Option>) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <ComboboxPrimitive.Control
+      data-slot="combobox-control"
+      class={cn(
+        "inline-flex h-10 w-full min-w-0 items-center border border-border/60 bg-muted/40 transition-[border,box-shadow] focus-within:border-foreground focus-within:ring-2 focus-within:ring-ring/40",
+        "rounded-none",
+        local.class,
+      )}
+      {...rest}
+    />
+  );
+}
+
+export type ComboboxListProps = ComponentProps<typeof ComboboxPrimitive.Listbox>;
+
+function ComboboxList(props: ComboboxListProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <ComboboxPrimitive.Listbox
@@ -111,7 +151,9 @@ function ComboboxList(props: ComponentProps<typeof ComboboxPrimitive.Listbox>) {
   );
 }
 
-function ComboboxEmpty(props: JSX.HTMLAttributes<HTMLDivElement> & { class?: string }) {
+export type ComboboxEmptyProps = JSX.HTMLAttributes<HTMLDivElement> & { class?: string };
+
+function ComboboxEmpty(props: ComboboxEmptyProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -122,13 +164,15 @@ function ComboboxEmpty(props: JSX.HTMLAttributes<HTMLDivElement> & { class?: str
   );
 }
 
-function ComboboxGroup(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>,
-) {
+export type ComboboxSectionProps = ParentProps<
+  { class?: string } & JSX.HTMLAttributes<HTMLDivElement>
+>;
+
+function ComboboxSection(props: ComboboxSectionProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
-      data-slot="combobox-group"
+      data-slot="combobox-section"
       role="group"
       class={cn("overflow-hidden py-1", local.class)}
       {...rest}
@@ -136,9 +180,13 @@ function ComboboxGroup(
   );
 }
 
-function ComboboxSeparator(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>,
-) {
+const ComboboxGroup = ComboboxSection;
+
+export type ComboboxSeparatorProps = ParentProps<
+  { class?: string } & JSX.HTMLAttributes<HTMLDivElement>
+>;
+
+function ComboboxSeparator(props: ComboboxSeparatorProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -153,7 +201,9 @@ function ComboboxSeparator(
   );
 }
 
-function ComboboxItem(props: ComponentProps<typeof ComboboxPrimitive.Item>) {
+export type ComboboxItemProps = ComponentProps<typeof ComboboxPrimitive.Item>;
+
+function ComboboxItem(props: ComboboxItemProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <ComboboxPrimitive.Item
@@ -181,14 +231,148 @@ function ComboboxItem(props: ComponentProps<typeof ComboboxPrimitive.Item>) {
   );
 }
 
+export type ComboboxItemLabelProps = ComponentProps<typeof ComboboxPrimitive.ItemLabel>;
+
+function ComboboxItemLabel(props: ComboboxItemLabelProps) {
+  return <ComboboxPrimitive.ItemLabel data-slot="combobox-item-label" {...props} />;
+}
+
+export type ComboboxDescriptionProps = ComponentProps<typeof ComboboxPrimitive.Description>;
+
+function ComboboxDescription(props: ComboboxDescriptionProps) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <ComboboxPrimitive.Description
+      data-slot="combobox-description"
+      class={cn("text-sm text-muted-foreground data-[disabled]:opacity-50", local.class)}
+      {...rest}
+    />
+  );
+}
+
+export type ComboboxLabelProps = ComponentProps<typeof ComboboxPrimitive.Label>;
+
+function ComboboxLabel(props: ComboboxLabelProps) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <ComboboxPrimitive.Label
+      data-slot="combobox-label"
+      class={cn("px-3 py-2 text-xs font-medium text-muted-foreground/90", local.class)}
+      {...rest}
+    />
+  );
+}
+
+export type ComboboxErrorMessageProps = ComponentProps<typeof ComboboxPrimitive.ErrorMessage>;
+
+function ComboboxErrorMessage(props: ComboboxErrorMessageProps) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <ComboboxPrimitive.ErrorMessage
+      data-slot="combobox-error-message"
+      class={cn("text-sm text-destructive data-[disabled]:opacity-50", local.class)}
+      {...rest}
+    />
+  );
+}
+
+export type ComboboxValueProps = ComponentProps<"span">;
+
+function ComboboxValue(props: ComboboxValueProps) {
+  return <span data-slot="combobox-value" {...props} />;
+}
+
+export type ComboboxCollectionProps = ComponentProps<"div">;
+
+function ComboboxCollection(props: ComboboxCollectionProps) {
+  return <div data-slot="combobox-collection" {...props} />;
+}
+
+export type ComboboxChipsProps = ComponentProps<"div">;
+
+function ComboboxChips(props: ComboboxChipsProps) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <div
+      data-slot="combobox-chips"
+      class={cn(
+        "flex min-h-10 flex-wrap items-center gap-1.5 border border-border/60 bg-muted/40 px-2.5 py-1.5 text-sm transition-[border,box-shadow] focus-within:border-foreground focus-within:ring-2 focus-within:ring-ring/40",
+        "rounded-none",
+        local.class,
+      )}
+      {...rest}
+    />
+  );
+}
+
+export type ComboboxChipProps = ComponentProps<"span"> & {
+  showRemove?: boolean;
+};
+
+function ComboboxChip(props: ComboboxChipProps) {
+  const [local, rest] = splitProps(props, ["class", "children", "showRemove"]);
+  return (
+    <span
+      data-slot="combobox-chip"
+      class={cn(
+        "inline-flex h-6 w-fit items-center justify-center gap-1 border border-foreground/30 bg-foreground/10 px-2 text-xs font-medium text-foreground",
+        "rounded-none",
+        local.class,
+      )}
+      {...rest}
+    >
+      {local.children}
+      {(local.showRemove ?? true) && (
+        <button
+          type="button"
+          data-slot="combobox-chip-remove"
+          class="-mr-1 inline-flex size-5 items-center justify-center opacity-70 hover:opacity-100"
+        >
+          <XIcon class="size-3" />
+        </button>
+      )}
+    </span>
+  );
+}
+
+export type ComboboxChipsInputProps = ComponentProps<typeof ComboboxPrimitive.Input>;
+
+function ComboboxChipsInput(props: ComboboxChipsInputProps) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <ComboboxPrimitive.Input
+      data-slot="combobox-chip-input"
+      class={cn("min-w-16 flex-1 bg-transparent outline-none", local.class)}
+      {...rest}
+    />
+  );
+}
+
+function useComboboxAnchor() {
+  return undefined;
+}
+
 export {
   Combobox,
-  ComboboxTrigger,
+  ComboboxChip,
+  ComboboxChips,
+  ComboboxChipsInput,
+  ComboboxCollection,
   ComboboxContent,
-  ComboboxSearch,
-  ComboboxList,
+  ComboboxControl,
+  ComboboxDescription,
   ComboboxEmpty,
+  ComboboxErrorMessage,
   ComboboxGroup,
-  ComboboxSeparator,
+  ComboboxInput,
   ComboboxItem,
+  ComboboxItemLabel,
+  ComboboxLabel,
+  ComboboxList,
+  ComboboxPortal,
+  ComboboxSection,
+  ComboboxSeparator,
+  ComboboxTrigger,
+  ComboboxValue,
+  useComboboxAnchor,
 };

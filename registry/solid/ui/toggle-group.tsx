@@ -22,16 +22,16 @@ function useToggleGroupContext() {
   return useContext(ToggleGroupContext);
 }
 
-function ToggleGroup(
-  props: {
-    class?: string;
-    type?: "single" | "multiple";
-    value?: string | string[];
-    defaultValue?: string | string[];
-    onValueChange?: (value: string | string[]) => void;
-  } & JSX.HTMLAttributes<HTMLDivElement> &
-    VariantProps<typeof toggleVariants>,
-) {
+export type ToggleGroupProps = {
+  class?: string;
+  type?: "single" | "multiple";
+  value?: string | string[];
+  defaultValue?: string | string[];
+  onValueChange?: (value: string | string[]) => void;
+} & JSX.HTMLAttributes<HTMLDivElement> &
+  VariantProps<typeof toggleVariants>;
+
+function ToggleGroup(props: ToggleGroupProps) {
   const [local, rest] = splitProps(props, [
     "class",
     "children",
@@ -93,13 +93,13 @@ function ToggleGroup(
   );
 }
 
-function ToggleGroupItem(
-  props: {
-    class?: string;
-    value: string;
-  } & JSX.ButtonHTMLAttributes<HTMLButtonElement> &
-    VariantProps<typeof toggleVariants>,
-) {
+export type ToggleGroupItemProps = {
+  class?: string;
+  value: string;
+} & JSX.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof toggleVariants>;
+
+function ToggleGroupItem(props: ToggleGroupItemProps) {
   const [local, rest] = splitProps(props, ["class", "children", "variant", "size", "value"]);
   const context = useToggleGroupContext();
 

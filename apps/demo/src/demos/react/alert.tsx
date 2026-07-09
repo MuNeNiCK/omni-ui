@@ -1,6 +1,6 @@
 import { CheckCheck, InfoIcon, TriangleAlert } from "lucide-react";
 
-import { Alert, AlertActions, AlertDescription, AlertTitle } from "@/registry/react/ui/alert";
+import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/registry/react/ui/alert";
 import { Button } from "@/registry/react/ui/button";
 
 export default function AlertDemo() {
@@ -13,11 +13,11 @@ export default function AlertDemo() {
           Control plane upgrades start at 02:00 JST. Instances remain online; management APIs may
           respond slower for up to five minutes.
         </AlertDescription>
-        <AlertActions>
+        <AlertAction>
           <Button variant="muted" size="sm">
             View status page
           </Button>
-        </AlertActions>
+        </AlertAction>
       </Alert>
 
       <Alert variant="success">
@@ -45,12 +45,12 @@ export default function AlertDemo() {
           Deployments in the Osaka region are paused while we investigate a networking regression.
           Subscribe for updates in the status center.
         </AlertDescription>
-        <AlertActions>
+        <AlertAction>
           <Button variant="muted" size="sm">
             Subscribe updates
           </Button>
           <Button size="sm">Open status</Button>
-        </AlertActions>
+        </AlertAction>
       </Alert>
     </div>
   );

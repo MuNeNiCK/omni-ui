@@ -6,10 +6,12 @@ import {
   Show,
   type ComponentProps,
   type JSX,
+  type ValidComponent,
 } from "solid-js";
+import CalendarPrimitive from "@corvu/calendar";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-solid";
 import { cn } from "@/registry/solid/lib/utils";
-import { Button } from "@/registry/solid/ui/button";
+import { Button, buttonVariants } from "@/registry/solid/ui/button";
 
 // --- Helpers ---
 
@@ -49,6 +51,7 @@ type DateRange = {
 
 type CalendarBaseProps = {
   class?: string;
+  children?: JSX.Element;
   month?: Date;
   onMonthChange?: (month: Date) => void;
   disabled?: (date: Date) => boolean;
@@ -77,7 +80,7 @@ type CalendarRangeProps = CalendarBaseProps & {
   onSelect?: (range: DateRange) => void;
 };
 
-type CalendarProps = CalendarSingleProps | CalendarMultipleProps | CalendarRangeProps;
+export type CalendarProps = CalendarSingleProps | CalendarMultipleProps | CalendarRangeProps;
 
 type CalendarDayButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
   day: Date;
@@ -133,6 +136,7 @@ function CalendarDayButton(props: CalendarDayButtonProps) {
 function Calendar(props: CalendarProps) {
   const [local] = splitProps(props, [
     "class",
+    "children",
     "mode",
     "selected",
     "onSelect",
@@ -145,6 +149,15 @@ function Calendar(props: CalendarProps) {
     "captionLayout",
     "buttonVariant",
   ]);
+
+  if (local.children) {
+    return (
+      <CalendarPrimitive
+        data-slot="calendar"
+        {...(props as ComponentProps<typeof CalendarPrimitive>)}
+      />
+    );
+  }
 
   const mode = () => (local.mode ?? "single") as CalendarMode;
   const showOutside = () => local.showOutsideDays !== false;
@@ -441,5 +454,122 @@ function Calendar(props: CalendarProps) {
   );
 }
 
-export { Calendar, CalendarDayButton };
-export type { CalendarProps, DateRange };
+export type CalendarNavProps<T extends ValidComponent = "button"> = ComponentProps<
+  typeof CalendarPrimitive.Nav<T>
+>;
+
+function CalendarNav<T extends ValidComponent = "button">(props: CalendarNavProps<T>) {
+  const [local, rest] = splitProps(props, ["action", "class", "children"]);
+  return (
+    <CalendarPrimitive.Nav
+      data-slot="calendar-nav"
+      action={local.action}
+      class={buttonVariants({
+        variant: "ghost",
+        size: "icon-sm",
+        class: cn("size-7 p-0 opacity-70 hover:opacity-100", local.class),
+      })}
+      {...rest}
+    >
+      <Show
+        when={local.children}
+        fallback={
+          local.action === "next-year" || local.action === "next-month" ? (
+            <ChevronRightIcon class="size-4" />
+          ) : (
+            <ChevronLeftIcon class="size-4" />
+          )
+        }
+      >
+        {local.children}
+      </Show>
+    </CalendarPrimitive.Nav>
+  );
+}
+
+export type CalendarLabelProps<T extends ValidComponent = "h2"> = ComponentProps<
+  typeof CalendarPrimitive.Label<T>
+>;
+
+function CalendarLabel<T extends ValidComponent = "h2">(props: CalendarLabelProps<T>) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <CalendarPrimitive.Label
+      data-slot="calendar-label"
+      class={cn("text-sm font-medium text-foreground", local.class)}
+      {...rest}
+    />
+  );
+}
+
+export type CalendarTableProps<T extends ValidComponent = "table"> = ComponentProps<
+  typeof CalendarPrimitive.Table<T>
+>;
+
+function CalendarTable<T extends ValidComponent = "table">(props: CalendarTableProps<T>) {
+  return <CalendarPrimitive.Table data-slot="calendar-table" {...props} />;
+}
+
+export type CalendarHeadCellProps<T extends ValidComponent = "th"> = ComponentProps<
+  typeof CalendarPrimitive.HeadCell<T>
+>;
+
+function CalendarHeadCell<T extends ValidComponent = "th">(props: CalendarHeadCellProps<T>) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <CalendarPrimitive.HeadCell
+      data-slot="calendar-head-cell"
+      class={cn("w-9 text-center text-xs font-normal text-muted-foreground/70", local.class)}
+      {...rest}
+    />
+  );
+}
+
+export type CalendarCellProps<T extends ValidComponent = "td"> = ComponentProps<
+  typeof CalendarPrimitive.Cell<T>
+>;
+
+function CalendarCell<T extends ValidComponent = "td">(props: CalendarCellProps<T>) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <CalendarPrimitive.Cell
+      data-slot="calendar-cell"
+      class={cn("relative p-0 text-center text-sm", local.class)}
+      {...rest}
+    />
+  );
+}
+
+export type CalendarCellTriggerProps<T extends ValidComponent = "button"> = ComponentProps<
+  typeof CalendarPrimitive.CellTrigger<T>
+>;
+
+function CalendarCellTrigger<T extends ValidComponent = "button">(
+  props: CalendarCellTriggerProps<T>,
+) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <CalendarPrimitive.CellTrigger
+      data-slot="calendar-cell-trigger"
+      class={buttonVariants({
+        variant: "ghost",
+        size: "icon",
+        class: cn(
+          "size-9 rounded-none p-0 font-normal aria-selected:bg-foreground aria-selected:text-background data-[today]:border data-[today]:border-border/60",
+          local.class,
+        ),
+      })}
+      {...rest}
+    />
+  );
+}
+
+export {
+  Calendar,
+  CalendarCell,
+  CalendarCellTrigger,
+  CalendarHeadCell,
+  CalendarLabel,
+  CalendarNav,
+  CalendarTable,
+};

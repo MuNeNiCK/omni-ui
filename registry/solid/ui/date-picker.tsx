@@ -10,11 +10,16 @@ import { CalendarIcon, RotateCcwIcon } from "lucide-solid";
 import { format } from "date-fns";
 import { cn } from "@/registry/solid/lib/utils";
 import { Button } from "@/registry/solid/ui/button";
-import { Calendar, type DateRange } from "@/registry/solid/ui/calendar";
+import { Calendar } from "@/registry/solid/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/registry/solid/ui/popover";
 
 type CalendarComponentProps = ComponentProps<typeof Calendar>;
 type CalendarMode = NonNullable<CalendarComponentProps["mode"]>;
+
+export type DateRange = {
+  from: Date | undefined;
+  to: Date | undefined;
+};
 
 type DatePickerValue<M extends CalendarMode> = M extends "range"
   ? DateRange | undefined

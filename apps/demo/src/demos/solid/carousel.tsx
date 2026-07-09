@@ -1,7 +1,7 @@
 import { createSignal, For } from "solid-js";
+import type { EmblaCarouselType } from "embla-carousel";
 
 import {
-  type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -30,13 +30,13 @@ const slides = [
 
 export default function CarouselDemo() {
   const [index, setIndex] = createSignal(0);
-  const [api, setApi] = createSignal<CarouselApi>();
+  const [api, setApi] = createSignal<EmblaCarouselType>();
 
   return (
     <div class="relative">
       <Carousel
         class="w-full"
-        setApi={(instance) => {
+        setAPI={(instance) => {
           setApi(instance);
           instance?.on("select", () => setIndex(instance.selectedScrollSnap()));
         }}

@@ -7,9 +7,9 @@ import {
   ComboboxContent,
   ComboboxEmpty,
   ComboboxGroup,
+  ComboboxInput,
   ComboboxItem,
   ComboboxList,
-  ComboboxSearch,
   ComboboxSeparator,
   ComboboxTrigger,
 } from "@/registry/react/ui/combobox";
@@ -71,7 +71,7 @@ export default function ComboboxDemo() {
             ) : null}
           </ComboboxTrigger>
           <ComboboxContent>
-            <ComboboxSearch placeholder="Filter regions…" />
+            <ComboboxInput placeholder="Filter regions…" />
             <ComboboxList>
               <ComboboxEmpty>No regions found.</ComboboxEmpty>
               <ComboboxGroup>
@@ -116,7 +116,7 @@ export default function ComboboxDemo() {
               {selectedTeam?.label}
             </ComboboxTrigger>
             <ComboboxContent align="end">
-              <ComboboxSearch placeholder="Filter teams…" />
+              <ComboboxInput placeholder="Filter teams…" />
               <ComboboxList>
                 <ComboboxEmpty>No team found.</ComboboxEmpty>
                 <ComboboxGroup>

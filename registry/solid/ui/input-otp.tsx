@@ -1,4 +1,4 @@
-import type { Component, ComponentProps, ValidComponent } from "solid-js";
+import type { ComponentProps, ValidComponent } from "solid-js";
 import { Show, splitProps } from "solid-js";
 
 import type { DynamicProps, RootProps } from "@corvu/otp-field";
@@ -7,17 +7,13 @@ import { MinusIcon } from "lucide-solid";
 
 import { cn } from "@/registry/solid/lib/utils";
 
-export const REGEXP_ONLY_DIGITS = "^\\d*$";
-export const REGEXP_ONLY_CHARS = "^[a-zA-Z]*$";
-export const REGEXP_ONLY_DIGITS_AND_CHARS = "^[a-zA-Z0-9]*$";
-
-type InputOTPProps<T extends ValidComponent = "div"> = RootProps<T> & {
+export type OTPFieldProps<T extends ValidComponent = "div"> = RootProps<T> & {
   class?: string;
   containerClassName?: string;
 };
 
-const InputOTP = <T extends ValidComponent = "div">(props: DynamicProps<T, InputOTPProps<T>>) => {
-  const [, rest] = splitProps(props as InputOTPProps, ["class", "containerClassName"]);
+const OTPField = <T extends ValidComponent = "div">(props: DynamicProps<T, OTPFieldProps<T>>) => {
+  const [, rest] = splitProps(props as OTPFieldProps, ["class", "containerClassName"]);
   return (
     <OtpField
       data-slot="input-otp"
@@ -31,14 +27,18 @@ const InputOTP = <T extends ValidComponent = "div">(props: DynamicProps<T, Input
   );
 };
 
-const InputOTPGroup: Component<ComponentProps<"div">> = (props) => {
+export type OTPFieldGroupProps = ComponentProps<"div">;
+
+const OTPFieldGroup = (props: OTPFieldGroupProps) => {
   const [local, others] = splitProps(props, ["class"]);
   return (
     <div data-slot="input-otp-group" class={cn("flex items-center", local.class)} {...others} />
   );
 };
 
-const InputOTPSlot: Component<ComponentProps<"div"> & { index: number }> = (props) => {
+export type OTPFieldSlotProps = ComponentProps<"div"> & { index: number };
+
+const OTPFieldSlot = (props: OTPFieldSlotProps) => {
   const [local, others] = splitProps(props, ["class", "index"]);
   const context = OtpField.useContext();
   const char = () => context.value()[local.index];
@@ -69,17 +69,43 @@ const InputOTPSlot: Component<ComponentProps<"div"> & { index: number }> = (prop
   );
 };
 
-const InputOTPSeparator: Component<ComponentProps<"div">> = (props) => {
+export type OTPFieldSeparatorProps = ComponentProps<"div">;
+
+const OTPFieldSeparator = (props: OTPFieldSeparatorProps) => {
+  const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
       data-slot="input-otp-separator"
       role="separator"
-      class="flex items-center justify-center px-1 text-muted-foreground/60"
-      {...props}
+      class={cn("flex items-center justify-center px-1 text-muted-foreground/60", local.class)}
+      {...rest}
     >
       <MinusIcon class="size-4" />
     </div>
   );
 };
 
-export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator };
+export type OTPFieldInputProps<T extends ValidComponent = "input"> = ComponentProps<
+  typeof OtpField.Input<T>
+>;
+
+const OTPFieldInput = <T extends ValidComponent = "input">(props: OTPFieldInputProps<T>) => (
+  <OtpField.Input data-slot="input-otp-input" {...props} />
+);
+
+const InputOTP = OTPField;
+const InputOTPGroup = OTPFieldGroup;
+const InputOTPSlot = OTPFieldSlot;
+const InputOTPSeparator = OTPFieldSeparator;
+
+export {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+  OTPField,
+  OTPFieldGroup,
+  OTPFieldInput,
+  OTPFieldSeparator,
+  OTPFieldSlot,
+};

@@ -5,7 +5,9 @@ import { cn } from "@/registry/solid/lib/utils";
 
 const containerStyles = "divide-y divide-border/60 text-muted-foreground/80 dark:text-foreground";
 
-function Accordion(props: ComponentProps<typeof AccordionPrimitive.Root>) {
+export type AccordionProps = ComponentProps<typeof AccordionPrimitive.Root>;
+
+function Accordion(props: AccordionProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <AccordionPrimitive.Root
@@ -18,7 +20,9 @@ function Accordion(props: ComponentProps<typeof AccordionPrimitive.Root>) {
   );
 }
 
-function AccordionItem(props: ComponentProps<typeof AccordionPrimitive.Item>) {
+export type AccordionItemProps = ComponentProps<typeof AccordionPrimitive.Item>;
+
+function AccordionItem(props: AccordionItemProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <AccordionPrimitive.Item
@@ -36,7 +40,9 @@ function AccordionItem(props: ComponentProps<typeof AccordionPrimitive.Item>) {
   );
 }
 
-function AccordionTrigger(props: ComponentProps<typeof AccordionPrimitive.Trigger>) {
+export type AccordionTriggerProps = ComponentProps<typeof AccordionPrimitive.Trigger>;
+
+function AccordionTrigger(props: AccordionTriggerProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <AccordionPrimitive.Header class="relative">
@@ -66,7 +72,9 @@ function AccordionTrigger(props: ComponentProps<typeof AccordionPrimitive.Trigge
   );
 }
 
-function AccordionContent(props: ComponentProps<typeof AccordionPrimitive.Content>) {
+export type AccordionContentProps = ComponentProps<typeof AccordionPrimitive.Content>;
+
+function AccordionContent(props: AccordionContentProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <AccordionPrimitive.Content

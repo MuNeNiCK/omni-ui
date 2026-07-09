@@ -2,7 +2,9 @@ import { type JSX, splitProps } from "solid-js";
 
 import { cn } from "@/registry/solid/lib/utils";
 
-function Skeleton(props: JSX.HTMLAttributes<HTMLDivElement>) {
+export type SkeletonProps = JSX.HTMLAttributes<HTMLDivElement>;
+
+function Skeleton(props: SkeletonProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div

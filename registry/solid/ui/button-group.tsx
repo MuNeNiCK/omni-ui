@@ -20,10 +20,12 @@ const buttonGroupVariants = cva(
   },
 );
 
-function ButtonGroup(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>> &
-    VariantProps<typeof buttonGroupVariants>,
-) {
+export type ButtonGroupProps = ParentProps<
+  { class?: string } & JSX.HTMLAttributes<HTMLDivElement>
+> &
+  VariantProps<typeof buttonGroupVariants>;
+
+function ButtonGroup(props: ButtonGroupProps) {
   const [local, rest] = splitProps(props, ["class", "orientation"]);
   return (
     <div
@@ -36,14 +38,14 @@ function ButtonGroup(
   );
 }
 
-function ButtonGroupText(
-  props: ParentProps<
-    {
-      class?: string;
-      asChild?: boolean;
-    } & JSX.HTMLAttributes<HTMLDivElement>
-  >,
-) {
+export type ButtonTextProps = ParentProps<
+  {
+    class?: string;
+    asChild?: boolean;
+  } & JSX.HTMLAttributes<HTMLDivElement>
+>;
+
+function ButtonText(props: ButtonTextProps) {
   const [local, rest] = splitProps(props, ["class", "asChild"]);
 
   return (
@@ -60,14 +62,14 @@ function ButtonGroupText(
   );
 }
 
-function ButtonGroupSeparator(
-  props: ParentProps<
-    {
-      class?: string;
-      orientation?: "horizontal" | "vertical";
-    } & JSX.HTMLAttributes<HTMLDivElement>
-  >,
-) {
+export type ButtonSeparatorProps = ParentProps<
+  {
+    class?: string;
+    orientation?: "horizontal" | "vertical";
+  } & JSX.HTMLAttributes<HTMLDivElement>
+>;
+
+function ButtonSeparator(props: ButtonSeparatorProps) {
   const [local, rest] = splitProps(props, ["class", "orientation"]);
   const orientation = () => local.orientation ?? "vertical";
   return (
@@ -89,4 +91,14 @@ function ButtonGroupSeparator(
   );
 }
 
-export { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, buttonGroupVariants };
+const ButtonGroupText = ButtonText;
+const ButtonGroupSeparator = ButtonSeparator;
+
+export {
+  ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
+  ButtonSeparator,
+  ButtonText,
+  buttonGroupVariants,
+};

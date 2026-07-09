@@ -4,7 +4,9 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-solid";
 
 import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
-function Menubar(props: ComponentProps<typeof MenubarPrimitive.Root>) {
+export type MenubarProps = ComponentProps<typeof MenubarPrimitive.Root>;
+
+function Menubar(props: MenubarProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <MenubarPrimitive.Root
@@ -15,11 +17,15 @@ function Menubar(props: ComponentProps<typeof MenubarPrimitive.Root>) {
   );
 }
 
-function MenubarMenu(props: ComponentProps<typeof MenubarPrimitive.Menu>) {
+export type MenubarMenuProps = ComponentProps<typeof MenubarPrimitive.Menu>;
+
+function MenubarMenu(props: MenubarMenuProps) {
   return <MenubarPrimitive.Menu data-slot="menubar-menu" {...props} />;
 }
 
-function MenubarGroup(props: ComponentProps<typeof MenubarPrimitive.Group>) {
+export type MenubarGroupProps = ComponentProps<typeof MenubarPrimitive.Group>;
+
+function MenubarGroup(props: MenubarGroupProps) {
   return <MenubarPrimitive.Group data-slot="menubar-group" {...props} />;
 }
 
@@ -27,11 +33,15 @@ function MenubarPortal(props: ComponentProps<typeof MenubarPrimitive.Portal>) {
   return <MenubarPrimitive.Portal data-slot="menubar-portal" {...props} />;
 }
 
-function MenubarRadioGroup(props: ComponentProps<typeof MenubarPrimitive.RadioGroup>) {
+export type MenubarRadioGroupProps = ComponentProps<typeof MenubarPrimitive.RadioGroup>;
+
+function MenubarRadioGroup(props: MenubarRadioGroupProps) {
   return <MenubarPrimitive.RadioGroup data-slot="menubar-radio-group" {...props} />;
 }
 
-function MenubarTrigger(props: ComponentProps<typeof MenubarPrimitive.Trigger>) {
+export type MenubarTriggerProps = ComponentProps<typeof MenubarPrimitive.Trigger>;
+
+function MenubarTrigger(props: MenubarTriggerProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <MenubarPrimitive.Trigger
@@ -50,7 +60,9 @@ function MenubarTrigger(props: ComponentProps<typeof MenubarPrimitive.Trigger>) 
   );
 }
 
-function MenubarContent(props: ComponentProps<typeof MenubarPrimitive.Content>) {
+export type MenubarContentProps = ComponentProps<typeof MenubarPrimitive.Content>;
+
+function MenubarContent(props: MenubarContentProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <MenubarPrimitive.Portal>
@@ -69,13 +81,13 @@ function MenubarContent(props: ComponentProps<typeof MenubarPrimitive.Content>) 
   );
 }
 
-function MenubarItem(
-  props: ComponentProps<typeof MenubarPrimitive.Item> & {
-    class?: string;
-    inset?: boolean;
-    variant?: "default" | "destructive";
-  },
-) {
+export type MenubarItemProps = ComponentProps<typeof MenubarPrimitive.Item> & {
+  class?: string;
+  inset?: boolean;
+  variant?: "default" | "destructive";
+};
+
+function MenubarItem(props: MenubarItemProps) {
   const [local, rest] = splitProps(props, ["class", "inset", "variant"]);
   const variant = () => local.variant ?? "default";
   return (
@@ -99,7 +111,9 @@ function MenubarItem(
   );
 }
 
-function MenubarCheckboxItem(props: ComponentProps<typeof MenubarPrimitive.CheckboxItem>) {
+export type MenubarCheckboxItemProps = ComponentProps<typeof MenubarPrimitive.CheckboxItem>;
+
+function MenubarCheckboxItem(props: MenubarCheckboxItemProps) {
   const [local, rest] = splitProps(props, ["class", "children", "checked"]);
   return (
     <MenubarPrimitive.CheckboxItem
@@ -125,7 +139,9 @@ function MenubarCheckboxItem(props: ComponentProps<typeof MenubarPrimitive.Check
   );
 }
 
-function MenubarRadioItem(props: ComponentProps<typeof MenubarPrimitive.RadioItem>) {
+export type MenubarRadioItemProps = ComponentProps<typeof MenubarPrimitive.RadioItem>;
+
+function MenubarRadioItem(props: MenubarRadioItemProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <MenubarPrimitive.RadioItem
@@ -169,7 +185,46 @@ function MenubarLabel(
   );
 }
 
-function MenubarSeparator(props: ComponentProps<typeof MenubarPrimitive.Separator>) {
+export type MenubarGroupLabelProps = ComponentProps<typeof MenubarPrimitive.GroupLabel> & {
+  inset?: boolean;
+};
+
+function MenubarGroupLabel(props: MenubarGroupLabelProps) {
+  const [local, rest] = splitProps(props, ["class", "inset"]);
+  return (
+    <MenubarPrimitive.GroupLabel
+      data-slot="menubar-label"
+      data-inset={local.inset}
+      class={cn(
+        "px-3 py-1.5 text-muted-foreground/60",
+        omniMonoText.compact,
+        "data-[inset]:pl-8",
+        local.class,
+      )}
+      {...rest}
+    />
+  );
+}
+
+export type MenubarItemLabelProps = ComponentProps<typeof MenubarPrimitive.ItemLabel> & {
+  inset?: boolean;
+};
+
+function MenubarItemLabel(props: MenubarItemLabelProps) {
+  const [local, rest] = splitProps(props, ["class", "inset"]);
+  return (
+    <MenubarPrimitive.ItemLabel
+      data-slot="menubar-item-label"
+      data-inset={local.inset}
+      class={cn("px-3 py-2 text-foreground", omniMonoText.menu, local.inset && "pl-9", local.class)}
+      {...rest}
+    />
+  );
+}
+
+export type MenubarSeparatorProps = ComponentProps<typeof MenubarPrimitive.Separator>;
+
+function MenubarSeparator(props: MenubarSeparatorProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <MenubarPrimitive.Separator
@@ -180,9 +235,9 @@ function MenubarSeparator(props: ComponentProps<typeof MenubarPrimitive.Separato
   );
 }
 
-function MenubarShortcut(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLSpanElement>>,
-) {
+export type MenubarShortcut = ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLSpanElement>>;
+
+function MenubarShortcut(props: MenubarShortcut) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <span
@@ -193,15 +248,17 @@ function MenubarShortcut(
   );
 }
 
-function MenubarSub(props: ComponentProps<typeof MenubarPrimitive.Sub>) {
+export type MenubarSubProps = ComponentProps<typeof MenubarPrimitive.Sub>;
+
+function MenubarSub(props: MenubarSubProps) {
   return <MenubarPrimitive.Sub data-slot="menubar-sub" {...props} />;
 }
 
-function MenubarSubTrigger(
-  props: ComponentProps<typeof MenubarPrimitive.SubTrigger> & {
-    inset?: boolean;
-  },
-) {
+export type MenubarSubTriggerProps = ComponentProps<typeof MenubarPrimitive.SubTrigger> & {
+  inset?: boolean;
+};
+
+function MenubarSubTrigger(props: MenubarSubTriggerProps) {
   const [local, rest] = splitProps(props, ["class", "inset", "children"]);
   return (
     <MenubarPrimitive.SubTrigger
@@ -224,7 +281,9 @@ function MenubarSubTrigger(
   );
 }
 
-function MenubarSubContent(props: ComponentProps<typeof MenubarPrimitive.SubContent>) {
+export type MenubarSubContentProps = ComponentProps<typeof MenubarPrimitive.SubContent>;
+
+function MenubarSubContent(props: MenubarSubContentProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <MenubarPrimitive.SubContent
@@ -248,9 +307,11 @@ export {
   MenubarTrigger,
   MenubarContent,
   MenubarGroup,
+  MenubarGroupLabel,
   MenubarSeparator,
   MenubarLabel,
   MenubarItem,
+  MenubarItemLabel,
   MenubarShortcut,
   MenubarCheckboxItem,
   MenubarRadioGroup,

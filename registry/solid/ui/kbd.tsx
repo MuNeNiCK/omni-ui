@@ -2,7 +2,9 @@ import { type JSX, splitProps } from "solid-js";
 
 import { cn } from "@/registry/solid/lib/utils";
 
-function Kbd(props: JSX.HTMLAttributes<HTMLElement>) {
+export type KbdProps = JSX.HTMLAttributes<HTMLElement>;
+
+function Kbd(props: KbdProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <kbd
@@ -18,7 +20,9 @@ function Kbd(props: JSX.HTMLAttributes<HTMLElement>) {
   );
 }
 
-function KbdGroup(props: JSX.HTMLAttributes<HTMLElement>) {
+export type KbdGroupProps = JSX.HTMLAttributes<HTMLElement>;
+
+function KbdGroup(props: KbdGroupProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <kbd

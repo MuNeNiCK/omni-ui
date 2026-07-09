@@ -16,12 +16,12 @@ type TooltipProviderContextValue = {
 
 const TooltipProviderContext = createContext<TooltipProviderContextValue>();
 
-function TooltipProvider(
-  props: ParentProps<{
-    delayDuration?: number;
-    skipDelayDuration?: number;
-  }>,
-) {
+export type TooltipProviderProps = ParentProps<{
+  delayDuration?: number;
+  skipDelayDuration?: number;
+}>;
+
+function TooltipProvider(props: TooltipProviderProps) {
   return (
     <TooltipProviderContext.Provider
       value={{
@@ -34,7 +34,9 @@ function TooltipProvider(
   );
 }
 
-function Tooltip(props: ComponentProps<typeof TooltipPrimitive.Root>) {
+export type TooltipProps = ComponentProps<typeof TooltipPrimitive.Root>;
+
+function Tooltip(props: TooltipProps) {
   const provider = useContext(TooltipProviderContext);
   const [local, rest] = splitProps(props, ["openDelay", "skipDelayDuration"]);
   return (
@@ -47,15 +49,19 @@ function Tooltip(props: ComponentProps<typeof TooltipPrimitive.Root>) {
   );
 }
 
-function TooltipTrigger(props: ComponentProps<typeof TooltipPrimitive.Trigger>) {
+export type TooltipTriggerProps = ComponentProps<typeof TooltipPrimitive.Trigger>;
+
+const TooltipPortal = TooltipPrimitive.Portal;
+
+function TooltipTrigger(props: TooltipTriggerProps) {
   return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
 }
 
-function TooltipContent(
-  props: ComponentProps<typeof TooltipPrimitive.Content> & {
-    sideOffset?: number;
-  },
-) {
+export type TooltipContentProps = ComponentProps<typeof TooltipPrimitive.Content> & {
+  sideOffset?: number;
+};
+
+function TooltipContent(props: TooltipContentProps) {
   const [local, rest] = splitProps(props, ["class", "children", "sideOffset"]);
   return (
     <TooltipPrimitive.Portal>
@@ -77,4 +83,4 @@ function TooltipContent(
   );
 }
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider, TooltipPortal };

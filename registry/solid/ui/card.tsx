@@ -2,7 +2,9 @@ import { type JSX, splitProps } from "solid-js";
 
 import { cn } from "@/registry/solid/lib/utils";
 
-function Card(props: JSX.HTMLAttributes<HTMLDivElement>) {
+export type CardProps = JSX.HTMLAttributes<HTMLDivElement>;
+
+function Card(props: CardProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -16,7 +18,9 @@ function Card(props: JSX.HTMLAttributes<HTMLDivElement>) {
   );
 }
 
-function CardHeader(props: JSX.HTMLAttributes<HTMLDivElement>) {
+export type CardHeaderProps = JSX.HTMLAttributes<HTMLDivElement>;
+
+function CardHeader(props: CardHeaderProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -30,7 +34,9 @@ function CardHeader(props: JSX.HTMLAttributes<HTMLDivElement>) {
   );
 }
 
-function CardTitle(props: JSX.HTMLAttributes<HTMLDivElement>) {
+export type CardTitleProps = JSX.HTMLAttributes<HTMLDivElement>;
+
+function CardTitle(props: CardTitleProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -41,7 +47,9 @@ function CardTitle(props: JSX.HTMLAttributes<HTMLDivElement>) {
   );
 }
 
-function CardDescription(props: JSX.HTMLAttributes<HTMLDivElement>) {
+export type CardDescriptionProps = JSX.HTMLAttributes<HTMLDivElement>;
+
+function CardDescription(props: CardDescriptionProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -52,7 +60,9 @@ function CardDescription(props: JSX.HTMLAttributes<HTMLDivElement>) {
   );
 }
 
-function CardAction(props: JSX.HTMLAttributes<HTMLDivElement>) {
+export type CardActionProps = JSX.HTMLAttributes<HTMLDivElement>;
+
+function CardAction(props: CardActionProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -63,12 +73,16 @@ function CardAction(props: JSX.HTMLAttributes<HTMLDivElement>) {
   );
 }
 
-function CardContent(props: JSX.HTMLAttributes<HTMLDivElement>) {
+export type CardContentProps = JSX.HTMLAttributes<HTMLDivElement>;
+
+function CardContent(props: CardContentProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return <div data-slot="card-content" class={cn("px-6 py-6", local.class)} {...rest} />;
 }
 
-function CardFooter(props: JSX.HTMLAttributes<HTMLDivElement>) {
+export type CardFooterProps = JSX.HTMLAttributes<HTMLDivElement>;
+
+function CardFooter(props: CardFooterProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div

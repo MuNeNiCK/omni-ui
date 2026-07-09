@@ -4,7 +4,9 @@ import { ChevronRight, MoreHorizontal } from "lucide-solid";
 
 import { cn } from "@/registry/solid/lib/utils";
 
-function Breadcrumb(props: JSX.HTMLAttributes<HTMLElement>) {
+export type BreadcrumbsProps = JSX.HTMLAttributes<HTMLElement>;
+
+function Breadcrumb(props: BreadcrumbsProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <nav
@@ -16,7 +18,9 @@ function Breadcrumb(props: JSX.HTMLAttributes<HTMLElement>) {
   );
 }
 
-function BreadcrumbList(props: JSX.OlHTMLAttributes<HTMLOListElement>) {
+export type BreadcrumbListProps = JSX.OlHTMLAttributes<HTMLOListElement>;
+
+function BreadcrumbList(props: BreadcrumbListProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <ol
@@ -31,7 +35,9 @@ function BreadcrumbList(props: JSX.OlHTMLAttributes<HTMLOListElement>) {
   );
 }
 
-function BreadcrumbItem(props: JSX.LiHTMLAttributes<HTMLLIElement>) {
+export type BreadcrumbsItemProps = JSX.LiHTMLAttributes<HTMLLIElement>;
+
+function BreadcrumbItem(props: BreadcrumbsItemProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <li
@@ -42,11 +48,11 @@ function BreadcrumbItem(props: JSX.LiHTMLAttributes<HTMLLIElement>) {
   );
 }
 
-type BreadcrumbLinkProps = JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
+export type BreadcrumbsLinkProps = JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
   asChild?: boolean;
 };
 
-function BreadcrumbLink(props: BreadcrumbLinkProps) {
+function BreadcrumbLink(props: BreadcrumbsLinkProps) {
   const [local, rest] = splitProps(props, ["asChild", "class"]);
   return (
     <Dynamic
@@ -62,7 +68,9 @@ function BreadcrumbLink(props: BreadcrumbLinkProps) {
   );
 }
 
-function BreadcrumbPage(props: JSX.HTMLAttributes<HTMLSpanElement>) {
+export type BreadcrumbPageProps = JSX.HTMLAttributes<HTMLSpanElement>;
+
+function BreadcrumbPage(props: BreadcrumbPageProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <span
@@ -76,7 +84,9 @@ function BreadcrumbPage(props: JSX.HTMLAttributes<HTMLSpanElement>) {
   );
 }
 
-function BreadcrumbSeparator(props: JSX.LiHTMLAttributes<HTMLLIElement>) {
+export type BreadcrumbsSeparatorProps = JSX.LiHTMLAttributes<HTMLLIElement>;
+
+function BreadcrumbSeparator(props: BreadcrumbsSeparatorProps) {
   const [local, rest] = splitProps(props, ["children", "class"]);
   return (
     <li
@@ -97,7 +107,9 @@ function BreadcrumbSeparator(props: JSX.LiHTMLAttributes<HTMLLIElement>) {
   );
 }
 
-function BreadcrumbEllipsis(props: JSX.HTMLAttributes<HTMLSpanElement>) {
+export type BreadcrumbsEllipsisProps = JSX.HTMLAttributes<HTMLSpanElement>;
+
+function BreadcrumbEllipsis(props: BreadcrumbsEllipsisProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <span
@@ -113,12 +125,23 @@ function BreadcrumbEllipsis(props: JSX.HTMLAttributes<HTMLSpanElement>) {
   );
 }
 
+const Breadcrumbs = Breadcrumb;
+const BreadcrumbsItem = BreadcrumbItem;
+const BreadcrumbsLink = BreadcrumbLink;
+const BreadcrumbsSeparator = BreadcrumbSeparator;
+const BreadcrumbsEllipsis = BreadcrumbEllipsis;
+
 export {
   Breadcrumb,
+  Breadcrumbs,
   BreadcrumbList,
   BreadcrumbItem,
+  BreadcrumbsItem,
   BreadcrumbLink,
+  BreadcrumbsLink,
   BreadcrumbPage,
   BreadcrumbSeparator,
+  BreadcrumbsSeparator,
   BreadcrumbEllipsis,
+  BreadcrumbsEllipsis,
 };

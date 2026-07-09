@@ -4,7 +4,9 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-solid";
 
 import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
-function DropdownMenu(props: ComponentProps<typeof DropdownMenuPrimitive.Root>) {
+export type DropdownMenuProps = ComponentProps<typeof DropdownMenuPrimitive.Root>;
+
+function DropdownMenu(props: DropdownMenuProps) {
   return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />;
 }
 
@@ -12,11 +14,15 @@ function DropdownMenuPortal(props: ComponentProps<typeof DropdownMenuPrimitive.P
   return <DropdownMenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />;
 }
 
-function DropdownMenuTrigger(props: ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
+export type DropdownMenuTriggerProps = ComponentProps<typeof DropdownMenuPrimitive.Trigger>;
+
+function DropdownMenuTrigger(props: DropdownMenuTriggerProps) {
   return <DropdownMenuPrimitive.Trigger data-slot="dropdown-menu-trigger" {...props} />;
 }
 
-function DropdownMenuContent(props: ComponentProps<typeof DropdownMenuPrimitive.Content>) {
+export type DropdownMenuContentProps = ComponentProps<typeof DropdownMenuPrimitive.Content>;
+
+function DropdownMenuContent(props: DropdownMenuContentProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <DropdownMenuPrimitive.Portal>
@@ -34,7 +40,9 @@ function DropdownMenuContent(props: ComponentProps<typeof DropdownMenuPrimitive.
   );
 }
 
-function DropdownMenuGroup(props: ComponentProps<typeof DropdownMenuPrimitive.Group>) {
+export type DropdownMenuGroupProps = ComponentProps<typeof DropdownMenuPrimitive.Group>;
+
+function DropdownMenuGroup(props: DropdownMenuGroupProps) {
   return <DropdownMenuPrimitive.Group data-slot="dropdown-menu-group" {...props} />;
 }
 
@@ -43,13 +51,13 @@ const itemBase = cn(
   omniMonoText.menu,
 );
 
-function DropdownMenuItem(
-  props: ComponentProps<typeof DropdownMenuPrimitive.Item> & {
-    class?: string;
-    inset?: boolean;
-    variant?: "default" | "destructive";
-  },
-) {
+export type DropdownMenuItemProps = ComponentProps<typeof DropdownMenuPrimitive.Item> & {
+  class?: string;
+  inset?: boolean;
+  variant?: "default" | "destructive";
+};
+
+function DropdownMenuItem(props: DropdownMenuItemProps) {
   const [local, rest] = splitProps(props, ["class", "inset", "variant"]);
   const variant = () => local.variant ?? "default";
   return (
@@ -70,9 +78,11 @@ function DropdownMenuItem(
   );
 }
 
-function DropdownMenuCheckboxItem(
-  props: ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>,
-) {
+export type DropdownMenuCheckboxItemProps = ComponentProps<
+  typeof DropdownMenuPrimitive.CheckboxItem
+>;
+
+function DropdownMenuCheckboxItem(props: DropdownMenuCheckboxItemProps) {
   const [local, rest] = splitProps(props, ["class", "children", "checked"]);
   return (
     <DropdownMenuPrimitive.CheckboxItem
@@ -91,11 +101,15 @@ function DropdownMenuCheckboxItem(
   );
 }
 
-function DropdownMenuRadioGroup(props: ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>) {
+export type DropdownMenuRadioGroupProps = ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>;
+
+function DropdownMenuRadioGroup(props: DropdownMenuRadioGroupProps) {
   return <DropdownMenuPrimitive.RadioGroup data-slot="dropdown-menu-radio-group" {...props} />;
 }
 
-function DropdownMenuRadioItem(props: ComponentProps<typeof DropdownMenuPrimitive.RadioItem>) {
+export type DropdownMenuRadioItemProps = ComponentProps<typeof DropdownMenuPrimitive.RadioItem>;
+
+function DropdownMenuRadioItem(props: DropdownMenuRadioItemProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <DropdownMenuPrimitive.RadioItem
@@ -132,7 +146,49 @@ function DropdownMenuLabel(
   );
 }
 
-function DropdownMenuSeparator(props: ComponentProps<typeof DropdownMenuPrimitive.Separator>) {
+export type DropdownMenuGroupLabelProps = ComponentProps<
+  typeof DropdownMenuPrimitive.GroupLabel
+> & {
+  inset?: boolean;
+};
+
+function DropdownMenuGroupLabel(props: DropdownMenuGroupLabelProps) {
+  const [local, rest] = splitProps(props, ["class", "inset"]);
+  return (
+    <DropdownMenuPrimitive.GroupLabel
+      as="div"
+      data-slot="dropdown-menu-label"
+      data-inset={local.inset}
+      class={cn(
+        "px-3 py-2 text-muted-foreground/70",
+        omniMonoText.wide,
+        local.inset && "pl-9",
+        local.class,
+      )}
+      {...rest}
+    />
+  );
+}
+
+export type DropdownMenuItemLabelProps = ComponentProps<typeof DropdownMenuPrimitive.ItemLabel> & {
+  inset?: boolean;
+};
+
+function DropdownMenuItemLabel(props: DropdownMenuItemLabelProps) {
+  const [local, rest] = splitProps(props, ["class", "inset"]);
+  return (
+    <DropdownMenuPrimitive.ItemLabel
+      data-slot="dropdown-menu-item-label"
+      data-inset={local.inset}
+      class={cn("px-3 py-2 text-foreground", omniMonoText.menu, local.inset && "pl-9", local.class)}
+      {...rest}
+    />
+  );
+}
+
+export type DropdownMenuSeparatorProps = ComponentProps<typeof DropdownMenuPrimitive.Separator>;
+
+function DropdownMenuSeparator(props: DropdownMenuSeparatorProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <DropdownMenuPrimitive.Separator
@@ -146,9 +202,11 @@ function DropdownMenuSeparator(props: ComponentProps<typeof DropdownMenuPrimitiv
   );
 }
 
-function DropdownMenuShortcut(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLSpanElement>>,
-) {
+export type DropdownMenuShortcutProps = ParentProps<
+  { class?: string } & JSX.HTMLAttributes<HTMLSpanElement>
+>;
+
+function DropdownMenuShortcut(props: DropdownMenuShortcutProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <span
@@ -159,15 +217,19 @@ function DropdownMenuShortcut(
   );
 }
 
-function DropdownMenuSub(props: ComponentProps<typeof DropdownMenuPrimitive.Sub>) {
+export type DropdownMenuSubProps = ComponentProps<typeof DropdownMenuPrimitive.Sub>;
+
+function DropdownMenuSub(props: DropdownMenuSubProps) {
   return <DropdownMenuPrimitive.Sub data-slot="dropdown-menu-sub" {...props} />;
 }
 
-function DropdownMenuSubTrigger(
-  props: ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
-    inset?: boolean;
-  },
-) {
+export type DropdownMenuSubTriggerProps = ComponentProps<
+  typeof DropdownMenuPrimitive.SubTrigger
+> & {
+  inset?: boolean;
+};
+
+function DropdownMenuSubTrigger(props: DropdownMenuSubTriggerProps) {
   const [local, rest] = splitProps(props, ["class", "inset", "children"]);
   return (
     <DropdownMenuPrimitive.SubTrigger
@@ -187,7 +249,9 @@ function DropdownMenuSubTrigger(
   );
 }
 
-function DropdownMenuSubContent(props: ComponentProps<typeof DropdownMenuPrimitive.SubContent>) {
+export type DropdownMenuSubContentProps = ComponentProps<typeof DropdownMenuPrimitive.SubContent>;
+
+function DropdownMenuSubContent(props: DropdownMenuSubContentProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <DropdownMenuPrimitive.SubContent
@@ -209,8 +273,10 @@ export {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuGroup,
+  DropdownMenuGroupLabel,
   DropdownMenuLabel,
   DropdownMenuItem,
+  DropdownMenuItemLabel,
   DropdownMenuCheckboxItem,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,

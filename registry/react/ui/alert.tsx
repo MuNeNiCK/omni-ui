@@ -69,10 +69,10 @@ function AlertDescription({ className, ...props }: React.ComponentProps<"div">) 
   );
 }
 
-function AlertActions({ className, ...props }: React.ComponentProps<"div">) {
+function AlertAction({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      data-slot="alert-actions"
+      data-slot="alert-action"
       className={cn(
         "col-start-2 flex flex-wrap items-center gap-2 pt-1 text-xs font-medium text-[color:var(--tone-title)]",
         className,
@@ -82,4 +82,4 @@ function AlertActions({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-export { Alert, AlertActions, AlertDescription, AlertTitle, alertVariants };
+export { Alert, AlertAction, AlertDescription, AlertTitle };

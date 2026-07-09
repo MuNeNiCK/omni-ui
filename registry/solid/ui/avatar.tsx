@@ -90,4 +90,56 @@ function AvatarFallback(
   );
 }
 
-export { Avatar, AvatarImage, AvatarFallback };
+function AvatarBadge(props: JSX.HTMLAttributes<HTMLSpanElement>) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <span
+      data-slot="avatar-badge"
+      class={cn(
+        "absolute bottom-0 right-0 z-10 inline-flex size-3 items-center justify-center border border-border/60 bg-foreground text-background shadow-[var(--glass-shadow-outline-strong)]",
+        local.class,
+      )}
+      {...rest}
+    />
+  );
+}
+
+function AvatarGroup(props: JSX.HTMLAttributes<HTMLDivElement>) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <div
+      data-slot="avatar-group"
+      class={cn(
+        "group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background",
+        local.class,
+      )}
+      {...rest}
+    />
+  );
+}
+
+function AvatarGroupCount(props: JSX.HTMLAttributes<HTMLDivElement>) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <div
+      data-slot="avatar-group-count"
+      class={cn(
+        "relative flex size-10 shrink-0 items-center justify-center border border-border/60 bg-muted/40 text-xs font-medium text-muted-foreground ring-2 ring-background shadow-[var(--glass-shadow-outline)] backdrop-blur-[8px]",
+        local.class,
+      )}
+      {...rest}
+    />
+  );
+}
+
+const AvatarCount = AvatarGroupCount;
+
+export {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+  AvatarBadge,
+  AvatarGroup,
+  AvatarGroupCount,
+  AvatarCount,
+};

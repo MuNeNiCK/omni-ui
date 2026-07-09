@@ -14,7 +14,9 @@ import {
   DialogTitle,
 } from "@/registry/solid/ui/dialog";
 
-const Command: Component<ParentProps<CommandPrimitive.CommandRootProps>> = (props) => {
+export type CommandProps = ParentProps<CommandPrimitive.CommandRootProps>;
+
+const Command: Component<CommandProps> = (props) => {
   const [local, others] = splitProps(props, ["class"]);
   return (
     <CommandPrimitive.CommandRoot
@@ -29,9 +31,11 @@ const Command: Component<ParentProps<CommandPrimitive.CommandRootProps>> = (prop
   );
 };
 
-const CommandDialog: Component<
-  ParentProps<DialogRootProps & { title?: string; description?: string }>
-> = (props) => {
+export type CommandDialogProps = ParentProps<
+  DialogRootProps & { title?: string; description?: string }
+>;
+
+const CommandDialog: Component<CommandDialogProps> = (props) => {
   const [local, others] = splitProps(props, ["children", "title", "description"]);
   return (
     <Dialog {...others}>
@@ -53,7 +57,9 @@ const CommandDialog: Component<
   );
 };
 
-const CommandInput: Component<VoidProps<CommandPrimitive.CommandInputProps>> = (props) => {
+export type CommandInputProps = VoidProps<CommandPrimitive.CommandInputProps>;
+
+const CommandInput: Component<CommandInputProps> = (props) => {
   const [local, others] = splitProps(props, ["class", "aria-label", "placeholder"]);
   const inputLabel = () =>
     local["aria-label"] ??
@@ -79,7 +85,9 @@ const CommandInput: Component<VoidProps<CommandPrimitive.CommandInputProps>> = (
   );
 };
 
-const CommandList: Component<ParentProps<CommandPrimitive.CommandListProps>> = (props) => {
+export type CommandListProps = ParentProps<CommandPrimitive.CommandListProps>;
+
+const CommandList: Component<CommandListProps> = (props) => {
   const [local, others] = splitProps(props, ["class"]);
   return (
     <CommandPrimitive.CommandList
@@ -90,7 +98,9 @@ const CommandList: Component<ParentProps<CommandPrimitive.CommandListProps>> = (
   );
 };
 
-const CommandEmpty: Component<ParentProps<CommandPrimitive.CommandEmptyProps>> = (props) => {
+export type CommandEmptyProps = ParentProps<CommandPrimitive.CommandEmptyProps>;
+
+const CommandEmpty: Component<CommandEmptyProps> = (props) => {
   const [local, others] = splitProps(props, ["class"]);
   return (
     <CommandPrimitive.CommandEmpty
@@ -101,7 +111,9 @@ const CommandEmpty: Component<ParentProps<CommandPrimitive.CommandEmptyProps>> =
   );
 };
 
-const CommandGroup: Component<ParentProps<CommandPrimitive.CommandGroupProps>> = (props) => {
+export type CommandGroupProps = ParentProps<CommandPrimitive.CommandGroupProps>;
+
+const CommandGroup: Component<CommandGroupProps> = (props) => {
   const [local, others] = splitProps(props, ["class"]);
   return (
     <CommandPrimitive.CommandGroup
@@ -115,7 +127,9 @@ const CommandGroup: Component<ParentProps<CommandPrimitive.CommandGroupProps>> =
   );
 };
 
-const CommandSeparator: Component<VoidProps<CommandPrimitive.CommandSeparatorProps>> = (props) => {
+export type CommandSeparatorProps = VoidProps<CommandPrimitive.CommandSeparatorProps>;
+
+const CommandSeparator: Component<CommandSeparatorProps> = (props) => {
   const [local, others] = splitProps(props, ["class"]);
   return (
     <CommandPrimitive.CommandSeparator
@@ -129,7 +143,9 @@ const CommandSeparator: Component<VoidProps<CommandPrimitive.CommandSeparatorPro
   );
 };
 
-const CommandItem: Component<ParentProps<CommandPrimitive.CommandItemProps>> = (props) => {
+export type CommandItemProps = ParentProps<CommandPrimitive.CommandItemProps>;
+
+const CommandItem: Component<CommandItemProps> = (props) => {
   const [local, others] = splitProps(props, ["class"]);
   return (
     <CommandPrimitive.CommandItem
@@ -149,7 +165,9 @@ const CommandItem: Component<ParentProps<CommandPrimitive.CommandItemProps>> = (
   );
 };
 
-const CommandShortcut: Component<ComponentProps<"span">> = (props) => {
+export type CommandShortcutProps = ComponentProps<"span">;
+
+const CommandShortcut: Component<CommandShortcutProps> = (props) => {
   const [local, others] = splitProps(props, ["class"]);
   return (
     <span

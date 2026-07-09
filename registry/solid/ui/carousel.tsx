@@ -15,15 +15,20 @@ import { ArrowLeft, ArrowRight } from "lucide-solid";
 import { cn } from "@/registry/solid/lib/utils";
 import { Button, type ButtonProps } from "@/registry/solid/ui/button";
 
-type CarouselApi = ReturnType<typeof createEmblaCarousel>[1];
 type CarouselRef = ReturnType<typeof createEmblaCarousel>[0];
 
-type CarouselProps = {
+type MaybeAccessor<T> = T | Accessor<T | undefined>;
+
+export interface CarouselOptionsProps {
+  options?: MaybeAccessor<EmblaOptionsType>;
   opts?: EmblaOptionsType;
-  plugins?: EmblaPluginType[];
+  plugins?: MaybeAccessor<EmblaPluginType[]>;
   orientation?: "horizontal" | "vertical";
+  setAPI?: (api: EmblaCarouselType) => void;
   setApi?: (api: EmblaCarouselType) => void;
-};
+}
+
+export type CarouselProps = ParentProps<JSX.HTMLAttributes<HTMLDivElement> & CarouselOptionsProps>;
 
 type CarouselContextProps = {
   carouselRef: CarouselRef;
@@ -37,29 +42,35 @@ type CarouselContextProps = {
 
 const CarouselContext = createContext<CarouselContextProps>();
 
+function resolveMaybeAccessor<T>(value: MaybeAccessor<T> | undefined) {
+  return typeof value === "function" ? (value as Accessor<T | undefined>)() : value;
+}
+
 function useCarousel() {
   const context = useContext(CarouselContext);
   if (!context) throw new Error("useCarousel must be used within a <Carousel />");
   return context;
 }
 
-function Carousel(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & CarouselProps>) {
+function Carousel(props: CarouselProps) {
   const [local, rest] = splitProps(props, [
     "class",
     "children",
+    "options",
     "opts",
     "plugins",
     "orientation",
+    "setAPI",
     "setApi",
   ]);
   const orientation = () => local.orientation || "horizontal";
 
   const [emblaRef, emblaApi] = createEmblaCarousel(
     () => ({
-      ...local.opts,
+      ...(resolveMaybeAccessor(local.options) ?? local.opts),
       axis: orientation() === "horizontal" ? "x" : "y",
     }),
-    () => local.plugins || [],
+    () => resolveMaybeAccessor(local.plugins) || [],
   );
 
   const [canScrollPrev, setCanScrollPrev] = createSignal(false);
@@ -87,7 +98,9 @@ function Carousel(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & Carous
 
   createEffect(() => {
     const api = emblaApi();
-    if (api && local.setApi) local.setApi(api);
+    if (!api) return;
+    local.setAPI?.(api);
+    local.setApi?.(api);
   });
 
   const scrollPrev = () => emblaApi()?.scrollPrev();
@@ -129,7 +142,9 @@ function Carousel(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & Carous
   );
 }
 
-function CarouselContent(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement>>) {
+export type CarouselContentProps = ParentProps<JSX.HTMLAttributes<HTMLDivElement>>;
+
+function CarouselContent(props: CarouselContentProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   const { carouselRef, orientation } = useCarousel();
   return (
@@ -144,7 +159,9 @@ function CarouselContent(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement>>)
   );
 }
 
-function CarouselItem(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement>>) {
+export type CarouselItemProps = ParentProps<JSX.HTMLAttributes<HTMLDivElement>>;
+
+function CarouselItem(props: CarouselItemProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   const { orientation } = useCarousel();
   return (
@@ -164,7 +181,9 @@ function CarouselItem(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement>>) {
   );
 }
 
-function CarouselPrevious(props: ButtonProps) {
+export type CarouselPreviousProps = ButtonProps;
+
+function CarouselPrevious(props: CarouselPreviousProps) {
   const [local, rest] = splitProps(props, ["class", "variant", "size"]);
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
   return (
@@ -189,7 +208,9 @@ function CarouselPrevious(props: ButtonProps) {
   );
 }
 
-function CarouselNext(props: ButtonProps) {
+export type CarouselNextProps = ButtonProps;
+
+function CarouselNext(props: CarouselNextProps) {
   const [local, rest] = splitProps(props, ["class", "variant", "size"]);
   const { orientation, scrollNext, canScrollNext } = useCarousel();
   return (
@@ -214,11 +235,4 @@ function CarouselNext(props: ButtonProps) {
   );
 }
 
-export {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-  type CarouselApi,
-};
+export { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, useCarousel };

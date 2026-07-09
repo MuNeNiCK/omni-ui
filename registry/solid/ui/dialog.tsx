@@ -1,13 +1,19 @@
-import { splitProps, Show, type ComponentProps, type JSX } from "solid-js";
+import { splitProps, Show, type ComponentProps, type JSX, type ValidComponent } from "solid-js";
 import * as DialogPrimitive from "@kobalte/core/dialog";
 import { XIcon } from "lucide-solid";
 import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
-function Dialog(props: ComponentProps<typeof DialogPrimitive.Root>) {
+export type DialogProps = ComponentProps<typeof DialogPrimitive.Root>;
+
+function Dialog(props: DialogProps) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />;
 }
 
-function DialogTrigger(props: ComponentProps<typeof DialogPrimitive.Trigger>) {
+export type DialogTriggerProps<T extends ValidComponent = "button"> = ComponentProps<
+  typeof DialogPrimitive.Trigger<T>
+>;
+
+function DialogTrigger<T extends ValidComponent = "button">(props: DialogTriggerProps<T>) {
   return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />;
 }
 
@@ -15,7 +21,11 @@ function DialogPortal(props: ComponentProps<typeof DialogPrimitive.Portal>) {
   return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />;
 }
 
-function DialogClose(props: ComponentProps<typeof DialogPrimitive.CloseButton>) {
+export type DialogCloseButtonProps<T extends ValidComponent = "button"> = ComponentProps<
+  typeof DialogPrimitive.CloseButton<T>
+>;
+
+function DialogCloseButton<T extends ValidComponent = "button">(props: DialogCloseButtonProps<T>) {
   return <DialogPrimitive.CloseButton data-slot="dialog-close" {...props} />;
 }
 
@@ -34,11 +44,13 @@ function DialogOverlay(props: ComponentProps<typeof DialogPrimitive.Overlay>) {
   );
 }
 
-function DialogContent(
-  props: ComponentProps<typeof DialogPrimitive.Content> & {
-    showCloseButton?: boolean;
-  },
-) {
+export type DialogContentProps<T extends ValidComponent = "div"> = ComponentProps<
+  typeof DialogPrimitive.Content<T>
+> & {
+  showCloseButton?: boolean;
+};
+
+function DialogContent<T extends ValidComponent = "div">(props: DialogContentProps<T>) {
   const [local, rest] = splitProps(props, ["class", "children", "showCloseButton"]);
   const showClose = () => local.showCloseButton !== false;
   return (
@@ -66,12 +78,16 @@ function DialogContent(
   );
 }
 
-function DialogHeader(props: JSX.HTMLAttributes<HTMLDivElement> & { class?: string }) {
+export type DialogHeaderProps = JSX.HTMLAttributes<HTMLDivElement> & { class?: string };
+
+function DialogHeader(props: DialogHeaderProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return <div data-slot="dialog-header" class={cn("flex flex-col gap-3", local.class)} {...rest} />;
 }
 
-function DialogFooter(props: JSX.HTMLAttributes<HTMLDivElement> & { class?: string }) {
+export type DialogFooterProps = JSX.HTMLAttributes<HTMLDivElement> & { class?: string };
+
+function DialogFooter(props: DialogFooterProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -85,7 +101,11 @@ function DialogFooter(props: JSX.HTMLAttributes<HTMLDivElement> & { class?: stri
   );
 }
 
-function DialogTitle(props: ComponentProps<typeof DialogPrimitive.Title>) {
+export type DialogTitleProps<T extends ValidComponent = "h2"> = ComponentProps<
+  typeof DialogPrimitive.Title<T>
+>;
+
+function DialogTitle<T extends ValidComponent = "h2">(props: DialogTitleProps<T>) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <DialogPrimitive.Title
@@ -96,7 +116,11 @@ function DialogTitle(props: ComponentProps<typeof DialogPrimitive.Title>) {
   );
 }
 
-function DialogDescription(props: ComponentProps<typeof DialogPrimitive.Description>) {
+export type DialogDescriptionProps<T extends ValidComponent = "p"> = ComponentProps<
+  typeof DialogPrimitive.Description<T>
+>;
+
+function DialogDescription<T extends ValidComponent = "p">(props: DialogDescriptionProps<T>) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <DialogPrimitive.Description
@@ -109,13 +133,20 @@ function DialogDescription(props: ComponentProps<typeof DialogPrimitive.Descript
 
 export {
   Dialog,
-  DialogClose,
+  DialogCloseButton,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogOverlay,
   DialogPortal,
   DialogTitle,
   DialogTrigger,
+  type DialogCloseButtonProps,
+  type DialogContentProps,
+  type DialogDescriptionProps,
+  type DialogFooterProps,
+  type DialogHeaderProps,
+  type DialogProps,
+  type DialogTitleProps,
+  type DialogTriggerProps,
 };

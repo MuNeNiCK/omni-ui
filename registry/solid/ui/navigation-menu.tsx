@@ -13,6 +13,8 @@ import { ChevronDownIcon } from "lucide-solid";
 
 import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
+const NavigationMenuPortal = NavigationMenuPrimitive.Portal;
+
 type NavigationMenuContextValue = {
   viewport: () => boolean;
 };
@@ -25,12 +27,12 @@ function useNavigationMenuContext() {
   return useContext(NavigationMenuContext);
 }
 
-function NavigationMenu(
-  props: ComponentProps<typeof NavigationMenuPrimitive.Root> & {
-    class?: string;
-    viewport?: boolean;
-  },
-) {
+export type NavigationMenuProps = ComponentProps<typeof NavigationMenuPrimitive.Root> & {
+  class?: string;
+  viewport?: boolean;
+};
+
+function NavigationMenu(props: NavigationMenuProps) {
   const [local, rest] = splitProps(props, ["class", "children", "viewport"]);
   const viewport = () => local.viewport ?? true;
 
@@ -58,9 +60,11 @@ function NavigationMenu(
   );
 }
 
-function NavigationMenuList(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLUListElement>>,
-) {
+export type NavigationMenuListProps = ParentProps<
+  { class?: string } & JSX.HTMLAttributes<HTMLUListElement>
+>;
+
+function NavigationMenuList(props: NavigationMenuListProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <ul
@@ -73,9 +77,11 @@ function NavigationMenuList(
   );
 }
 
-function NavigationMenuItem(
-  props: ParentProps<{ class?: string } & ComponentProps<typeof NavigationMenuPrimitive.Menu>>,
-) {
+export type NavigationMenuItemProps = ParentProps<
+  { class?: string } & ComponentProps<typeof NavigationMenuPrimitive.Menu>
+>;
+
+function NavigationMenuItem(props: NavigationMenuItemProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <li data-slot="navigation-menu-item" class={cn("relative", local.class)}>
@@ -84,22 +90,24 @@ function NavigationMenuItem(
   );
 }
 
-const navigationMenuTriggerStyle = cva(
+const navigationButtonVariant = cva(
   cn(
     "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-3 py-1.5 text-muted-foreground transition-[color,background,border,box-shadow] focus-visible:outline-none",
     omniMonoText.compact,
   ),
 );
 
-function NavigationMenuTrigger(
-  props: ParentProps<{ class?: string } & JSX.ButtonHTMLAttributes<HTMLButtonElement>>,
-) {
+const navigationMenuTriggerStyle = navigationButtonVariant;
+
+export type NavigationMenuTriggerProps = ComponentProps<typeof NavigationMenuPrimitive.Trigger>;
+
+function NavigationMenuTrigger(props: NavigationMenuTriggerProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <NavigationMenuPrimitive.Trigger
       data-slot="navigation-menu-trigger"
       class={cn(
-        navigationMenuTriggerStyle(),
+        navigationButtonVariant(),
         "hover:bg-accent hover:text-accent-foreground",
         "focus-visible:ring-ring/50 focus-visible:ring-[3px]",
         "data-[expanded]:bg-accent/50 data-[expanded]:text-accent-foreground",
@@ -118,9 +126,9 @@ function NavigationMenuTrigger(
   );
 }
 
-function NavigationMenuContent(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>,
-) {
+export type NavigationMenuContentProps = ComponentProps<typeof NavigationMenuPrimitive.Content>;
+
+function NavigationMenuContent(props: NavigationMenuContentProps) {
   const [local, rest] = splitProps(props, ["class"]);
   const ctx = useNavigationMenuContext();
   const content = (
@@ -147,9 +155,11 @@ function NavigationMenuContent(
   );
 }
 
-function NavigationMenuViewport(
-  props?: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>,
-) {
+export type NavigationMenuViewportProps = ParentProps<
+  { class?: string } & JSX.HTMLAttributes<HTMLDivElement>
+>;
+
+function NavigationMenuViewport(props?: NavigationMenuViewportProps) {
   const [local, rest] = splitProps(props ?? {}, ["class"]);
   return (
     <div class={cn("absolute top-full left-0 isolate z-50 flex justify-center")}>
@@ -169,9 +179,9 @@ function NavigationMenuViewport(
   );
 }
 
-function NavigationMenuLink(
-  props: ParentProps<{ class?: string } & JSX.AnchorHTMLAttributes<HTMLAnchorElement>>,
-) {
+export type NavigationMenuLinkProps = ComponentProps<typeof NavigationMenuPrimitive.Item>;
+
+function NavigationMenuLink(props: NavigationMenuLinkProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <NavigationMenuPrimitive.Item
@@ -189,33 +199,45 @@ function NavigationMenuLink(
   );
 }
 
-function NavigationMenuIndicator(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>,
-) {
+export type NavigationItemLabelProps = ComponentProps<typeof NavigationMenuPrimitive.ItemLabel>;
+
+function NavigationItemLabel(props: NavigationItemLabelProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
-    <div
-      data-slot="navigation-menu-indicator"
-      class={cn(
-        "top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
-        "data-[expanded]:animate-in data-[expanded]:fade-in data-[closed]:animate-out data-[closed]:fade-out",
-        local.class,
-      )}
+    <NavigationMenuPrimitive.ItemLabel
+      data-slot="navigation-menu-label"
+      class={cn("text-sm font-medium leading-none", local.class)}
       {...rest}
-    >
-      <div class={cn("relative top-[60%] h-2 w-2 rotate-45", "omni-glass-indicator-surface")} />
-    </div>
+    />
+  );
+}
+
+export type NavigationItemDescriptionProps = ComponentProps<
+  typeof NavigationMenuPrimitive.ItemDescription
+>;
+
+function NavigationItemDescription(props: NavigationItemDescriptionProps) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <NavigationMenuPrimitive.ItemDescription
+      data-slot="navigation-menu-description"
+      class={cn("line-clamp-2 text-sm leading-snug text-muted-foreground", local.class)}
+      {...rest}
+    />
   );
 }
 
 export {
   NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
   NavigationMenuContent,
-  NavigationMenuTrigger,
+  NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuIndicator,
+  NavigationMenuList,
+  NavigationMenuPortal,
+  NavigationMenuTrigger,
   NavigationMenuViewport,
+  NavigationItemDescription,
+  NavigationItemLabel,
+  navigationButtonVariant,
   navigationMenuTriggerStyle,
 };

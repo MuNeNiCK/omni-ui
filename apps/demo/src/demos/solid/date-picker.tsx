@@ -2,8 +2,7 @@ import { createSignal, createMemo } from "solid-js";
 import { format, subDays } from "date-fns";
 
 import { Button } from "@/registry/solid/ui/button";
-import { DatePicker } from "@/registry/solid/ui/date-picker";
-import type { DateRange } from "@/registry/solid/ui/calendar";
+import { DatePicker, type DateRange } from "@/registry/solid/ui/date-picker";
 
 export default function DatePickerDemo() {
   const [auditDate, setAuditDate] = createSignal<Date | undefined>(new Date());

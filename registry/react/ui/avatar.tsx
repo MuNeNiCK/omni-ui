@@ -81,4 +81,45 @@ function AvatarFallback({
   );
 }
 
-export { Avatar, AvatarImage, AvatarFallback };
+function AvatarBadge({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="avatar-badge"
+      className={cn(
+        "absolute bottom-0 right-0 z-10 inline-flex size-3 items-center justify-center border border-border/60 bg-background/92 text-foreground shadow-[var(--glass-shadow-outline-strong)]",
+        "[&_svg:not([class*='size-'])]:size-2",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function AvatarGroup({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="avatar-group"
+      className={cn(
+        "group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function AvatarGroupCount({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="avatar-group-count"
+      className={cn(
+        "relative flex size-10 shrink-0 items-center justify-center border border-border/60 bg-muted/40 text-xs font-medium text-muted-foreground ring-2 ring-background shadow-[var(--glass-shadow-outline)]",
+        "[&_svg:not([class*='size-'])]:size-3.5",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+export { Avatar, AvatarBadge, AvatarFallback, AvatarGroup, AvatarGroupCount, AvatarImage };

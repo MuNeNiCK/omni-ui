@@ -3,6 +3,7 @@ import * as DialogPrimitive from "@kobalte/core/dialog";
 import { XIcon } from "lucide-solid";
 
 import { cn, omniMonoText } from "@/registry/solid/lib/utils";
+import { Button } from "@/registry/solid/ui/button";
 
 function Sheet(props: ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="sheet" {...props} />;
@@ -117,8 +118,18 @@ function SheetDescription(props: ComponentProps<typeof DialogPrimitive.Descripti
   );
 }
 
+function SheetAction(props: Parameters<typeof Button>[0]) {
+  return <Button data-slot="sheet-action" {...props} />;
+}
+
+function SheetCancel(props: Parameters<typeof Button>[0]) {
+  return <Button data-slot="sheet-cancel" variant="outline" {...props} />;
+}
+
 export {
   Sheet,
+  SheetPortal,
+  SheetOverlay,
   SheetTrigger,
   SheetClose,
   SheetContent,
@@ -126,4 +137,6 @@ export {
   SheetFooter,
   SheetTitle,
   SheetDescription,
+  SheetAction,
+  SheetCancel,
 };

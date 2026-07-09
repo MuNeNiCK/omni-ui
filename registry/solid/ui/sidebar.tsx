@@ -21,7 +21,6 @@ import { PanelLeftIcon } from "lucide-solid";
 import { useIsMobile } from "@/registry/solid/hooks/use-mobile";
 import { cn } from "@/registry/solid/lib/utils";
 import { Button } from "@/registry/solid/ui/button";
-import { Input } from "@/registry/solid/ui/input";
 import { Separator } from "@/registry/solid/ui/separator";
 import {
   Sheet,
@@ -62,7 +61,7 @@ function useSidebar() {
 
 // --- SidebarProvider ---
 
-type SidebarProviderProps = ParentProps<
+export type SidebarProviderProps = ParentProps<
   JSX.HTMLAttributes<HTMLDivElement> & {
     defaultOpen?: boolean;
     open?: boolean;
@@ -151,7 +150,7 @@ function SidebarProvider(props: SidebarProviderProps) {
 
 // --- Sidebar ---
 
-type SidebarProps = ParentProps<
+export type SidebarProps = ParentProps<
   JSX.HTMLAttributes<HTMLDivElement> & {
     side?: "left" | "right";
     variant?: "sidebar" | "floating" | "inset";
@@ -256,7 +255,9 @@ function Sidebar(props: SidebarProps) {
 
 // --- SidebarTrigger ---
 
-function SidebarTrigger(props: JSX.ButtonHTMLAttributes<HTMLButtonElement> & { class?: string }) {
+export type SidebarTriggerProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & { class?: string };
+
+function SidebarTrigger(props: SidebarTriggerProps) {
   const [local, rest] = splitProps(props, ["class", "onClick"]);
   const { toggleSidebar } = useSidebar();
 
@@ -281,7 +282,9 @@ function SidebarTrigger(props: JSX.ButtonHTMLAttributes<HTMLButtonElement> & { c
 
 // --- SidebarRail ---
 
-function SidebarRail(props: JSX.ButtonHTMLAttributes<HTMLButtonElement> & { class?: string }) {
+export type SidebarRailProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & { class?: string };
+
+function SidebarRail(props: SidebarRailProps) {
   const [local, rest] = splitProps(props, ["class"]);
   const { toggleSidebar } = useSidebar();
 
@@ -309,7 +312,9 @@ function SidebarRail(props: JSX.ButtonHTMLAttributes<HTMLButtonElement> & { clas
 
 // --- SidebarInset ---
 
-function SidebarInset(props: ParentProps<JSX.HTMLAttributes<HTMLElement> & { class?: string }>) {
+export type SidebarInsetProps = ParentProps<JSX.HTMLAttributes<HTMLElement> & { class?: string }>;
+
+function SidebarInset(props: SidebarInsetProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <main
@@ -324,25 +329,13 @@ function SidebarInset(props: ParentProps<JSX.HTMLAttributes<HTMLElement> & { cla
   );
 }
 
-// --- SidebarInput ---
-
-function SidebarInput(props: JSX.InputHTMLAttributes<HTMLInputElement> & { class?: string }) {
-  const [local, rest] = splitProps(props, ["class"]);
-  return (
-    <Input
-      data-slot="sidebar-input"
-      data-sidebar="input"
-      class={cn("bg-background h-8 w-full shadow-none", local.class)}
-      {...rest}
-    />
-  );
-}
-
 // --- SidebarHeader ---
 
-function SidebarHeader(
-  props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>,
-) {
+export type SidebarHeaderProps = ParentProps<
+  JSX.HTMLAttributes<HTMLDivElement> & { class?: string }
+>;
+
+function SidebarHeader(props: SidebarHeaderProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -356,9 +349,11 @@ function SidebarHeader(
 
 // --- SidebarFooter ---
 
-function SidebarFooter(
-  props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>,
-) {
+export type SidebarFooterProps = ParentProps<
+  JSX.HTMLAttributes<HTMLDivElement> & { class?: string }
+>;
+
+function SidebarFooter(props: SidebarFooterProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -372,7 +367,9 @@ function SidebarFooter(
 
 // --- SidebarSeparator ---
 
-function SidebarSeparator(props: ComponentProps<typeof Separator>) {
+export type SidebarSeparatorProps = ComponentProps<typeof Separator>;
+
+function SidebarSeparator(props: SidebarSeparatorProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <Separator
@@ -386,9 +383,11 @@ function SidebarSeparator(props: ComponentProps<typeof Separator>) {
 
 // --- SidebarContent ---
 
-function SidebarContent(
-  props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>,
-) {
+export type SidebarContentProps = ParentProps<
+  JSX.HTMLAttributes<HTMLDivElement> & { class?: string }
+>;
+
+function SidebarContent(props: SidebarContentProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -405,7 +404,11 @@ function SidebarContent(
 
 // --- SidebarGroup ---
 
-function SidebarGroup(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>) {
+export type SidebarGroupProps = ParentProps<
+  JSX.HTMLAttributes<HTMLDivElement> & { class?: string }
+>;
+
+function SidebarGroup(props: SidebarGroupProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -419,7 +422,11 @@ function SidebarGroup(props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { 
 
 // --- SidebarGroupLabel ---
 
-type SidebarGroupLabelProps = ParentProps<
+export interface SidebarGroupLabelCommonProps {
+  class?: string;
+}
+
+export type SidebarGroupLabelProps = ParentProps<
   JSX.HTMLAttributes<HTMLDivElement> & {
     class?: string;
     as?: ValidComponent;
@@ -445,7 +452,11 @@ function SidebarGroupLabel(props: SidebarGroupLabelProps) {
 
 // --- SidebarGroupAction ---
 
-type SidebarGroupActionProps = ParentProps<
+export interface SidebarGroupActionCommonProps {
+  class?: string;
+}
+
+export type SidebarGroupActionProps = ParentProps<
   JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
     class?: string;
     as?: ValidComponent;
@@ -473,9 +484,11 @@ function SidebarGroupAction(props: SidebarGroupActionProps) {
 
 // --- SidebarGroupContent ---
 
-function SidebarGroupContent(
-  props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>,
-) {
+export type SidebarGroupContentProps = ParentProps<
+  JSX.HTMLAttributes<HTMLDivElement> & { class?: string }
+>;
+
+function SidebarGroupContent(props: SidebarGroupContentProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -489,9 +502,11 @@ function SidebarGroupContent(
 
 // --- SidebarMenu ---
 
-function SidebarMenu(
-  props: ParentProps<JSX.HTMLAttributes<HTMLUListElement> & { class?: string }>,
-) {
+export type SidebarMenuProps = ParentProps<
+  JSX.HTMLAttributes<HTMLUListElement> & { class?: string }
+>;
+
+function SidebarMenu(props: SidebarMenuProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <ul
@@ -505,9 +520,11 @@ function SidebarMenu(
 
 // --- SidebarMenuItem ---
 
-function SidebarMenuItem(
-  props: ParentProps<JSX.HTMLAttributes<HTMLLIElement> & { class?: string }>,
-) {
+export type SidebarMenuItemProps = ParentProps<
+  JSX.HTMLAttributes<HTMLLIElement> & { class?: string }
+>;
+
+function SidebarMenuItem(props: SidebarMenuItemProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <li
@@ -521,7 +538,7 @@ function SidebarMenuItem(
 
 // --- SidebarMenuButton ---
 
-const sidebarMenuButtonVariants = cva(
+const SidebarMenuButtonVariants = cva(
   "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-none p-2 text-left text-xs outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
   {
     variants: {
@@ -543,13 +560,22 @@ const sidebarMenuButtonVariants = cva(
   },
 );
 
-type SidebarMenuButtonProps = ParentProps<
+export type SidebarMenuButtonOptions = VariantProps<typeof SidebarMenuButtonVariants> & {
+  isActive?: boolean;
+  tooltip?: string | ComponentProps<typeof TooltipContent>;
+};
+
+export interface SidebarMenuButtonCommonProps {
+  class?: string;
+}
+
+export type SidebarMenuButtonProps = ParentProps<
   JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
     class?: string;
     as?: ValidComponent;
     isActive?: boolean;
     tooltip?: string | ComponentProps<typeof TooltipContent>;
-  } & VariantProps<typeof sidebarMenuButtonVariants>
+  } & VariantProps<typeof SidebarMenuButtonVariants>
 >;
 
 function SidebarMenuButton(props: SidebarMenuButtonProps) {
@@ -572,7 +598,7 @@ function SidebarMenuButton(props: SidebarMenuButtonProps) {
       data-size={local.size}
       data-active={local.isActive}
       class={cn(
-        sidebarMenuButtonVariants({ variant: local.variant, size: local.size }),
+        SidebarMenuButtonVariants({ variant: local.variant, size: local.size }),
         local.class,
       )}
       {...rest}
@@ -599,7 +625,15 @@ function SidebarMenuButton(props: SidebarMenuButtonProps) {
 
 // --- SidebarMenuAction ---
 
-type SidebarMenuActionProps = ParentProps<
+export interface SidebarMenuActionOptions {
+  showOnHover?: boolean;
+}
+
+export interface SidebarMenuActionCommonProps {
+  class?: string;
+}
+
+export type SidebarMenuActionProps = ParentProps<
   JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
     class?: string;
     as?: ValidComponent;
@@ -633,9 +667,11 @@ function SidebarMenuAction(props: SidebarMenuActionProps) {
 
 // --- SidebarMenuBadge ---
 
-function SidebarMenuBadge(
-  props: ParentProps<JSX.HTMLAttributes<HTMLDivElement> & { class?: string }>,
-) {
+export type SidebarMenuBadgeProps = ParentProps<
+  JSX.HTMLAttributes<HTMLDivElement> & { class?: string }
+>;
+
+function SidebarMenuBadge(props: SidebarMenuBadgeProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -657,7 +693,7 @@ function SidebarMenuBadge(
 
 // --- SidebarMenuSkeleton ---
 
-type SidebarMenuSkeletonProps = ParentProps<
+export type SidebarMenuSkeletonProps = ParentProps<
   JSX.HTMLAttributes<HTMLDivElement> & {
     class?: string;
     showIcon?: boolean;
@@ -690,9 +726,9 @@ function SidebarMenuSkeleton(props: SidebarMenuSkeletonProps) {
 
 // --- SidebarMenuSub ---
 
-function SidebarMenuSub(
-  props: ParentProps<JSX.HTMLAttributes<HTMLUListElement> & { class?: string }>,
-) {
+export type SidebarMenuSub = ParentProps<JSX.HTMLAttributes<HTMLUListElement> & { class?: string }>;
+
+function SidebarMenuSub(props: SidebarMenuSub) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <ul
@@ -710,9 +746,11 @@ function SidebarMenuSub(
 
 // --- SidebarMenuSubItem ---
 
-function SidebarMenuSubItem(
-  props: ParentProps<JSX.HTMLAttributes<HTMLLIElement> & { class?: string }>,
-) {
+export type SidebarMenuSubItem = ParentProps<
+  JSX.HTMLAttributes<HTMLLIElement> & { class?: string }
+>;
+
+function SidebarMenuSubItem(props: SidebarMenuSubItem) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <li
@@ -726,7 +764,16 @@ function SidebarMenuSubItem(
 
 // --- SidebarMenuSubButton ---
 
-type SidebarMenuSubButtonProps = ParentProps<
+export interface SidebarMenuSubButtonOptions {
+  isActive?: boolean;
+  size?: "sm" | "md";
+}
+
+export interface SidebarMenuSubButtonCommonProps {
+  class?: string;
+}
+
+export type SidebarMenuSubButtonProps = ParentProps<
   JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
     class?: string;
     as?: ValidComponent;
@@ -768,12 +815,12 @@ export {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarInput,
   SidebarInset,
   SidebarMenu,
   SidebarMenuAction,
   SidebarMenuBadge,
   SidebarMenuButton,
+  SidebarMenuButtonVariants,
   SidebarMenuItem,
   SidebarMenuSkeleton,
   SidebarMenuSub,

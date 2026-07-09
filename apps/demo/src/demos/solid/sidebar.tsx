@@ -3,6 +3,7 @@ import { CheckCircle2, LayoutDashboard, Shield, Zap } from "lucide-solid";
 
 import { Badge } from "@/registry/solid/ui/badge";
 import { Button } from "@/registry/solid/ui/button";
+import { Input } from "@/registry/solid/ui/input";
 import {
   Sidebar,
   SidebarContent,
@@ -10,7 +11,6 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarInput,
   SidebarMenu,
   SidebarMenuBadge,
   SidebarMenuButton,
@@ -37,7 +37,12 @@ export default function SidebarDemo() {
       <SidebarProvider defaultOpen class="relative flex min-h-[360px]">
         <Sidebar class="!absolute !inset-y-0 !left-0 !h-full bg-muted/20">
           <SidebarHeader class="gap-4">
-            <SidebarInput aria-label="Search services" placeholder="Search services…" />
+            <Input
+              data-sidebar="input"
+              class="bg-background h-8 w-full shadow-none"
+              aria-label="Search services"
+              placeholder="Search services…"
+            />
           </SidebarHeader>
           <SidebarContent class="overflow-hidden">
             <SidebarGroup>

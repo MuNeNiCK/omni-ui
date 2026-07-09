@@ -17,6 +17,9 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-solid";
 import { useOptionalFormControlProps } from "@/registry/solid/lib/form-control";
 import { cn } from "@/registry/solid/lib/utils";
 
+const SelectPortal = SelectPrimitive.Portal;
+const HiddenSelect = SelectPrimitive.HiddenSelect;
+
 type SelectContentPosition = "popper" | "item-aligned";
 type SelectContentAlign = "start" | "center" | "end";
 
@@ -40,9 +43,14 @@ function getPlacementFromAlign(align: SelectContentAlign) {
   }
 }
 
-function Select<Option, OptGroup = never>(
-  props: SelectPrimitive.SelectRootProps<Option, OptGroup> & { children?: JSX.Element },
-) {
+export type SelectProps<Option, OptGroup = never> = SelectPrimitive.SelectRootProps<
+  Option,
+  OptGroup
+> & {
+  children?: JSX.Element;
+};
+
+function Select<Option, OptGroup = never>(props: SelectProps<Option, OptGroup>) {
   const [local, rest] = splitProps(props, ["children", "placement", "sameWidth"]);
   const [position, setPosition] = createSignal<SelectContentPosition>("popper");
   const [align, setAlign] = createSignal<SelectContentAlign>("center");
@@ -63,24 +71,27 @@ function Select<Option, OptGroup = never>(
   );
 }
 
-function SelectValue(
-  props: Omit<ComponentProps<typeof SelectPrimitive.Value>, "children"> & {
-    children?: JSX.Element | ((state: unknown) => JSX.Element);
-  },
-) {
+export type SelectValueProps<Options = unknown> = Omit<
+  ComponentProps<typeof SelectPrimitive.Value<Options>>,
+  "children"
+> & {
+  children?: JSX.Element | ((state: unknown) => JSX.Element);
+};
+
+function SelectValue<Options = unknown>(props: SelectValueProps<Options>) {
   return (
     <SelectPrimitive.Value
       data-slot="select-value"
-      {...(props as ComponentProps<typeof SelectPrimitive.Value>)}
+      {...(props as ComponentProps<typeof SelectPrimitive.Value<Options>>)}
     />
   );
 }
 
-function SelectTrigger(
-  props: ComponentProps<typeof SelectPrimitive.Trigger> & {
-    size?: "sm" | "default";
-  },
-) {
+export type SelectTriggerProps = ComponentProps<typeof SelectPrimitive.Trigger> & {
+  size?: "sm" | "default";
+};
+
+function SelectTrigger(props: SelectTriggerProps) {
   const [local, rest] = splitProps(props, [
     "class",
     "children",
@@ -115,12 +126,12 @@ function SelectTrigger(
   );
 }
 
-function SelectContent(
-  props: ComponentProps<typeof SelectPrimitive.Content> & {
-    position?: "popper" | "item-aligned";
-    align?: "start" | "center" | "end";
-  },
-) {
+export type SelectContentProps = ComponentProps<typeof SelectPrimitive.Content> & {
+  position?: "popper" | "item-aligned";
+  align?: "start" | "center" | "end";
+};
+
+function SelectContent(props: SelectContentProps) {
   const [local, rest] = splitProps(props, ["class", "children", "position", "align"]);
   const layout = useContext(SelectLayoutContext);
   const position = () => local.position ?? "popper";
@@ -203,19 +214,23 @@ function SelectContent(
   );
 }
 
-function SelectGroup(props: ComponentProps<typeof SelectPrimitive.Section>) {
+export type SelectSectionProps = ComponentProps<typeof SelectPrimitive.Section>;
+
+function SelectSection(props: SelectSectionProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   return (
-    <SelectPrimitive.Section data-slot="select-group" class={local.class} {...rest}>
+    <SelectPrimitive.Section data-slot="select-section" class={local.class} {...rest}>
       {local.children}
     </SelectPrimitive.Section>
   );
 }
 
-function SelectLabel(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>) {
+export type SelectLabelProps = ComponentProps<typeof SelectPrimitive.Label>;
+
+function SelectLabel(props: SelectLabelProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
-    <div
+    <SelectPrimitive.Label
       data-slot="select-label"
       class={cn("px-3 py-2 text-xs font-medium text-muted-foreground/90", local.class)}
       {...rest}
@@ -230,7 +245,9 @@ function scrollSelectList(target: EventTarget | null, direction: "up" | "down") 
   });
 }
 
-function SelectItem(props: ComponentProps<typeof SelectPrimitive.Item>) {
+export type SelectItemProps = ComponentProps<typeof SelectPrimitive.Item>;
+
+function SelectItem(props: SelectItemProps) {
   const [local, rest] = splitProps(props, ["class", "children"]);
   return (
     <SelectPrimitive.Item
@@ -253,23 +270,6 @@ function SelectItem(props: ComponentProps<typeof SelectPrimitive.Item>) {
       </span>
       <SelectPrimitive.ItemLabel>{local.children}</SelectPrimitive.ItemLabel>
     </SelectPrimitive.Item>
-  );
-}
-
-function SelectSeparator(
-  props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>,
-) {
-  const [local, rest] = splitProps(props, ["class"]);
-  return (
-    <div
-      data-slot="select-separator"
-      role="separator"
-      class={cn(
-        "pointer-events-none -mx-1 my-1 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent",
-        local.class,
-      )}
-      {...rest}
-    />
   );
 }
 
@@ -305,14 +305,41 @@ function SelectScrollDownButton(
   );
 }
 
+export type SelectDescriptionProps = ComponentProps<typeof SelectPrimitive.Description>;
+
+function SelectDescription(props: SelectDescriptionProps) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <SelectPrimitive.Description
+      data-slot="select-description"
+      class={cn("text-sm text-muted-foreground data-[disabled]:opacity-50", local.class)}
+      {...rest}
+    />
+  );
+}
+
+export type SelectErrorMessageProps = ComponentProps<typeof SelectPrimitive.ErrorMessage>;
+
+function SelectErrorMessage(props: SelectErrorMessageProps) {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <SelectPrimitive.ErrorMessage
+      data-slot="select-error-message"
+      class={cn("text-sm text-destructive data-[disabled]:opacity-50", local.class)}
+      {...rest}
+    />
+  );
+}
+
 export {
+  HiddenSelect,
   Select,
   SelectContent,
-  SelectGroup,
+  SelectDescription,
+  SelectErrorMessage,
   SelectLabel,
-  SelectScrollDownButton,
-  SelectScrollUpButton,
-  SelectSeparator,
+  SelectPortal,
+  SelectSection,
   SelectTrigger,
   SelectValue,
   SelectItem,

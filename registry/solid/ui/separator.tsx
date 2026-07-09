@@ -3,7 +3,7 @@ import * as SeparatorPrimitive from "@kobalte/core/separator";
 
 import { cn } from "@/registry/solid/lib/utils";
 
-type SeparatorProps = JSX.HTMLAttributes<HTMLHRElement> & {
+export type SeparatorProps = JSX.HTMLAttributes<HTMLHRElement> & {
   orientation?: "horizontal" | "vertical";
   decorative?: boolean;
 };

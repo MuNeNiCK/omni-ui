@@ -10,7 +10,9 @@ const paginationStateClasses =
 const paginationActiveClasses =
   "data-[active=true]:border-foreground data-[active=true]:bg-foreground data-[active=true]:text-background data-[active=true]:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]";
 
-function Pagination(props: JSX.HTMLAttributes<HTMLElement>) {
+export type PaginationProps = JSX.HTMLAttributes<HTMLElement>;
+
+function Pagination(props: PaginationProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <nav
@@ -23,7 +25,9 @@ function Pagination(props: JSX.HTMLAttributes<HTMLElement>) {
   );
 }
 
-function PaginationContent(props: JSX.HTMLAttributes<HTMLUListElement>) {
+export type PaginationContentProps = JSX.HTMLAttributes<HTMLUListElement>;
+
+function PaginationContent(props: PaginationContentProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <ul
@@ -34,11 +38,13 @@ function PaginationContent(props: JSX.HTMLAttributes<HTMLUListElement>) {
   );
 }
 
-function PaginationItem(props: JSX.LiHTMLAttributes<HTMLLIElement>) {
+export type PaginationItemProps = JSX.LiHTMLAttributes<HTMLLIElement>;
+
+function PaginationItem(props: PaginationItemProps) {
   return <li data-slot="pagination-item" {...props} />;
 }
 
-type PaginationLinkProps = JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
+export type PaginationLinkProps = JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
   isActive?: boolean;
   size?: "icon" | "default";
 };
@@ -65,7 +71,9 @@ function PaginationLink(props: PaginationLinkProps) {
   );
 }
 
-function PaginationPrevious(props: PaginationLinkProps) {
+export type PaginationPreviousProps = PaginationLinkProps;
+
+function PaginationPrevious(props: PaginationPreviousProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <PaginationLink
@@ -80,7 +88,9 @@ function PaginationPrevious(props: PaginationLinkProps) {
   );
 }
 
-function PaginationNext(props: PaginationLinkProps) {
+export type PaginationNextProps = PaginationLinkProps;
+
+function PaginationNext(props: PaginationNextProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <PaginationLink
@@ -95,7 +105,9 @@ function PaginationNext(props: PaginationLinkProps) {
   );
 }
 
-function PaginationEllipsis(props: JSX.HTMLAttributes<HTMLSpanElement>) {
+export type PaginationEllipsisProps = JSX.HTMLAttributes<HTMLSpanElement>;
+
+function PaginationEllipsis(props: PaginationEllipsisProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <span

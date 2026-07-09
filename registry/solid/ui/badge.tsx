@@ -13,6 +13,8 @@ const badgeVariants = cva(
         destructive:
           "border-destructive/60 bg-destructive/10 text-destructive hover:bg-destructive/15 focus-visible:ring-destructive/30",
         outline: "border-border/60 text-muted-foreground hover:bg-muted/30",
+        ghost: "border-transparent bg-transparent text-muted-foreground hover:text-foreground",
+        link: "border-transparent bg-transparent px-1 text-muted-foreground underline-offset-4 hover:text-foreground hover:underline",
       },
     },
     defaultVariants: {
@@ -21,7 +23,7 @@ const badgeVariants = cva(
   },
 );
 
-type BadgeProps = JSX.HTMLAttributes<HTMLSpanElement> & VariantProps<typeof badgeVariants>;
+export type BadgeProps = JSX.HTMLAttributes<HTMLSpanElement> & VariantProps<typeof badgeVariants>;
 
 function Badge(props: BadgeProps) {
   const [local, rest] = splitProps(props, ["class", "variant"]);

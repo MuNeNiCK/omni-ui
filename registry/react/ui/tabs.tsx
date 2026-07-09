@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/registry/react/lib/utils";
 
@@ -15,14 +16,32 @@ function Tabs({ className, ...props }: React.ComponentProps<typeof TabsPrimitive
   );
 }
 
-function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.List>) {
+const tabsListVariants = cva(
+  "inline-flex h-10 w-fit items-center justify-center border border-border/60 bg-muted/30",
+  {
+    variants: {
+      variant: {
+        default: "",
+        line: "",
+        segmented: "",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  },
+);
+
+function TabsList({
+  className,
+  variant,
+  ...props
+}: React.ComponentProps<typeof TabsPrimitive.List> & VariantProps<typeof tabsListVariants>) {
   return (
     <TabsPrimitive.List
       data-slot="tabs-list"
-      className={cn(
-        "inline-flex h-10 w-fit items-center justify-center border border-border/60 bg-muted/30",
-        className,
-      )}
+      data-variant={variant ?? "default"}
+      className={cn(tabsListVariants({ variant }), className)}
       {...props}
     />
   );
@@ -55,4 +74,4 @@ function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPr
   );
 }
 
-export { Tabs, TabsList, TabsTrigger, TabsContent };
+export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants };

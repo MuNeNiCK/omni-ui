@@ -1,7 +1,7 @@
 import { Button } from "@/registry/solid/ui/button";
 import {
   Dialog,
-  DialogClose,
+  DialogCloseButton,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -34,9 +34,9 @@ export default function DialogDemo() {
           </p>
         </div>
         <DialogFooter>
-          <DialogClose as={Button} variant="muted">
+          <DialogCloseButton as={Button} variant="muted">
             Cancel
-          </DialogClose>
+          </DialogCloseButton>
           <Button>Launch</Button>
         </DialogFooter>
       </DialogContent>

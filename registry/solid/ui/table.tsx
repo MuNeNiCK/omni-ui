@@ -2,7 +2,9 @@ import { type JSX, splitProps } from "solid-js";
 
 import { cn } from "@/registry/solid/lib/utils";
 
-function Table(props: JSX.HTMLAttributes<HTMLTableElement>) {
+export type TableProps = JSX.HTMLAttributes<HTMLTableElement>;
+
+function Table(props: TableProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div data-slot="table-container" class="relative w-full overflow-x-auto">
@@ -11,19 +13,25 @@ function Table(props: JSX.HTMLAttributes<HTMLTableElement>) {
   );
 }
 
-function TableHeader(props: JSX.HTMLAttributes<HTMLTableSectionElement>) {
+export type TableHeaderProps = JSX.HTMLAttributes<HTMLTableSectionElement>;
+
+function TableHeader(props: TableHeaderProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return <thead data-slot="table-header" class={cn("[&_tr]:border-b", local.class)} {...rest} />;
 }
 
-function TableBody(props: JSX.HTMLAttributes<HTMLTableSectionElement>) {
+export type TableBodyProps = JSX.HTMLAttributes<HTMLTableSectionElement>;
+
+function TableBody(props: TableBodyProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <tbody data-slot="table-body" class={cn("[&_tr:last-child]:border-0", local.class)} {...rest} />
   );
 }
 
-function TableFooter(props: JSX.HTMLAttributes<HTMLTableSectionElement>) {
+export type TableFooterProps = JSX.HTMLAttributes<HTMLTableSectionElement>;
+
+function TableFooter(props: TableFooterProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <tfoot
@@ -34,7 +42,9 @@ function TableFooter(props: JSX.HTMLAttributes<HTMLTableSectionElement>) {
   );
 }
 
-function TableRow(props: JSX.HTMLAttributes<HTMLTableRowElement>) {
+export type TableRowProps = JSX.HTMLAttributes<HTMLTableRowElement>;
+
+function TableRow(props: TableRowProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <tr
@@ -48,7 +58,9 @@ function TableRow(props: JSX.HTMLAttributes<HTMLTableRowElement>) {
   );
 }
 
-function TableHead(props: JSX.ThHTMLAttributes<HTMLTableCellElement>) {
+export type TableHeadProps = JSX.ThHTMLAttributes<HTMLTableCellElement>;
+
+function TableHead(props: TableHeadProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <th
@@ -62,7 +74,9 @@ function TableHead(props: JSX.ThHTMLAttributes<HTMLTableCellElement>) {
   );
 }
 
-function TableCell(props: JSX.TdHTMLAttributes<HTMLTableCellElement>) {
+export type TableCellProps = JSX.TdHTMLAttributes<HTMLTableCellElement>;
+
+function TableCell(props: TableCellProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <td
@@ -76,7 +90,9 @@ function TableCell(props: JSX.TdHTMLAttributes<HTMLTableCellElement>) {
   );
 }
 
-function TableCaption(props: JSX.HTMLAttributes<HTMLTableCaptionElement>) {
+export type TableCaptionProps = JSX.HTMLAttributes<HTMLTableCaptionElement>;
+
+function TableCaption(props: TableCaptionProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <caption

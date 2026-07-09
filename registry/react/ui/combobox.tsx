@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
+import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-react";
 
 import { cn } from "@/registry/react/lib/utils";
 import {
@@ -17,6 +17,10 @@ import {
 
 const Combobox = ({ ...props }: React.ComponentProps<typeof PopoverPrimitive.Root>) => (
   <PopoverPrimitive.Root data-slot="combobox" {...props} />
+);
+
+const ComboboxValue = ({ className, ...props }: React.ComponentProps<"span">) => (
+  <span data-slot="combobox-value" className={cn("truncate", className)} {...props} />
 );
 
 const ComboboxTrigger = React.forwardRef<
@@ -107,7 +111,7 @@ const ComboboxContent = React.forwardRef<
 });
 ComboboxContent.displayName = "ComboboxContent";
 
-const ComboboxSearch = ({
+const ComboboxInput = ({
   className,
   placeholder = "Filter options…",
   ...props
@@ -155,6 +159,18 @@ const ComboboxGroup = ({
     className={cn("overflow-hidden py-1", className)}
     {...props}
   />
+);
+
+const ComboboxLabel = ({ className, ...props }: React.ComponentProps<"div">) => (
+  <div
+    data-slot="combobox-label"
+    className={cn("px-3 pb-1.5 text-xs font-medium text-muted-foreground/70", className)}
+    {...props}
+  />
+);
+
+const ComboboxCollection = ({ className, ...props }: React.ComponentProps<"div">) => (
+  <div data-slot="combobox-collection" className={className} {...props} />
 );
 
 const ComboboxSeparator = ({
@@ -231,14 +247,75 @@ const ComboboxItem = ({
   );
 };
 
+const ComboboxChips = ({ className, ...props }: React.ComponentProps<"div">) => (
+  <div
+    data-slot="combobox-chips"
+    className={cn(
+      "flex min-h-10 flex-wrap items-center gap-1.5 border border-border/60 bg-muted/40 px-2.5 py-1.5 text-sm shadow-[var(--glass-shadow-inset)] focus-within:border-foreground focus-within:ring-2 focus-within:ring-ring/40",
+      className,
+    )}
+    {...props}
+  />
+);
+
+const ComboboxChip = ({
+  className,
+  children,
+  showRemove = true,
+  ...props
+}: React.ComponentProps<"span"> & {
+  showRemove?: boolean;
+}) => (
+  <span
+    data-slot="combobox-chip"
+    className={cn(
+      "inline-flex h-6 w-fit items-center justify-center gap-1 border border-border/60 bg-muted/50 px-2 text-xs font-medium text-foreground",
+      showRemove && "pr-1",
+      className,
+    )}
+    {...props}
+  >
+    {children}
+    {showRemove ? (
+      <button
+        type="button"
+        data-slot="combobox-chip-remove"
+        className="inline-flex size-4 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
+        aria-label="Remove"
+      >
+        <XIcon className="size-3" />
+      </button>
+    ) : null}
+  </span>
+);
+
+const ComboboxChipsInput = ({ className, ...props }: React.ComponentProps<"input">) => (
+  <input
+    data-slot="combobox-chip-input"
+    className={cn("min-w-16 flex-1 bg-transparent outline-none", className)}
+    {...props}
+  />
+);
+
+function useComboboxAnchor() {
+  return React.useRef<HTMLDivElement | null>(null);
+}
+
 export {
   Combobox,
   ComboboxContent,
   ComboboxTrigger,
-  ComboboxSearch,
+  ComboboxInput,
   ComboboxList,
   ComboboxEmpty,
   ComboboxGroup,
+  ComboboxLabel,
+  ComboboxCollection,
   ComboboxSeparator,
   ComboboxItem,
+  ComboboxChips,
+  ComboboxChip,
+  ComboboxChipsInput,
+  ComboboxValue,
+  useComboboxAnchor,
 };

@@ -1,348 +1,316 @@
 import {
-  createContext,
-  createMemo,
   For,
+  Match,
   Show,
-  createUniqueId,
+  Switch,
+  createContext,
+  mergeProps,
   splitProps,
   useContext,
-  type Component,
-  type ParentProps,
   type JSX,
 } from "solid-js";
-import { cn } from "@/registry/solid/lib/utils";
+import { render } from "solid-js/web";
+import type { VisCrosshairProps } from "@unovis/solid";
+import {
+  VisCrosshair,
+  VisSingleContainer,
+  VisXYContainer,
+  type VisSingleContainerProps,
+  type VisXYContainerProps,
+} from "@unovis/solid";
 
-// --- Chart Config ---
+import { cx } from "@/registry/solid/lib/cva";
 
-type ChartConfig = Record<
+const THEMES = { light: "", dark: '[data-kb-theme="dark"]' } as const;
+
+export type ChartConfig = Record<
   string,
   {
-    label?: string;
-    icon?: Component<{ class?: string }>;
-    color?: string;
-    theme?: Record<string, string>;
-  }
+    label?: JSX.Element;
+    icon?: JSX.Element;
+  } & (
+    | { color?: string; theme?: never }
+    | { color?: never; theme: Record<keyof typeof THEMES, string> }
+  )
 >;
 
-type ChartPayloadEntry = {
-  color?: string;
-  dataKey?: string;
-  name?: string;
-  value?: unknown;
-  payload?: {
-    fill?: string;
-  };
-};
-
-type ChartTooltipRenderProps = {
-  active?: boolean;
-  payload?: ChartPayloadEntry[];
-  label?: string;
-};
-
-type ChartContextValue = {
+interface ChartContextProps {
   config: ChartConfig;
-};
-
-const ChartContext = createContext<ChartContextValue>();
-
-function useChart() {
-  const ctx = useContext(ChartContext);
-  if (!ctx) throw new Error("useChart must be used within a <ChartContainer />");
-  return ctx;
 }
 
-// --- ChartContainer ---
+const ChartContext = createContext<ChartContextProps>();
 
-type ChartContainerProps = ParentProps<
-  JSX.HTMLAttributes<HTMLDivElement> & {
-    config: ChartConfig;
-    id?: string;
+const useChart = () => {
+  const context = useContext(ChartContext);
+
+  if (!context) {
+    throw new Error("useChart must be used within a <ChartContainer />");
   }
->;
 
-function ChartContainer(props: ChartContainerProps) {
-  const [local, rest] = splitProps(props, ["class", "children", "config", "id"]);
-  const generatedId = createUniqueId();
-  const uniqueId = () => `chart-${local.id || generatedId}`;
+  return context;
+};
+
+type SingleContainerProps<T> = VisSingleContainerProps<T> & {
+  type: "single";
+};
+
+type XYContainerProps<T> = VisXYContainerProps<T> & {
+  type: "xy";
+};
+
+export type ChartContainerProps<T> = (XYContainerProps<T> | SingleContainerProps<T>) &
+  ChartContextProps;
+
+export const ChartContainer = <T,>(props: ChartContainerProps<T>) => {
+  const [, rest] = splitProps(props, ["config", "children", "type", "class"]);
 
   return (
-    <ChartContext.Provider value={{ config: local.config }}>
-      <div
-        data-slot="chart"
-        data-chart={uniqueId()}
-        class={cn(
-          "flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden",
-          local.class,
-        )}
-        {...rest}
-      >
-        <ChartStyle id={uniqueId()} config={local.config} />
-        {local.children}
+    <ChartContext.Provider
+      value={{
+        get config() {
+          return props.config;
+        },
+      }}
+    >
+      <div data-slot="chart" class={cx("flex aspect-video justify-center", props.class)}>
+        <Switch>
+          <Match when={props.type === "xy"}>
+            <VisXYContainer {...(rest as Omit<XYContainerProps<T>, "type">)}>
+              <ChartStyle type="xy" config={props.config} />
+              {props.children}
+            </VisXYContainer>
+          </Match>
+
+          <Match when={props.type === "single"}>
+            <VisSingleContainer {...(rest as Omit<SingleContainerProps<T>, "type">)}>
+              <ChartStyle type="single" config={props.config} />
+              {props.children}
+            </VisSingleContainer>
+          </Match>
+        </Switch>
       </div>
     </ChartContext.Provider>
   );
-}
-
-// --- ChartStyle ---
-
-type ChartStyleProps = {
-  id: string;
-  config: ChartConfig;
 };
 
-function ChartStyle(props: ChartStyleProps) {
-  const colorConfig = createMemo(() => {
-    return Object.entries(props.config).filter(([_, cfg]) => cfg.theme || cfg.color);
-  });
+export type ChartStyleProps = {
+  type: "xy" | "single";
+} & Omit<ChartContextProps, "data">;
 
-  const cssContent = createMemo(() => {
-    if (colorConfig().length === 0) return "";
+export const ChartStyle = (props: ChartStyleProps) => {
+  const colorConfig = () =>
+    Object.entries(props.config).filter(([, config]) => config.theme ?? config.color);
 
-    let light = "";
-    let dark = "";
+  return (
+    <Show when={colorConfig().length}>
+      <style>
+        {Object.entries(THEMES)
+          .map(([theme, prefix]) => {
+            const colorVars = colorConfig()
+              .map(([key, itemConfig]) => {
+                const color =
+                  itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ?? itemConfig.color;
+                return color ? `  --color-${key}: ${color};` : null;
+              })
+              .join("\n");
 
-    for (const [key, cfg] of colorConfig()) {
-      if (cfg.theme) {
-        if (cfg.theme.light) light += `  --color-${key}: ${cfg.theme.light};\n`;
-        if (cfg.theme.dark) dark += `  --color-${key}: ${cfg.theme.dark};\n`;
-      } else if (cfg.color) {
-        light += `  --color-${key}: ${cfg.color};\n`;
-        dark += `  --color-${key}: ${cfg.color};\n`;
-      }
+            return `${prefix} [data-vis-${props.type}-container] {\n${colorVars}\n}`;
+          })
+          .join("\n\n")}
+      </style>
+    </Show>
+  );
+};
+
+export type ChartCrosshairProps<T> = Omit<VisCrosshairProps<T>, "template"> & {
+  template?: (
+    props: {
+      data: T;
+      x: number | Date;
+    } & ChartContextProps,
+  ) => JSX.Element;
+};
+
+export const ChartCrosshair = <T,>(props: ChartCrosshairProps<T>) => {
+  const [, rest] = splitProps(props, ["template"]);
+  const { config } = useChart();
+
+  const template = (d: T, x: number | Date) => {
+    const container = document.createElement("div");
+    const Component = () =>
+      !props.template
+        ? null
+        : props.template({
+            data: d,
+            x,
+            config,
+          });
+    render(() => <Component />, container);
+    return container.innerHTML;
+  };
+
+  return <VisCrosshair template={template} {...rest} />;
+};
+
+type InferLabelKey<T, C> = C extends ChartConfig
+  ? ChartConfig extends C
+    ? keyof T
+    : keyof C
+  : never;
+
+const getConfigFromData = <T, C extends ChartConfig = ChartConfig>(
+  data: T,
+  config: ChartConfig,
+  labelKey?: InferLabelKey<T, C>,
+  nameKey?: C extends undefined ? never : keyof C,
+) => {
+  const valueKeys =
+    // @ts-expect-error Dynamic chart rows intentionally inspect unknown records.
+    Object.entries(data)
+      .filter(
+        ([key, value]) =>
+          key !== labelKey && (typeof value === "number" || typeof value === "object"),
+      )
+      .filter(([key]) => !key.includes("_"))
+      .map(([key]) => key);
+
+  const items = valueKeys.map((key) => {
+    const configItem = config[key];
+    let color = configItem.color;
+
+    // @ts-expect-error Dynamic chart rows may provide fill directly.
+    if (!color && "fill" in data) {
+      color = data.fill as string;
     }
 
-    return `[data-chart="${props.id}"] {\n${light}}\n.dark [data-chart="${props.id}"] {\n${dark}}`;
+    const rawValue = data[key as keyof T];
+    const value =
+      typeof rawValue === "object" && rawValue !== null
+        ? Object.values(rawValue).find((v) => typeof v === "number")
+        : (rawValue as number);
+
+    return {
+      value,
+      key: nameKey ? config[nameKey].label : configItem.label,
+      icon: configItem.icon,
+      color,
+    };
   });
 
-  return (
-    <Show when={cssContent()}>
-      <style innerHTML={cssContent()} />
-    </Show>
-  );
-}
+  const label = data[labelKey as keyof T] ?? config[labelKey as keyof C].label;
 
-// --- ChartTooltip ---
+  return {
+    label,
+    items,
+  };
+};
 
-type ChartTooltipProps = ParentProps<{
+export type ChartTooltipContentProps<T, C extends ChartConfig = ChartConfig> = {
+  data: T;
+  x: number | Date;
+  labelKey: InferLabelKey<T, C>;
   class?: string;
-  active?: boolean;
-  payload?: ChartPayloadEntry[];
-  label?: string;
-  content?: (props: ChartTooltipRenderProps) => JSX.Element;
-}>;
-
-function ChartTooltip(props: ChartTooltipProps) {
-  return (
-    <Show when={props.active && props.payload && props.payload.length > 0}>
-      <Show
-        when={props.content}
-        fallback={
-          <ChartTooltipContent active={props.active} payload={props.payload} label={props.label} />
-        }
-      >
-        {(content) =>
-          content()({
-            active: props.active,
-            payload: props.payload,
-            label: props.label,
-          })
-        }
-      </Show>
-    </Show>
-  );
-}
-
-// --- ChartTooltipContent ---
-
-type ChartTooltipContentProps = {
-  class?: string;
-  active?: boolean;
-  payload?: ChartPayloadEntry[];
-  label?: string;
-  labelKey?: string;
-  nameKey?: string;
-  indicator?: "line" | "dot" | "dashed";
   hideLabel?: boolean;
   hideIndicator?: boolean;
-  formatter?: (
-    value: unknown,
-    name: string,
-    item: ChartPayloadEntry,
-    index: number,
-    payload: ChartPayloadEntry[],
-  ) => JSX.Element;
-  labelFormatter?: (label: string, payload: ChartPayloadEntry[]) => JSX.Element | string;
-  color?: string;
-};
+  indicator?: "line" | "dot" | "dashed";
+  nameKey?: C extends undefined ? never : keyof C;
+  labelFormatter?: (data: number | Date) => JSX.Element;
+  labelAsKey?: boolean;
+  formatter?: (value: number, name: JSX.Element, item: T, index: number) => JSX.Element;
+} & ChartContextProps;
 
-function ChartTooltipContent(props: ChartTooltipContentProps) {
-  const [local] = splitProps(props, [
-    "class",
-    "active",
-    "payload",
-    "label",
-    "labelKey",
-    "nameKey",
-    "indicator",
-    "hideLabel",
-    "hideIndicator",
-    "formatter",
-    "labelFormatter",
-    "color",
-  ]);
+export const ChartTooltipContent = <T, C extends ChartConfig = ChartConfig>(
+  props: ChartTooltipContentProps<T, C>,
+) => {
+  const merge = mergeProps(
+    {
+      hideLabel: false,
+      hideIndicator: false,
+      indicator: "dot",
+      labelAsKey: false,
+    } satisfies Partial<ChartTooltipContentProps<T, C>>,
+    props,
+  );
 
-  const { config } = useChart();
-  const indicator = () => local.indicator ?? "dot";
+  const value = () =>
+    getConfigFromData<T, C>(merge.data, merge.config, merge.labelKey, merge.nameKey);
 
-  const tooltipLabel = createMemo(() => {
-    if (local.hideLabel || !local.payload?.length) return null;
-    const item = local.payload![0];
-    const key = local.labelKey || (item?.dataKey as string) || "value";
-    const cfgItem = config[key];
-    const label = local.label || cfgItem?.label || key;
-    if (local.labelFormatter) {
-      return local.labelFormatter(label, local.payload!);
+  const tooltipLabel = () => {
+    if (merge.hideLabel || !value().items.length) {
+      return null;
     }
-    return label;
-  });
+
+    return (
+      <div class="font-medium capitalize">
+        <Show
+          when={!merge.labelFormatter}
+          fallback={merge.labelFormatter!(
+            typeof merge.x === "number" ? Math.round(merge.x) : merge.x,
+          )}
+        >
+          {value().label as JSX.Element}
+        </Show>
+      </div>
+    );
+  };
+
+  const nestLabel = () => value().items.length === 1 && merge.indicator !== "dot";
 
   return (
-    <Show when={local.active && local.payload && local.payload.length > 0}>
-      <div
-        data-slot="chart-tooltip-content"
-        class={cn(
-          "border-border/50 bg-background grid min-w-[8rem] items-start gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs shadow-xl",
-          local.class,
-        )}
-      >
-        <Show when={tooltipLabel()}>
-          <div class="font-medium">{tooltipLabel()}</div>
-        </Show>
-        <div class="grid gap-1">
-          <For each={local.payload}>
-            {(item, idx) => {
-              const key = local.nameKey || (item.name as string) || (item.dataKey as string);
-              const cfgItem = config[key];
-              const itemColor = local.color || item.color || cfgItem?.color || item.payload?.fill;
-
-              return (
-                <div class="flex items-center gap-2">
-                  <Show when={!local.hideIndicator}>
-                    <div
-                      class={cn(
-                        "shrink-0 rounded-[2px]",
-                        indicator() === "dot" && "size-2.5",
-                        indicator() === "line" && "h-0.5 w-4",
-                        indicator() === "dashed" &&
-                          "h-0.5 w-4 border-t-2 border-dashed bg-transparent",
-                      )}
-                      style={{
-                        "background-color": indicator() !== "dashed" ? itemColor : undefined,
-                        "border-color": indicator() === "dashed" ? itemColor : undefined,
-                      }}
-                    />
-                  </Show>
-                  <div class="flex flex-1 items-baseline justify-between gap-2">
-                    <span class="text-muted-foreground">{cfgItem?.label || key}</span>
-                    <span class="font-mono font-medium tabular-nums text-foreground">
-                      <Show when={local.formatter} fallback={<>{item.value}</>}>
-                        {(fmt) => fmt()(item.value, key, item, idx(), local.payload)}
+    <div class={cx("grid min-w-[8rem] items-start gap-1.5 text-xs", merge.class)}>
+      <Show when={!nestLabel()}>{tooltipLabel()}</Show>
+      <div class="grid gap-1.5">
+        <For each={value().items}>
+          {(item, index) => (
+            <div
+              class={cx(
+                "[&>svg]:text-muted-foreground flex w-full flex-wrap items-stretch gap-2 [&>svg]:size-2.5",
+                merge.indicator === "dot" && "items-center",
+              )}
+            >
+              <Show
+                when={!merge.formatter}
+                fallback={merge.formatter!(item.value!, item.key, merge.data, index())}
+              >
+                <Show when={item.icon}>{item.icon}</Show>
+                <Show when={!item.icon && !merge.hideIndicator}>
+                  <div
+                    class={cx("shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)", {
+                      "size-2.5": merge.indicator === "dot",
+                      "w-1": merge.indicator === "line",
+                      "w-0 border-[1.5px] border-dashed bg-transparent":
+                        merge.indicator === "dashed",
+                      "my-0.5": nestLabel() && merge.indicator === "dashed",
+                    })}
+                    style={{
+                      "--color-border": item.color,
+                      "--color-bg": item.color,
+                    }}
+                  />
+                </Show>
+                <div
+                  class={cx(
+                    "flex flex-1 justify-between gap-1.5 leading-none",
+                    nestLabel() ? "items-end" : "items-center",
+                  )}
+                >
+                  <div class="grid gap-1.5">
+                    <Show when={nestLabel()}>{tooltipLabel()}</Show>
+                    <span class="text-muted-foreground capitalize">
+                      <Show when={!merge.labelAsKey} fallback={value().label as string}>
+                        {item.key}
                       </Show>
                     </span>
                   </div>
+                  <span class="text-foreground font-mono font-medium tabular-nums">
+                    {item.value}
+                  </span>
                 </div>
-              );
-            }}
-          </For>
-        </div>
-      </div>
-    </Show>
-  );
-}
-
-// --- ChartLegend ---
-
-type ChartLegendProps = ParentProps<{
-  class?: string;
-  payload?: ChartPayloadEntry[];
-  content?: (props: { payload?: ChartPayloadEntry[] }) => JSX.Element;
-}>;
-
-function ChartLegend(props: ChartLegendProps) {
-  return (
-    <Show when={props.payload && props.payload.length > 0}>
-      <Show when={props.content} fallback={<ChartLegendContent payload={props.payload} />}>
-        {(content) => content()({ payload: props.payload })}
-      </Show>
-    </Show>
-  );
-}
-
-// --- ChartLegendContent ---
-
-type ChartLegendContentProps = {
-  class?: string;
-  payload?: ChartPayloadEntry[];
-  nameKey?: string;
-  hideIcon?: boolean;
-  verticalAlign?: "top" | "bottom";
-};
-
-function ChartLegendContent(props: ChartLegendContentProps) {
-  const [local] = splitProps(props, ["class", "payload", "nameKey", "hideIcon", "verticalAlign"]);
-
-  const { config } = useChart();
-
-  return (
-    <Show when={local.payload && local.payload.length > 0}>
-      <div
-        data-slot="chart-legend-content"
-        class={cn(
-          "flex items-center justify-center gap-4",
-          local.verticalAlign === "top" ? "pb-3" : "pt-3",
-          local.class,
-        )}
-      >
-        <For each={local.payload}>
-          {(item) => {
-            const key = local.nameKey || (item.dataKey as string) || "value";
-            const cfgItem = config[key];
-            return (
-              <div class="flex items-center gap-1.5">
-                <Show when={!local.hideIcon}>
-                  <Show
-                    when={cfgItem?.icon}
-                    fallback={
-                      <div
-                        class="h-2 w-2 shrink-0 rounded-[2px]"
-                        style={{ "background-color": item.color }}
-                      />
-                    }
-                  >
-                    {(Icon) => {
-                      const IconComp = Icon();
-                      return <IconComp class="size-3 text-muted-foreground" />;
-                    }}
-                  </Show>
-                </Show>
-                <span class="text-xs text-muted-foreground">{cfgItem?.label || key}</span>
-              </div>
-            );
-          }}
+              </Show>
+            </div>
+          )}
         </For>
       </div>
-    </Show>
+    </div>
   );
-}
-
-export {
-  ChartContainer,
-  ChartStyle,
-  ChartTooltip,
-  ChartTooltipContent,
-  ChartLegend,
-  ChartLegendContent,
 };
-
-export type { ChartConfig };

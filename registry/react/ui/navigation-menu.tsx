@@ -133,6 +133,31 @@ function NavigationMenuViewport({
   );
 }
 
+function NavigationMenuPositioner({
+  className,
+  children,
+  side: _side,
+  sideOffset: _sideOffset,
+  align: _align,
+  alignOffset: _alignOffset,
+  ...props
+}: React.ComponentProps<"div"> & {
+  side?: "top" | "right" | "bottom" | "left";
+  sideOffset?: number;
+  align?: "start" | "center" | "end";
+  alignOffset?: number;
+}) {
+  return (
+    <div
+      data-slot="navigation-menu-positioner"
+      className={cn("absolute top-full left-0 isolate z-50 flex justify-center", className)}
+      {...props}
+    >
+      {children ?? <NavigationMenuViewport />}
+    </div>
+  );
+}
+
 function NavigationMenuLink({
   className,
   ...props
@@ -180,6 +205,6 @@ export {
   NavigationMenuTrigger,
   NavigationMenuLink,
   NavigationMenuIndicator,
-  NavigationMenuViewport,
+  NavigationMenuPositioner,
   navigationMenuTriggerStyle,
 };

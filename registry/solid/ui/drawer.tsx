@@ -1,26 +1,20 @@
-import {
-  splitProps,
-  type ComponentProps,
-  type ParentProps,
-  type JSX,
-  type ValidComponent,
-} from "solid-js";
-import type {
-  ContentProps,
-  DescriptionProps,
-  DynamicProps,
-  LabelProps,
-  OverlayProps,
-} from "@corvu/drawer";
+import { Show, mergeProps, splitProps, type ComponentProps, type ValidComponent } from "solid-js";
+import type { DynamicProps } from "@corvu/drawer";
 import DrawerPrimitive from "@corvu/drawer";
 
 import { cn, omniMonoText } from "@/registry/solid/lib/utils";
 
-function Drawer(props: ComponentProps<typeof DrawerPrimitive>) {
+export type DrawerProps = ComponentProps<typeof DrawerPrimitive>;
+
+function Drawer(props: DrawerProps) {
   return <DrawerPrimitive data-slot="drawer" {...props} />;
 }
 
-function DrawerTrigger(props: ComponentProps<typeof DrawerPrimitive.Trigger>) {
+export type DrawerTriggerProps<T extends ValidComponent = "button"> = ComponentProps<
+  typeof DrawerPrimitive.Trigger<T>
+>;
+
+function DrawerTrigger<T extends ValidComponent = "button">(props: DrawerTriggerProps<T>) {
   return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />;
 }
 
@@ -28,11 +22,17 @@ function DrawerPortal(props: ComponentProps<typeof DrawerPrimitive.Portal>) {
   return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />;
 }
 
-function DrawerClose(props: ComponentProps<typeof DrawerPrimitive.Close>) {
+export type DrawerCloseProps<T extends ValidComponent = "button"> = ComponentProps<
+  typeof DrawerPrimitive.Close<T>
+>;
+
+function DrawerClose<T extends ValidComponent = "button">(props: DrawerCloseProps<T>) {
   return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />;
 }
 
-type DrawerOverlayProps<T extends ValidComponent = "div"> = OverlayProps<T> & {
+type DrawerOverlayProps<T extends ValidComponent = "div"> = ComponentProps<
+  typeof DrawerPrimitive.Overlay<T>
+> & {
   class?: string;
 };
 
@@ -53,23 +53,24 @@ const DrawerOverlay = <T extends ValidComponent = "div">(
   );
 };
 
-type DrawerContentProps<T extends ValidComponent = "div"> = ContentProps<T> & {
-  class?: string;
-  children?: JSX.Element;
+export type DrawerContentProps<T extends ValidComponent = "div"> = ComponentProps<
+  typeof DrawerPrimitive.Content<T>
+> & {
+  withHandle?: boolean;
 };
 
-const DrawerContent = <T extends ValidComponent = "div">(
-  props: DynamicProps<T, DrawerContentProps<T>>,
-) => {
-  const [, rest] = splitProps(props as DrawerContentProps, ["class", "children"]);
+const DrawerContent = <T extends ValidComponent = "div">(props: DrawerContentProps<T>) => {
   const drawer = DrawerPrimitive.useContext();
   const side = () => drawer.side();
+  const merged = mergeProps({ withHandle: side() === "bottom" }, props as DrawerContentProps);
+  const [local, rest] = splitProps(merged, ["class", "children", "withHandle"]);
 
   return (
     <DrawerPortal>
       <DrawerOverlay />
       <DrawerPrimitive.Content
         data-slot="drawer-content"
+        data-side={side()}
         data-vaul-drawer-direction={side()}
         class={cn(
           "group/drawer-content fixed z-50 flex h-auto flex-col",
@@ -83,18 +84,22 @@ const DrawerContent = <T extends ValidComponent = "div">(
           "data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-full data-[vaul-drawer-direction=right]:sm:max-w-md data-[vaul-drawer-direction=right]:border-l",
           "data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-full data-[vaul-drawer-direction=left]:sm:max-w-md data-[vaul-drawer-direction=left]:border-r",
           "data-[transitioning]:transition-transform data-[transitioning]:duration-300 md:select-none",
-          props.class,
+          local.class,
         )}
         {...rest}
       >
-        <div class="mx-auto mt-4 hidden h-1.5 w-28 bg-foreground/20 group-data-[side=bottom]/drawer-content:block group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
-        {props.children}
+        <Show when={local.withHandle}>
+          <div class="mx-auto mt-4 hidden h-1.5 w-28 bg-foreground/20 group-data-[side=bottom]/drawer-content:block group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
+        </Show>
+        {local.children}
       </DrawerPrimitive.Content>
     </DrawerPortal>
   );
 };
 
-function DrawerHeader(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>) {
+export type DrawerHeaderProps = ComponentProps<"div">;
+
+function DrawerHeader(props: DrawerHeaderProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -105,7 +110,9 @@ function DrawerHeader(props: ParentProps<{ class?: string } & JSX.HTMLAttributes
   );
 }
 
-function DrawerFooter(props: ParentProps<{ class?: string } & JSX.HTMLAttributes<HTMLDivElement>>) {
+export type DrawerFooterProps = ComponentProps<"div">;
+
+function DrawerFooter(props: DrawerFooterProps) {
   const [local, rest] = splitProps(props, ["class"]);
   return (
     <div
@@ -116,11 +123,28 @@ function DrawerFooter(props: ParentProps<{ class?: string } & JSX.HTMLAttributes
   );
 }
 
-type DrawerTitleProps<T extends ValidComponent = "div"> = LabelProps<T> & {
-  class?: string;
+export type DrawerLabelProps<T extends ValidComponent = "h2"> = ComponentProps<
+  typeof DrawerPrimitive.Label<T>
+>;
+
+const DrawerLabel = <T extends ValidComponent = "h2">(
+  props: DynamicProps<T, DrawerLabelProps<T>>,
+) => {
+  const [, rest] = splitProps(props as DrawerLabelProps, ["class"]);
+  return (
+    <DrawerPrimitive.Label
+      data-slot="drawer-label"
+      class={cn(omniMonoText.section, "text-muted-foreground", props.class)}
+      {...rest}
+    />
+  );
 };
 
-const DrawerTitle = <T extends ValidComponent = "div">(
+export type DrawerTitleProps<T extends ValidComponent = "h2"> = ComponentProps<
+  typeof DrawerPrimitive.Label<T>
+>;
+
+const DrawerTitle = <T extends ValidComponent = "h2">(
   props: DynamicProps<T, DrawerTitleProps<T>>,
 ) => {
   const [, rest] = splitProps(props as DrawerTitleProps, ["class"]);
@@ -133,11 +157,11 @@ const DrawerTitle = <T extends ValidComponent = "div">(
   );
 };
 
-type DrawerDescriptionProps<T extends ValidComponent = "div"> = DescriptionProps<T> & {
-  class?: string;
-};
+export type DrawerDescriptionProps<T extends ValidComponent = "p"> = ComponentProps<
+  typeof DrawerPrimitive.Description<T>
+>;
 
-const DrawerDescription = <T extends ValidComponent = "div">(
+const DrawerDescription = <T extends ValidComponent = "p">(
   props: DynamicProps<T, DrawerDescriptionProps<T>>,
 ) => {
   const [, rest] = splitProps(props as DrawerDescriptionProps, ["class"]);
@@ -153,12 +177,21 @@ const DrawerDescription = <T extends ValidComponent = "div">(
 export {
   Drawer,
   DrawerPortal,
-  DrawerOverlay,
   DrawerTrigger,
   DrawerClose,
   DrawerContent,
   DrawerHeader,
   DrawerFooter,
+  DrawerLabel,
   DrawerTitle,
   DrawerDescription,
+  type DrawerCloseProps,
+  type DrawerContentProps,
+  type DrawerDescriptionProps,
+  type DrawerFooterProps,
+  type DrawerHeaderProps,
+  type DrawerLabelProps,
+  type DrawerProps,
+  type DrawerTitleProps,
+  type DrawerTriggerProps,
 };

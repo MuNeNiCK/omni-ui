@@ -112,7 +112,7 @@
         }
       ],
       "registryDependencies": ["@omni/utils"],
-      "dependencies": ["class-variance-authority"]
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
     },
     {
       "name": "button-group",
@@ -307,6 +307,19 @@
       ],
       "registryDependencies": ["@omni/utils", "@omni/glass-style"],
       "dependencies": ["@radix-ui/react-dialog", "lucide-react"]
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "Direction",
+      "description": "Direction provider for React components.",
+      "files": [
+        {
+          "path": "registry/react/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["@radix-ui/react-direction"]
     },
     {
       "name": "drawer",
@@ -505,6 +518,20 @@
         "class-variance-authority",
         "lucide-react"
       ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "Native select component.",
+      "files": [
+        {
+          "path": "registry/react/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/utils"],
+      "dependencies": ["lucide-react"]
     },
     {
       "name": "pagination",
@@ -755,7 +782,7 @@
         }
       ],
       "registryDependencies": ["@omni/utils"],
-      "dependencies": ["@radix-ui/react-tabs"]
+      "dependencies": ["@radix-ui/react-tabs", "class-variance-authority"]
     },
     {
       "name": "textarea",
@@ -1099,7 +1126,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["@kobalte/core", "lucide-solid"]
+      "dependencies": ["solid-js", "@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/alert",
@@ -1117,7 +1144,7 @@
         "@omni/solid/glass-style",
         "@omni/solid/tone-style"
       ],
-      "dependencies": ["class-variance-authority"]
+      "dependencies": ["solid-js", "class-variance-authority"]
     },
     {
       "name": "solid/alert-dialog",
@@ -1135,7 +1162,7 @@
         "@omni/solid/utils",
         "@omni/solid/glass-style"
       ],
-      "dependencies": ["@kobalte/core", "lucide-solid"]
+      "dependencies": ["solid-js", "@kobalte/core", "class-variance-authority"]
     },
     {
       "name": "solid/aspect-ratio",
@@ -1148,8 +1175,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js"]
     },
     {
       "name": "solid/avatar",
@@ -1163,7 +1189,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js"]
     },
     {
       "name": "solid/badge",
@@ -1177,7 +1203,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["class-variance-authority"]
+      "dependencies": ["solid-js", "class-variance-authority"]
     },
     {
       "name": "solid/breadcrumb",
@@ -1191,7 +1217,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["lucide-solid"]
+      "dependencies": ["solid-js", "lucide-solid"]
     },
     {
       "name": "solid/button",
@@ -1205,7 +1231,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["class-variance-authority"]
+      "dependencies": ["solid-js", "class-variance-authority"]
     },
     {
       "name": "solid/button-group",
@@ -1223,7 +1249,7 @@
         "@omni/solid/utils",
         "@omni/solid/glass-style"
       ],
-      "dependencies": ["class-variance-authority"]
+      "dependencies": ["solid-js", "class-variance-authority"]
     },
     {
       "name": "solid/calendar",
@@ -1237,7 +1263,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/button", "@omni/solid/utils"],
-      "dependencies": ["lucide-solid"]
+      "dependencies": ["solid-js", "@corvu/calendar", "lucide-solid"]
     },
     {
       "name": "solid/card",
@@ -1250,7 +1276,8 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["solid-js"]
     },
     {
       "name": "solid/carousel",
@@ -1264,7 +1291,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/button", "@omni/solid/utils"],
-      "dependencies": ["embla-carousel-solid", "lucide-solid"]
+      "dependencies": ["solid-js", "embla-carousel", "embla-carousel-solid", "lucide-solid"]
     },
     {
       "name": "solid/chart",
@@ -1277,7 +1304,8 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils"]
+      "registryDependencies": ["@omni/solid/cva"],
+      "dependencies": ["solid-js", "@unovis/solid"]
     },
     {
       "name": "solid/checkbox",
@@ -1295,7 +1323,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core", "lucide-solid"]
+      "dependencies": ["solid-js", "@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/collapsible",
@@ -1308,8 +1336,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js", "@kobalte/core"]
     },
     {
       "name": "solid/combobox",
@@ -1322,12 +1349,8 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@omni/solid/command",
-        "@omni/solid/utils",
-        "@omni/solid/glass-style"
-      ],
-      "dependencies": ["@kobalte/core", "lucide-solid"]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["solid-js", "@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/command",
@@ -1345,7 +1368,7 @@
         "@omni/solid/utils",
         "@omni/solid/glass-style"
       ],
-      "dependencies": ["cmdk-solid", "@kobalte/core"]
+      "dependencies": ["solid-js", "cmdk-solid", "@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/context-menu",
@@ -1359,7 +1382,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core", "lucide-solid"]
+      "dependencies": ["solid-js", "@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/data-table",
@@ -1381,7 +1404,7 @@
         "@omni/solid/utils",
         "@omni/solid/glass-style"
       ],
-      "dependencies": ["@tanstack/solid-table", "lucide-solid"]
+      "dependencies": ["solid-js", "@tanstack/solid-table", "lucide-solid", "@kobalte/core"]
     },
     {
       "name": "solid/date-picker",
@@ -1401,7 +1424,7 @@
         "@omni/solid/utils",
         "@omni/solid/glass-style"
       ],
-      "dependencies": ["lucide-solid"]
+      "dependencies": ["solid-js", "date-fns", "lucide-solid"]
     },
     {
       "name": "solid/dialog",
@@ -1415,7 +1438,20 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core", "lucide-solid"]
+      "dependencies": ["solid-js", "@kobalte/core", "lucide-solid"]
+    },
+    {
+      "name": "solid/direction",
+      "type": "registry:ui",
+      "title": "Direction (Solid)",
+      "description": "Direction provider for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["solid-js"]
     },
     {
       "name": "solid/drawer",
@@ -1429,7 +1465,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@corvu/drawer"]
+      "dependencies": ["solid-js", "@corvu/drawer"]
     },
     {
       "name": "solid/dropdown-menu",
@@ -1443,7 +1479,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core", "lucide-solid"]
+      "dependencies": ["solid-js", "@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/empty",
@@ -1457,7 +1493,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["class-variance-authority"]
+      "dependencies": ["solid-js", "class-variance-authority"]
     },
     {
       "name": "solid/field",
@@ -1471,7 +1507,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/label", "@omni/solid/separator", "@omni/solid/utils"],
-      "dependencies": ["class-variance-authority"]
+      "dependencies": ["solid-js", "class-variance-authority"]
     },
     {
       "name": "solid/form",
@@ -1488,7 +1524,8 @@
           "type": "registry:lib"
         }
       ],
-      "registryDependencies": ["@omni/solid/label", "@omni/solid/utils"]
+      "registryDependencies": ["@omni/solid/label", "@omni/solid/utils"],
+      "dependencies": ["solid-js"]
     },
     {
       "name": "solid/hover-card",
@@ -1502,7 +1539,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js", "@kobalte/core"]
     },
     {
       "name": "solid/input",
@@ -1519,7 +1556,8 @@
           "type": "registry:lib"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["solid-js", "@kobalte/core"]
     },
     {
       "name": "solid/input-group",
@@ -1537,7 +1575,7 @@
         "@omni/solid/utils",
         "@omni/solid/glass-style"
       ],
-      "dependencies": ["class-variance-authority"]
+      "dependencies": ["solid-js", "class-variance-authority"]
     },
     {
       "name": "solid/input-otp",
@@ -1551,7 +1589,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@corvu/otp-field", "lucide-solid"]
+      "dependencies": ["solid-js", "@corvu/otp-field", "lucide-solid"]
     },
     {
       "name": "solid/item",
@@ -1569,7 +1607,7 @@
         "@omni/solid/utils",
         "@omni/solid/glass-style"
       ],
-      "dependencies": ["class-variance-authority"]
+      "dependencies": ["solid-js", "class-variance-authority"]
     },
     {
       "name": "solid/kbd",
@@ -1582,7 +1620,8 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["solid-js"]
     },
     {
       "name": "solid/label",
@@ -1596,7 +1635,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js"]
     },
     {
       "name": "solid/menubar",
@@ -1610,7 +1649,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core", "lucide-solid"]
+      "dependencies": ["solid-js", "@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/navigation-menu",
@@ -1624,7 +1663,21 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core", "class-variance-authority", "lucide-solid"]
+      "dependencies": ["solid-js", "@kobalte/core", "class-variance-authority", "lucide-solid"]
+    },
+    {
+      "name": "solid/native-select",
+      "type": "registry:ui",
+      "title": "Native Select (Solid)",
+      "description": "Native Select component for SolidJS.",
+      "files": [
+        {
+          "path": "registry/solid/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["solid-js", "lucide-solid"]
     },
     {
       "name": "solid/pagination",
@@ -1638,7 +1691,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["lucide-solid"]
+      "dependencies": ["solid-js", "lucide-solid"]
     },
     {
       "name": "solid/popover",
@@ -1652,7 +1705,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js", "@kobalte/core"]
     },
     {
       "name": "solid/progress",
@@ -1666,7 +1719,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js", "@kobalte/core"]
     },
     {
       "name": "solid/radio-group",
@@ -1680,7 +1733,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js", "@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/resizable",
@@ -1694,7 +1747,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["@corvu/resizable", "lucide-solid"]
+      "dependencies": ["solid-js", "@corvu/resizable", "lucide-solid"]
     },
     {
       "name": "solid/scroll-area",
@@ -1708,7 +1761,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js"]
     },
     {
       "name": "solid/select",
@@ -1726,7 +1779,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core", "lucide-solid"]
+      "dependencies": ["solid-js", "@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/separator",
@@ -1740,7 +1793,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js", "@kobalte/core"]
     },
     {
       "name": "solid/sheet",
@@ -1753,8 +1806,12 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core", "lucide-solid"]
+      "registryDependencies": [
+        "@omni/solid/button",
+        "@omni/solid/utils",
+        "@omni/solid/glass-style"
+      ],
+      "dependencies": ["solid-js", "@kobalte/core", "lucide-solid"]
     },
     {
       "name": "solid/sidebar",
@@ -1769,7 +1826,6 @@
       ],
       "registryDependencies": [
         "@omni/solid/button",
-        "@omni/solid/input",
         "@omni/solid/separator",
         "@omni/solid/sheet",
         "@omni/solid/skeleton",
@@ -1778,7 +1834,7 @@
         "@omni/solid/glass-style",
         "@omni/solid/utils"
       ],
-      "dependencies": ["@kobalte/core", "class-variance-authority", "lucide-solid"]
+      "dependencies": ["solid-js", "@kobalte/core", "class-variance-authority", "lucide-solid"]
     },
     {
       "name": "solid/skeleton",
@@ -1791,7 +1847,8 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["solid-js"]
     },
     {
       "name": "solid/slider",
@@ -1805,7 +1862,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js", "@kobalte/core"]
     },
     {
       "name": "solid/sonner",
@@ -1821,10 +1878,9 @@
       "registryDependencies": [
         "@omni/solid/utils",
         "@omni/solid/glass-style",
-        "@omni/solid/tone-style",
-        "@omni/solid/theme-provider"
+        "@omni/solid/tone-style"
       ],
-      "dependencies": ["solid-sonner"]
+      "dependencies": ["solid-js", "solid-sonner", "lucide-solid"]
     },
     {
       "name": "solid/spinner",
@@ -1838,7 +1894,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["lucide-solid"]
+      "dependencies": ["solid-js", "lucide-solid"]
     },
     {
       "name": "solid/switch",
@@ -1856,7 +1912,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js", "@kobalte/core"]
     },
     {
       "name": "solid/table",
@@ -1869,7 +1925,8 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils"]
+      "registryDependencies": ["@omni/solid/utils"],
+      "dependencies": ["solid-js"]
     },
     {
       "name": "solid/tabs",
@@ -1882,8 +1939,8 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["@kobalte/core"]
+      "registryDependencies": ["@omni/solid/cva", "@omni/solid/utils"],
+      "dependencies": ["solid-js", "@kobalte/core", "cva@1.0.0-beta.4"]
     },
     {
       "name": "solid/textarea",
@@ -1900,7 +1957,8 @@
           "type": "registry:lib"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"]
+      "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
+      "dependencies": ["solid-js", "@kobalte/core"]
     },
     {
       "name": "solid/toggle",
@@ -1914,7 +1972,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["@kobalte/core", "class-variance-authority"]
+      "dependencies": ["solid-js", "@kobalte/core", "class-variance-authority"]
     },
     {
       "name": "solid/toggle-group",
@@ -1927,8 +1985,8 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["@kobalte/core", "class-variance-authority"]
+      "registryDependencies": ["@omni/solid/toggle", "@omni/solid/utils"],
+      "dependencies": ["solid-js", "class-variance-authority"]
     },
     {
       "name": "solid/tooltip",
@@ -1942,7 +2000,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils", "@omni/solid/glass-style"],
-      "dependencies": ["@kobalte/core"]
+      "dependencies": ["solid-js", "@kobalte/core"]
     },
     {
       "name": "solid/typography",
@@ -1956,7 +2014,7 @@
         }
       ],
       "registryDependencies": ["@omni/solid/utils"],
-      "dependencies": ["class-variance-authority"]
+      "dependencies": ["solid-js", "class-variance-authority"]
     },
     {
       "name": "solid/utils",
@@ -1971,6 +2029,19 @@
         }
       ],
       "dependencies": ["clsx", "tailwind-merge"]
+    },
+    {
+      "name": "solid/cva",
+      "type": "registry:lib",
+      "title": "CVA (Solid)",
+      "files": [
+        {
+          "path": "registry/solid/lib/cva.ts",
+          "type": "registry:lib",
+          "target": "lib/cva.ts"
+        }
+      ],
+      "dependencies": ["cva@1.0.0-beta.4", "tailwind-merge"]
     },
     {
       "name": "solid/glass-style",
@@ -2111,7 +2182,8 @@
           "type": "registry:hook",
           "target": "hooks/use-mobile.ts"
         }
-      ]
+      ],
+      "dependencies": ["solid-js"]
     },
     {
       "name": "solid/theme-provider",
@@ -2123,7 +2195,8 @@
           "path": "registry/solid/components/theme-provider.tsx",
           "type": "registry:component"
         }
-      ]
+      ],
+      "dependencies": ["solid-js"]
     },
     {
       "name": "solid/tone-style",
